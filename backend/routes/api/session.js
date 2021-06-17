@@ -8,6 +8,7 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+/************************LOG IN************************/
 
 const validateLogin = [
   check('credential')
@@ -20,10 +21,7 @@ const validateLogin = [
   handleValidationErrors,
 ];
 
-
-/************************LOG IN************************/
-
-// Log in
+// Log in route
 router.post(
   '/',
   validateLogin,

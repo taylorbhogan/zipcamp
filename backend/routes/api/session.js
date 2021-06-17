@@ -1,16 +1,32 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { check } = require('express-validator');
 
+const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
 const router = express.Router();
+
+
+const validateLogin = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  handleValidationErrors,
+];
+
 
 /************************LOG IN************************/
 
 // Log in
 router.post(
   '/',
+  validateLogin,
   asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
@@ -31,7 +47,7 @@ router.post(
     });
   }),
 );
-// test in the browser console for the above - on username
+// test 1 in the browser console for the above - on username
 // fetch('/api/session', {
 //   method: 'POST',
 //   headers: {
@@ -41,7 +57,7 @@ router.post(
 //   body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
 // }).then(res => res.json()).then(data => console.log(data));
 
-// ditto - on email
+// test 2 - on email
 // fetch('/api/session', {
 //   method: 'POST',
 //   headers: {
@@ -51,7 +67,7 @@ router.post(
 //   body: JSON.stringify({ credential: 'demo@user.io', password: 'password' })
 // }).then(res => res.json()).then(data => console.log(data));
 
-// ditto - invalid user
+// test 3 - invalid user
 // fetch('/api/session', {
 //   method: 'POST',
 //   headers: {
@@ -60,6 +76,17 @@ router.post(
 //   },
 //   body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
 // }).then(res => res.json()).then(data => console.log(data));
+
+// test 4 - test login validation
+// fetch('/api/session', {
+//   method: 'POST',
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": `XIIIsUWZ-ThDHimNYWbYAzE1tdF_hcW5P9Fg`
+//   },
+//   body: JSON.stringify({ credential: '', password: 'password' })
+// }).then(res => res.json()).then(data => console.log(data));
+
 
 /************************LOG OUT************************/
 // Log out

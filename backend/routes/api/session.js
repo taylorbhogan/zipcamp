@@ -6,6 +6,7 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+/************************LOG IN************************/
 
 // Log in
 router.post(
@@ -58,6 +59,25 @@ router.post(
 //     "XSRF-TOKEN": `svfSE1j9-xmeObImCo2wsQ0tsZK3vYZ6fhuM`
 //   },
 //   body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
+// }).then(res => res.json()).then(data => console.log(data));
+
+/************************LOG OUT************************/
+// Log out
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
+
+// test
+// fetch('/api/session', {
+//   method: 'DELETE',
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": `n231JMsF-lZrj0ub-HF2IEG5lQvuhyNbjqg4`
+//   }
 // }).then(res => res.json()).then(data => console.log(data));
 
 

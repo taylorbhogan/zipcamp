@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
 const router = express.Router();
@@ -23,8 +23,6 @@ router.post(
   }),
 );
 
-
-
 // Test 1, 2, 3 - signup, existing email should fail, existing un should fail
 // reminder: need to pass in the value of the XSRF-TOKEN cookie as a header in the fetch request because the login route has a POST HTTP verb.
 // fetch('/api/users', {
@@ -39,6 +37,8 @@ router.post(
 //     password: 'password'
 //   })
 // }).then(res => res.json()).then(data => console.log(data));
+
+
 
 
 

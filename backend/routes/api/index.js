@@ -1,8 +1,29 @@
 const router = require('express').Router();
 
-router.post('/test', function(req, res) {
-  res.json({ requestBody: req.body });
-});
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
+
+router.use('/session', sessionRouter);
+router.use('/users', usersRouter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /************************TESTS************************/
 
@@ -54,6 +75,9 @@ router.post('/test', function(req, res) {
 //   body: JSON.stringify({ hello: 'world' })
 // }).then(res => res.json()).then(data => console.log(data));
 
-
+// TEST 0 - test the API router
+// router.post('/test', function(req, res) {
+//   res.json({ requestBody: req.body });
+// });
 
 module.exports = router;

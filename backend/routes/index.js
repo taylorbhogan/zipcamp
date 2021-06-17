@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const apiRouter = require('./api');
+
+router.use('/api', apiRouter);
 
 router.get('/hello/world', function(req, res) {
   // set a cookie on the res with the name of CSRF-TOKEN to the value of the req.csrfToken method's return.
@@ -8,3 +11,6 @@ router.get('/hello/world', function(req, res) {
 });
 
 module.exports = router;
+
+
+

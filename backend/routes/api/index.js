@@ -4,7 +4,7 @@ router.post('/test', function(req, res) {
   res.json({ requestBody: req.body });
 });
 
-// test fetch request for the browser
+// test fetch request for the browser - entered into browser console to test
 // fetch('/api/test', {
 //   method: "POST",
 //   headers: {

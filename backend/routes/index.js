@@ -29,6 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add a XSRF-TOKEN cookie in development because the React frontend is on a different server than the Express backend
+// why? ____
 if (process.env.NODE_ENV !== 'production') {
   router.get('/api/csrf/restore', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
@@ -40,10 +41,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 // // for testing
-// router.get('/hello/world', function(req, res) {
-//   // set a cookie on the res with the name of CSRF-TOKEN to the value of the req.csrfToken method's return.
-//   res.cookie('XSRF-TOKEN', req.csrfToken());
-//   res.send('Hello World!');
-// });
+router.get('/hello-world', function(req, res) {
+  // set a cookie on the res with the name of CSRF-TOKEN to the value of the req.csrfToken method's return.
+  res.cookie('XSRF-TOKEN', req.csrfToken());
+  res.send('hello world :)');
+});
 
 module.exports = router;

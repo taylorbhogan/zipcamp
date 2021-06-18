@@ -1,0 +1,68 @@
+import { csrfFetch } from './csrf';
+
+/* ------ DEFINE ACTION TYPES AS CONSTANTS ------ */
+const SET_USER = 'session/SET_USER'
+const REMOVE_USER = 'session/REMOVE_USER'
+
+/* ------ DEFINE ACTION CREATORS ------ */
+export const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user,
+  }
+}
+
+export const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+  }
+}
+
+/* ------ DEFINE THUNK CREATORS ------ */
+
+export const login = (user) => async (dispatch) => {
+  const { credential, password } = user;
+  // send a post req to backend api with only the credential and password
+  const response = await csrfFetch('/api/session', {
+    method: 'POST',
+    body: JSON.stringify({
+      credential,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
+/* ------ SELECTORS ------ */
+
+
+
+/* ------ DEFINE INITIAL STATE ------ */
+
+const initialState = {
+  user: null
+}
+
+/* ------ DEFINE REDUCER ------ */
+const sessionReducer = (state = initialState, action) => {
+  let newState;
+  switch (action.type) {
+    case SET_USER:
+      newState = Object.assign({}, state);
+      newState.user = action.payload;
+      return newState;
+    case REMOVE_USER:
+      newState = Object.assign({}, state);
+      newState.user = null;
+      return newState;
+    default:
+      return state;
+        }
+      };
+
+      
+/* ------ EXPORT REDUCER ------ */
+
+export default sessionReducer;

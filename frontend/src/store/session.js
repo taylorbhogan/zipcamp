@@ -35,6 +35,13 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
+export const restoreUser = () => async dispatch => {
+  const response = await csrfFetch('/api/session');
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 /* ------ SELECTORS ------ */
 
 
@@ -62,7 +69,7 @@ const sessionReducer = (state = initialState, action) => {
         }
       };
 
-      
+
 /* ------ EXPORT REDUCER ------ */
 
 export default sessionReducer;

@@ -6,14 +6,10 @@
   margin-top: 200px
 }
 
-.loginContainer{
+.signupContainer{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 500px;
   height: 400px;
-}
-
-input {
-  width: 400px;
 }

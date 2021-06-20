@@ -1,7 +1,36 @@
+.navbarWrapper{
+  /* display: flex; */
+}
+
 .navbar{
   background-color: lightseagreen;
-  height: 100px;
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 0px;
+}
+
+.navbarLeft{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.navbarLogo{
+  font-size: 40px;
+  padding-left: 30px;
+  position: relative;
+  top: 8px;
+}
+
+.navLinkList{
+  display: flex;
+  flex-direction: row;
+}
+
+.navlinkListItem{
+  margin-left: 20px;
+  font-size: 20px;
 }

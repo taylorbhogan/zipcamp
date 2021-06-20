@@ -1,0 +1,14 @@
+.navbarRight{
+  margin-right: 30px;
+}
+
+.faUserParent{
+  font-size: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.accountButton{
+  height: 30px;
+  width: 130px;
+}

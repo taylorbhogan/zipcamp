@@ -1,4 +1,5 @@
 :root {
+  /* ---- COLORS ---- */
   --mainColorGreen: #248232;
   --mainColorDarkGrey: #212121;
   --mainColorLightGrey: #CCCCCC;
@@ -6,9 +7,17 @@
   --footerHeight: 5rem;
   --navbarHeight: 80px;
   --navbarBottomPadding: 10px;
+
+  /* ---- CARDS ---- */
   --cardBorderWidth: 1px;
   --cardBorderStyle: solid;
+  --cardBorderRadius: 10px;
+
+  /* ---- BUTTONS ---- */
   --buttonPaddingTop: .25rem;
   --buttonPaddingSides: 1rem;
   --buttonBorderRadius: 3px;
+
+  /* ---- INPUTS ---- */
+  --inputLabelSize: 10px;
 }

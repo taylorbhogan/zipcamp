@@ -3,6 +3,7 @@
 .welcomeMessageBox{
   margin-top: 12rem;
   background-color: var(--mainColorDarkGrey);
+  border-radius: var(--cardBorderRadius);
   height: 20rem;
   width: 30rem;
   display: flex;
@@ -11,6 +12,10 @@
   align-items: center;
 }
 
+.cardStyling{
+  box-shadow: 0px 8px 16px 0px red;
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+}
 /* .welcomeMessageBoxContent{
 
 } */
@@ -18,13 +23,4 @@
 .welcomeMessage{
   color: var(--mainColorWhite);
   font-size: 12px;
-}
-
-.findYourWay{
-  color: var(--mainColorLightGrey);
-  border-width: var(--cardBorderWidth);
-  border-style: var(--cardBorderStyle);
-  border-color: var(--mainColorLightGrey);
-  border-radius: var(--buttonBorderRadius);
-  padding: var(--buttonPaddingTop) var(--buttonPaddingSides)
 }

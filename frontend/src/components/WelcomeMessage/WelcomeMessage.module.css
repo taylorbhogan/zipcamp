@@ -1,0 +1,30 @@
+@import './../../vars.css';
+
+.welcomeMessageBox{
+  margin-top: 12rem;
+  background-color: var(--mainColorDarkGrey);
+  height: 20rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .welcomeMessageBoxContent{
+
+} */
+
+.welcomeMessage{
+  color: var(--mainColorWhite);
+  font-size: 12px;
+}
+
+.findYourWay{
+  color: var(--mainColorLightGrey);
+  border-width: var(--cardBorderWidth);
+  border-style: var(--cardBorderStyle);
+  border-color: var(--mainColorLightGrey);
+  border-radius: var(--buttonBorderRadius);
+  padding: var(--buttonPaddingTop) var(--buttonPaddingSides)
+}

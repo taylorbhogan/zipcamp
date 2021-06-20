@@ -1,0 +1,14 @@
+:root {
+  --mainColorGreen: #248232;
+  --mainColorDarkGrey: #212121;
+  --mainColorLightGrey: #CCCCCC;
+  --mainColorWhite: #FFFFFF;
+  --footerHeight: 5rem;
+  --navbarHeight: 80px;
+  --navbarBottomPadding: 10px;
+  --cardBorderWidth: 1px;
+  --cardBorderStyle: solid;
+  --buttonPaddingTop: .25rem;
+  --buttonPaddingSides: 1rem;
+  --buttonBorderRadius: 3px;
+}

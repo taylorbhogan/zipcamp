@@ -1,5 +1,8 @@
+@import './../../vars.css';
+
 .navbarRight{
   margin-right: 30px;
+  padding-bottom: var(--navbarBottomPadding);
 }
 
 .faUserParent{
@@ -11,4 +14,6 @@
 .accountButton{
   height: 30px;
   width: 130px;
+  border-radius: var(--buttonBorderRadius);
+  background-color: var(--mainColorLightGrey);
 }

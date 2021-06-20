@@ -1,0 +1,32 @@
+@import './../../vars.css';
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--mainColorDarkGrey);
+  width: 100%;
+  height: var(--footerHeight);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #aaaaaa;
+  box-shadow: 0px -2px 2px teal;
+}
+
+.footerLeft{
+  padding-left: 2rem;
+}
+
+.footerRight{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 8rem;
+  padding-right: 2rem;
+}
+.socialLogo{
+  height: 2rem;
+  width: 2rem;
+}

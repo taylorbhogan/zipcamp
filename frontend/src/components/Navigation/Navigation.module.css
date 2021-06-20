@@ -1,15 +1,23 @@
+@import './../../vars.css';
+
 .navbarWrapper{
-  /* display: flex; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .navbar{
-  background-color: lightseagreen;
-  height: 80px;
+  background-color: var(--mainColorDarkGrey);
+  height: var(--navbarHeight);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 10px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 2px 2px teal;
 }
 
 .navbarLeft{
@@ -17,6 +25,7 @@
   flex-direction: row;
   align-items: flex-end;
   margin-left: 30px;
+  padding-bottom: var(--navbarBottomPadding);
 }
 
 .navbarLogo{
@@ -30,7 +39,17 @@
   flex-direction: row;
 }
 
-.navlinkListItem{
+.navLink{
   margin-left: 20px;
   font-size: 20px;
+  color: aqua;
+  text-decoration: none;
+}
+
+.navLink:hover{
+  color: red;
+}
+
+.navLinkActive{
+  color: white
 }

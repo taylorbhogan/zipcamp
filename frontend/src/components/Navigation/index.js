@@ -30,11 +30,23 @@ function Navigation({ isLoaded }){
             zipcamp
           </div>
           <div className={styles.navlinkList}>
-            <span className={styles.navlinkListItem}>
-              <NavLink exact to='/'>home</NavLink>
+            <span>
+              <NavLink
+                className={styles.navLink}
+                activeClassName={styles.navLinkActive}
+                exact to='/'>home</NavLink>
             </span>
-            <span className={styles.navlinkListItem}>
-              <NavLink exact to ='/spots'>spots</NavLink>
+            <span>
+              <NavLink
+                className={styles.navLink}
+                activeClassName={styles.navLinkActive}
+                exact to ='/spots'>spots</NavLink>
+            </span>
+            <span>
+              <NavLink
+                className={styles.navLink}
+                activeClassName={styles.navLinkActive}
+                exact to ='/areas'>public lands</NavLink>
             </span>
           </div>
         </div>

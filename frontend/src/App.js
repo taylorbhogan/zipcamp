@@ -6,6 +6,7 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import WelcomeMessage from './components/WelcomeMessage';
+import SpotsList from './components/SpotsList'
 import './index.css'
 
 function App() {
@@ -21,22 +22,17 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
+            <Route exact path='/'>
+                <WelcomeMessage />
+            </Route>
             <Route path='/signup'>
               <SignupFormPage />
             </Route>
-            {/* <Route path='/spots'>
-
+            <Route path='/spots'>
+              <SpotsList />
             </Route>
-            <Route path='/goofy'>
-
-            </Route> */}
           </Switch>
         )}
-        <div className={'contentWrapper'}>
-          <div className={'contentContainer'}>
-            <WelcomeMessage />
-          </div>
-        </div>
       </div>
       <Footer />
     </div>

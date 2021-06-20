@@ -48,6 +48,12 @@ function Navigation({ isLoaded }){
                 activeClassName={styles.navLinkActive}
                 exact to ='/areas'>public lands</NavLink>
             </span>
+            <span>
+              <NavLink
+                className={styles.navLink}
+                activeClassName={styles.navLinkActive}
+                exact to ='/users/adventures'>upcoming adventures</NavLink>
+            </span>
           </div>
         </div>
         <div  className={styles.navbarRight}>

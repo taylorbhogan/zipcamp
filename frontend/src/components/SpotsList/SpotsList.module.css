@@ -1,0 +1,17 @@
+@import './../../vars.css';
+
+.contentWrapper{
+  margin-top: var(--navbarHeight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentContainer{
+  width: 100%;
+  background-color: var(--mainColorLightGrey);
+  margin-top: var(--containerMarginTop);
+  margin-right: var(--containerMarginSide);
+  margin-left: var(--containerMarginSide);
+}

@@ -29,31 +29,31 @@ function Navigation({ isLoaded }){
           <div className={styles.navbarLogo}>
             zipcamp
           </div>
-          <div className={styles.navlinkList}>
-            <span>
+          <div className={styles.navLinkList}>
+            <div>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact to='/'>home</NavLink>
-            </span>
-            <span>
+            </div>
+            <div>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact to ='/spots'>spots</NavLink>
-            </span>
-            <span>
+            </div>
+            <div>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact to ='/areas'>public lands</NavLink>
-            </span>
-            <span>
+            </div>
+            <div>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact to ='/users/adventures'>upcoming adventures</NavLink>
-            </span>
+            </div>
           </div>
         </div>
         <div  className={styles.navbarRight}>

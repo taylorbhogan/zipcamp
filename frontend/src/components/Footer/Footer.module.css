@@ -1,7 +1,7 @@
 @import './../../vars.css';
 
 .footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   background-color: var(--mainColorDarkGrey);
@@ -13,6 +13,7 @@
   align-items: center;
   color: #aaaaaa;
   box-shadow: 0px -2px 2px var(--mainColorGreen);
+  margin-top: 10px;
 }
 
 .footerLeft{

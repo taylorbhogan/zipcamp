@@ -1,7 +1,16 @@
 @import './../../vars.css';
 
+.contentWrapper{
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; */
+  position: relative;
+  top: 200px;
+}
+
 .welcomeMessageBox{
-  margin-top: 12rem;
+  margin-top: 20rem;
   background-color: var(--mainColorDarkGrey);
   height: 20rem;
   width: 30rem;
@@ -10,19 +19,12 @@
   justify-content: center;
   align-items: center;
   border-radius: var(--cardBorderRadius);
-  box-shadow: var(--cardBoxShadow)
+  box-shadow: var(--cardBoxShadow);
+  margin: 0 auto;
 }
 
 .welcomeMessage{
   color: var(--mainColorWhite);
   font-size: 12px;
   padding-bottom: 15px;
-}
-
-.contentWrapper{
-  margin-top: var(--navbarHeight);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }

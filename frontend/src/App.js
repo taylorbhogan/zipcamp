@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import WelcomeMessage from './components/WelcomeMessage';
 import SpotsList from './components/SpotsList'
+import AreasList from './components/AreasList';
 import './index.css'
 
 function App() {
@@ -18,8 +19,8 @@ function App() {
 
   return (
     <div className='appContainer'>
-      <div className='navbarContainer'>
-        <Navigation isLoaded={isLoaded} />
+      <div className='pageContainer'>
+      <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
             <Route exact path='/'>
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route path='/spots'>
               <SpotsList />
+            </Route>
+            <Route path='/areas'>
+              <AreasList />
             </Route>
           </Switch>
         )}

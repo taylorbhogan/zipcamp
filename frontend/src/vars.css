@@ -4,6 +4,7 @@
   --mainColorDarkGrey: #212121;
   --mainColorLightGrey: #CCCCCC;
   --mainColorWhite: #FFFFFF;
+  --mainColorWarning: pink;
   --footerHeight: 5rem;
   --navbarHeight: 80px;
   --navbarBottomPadding: 10px;
@@ -24,6 +25,14 @@
   --inputLabelSize: 10px;
 
   /* ---- CONTAINERS ---- */
-  --containerMarginTop: 2rem;
-  --containerMarginSide: 2rem;
+  --containerMarginTop: 4rem;
+  --containerMarginSide: 30rem;
+  --containerPaddingSide: 2rem;
+  --containerPaddingTop: 1rem;
+  --containerBorderRadius: 10px;
+
+  /* ---- NAVIGATION ---- */
+  --navUnderlineHeight: .5em;
+  --navTransitionDuration: .5s;
+  --navAccountButtonWidth: 130px;
 }

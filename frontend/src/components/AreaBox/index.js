@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './AreaBox.module.css'
-// import StandardLinkButton from '../StandardLinkButton';
+import StandardLinkButton from '../StandardLinkButton';
 // import ActivityIcon from '../ActivityIcon';
 
 function AreaBox(){
@@ -23,10 +23,14 @@ function AreaBox(){
           <div className={styles.areaName}>Lassen National Forest</div>
           <div className={styles.locationDiv}>
             <div className={styles.areaName}></div>
-            <div className={styles.stateAbbreviation}>California</div>
+            <div className={styles.stateName}>California</div>
           </div>
           <div className={styles.spotBlurb}>This spot is a great place to rest before getting an early start for the day.</div>
           {/* <StandardLinkButton buttonText={'Check it out'}/> */}
+          <StandardLinkButton
+            buttonText={'Check it out'}
+            lightBackground={true}
+            href=''/>
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@
 }
 
 .spotName{
-  font-size: 30px;
+  font-size: var(--cardHeaderSize)
 }
 
 .areaName{
@@ -43,5 +43,3 @@
   margin-top: 10px;
   height: auto;
 }
-
-

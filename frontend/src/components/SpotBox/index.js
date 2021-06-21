@@ -33,7 +33,10 @@ function SpotBox(){
             <div className={styles.stateAbbreviation}>California</div>
           </div>
           <div className={styles.spotBlurb}>This spot is a great place to rest before getting an early start for the day.</div>
-          <StandardLinkButton buttonText={'Check it out'}/>
+          <StandardLinkButton
+            buttonText={'Check it out'}
+            lightBackground={true}
+            href=''/>
         </div>
       </div>
     </div>

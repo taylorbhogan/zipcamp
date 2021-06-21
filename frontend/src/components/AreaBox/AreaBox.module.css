@@ -28,10 +28,10 @@
 }
 
 .areaName{
-  font-size: 30px;
+  font-size: var(--cardHeaderSize)
 }
 
-.areaName{
+.stateName{
   font-size: 20px;
 }
 

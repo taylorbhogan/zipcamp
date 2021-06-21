@@ -1,5 +1,8 @@
+@import './../../vars.css';
+
 .navbarRight{
   margin-right: 30px;
+  padding-bottom: var(--navbarBottomPadding);
 }
 
 .faUserParent{
@@ -10,5 +13,24 @@
 
 .accountButton{
   height: 30px;
-  width: 130px;
+  width: var(--navAccountButtonWidth);
+  border-radius: var(--buttonBorderRadius);
+  background-color: var(--mainColorLightGrey);
+}
+
+.profileDropdown{
+  background-color: var(--mainColorLightGrey);
+  width: var(--navAccountButtonWidth);
+  position: absolute;
+  top: 70px;
+  padding: 5px 10px 10px 10px;
+  /* border-radius: var(--cardBorderRadius); */
+}
+
+.profileDropdown div {
+  padding-top: 8px;
+}
+
+.warningButton{
+  background-color: var(--mainColorWarning);
 }

@@ -1,15 +1,44 @@
+@import './../../vars.css';
+
+@media screen and (min-width: 1000px) {
+  .navbarLogo{
+    font-size: 60px;
+  }
+  .navLinkList{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navbarLogo{
+    font-size: 40px;
+  }
+  .navLinkList{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .navbarWrapper{
-  /* display: flex; */
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .navbar{
-  background-color: lightseagreen;
-  height: 80px;
+  background-color: var(--mainColorDarkGrey);
+  height: var(--navbarHeight);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 10px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  box-shadow: 0px 2px 2px var(--mainColorGreen);
 }
 
 .navbarLeft{
@@ -17,20 +46,27 @@
   flex-direction: row;
   align-items: flex-end;
   margin-left: 30px;
+  padding-bottom: var(--navbarBottomPadding);
 }
 
 .navbarLogo{
-  font-size: 60px;
   position: relative;
   top: 25px;
 }
 
-.navLinkList{
-  display: flex;
-  flex-direction: row;
-}
 
-.navlinkListItem{
+
+.navLink{
   margin-left: 20px;
   font-size: 20px;
+  color: var(--mainColorGreen);
+  text-decoration: none;
+}
+
+.navLink:hover{
+  color: var(--mainColorLightGrey);
+}
+
+.navLinkActive{
+  color: white
 }

@@ -1,0 +1,45 @@
+@import './../../index.css';
+
+.areaBoxContainer{
+  border: 1px solid black;
+  border-radius: var(--cardBorderRadius);
+  display: flex;
+  flex-direction: row;
+  margin: 20px 30px 20px 30px;
+  padding: 20px 20px 20px 20px;
+}
+
+.areaBoxContainerLeft{
+  display: flex;
+  flex-direction: column;
+}
+
+.areaImageDiv{
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.areaBoxContainerRight{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.areaName{
+  font-size: 30px;
+}
+
+.areaName{
+  font-size: 20px;
+}
+
+.activityDiv{
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  margin-top: 10px;
+  height: auto;
+}

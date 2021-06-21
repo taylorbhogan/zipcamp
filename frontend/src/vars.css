@@ -1,0 +1,38 @@
+:root {
+  /* ---- COLORS ---- */
+  --mainColorGreen: #248232;
+  --mainColorDarkGrey: #212121;
+  --mainColorLightGrey: #CCCCCC;
+  --mainColorWhite: #FFFFFF;
+  --mainColorWarning: pink;
+  --footerHeight: 5rem;
+  --navbarHeight: 80px;
+  --navbarBottomPadding: 10px;
+
+  /* ---- CARDS ---- */
+  --cardBorderWidth: 1px;
+  --cardBorderStyle: solid;
+  --cardBorderRadius: 10px;
+  --cardBoxShadow: 0px 8px 16px 0px var(--mainColorGreen);
+
+
+  /* ---- BUTTONS ---- */
+  --buttonPaddingTop: .25rem;
+  --buttonPaddingSides: 1rem;
+  --buttonBorderRadius: 3px;
+
+  /* ---- INPUTS ---- */
+  --inputLabelSize: 10px;
+
+  /* ---- CONTAINERS ---- */
+  --containerMarginTop: 4rem;
+  --containerMarginSide: 30rem;
+  --containerPaddingSide: 2rem;
+  --containerPaddingTop: 1rem;
+  --containerBorderRadius: 10px;
+
+  /* ---- NAVIGATION ---- */
+  --navUnderlineHeight: .5em;
+  --navTransitionDuration: .5s;
+  --navAccountButtonWidth: 130px;
+}

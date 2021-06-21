@@ -1,0 +1,29 @@
+@import './vars.css';
+
+html{
+  background: url('./images/background-star-2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.appContainer{
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.pageContainer{
+  /* position: relative;
+  min-height: 100vh; */
+  /* padding-bottom: var(--footerHeight); */
+  margin-bottom: 200px;
+}
+
+.formInput{
+  color: aqua;
+}
+
+.verticalCenteringWrapper{
+  display: flex;
+  flex-direction: column;
+}

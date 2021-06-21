@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+// import styles from './LoginForm.module.css'
+import './../../index.css'
+
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -20,13 +23,16 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className={'verticalCenteringWrapper'}
+      onSubmit={handleSubmit}
+    >
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
+      <label className={'formInput'}>
         Username or Email
         <input
           type="text"

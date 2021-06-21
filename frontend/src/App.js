@@ -4,6 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import WelcomeMessage from './components/WelcomeMessage';
+import SpotsList from './components/SpotsList'
+import AreasList from './components/AreasList';
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -13,22 +18,28 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className='appContainer'>
+      <div className='pageContainer'>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path='/signup'>
-            <SignupFormPage />
-          </Route>
-          {/* <Route path='/spots'>
-
-          </Route>
-          <Route path='/goofy'>
-
-          </Route> */}
-        </Switch>
-      )}
-    </>
+        {isLoaded && (
+          <Switch>
+            <Route exact path='/'>
+                <WelcomeMessage />
+            </Route>
+            <Route path='/signup'>
+              <SignupFormPage />
+            </Route>
+            <Route path='/spots'>
+              <SpotsList />
+            </Route>
+            <Route path='/areas'>
+              <AreasList />
+            </Route>
+          </Switch>
+        )}
+      </div>
+      <Footer />
+    </div>
   );
 }
 

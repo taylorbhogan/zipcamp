@@ -1,0 +1,23 @@
+@import './../../index.css';
+
+.contentWrapper{
+  /* margin-top: var(--navbarHeight); */
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: var(--navbarHeight);
+}
+
+.contentContainer{
+  /* width: 100%; */
+  width: 1300px;
+  background-color: var(--mainColorLightGrey);
+  margin-top: var(--containerMarginTop);
+  margin-right: var(--containerMarginSide);
+  margin-left: var(--containerMarginSide);
+  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
+  border-radius: var(--containerBorderRadius);
+}

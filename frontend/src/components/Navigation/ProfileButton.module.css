@@ -2,7 +2,7 @@
 
 .navbarRight{
   margin-right: 30px;
-  padding-bottom: var(--navbarBottomPadding);
+  padding-bottom: var(--navbarBottomMargin);
 }
 
 .faUserParent{

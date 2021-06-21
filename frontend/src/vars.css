@@ -1,4 +1,7 @@
 :root {
+  /* ---- PAGE ---- */
+  --pageSidePadding: 30px;
+
   /* ---- COLORS ---- */
   --mainColorGreen: #248232;
   --secondaryColorGreen: #2BA84A;
@@ -8,7 +11,7 @@
   --mainColorWarning: pink;
   --footerHeight: 5rem;
   --navbarHeight: 80px;
-  --navbarBottomPadding: 10px;
+  --navbarBottomMargin: 10px;
 
   /* ---- CARDS ---- */
   --cardBorderWidth: 1px;

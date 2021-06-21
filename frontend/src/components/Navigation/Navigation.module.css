@@ -46,7 +46,7 @@
   flex-direction: row;
   align-items: flex-end;
   margin-left: 30px;
-  padding-bottom: var(--navbarBottomPadding);
+  margin-bottom: var(--navbarBottomMargin);
 }
 
 .navbarLogo{
@@ -69,4 +69,13 @@
 
 .navLinkActive{
   color: white
+}
+
+.sessionLinksDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 130px;
+  margin-right: var(--pageSidePadding);
+  margin-bottom: var(--navbarBottomMargin);
 }

@@ -1,7 +1,8 @@
 :root {
   /* ---- COLORS ---- */
   --mainColorGreen: #248232;
-  --mainColorDarkGrey: #212121;
+  --secondaryColorGreen: #2BA84A;
+  --mainColorDarkGrey: #343539;
   --mainColorLightGrey: #CCCCCC;
   --mainColorWhite: #FFFFFF;
   --mainColorWarning: pink;

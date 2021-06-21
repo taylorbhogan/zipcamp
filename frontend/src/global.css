@@ -19,8 +19,38 @@ html{
   margin-bottom: 200px;
 }
 
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  padding: 40px;
+  background-color: var(--mainColorLightGrey);
+  /* border-radius: var(--cardBorderRadius); */
+}
+
+.formHeader{
+  color: var(--mainColorDarkGrey);
+}
+
+.formInputLabel{
+  color: var(--mainColorDarkGrey);
+  padding: 20px;
+}
+
 .formInput{
-  color: aqua;
+  height: 28px;
+  margin-bottom: 10px;
+}
+
+.submitButton{
+  background-color: var(--mainColorGreen);
+  border-radius: 8px;
+  padding: .75rem 0;
+  margin-top: 40px;
+}
+
+.submitButton:hover{
+  background-color: var(--secondaryColorGreen);
 }
 
 .verticalCenteringWrapper{

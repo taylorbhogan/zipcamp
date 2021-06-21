@@ -33,51 +33,64 @@ function SignupFormPage() {
     <div
       className={styles.pageContainer}
     >
-      <form
-        onSubmit={handleSubmit}
-        className={styles.signupContainer}
-      >
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <label>
-          Email<br />
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username<br />
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password<br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Confirm Password<br />
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className={styles.signupForm}>
+        <form
+          onSubmit={handleSubmit}
+          className={'form'}
+        >
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          {/* <label>
+            Email<br /> */}
+            <input
+              type="text"
+              value={email}
+              className={'formInput'}
+              placeholder={' email'}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              />
+          {/* </label> */}
+          {/* <label>
+            Username<br /> */}
+            <input
+              type="text"
+              value={username}
+              className={'formInput'}
+              placeholder={' username'}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              />
+          {/* </label> */}
+          {/* <label>
+            Password<br /> */}
+            <input
+              type="password"
+              value={password}
+              className={'formInput'}
+              placeholder={' password'}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              />
+          {/* </label> */}
+          {/* <label>
+            Confirm Password<br /> */}
+            <input
+              type="password"
+              value={confirmPassword}
+              className={'formInput'}
+              placeholder={' confirm password'}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          {/* </label> */}
+          <button
+            type="submit"
+            className={'submitButton'}
+          >Sign Up</button>
+        </form>
+      </div>
     </div>
   );
 }

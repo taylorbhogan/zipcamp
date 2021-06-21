@@ -3,13 +3,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 200px
+  margin-top: 200px;
 }
 
-.signupContainer{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.signupForm{
   width: 500px;
-  height: 400px;
 }

@@ -48,7 +48,15 @@ module.exports = (sequelize, DataTypes) => {
     Spot.belongsTo(models.User, {foreignKey: 'userId'})
     Spot.belongsTo(models.State, { foreignKey: 'stateId'})
     Spot.belongsTo(models.Area, { foreignKey: 'areaId'})
+    Spot.hasMany(models.SpotImage, { foreignKey: 'spotId'})
     Spot.hasMany(models.Tip, { foreignKey: 'spotId'})
+    const columnMapping = {
+      through: 'ActivitiesToSpot',
+      otherKey: 'activityId',
+      foreignKey: 'spotId',
+    }
+    Spot.belongsToMany(models.Activity, columnMapping)
+    Spot.hasMany(models.Adventure, { foreignKey: 'spotId'})
   };
   return Spot;
 };

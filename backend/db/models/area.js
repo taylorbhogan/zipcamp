@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Area.associate = function(models) {
     // associations can be defined here
+    Area.hasMany(models.AreaImage, { foreignKey: 'areaId'})
   };
   return Area;
 };

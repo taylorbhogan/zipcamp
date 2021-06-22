@@ -53,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Spot, { foreignKey: 'userId'})
     User.hasMany(models.Tip, { foreignKey: 'userId'})
+    User.hasMany(models.UserImage, { foreignKey: 'userId'})
   };
 
   /************************INSTANCE METHODS************************/

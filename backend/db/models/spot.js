@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     Spot.belongsTo(models.User, {foreignKey: 'userId'})
     Spot.belongsTo(models.State, { foreignKey: 'stateId'})
     Spot.belongsTo(models.Area, { foreignKey: 'areaId'})
+    Spot.hasMany(models.SpotImage, { foreignKey: 'spotId'})
     Spot.hasMany(models.Tip, { foreignKey: 'spotId'})
     const columnMapping = {
       through: 'ActivitiesToSpot',

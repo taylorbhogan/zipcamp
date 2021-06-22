@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import spotsReducer from './spots'
 
+// each of the keys in here are set on the state obj and are how I'll key into it
 const rootReducer = combineReducers({
   session: sessionReducer,
-  spot: spotsReducer,
+  spots: spotsReducer,
 });
 
 

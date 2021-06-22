@@ -29,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
   Area.associate = function(models) {
     // associations can be defined here
     Area.hasMany(models.AreaImage, { foreignKey: 'areaId'})
+    Area.belongsTo(models.Designation, { foreignKey: 'designationId'})
+    Area.belongsTo(models.Agency, { foreignKey: 'agencyId'})
+    Area.belongsTo(models.Department, { foreignKey: 'departmentId'})
+    Area.belongsTo(models.State, { foreignKey: 'stateId'})
+    Area.hasMany(models.Spot, { foreignKey: 'areaId'})
   };
   return Area;
 };

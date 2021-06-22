@@ -20,9 +20,6 @@ function SpotsList(){
       <div className={styles.contentContainer}>
         <p>hello</p>
         {spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
-        <SpotBox />
-        <SpotBox />
-        <SpotBox />
       </div>
     </div>
   )

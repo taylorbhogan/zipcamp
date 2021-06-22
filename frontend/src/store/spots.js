@@ -13,8 +13,10 @@ const setSpots = (spots) => ({
 // define thunks
 export const getSpots = () => async (dispatch) => {
   const res = await csrfFetch('/api/spots');
-  const spots = await res.json();
-  dispatch(setSpots(spots));
+  // if (res.ok){
+    const spots = await res.json();
+    dispatch(setSpots(spots));
+  // }
 }
 
 // define an initial state

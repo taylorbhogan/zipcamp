@@ -54,6 +54,8 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Spot, { foreignKey: 'userId'})
     User.hasMany(models.Tip, { foreignKey: 'userId'})
     User.hasMany(models.UserImage, { foreignKey: 'userId'})
+    User.hasMany(models.Adventure, { foreignKey: 'userId'})
+
   };
 
   /************************INSTANCE METHODS************************/

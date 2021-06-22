@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'spotId',
     }
     Spot.belongsToMany(models.Activity, columnMapping)
+    Spot.hasMany(models.Adventure, { foreignKey: 'spotId'})
   };
   return Spot;
 };

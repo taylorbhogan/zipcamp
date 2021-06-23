@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import WelcomeMessage from './components/WelcomeMessage';
 import SpotsList from './components/SpotsList'
+import SpotIdPage from './components/SpotIdPage'
 import AreasList from './components/AreasList';
 import './index.css'
 
@@ -29,8 +30,11 @@ function App() {
             <Route path='/signup'>
               <SignupFormPage />
             </Route>
-            <Route path='/spots'>
+            <Route exact path='/spots'>
               <SpotsList />
+            </Route>
+            <Route path='/spots/:spotId'>
+              <SpotIdPage />
             </Route>
             <Route path='/areas'>
               <AreasList />

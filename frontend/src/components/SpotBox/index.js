@@ -2,8 +2,9 @@ import React from 'react'
 import styles from './SpotBox.module.css'
 import StandardLinkButton from '../StandardLinkButton';
 import ActivityIcon from '../ActivityIcon';
+import spotsReducer from '../../store/spots';
 
-function SpotBox(){
+function SpotBox({spot}){
   return(
     <div className={styles.spotBoxWrapper}>
       <div className={styles.spotBoxContainer}>
@@ -27,12 +28,12 @@ function SpotBox(){
           </div>
         </div>
         <div className={styles.spotBoxContainerRight}>
-          <div className={styles.spotName}>Groovy Spot</div>
+          <div className={styles.spotName}>{spot.name}</div>
           <div className={styles.locationDiv}>
-            <div className={styles.areaName}>Lassen National Forest</div>
-            <div className={styles.stateAbbreviation}>California</div>
+            <div className={styles.areaName}>{spot.Area.name}</div>
+            <div className={styles.stateAbbreviation}>{spot.State.name}</div>
           </div>
-          <div className={styles.spotBlurb}>This spot is a great place to rest before getting an early start for the day.</div>
+          <div className={styles.spotBlurb}>{spot.blurb}</div>
           <StandardLinkButton
             buttonText={'Check it out'}
             lightBackground={true}

@@ -1,0 +1,86 @@
+@import './../../index.css';
+
+.contentWrapper{
+  /* margin-top: var(--navbarHeight); */
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: var(--navbarHeight);
+}
+
+.contentContainer{
+  /* width: 100%; */
+  width: 900px;
+  background-color: var(--mainColorLightGrey);
+  margin-top: var(--containerMarginTop);
+  margin-right: var(--containerMarginSide);
+  margin-left: var(--containerMarginSide);
+  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
+  border-radius: var(--containerBorderRadius);
+}
+
+.spotName{
+  font-size: var(--pageHeaderSize);
+}
+
+.coordinates{
+  font-size: 25px;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.SpotDivInfo{
+  display: flex;
+  flex-direction: row;
+  border-top: solid 1px black;
+  margin-top: 30px;
+  padding-top: 40px;
+}
+
+.SpotDivInfoLeft{
+  /* padding-right: 80px; */
+  font-size: 20px;
+  position: relative;
+}
+.SpotDivInfoRight{
+  font-size: 25px;
+}
+
+.directions{
+  padding-top: 20px;
+}
+
+.SpotDivActivities{
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: solid 1px black;
+  display: flex;
+  flex-direction: row;
+}
+
+.profileImage{
+  border: solid 1px black;
+  height: 90px;
+  width: 90px;
+  border-radius: 45px;
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  background-color: whitesmoke;
+}
+
+.userInfo{
+  margin-left: 80px;
+  width: 130px;
+  /* position: absolute; */
+  /* top: 0; */
+}
+
+.SpotDivInfoRight{
+  /* position: absolute;
+  top: 0; */
+  padding-left: 50px;
+}

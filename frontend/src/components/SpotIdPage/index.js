@@ -1,39 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Modal } from '../../context/Modal';
 import styles from './SpotIdPage.module.css'
 import { getSpot } from '../../store/spots'
 import ActivityIcon from '../ActivityIcon';
+import SpotEditForm from '../SpotEditForm';
 
 function SpotIdPage(){
   // declare variables from hooks
+  const sessionUser = useSelector(state => state.session.user);
+
   const dispatch = useDispatch();
   const {spotId} = useParams();
-  console.log("THIS IS MY CONSOLE LOG", spotId);
+  // console.log("THIS IS MY CONSOLE LOG", spotId);
   const spot = useSelector((state) => state.spots[spotId])
+
+  const [showModal, setShowModal] = useState(false);
+
 
   // // use a react hook and cause a side effect
   useEffect(() => {
     dispatch(getSpot(spotId))
   }, [dispatch, spotId])
 
+  // console.log('spot', spot);
 
   return(
     <div className={styles.contentWrapper}>
       <div className={styles.contentContainer}>
         <div className={styles.spotImageCarouselUnused}></div>
         <div className={styles.mainSpotDivUnused}>
+          {showModal && (
+          <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
+            <SpotEditForm spotId={spot?.id}/>
+          </Modal>
+        )}
           <div className={styles.SpotDivHeader}>
-            <div className={styles.spotName}>{spot && spot.name}</div>
-            <div className={styles.coordinates}>{spot && spot.lat}, {spot && spot.long}</div>
+            <div className={styles.spotName}>{spot?.name}</div>
+            <div className={styles.coordinates}>{spot?.lat}, {spot?.long}</div>
+            {/* <div className={styles.areaName}>{spot?.areaId}</div> */}
+            <div className={styles.areaName}>{spot?.Area?.name}</div>
           </div>
           <div className={styles.SpotDivInfo}>
             <div className={styles.SpotDivInfoLeft}>
               <div className={styles.userInfo}>
                 <div>Discovered by</div>
-                <div>{spot && spot.User.username}</div>
+                <div>{spot?.User?.username}</div>
                 <div className={styles.editOuterDiv}></div>
-                  <div className={styles.editDiv}>Edit</div>
+                  <button
+                    hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
+                    onClick={() => setShowModal(true)}
+                    className={styles.editDiv}>
+                    Edit
+                  </button>
                 <div className={styles.deleteOuterDiv}></div>
                   <div className={styles.deleteDiv}>Delete</div>
               </div>

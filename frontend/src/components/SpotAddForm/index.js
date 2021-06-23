@@ -1,18 +1,20 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import { getAreas } from '../../store/areas'
 import { getUsStates } from '../../store/usStates'
 import '../../index.css'
+import { createSpot } from '../../store/spots';
 
 function SpotAddForm(){
   const dispatch = useDispatch();
-  // is the state shared here? or can I use a new errors even though I declared one in LoginForm.js?
-  const [spotErrors, setSpotErrors] = useState([])
-  const [spotName, setSpotName] = useState('')
-  const [spotLat, setSpotLat] = useState('')
-  const [spotLong , setSpotLong] = useState('')
-  const [spotBlurb , setSpotBlurb] = useState('')
-  const [spotDirections , setSpotDirections] = useState('')
+  const history = useHistory();
+  const [errors, setErrors] = useState([])
+  const [name, setName] = useState('')
+  const [lat, setLat] = useState('')
+  const [long , setLong] = useState('')
+  const [blurb , setBlurb] = useState('')
+  const [directions , setDirections] = useState('')
   // figure out what the state object will look like
   const areas = useSelector((state) => Object.values(state.areas))
   const [ area, setArea ] = useState(areas[0])
@@ -28,6 +30,31 @@ function SpotAddForm(){
     dispatch(getUsStates());
   },[dispatch])
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+// 2. submit form
+//***build our payload
+//***dispatch the thunk creator from form
+//***act on the response
+    const newSpot = {
+      name,
+      lat,
+      long,
+      blurb,
+      directions,
+      areaId: 1,
+      stateId: 1,
+      userId: 1,
+      id: 9
+    };
+
+    //dispatch is an asynchronous function
+    let createdSpot = await dispatch(createSpot(newSpot))
+    if (createdSpot) {
+      history.push(`/spots/${createdSpot.id}`);
+      // hideForm();
+    }
+  };
 
 
   // const handleCancelClick = (e) => {
@@ -39,54 +66,55 @@ function SpotAddForm(){
     <div>
       <form
         className='form'
+        onSubmit={handleSubmit}
         >
         <h1
           className={'formHeader'}
         >hello from spot add form</h1>
         <ul>
-          {spotErrors.map((error, idx) => (
+          {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <input
           type="text"
           className={'formInput'}
-          value={spotName}
+          value={name}
           placeholder={' spot name'}
-          onChange={(e) => setSpotName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
           />
         <input
           type="text"
           className={'formInput'}
-          value={spotLat}
+          value={lat}
           placeholder={' the most helpful latitude for retracing your steps'}
-          onChange={(e) => setSpotLat(e.target.value)}
+          onChange={(e) => setLat(e.target.value)}
           required
           />
         <input
           type="text"
           className={'formInput'}
-          value={spotLong}
+          value={long}
           placeholder={' ditto the longitude'}
-          onChange={(e) => setSpotLong(e.target.value)}
+          onChange={(e) => setLong(e.target.value)}
           required
           />
           {/* check for later: any hiccups with the textareas not being inputs? */}
         <textarea
           type="text"
           className={'formInput'}
-          value={spotBlurb}
+          value={blurb}
           placeholder={' what\'s the deal?'}
-          onChange={(e) => setSpotBlurb(e.target.value)}
+          onChange={(e) => setBlurb(e.target.value)}
           required
           />
         <textarea
           type="text"
           className={'formInput'}
-          value={spotDirections}
+          value={directions}
           placeholder={' how do you find your way back?'}
-          onChange={(e) => setSpotDirections(e.target.value)}
+          onChange={(e) => setDirections(e.target.value)}
           required
           />
         <select onChange={(e) => setArea(e.target.value)}>

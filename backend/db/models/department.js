@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Department.associate = function(models) {
     // associations can be defined here
-    Department.hasMany(models.Area, { foreignKey: 'departmentId '})
+    Department.hasMany(models.Area, { foreignKey: 'departmentId'})
   };
   return Department;
 };

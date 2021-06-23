@@ -1,12 +1,15 @@
 :root {
   /* ---- PAGE ---- */
   --pageSidePadding: 30px;
+  --pageHeaderSize: 60px;
 
   /* ---- COLORS ---- */
   --mainColorGreen: #248232;
   --secondaryColorGreen: #2BA84A;
+  /* --mainColorDarkGrey: #343539;before spotsId */
   --mainColorDarkGrey: #343539;
-  --mainColorLightGrey: #CCCCCC;
+  --mainColorLightGrey: #f3f3f4d5;
+  /* --mainColorLightGrey: #CCCCCC;before spotsId */
   --mainColorWhite: #FFFFFF;
   --mainColorWarning: pink;
   --footerHeight: 5rem;
@@ -32,8 +35,10 @@
   /* ---- CONTAINERS ---- */
   --containerMarginTop: 4rem;
   --containerMarginSide: 30rem;
-  --containerPaddingSide: 2rem;
-  --containerPaddingTop: 1rem;
+  /* --containerPaddingSide: 2rem;before spotsId */
+  --containerPaddingSide: 6rem;
+  /* --containerPaddingTop: 1rem;beforespotsId */
+  --containerPaddingTop: 4rem;
   --containerBorderRadius: 10px;
 
   /* ---- NAVIGATION ---- */

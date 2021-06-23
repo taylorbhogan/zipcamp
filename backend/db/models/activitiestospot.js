@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   ActivitiesToSpot.associate = function(models) {
     // associations can be defined here
+    
   };
   return ActivitiesToSpot;
 };

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSpots } from '../../store/spots';
 import styles from './SpotsList.module.css'
 import SpotBox from '../SpotBox';
+import SpotAddModal from '../SpotAddModal';
 
 function SpotsList(){
   // declare variables from hooks
@@ -18,7 +19,14 @@ function SpotsList(){
   return(
     <div className={styles.contentWrapper}>
       <div className={styles.contentContainer}>
-        <p>hello</p>
+        <div className={styles.topWrapper}>
+          <div className={styles.topContainer}>
+            <span>
+              scroll for possibilities, or
+            </span>
+              <SpotAddModal />
+          </div>
+        </div>
         {spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
       </div>
     </div>

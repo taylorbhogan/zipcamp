@@ -23,8 +23,6 @@ function SpotBox({spot}){
             <ActivityIcon />
             <ActivityIcon />
             <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
           </div>
         </div>
         <div className={styles.spotBoxContainerRight}>
@@ -37,7 +35,7 @@ function SpotBox({spot}){
           <StandardLinkButton
             buttonText={'Check it out'}
             lightBackground={true}
-            href=''/>
+            href={`/spots/${spot.id}`}/>
         </div>
       </div>
     </div>

@@ -1,12 +1,16 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import areasReducer from './areas';
 import sessionReducer from './session';
 import spotsReducer from './spots'
+import statesReducer from './usStates';
 
 // each of the keys in here are set on the state obj and are how I'll key into it
 const rootReducer = combineReducers({
   session: sessionReducer,
   spots: spotsReducer,
+  areas: areasReducer,
+  states: statesReducer,
 });
 
 

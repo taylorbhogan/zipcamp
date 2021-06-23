@@ -22,6 +22,7 @@
   border-radius: var(--containerBorderRadius);
 }
 
+
 .spotName{
   font-size: var(--pageHeaderSize);
 }
@@ -49,8 +50,13 @@
   font-size: 25px;
 }
 
+.directionsHeader{
+  padding-top: 40px;
+  font-size: 20px;
+}
+
 .directions{
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .SpotDivActivities{
@@ -83,4 +89,25 @@
   /* position: absolute;
   top: 0; */
   padding-left: 50px;
+}
+
+.editOuterDiv{
+  padding-top: 15px;
+}
+
+.editDiv{
+  border: 1px solid black;
+  width: 70px;
+  padding-left: 30px;
+}
+
+.deleteOuterDiv{
+  padding-top: 15px;
+
+}
+
+.deleteDiv{
+  border: 1px solid black;
+  width: 70px;
+  padding-left: 20px;
 }

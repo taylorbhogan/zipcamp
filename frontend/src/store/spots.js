@@ -15,13 +15,13 @@ export const setSpot = (spot) => ({
   spot,
 })
 
-// define thunks
+// define thunk creators
 export const getSpots = () => async (dispatch) => {
   const res = await csrfFetch('/api/spots');
-  // if (res.ok){
+  if (res.ok){
     const spots = await res.json();
     dispatch(setSpots(spots));
-  // }
+  }
 }
 export const getSpot = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`);

@@ -3,25 +3,25 @@ import { csrfFetch } from './csrf';
 
 // Front-to-back: step 3
 // Define action types as constants
-const LOAD_AREAS = 'areas/LOAD_AREAS'
+const LOAD_STATES = 'areas/LOAD_STATES'
 
 // Front-to-back: step 2
 // define action creators
-const load = (areas) => ({
-  type: LOAD_AREAS,
-  areas
+const load = (states) => ({
+  type: LOAD_STATES,
+  states
 })
 
 // Front-to-back: step 1
 // define thunk creators
-export const getAreas = () => async dispatch => {
+export const getUsStates = () => async dispatch => {
   // TODO: complete the api call?
-  const res = await csrfFetch(`/api/areas`);
+  const res = await csrfFetch(`/api/states`);
 
   if (res.ok) {
-    const areas = await res.json();
+    const states = await res.json();
     // rename the load function?
-    dispatch(load(areas));
+    dispatch(load(states));
   }
 }
 
@@ -32,17 +32,16 @@ const initialState = {};
 
 // Front-to-back: step 5
 // define a reducer
-const areasReducer = (state = initialState, action) =>{
+const statesReducer = (state = initialState, action) =>{
   switch(action.type){
-    case LOAD_AREAS:
-      console.log('inside LOAD AREAS');
-      const allAreas = {};
-      action.areas.forEach((area) => {
-        allAreas[area.id] = area;
+    case LOAD_STATES:
+      const allStates = {};
+      action.states.forEach((state) => {
+        allStates[state.id] = state;
       })
       return {
         ...state,
-        ...allAreas
+        ...allStates
       }
     default:
       return state
@@ -51,4 +50,4 @@ const areasReducer = (state = initialState, action) =>{
 
 
 // export the reducer
-export default areasReducer;
+export default statesReducer;

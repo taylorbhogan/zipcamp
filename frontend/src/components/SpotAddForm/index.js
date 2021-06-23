@@ -96,7 +96,7 @@ function SpotAddForm(){
         </select>
         <select onChange={(e) => setStateId(e.target.value)}>
           {usStates.map(state =>
-            <option key={state}>{state}</option>
+            <option key={state.id}>{state.name}</option>
             )}
         </select>
         <button

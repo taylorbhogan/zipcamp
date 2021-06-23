@@ -18,7 +18,16 @@ function SpotsList(){
   return(
     <div className={styles.contentWrapper}>
       <div className={styles.contentContainer}>
-        <p>hello</p>
+        <div className={styles.topWrapper}>
+          <div className={styles.topContainer}>
+            <span>
+              scroll for possibilities, or
+            </span>
+              <div className={styles.addSpot}>
+                add your own
+              </div>
+          </div>
+        </div>
         {spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
       </div>
     </div>

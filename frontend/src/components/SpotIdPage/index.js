@@ -32,11 +32,16 @@ function SpotIdPage(){
               <div className={styles.userInfo}>
                 <div>Discovered by</div>
                 <div>{spot && spot.User.username}</div>
+                <div className={styles.editOuterDiv}></div>
+                  <div className={styles.editDiv}>Edit</div>
+                <div className={styles.deleteOuterDiv}></div>
+                  <div className={styles.deleteDiv}>Delete</div>
               </div>
               <div className={styles.profileImage}></div>
             </div>
             <div className={styles.SpotDivInfoRight}>
               <div>{spot && spot.blurb}</div>
+              <div className={styles.directionsHeader}>Directions:</div>
               <div className={styles.directions}>{spot && spot.directions}</div>
             </div>
           </div>

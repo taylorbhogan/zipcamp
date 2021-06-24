@@ -94,7 +94,7 @@ export const editSpot = (newSpot) => async dispatch  => {
 export const deleteSpot = (spotId) => async dispatch  => {
 
     console.log('inside the deleteSpot function');
-    // all of the below is copy pasted from editSpot
+    // all of the below is copy pasted from editSpotf
   // const response = await csrfFetch(`/api/spots/${newSpot.id}`, {
   //   method: 'PUT',
   //   body: JSON.stringify(newSpot)

@@ -60,17 +60,20 @@ router.get('/:id', asyncHandler(async (req, res) => {
   return res.json(spot);
 }));
 
-async function createSpot(details){
-  const spot = await Spot.create(details)
-  return spot.id;
-}
+// async function createSpot(details){
+//   return spot.id;
+// }
 
 router.post(
   '/',
   // pokemonValidations.validateCreate,
   asyncHandler(async function (req, res) {
-    const id = await createSpot(req.body);
-    return res.redirect(`${req.baseUrl}/${id}`);
+    const formData = req.body
+    const spot = await Spot.create(formData)
+    console.log("---------------------------> backend");
+    res.json(spot)
+    // const id = await createSpot(req.body);
+    // return res.redirect(`${req.baseUrl}/${id}`);
   })
 );
 

@@ -10,16 +10,18 @@ function SpotAddForm(){
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([])
-  const [name, setName] = useState('')
-  const [lat, setLat] = useState('')
-  const [long , setLong] = useState('')
-  const [blurb , setBlurb] = useState('')
-  const [directions , setDirections] = useState('')
+  const [name, setName] = useState('name')
+  const [lat, setLat] = useState('lat')
+  const [long , setLong] = useState('long')
+  const [blurb , setBlurb] = useState('blurb')
+  const [directions , setDirections] = useState('directions')
   // figure out what the state object will look like
   const areas = useSelector((state) => Object.values(state.areas))
-  const [ area, setArea ] = useState(areas[0])
+  const [ area, setArea ] = useState('1')
   const usStates = useSelector(state => Object.values(state.states));
-  const [ stateId, setStateId ] = useState(areas[0])
+  const [ stateId, setStateId ] = useState('1')
+  const userId = useSelector(state => state.session.user.id);
+
 
 
   useEffect(() => {
@@ -36,20 +38,22 @@ function SpotAddForm(){
 //***build our payload
 //***dispatch the thunk creator from form
 //***act on the response
-    const newSpot = {
-      name,
-      lat,
-      long,
-      blurb,
-      directions,
-      areaId: 1,
-      stateId: 1,
-      userId: 1,
-      id: 9
-    };
+const newSpot = {
+  name,
+  lat,
+  long,
+  blurb,
+  directions,
+  areaId: +area,
+  stateId: +stateId,
+  userId,
+  // id: 13
+};
+// console.log(newSpot);
 
     //dispatch is an asynchronous function
     let createdSpot = await dispatch(createSpot(newSpot))
+    console.log("createdSpot", createdSpot);
     if (createdSpot) {
       history.push(`/spots/${createdSpot.id}`);
       // hideForm();
@@ -63,6 +67,7 @@ function SpotAddForm(){
   // };
 
   return(
+
     <div>
       <form
         className='form'
@@ -119,12 +124,16 @@ function SpotAddForm(){
           />
         <select onChange={(e) => setArea(e.target.value)}>
           {areas.map(area =>
-            <option key={area.id}>{area.name}</option>
+            <option
+              value={area.id}
+              key={area.id}>{area.name}</option>
             )}
         </select>
         <select onChange={(e) => setStateId(e.target.value)}>
           {usStates.map(state =>
-            <option key={state.id}>{state.name}</option>
+            <option
+              value={state.id}
+              key={state.id}>{state.name}</option>
             )}
         </select>
         <button

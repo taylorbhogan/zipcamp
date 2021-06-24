@@ -40,11 +40,9 @@ export const getSpot = (spotId) => async (dispatch) => {
 export const createSpot = (formData) => async dispatch  => {
   const response = await csrfFetch('/api/spots', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
     body: JSON.stringify(formData)
   });
+  console.log("a string ------> front end");
   if (response.ok) {
     const newSpotData = await response.json();
     dispatch(addOneSpot(newSpotData))

@@ -25,6 +25,13 @@ function SpotIdPage(){
   }, [dispatch, spotId])
 
   // console.log('spot', spot);
+  const deleteSpot = async (spotId) => {
+    // successfully got this far...
+    console.log(spotId);
+    // WARNING: uncommenting this and clicking the delete button === stack overflow
+    // let deletedSpot = await dispatch(deleteSpot(spotId))
+  }
+
 
   return(
     <div className={styles.contentWrapper}>
@@ -55,7 +62,12 @@ function SpotIdPage(){
                     Edit
                   </button>
                 <div className={styles.deleteOuterDiv}></div>
-                  <div className={styles.deleteDiv}>Delete</div>
+                  <button
+                    hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
+                    onClick={() => deleteSpot(spotId)}
+                    className={styles.deleteOuterDiv}>
+                    Delete
+                  </button>
               </div>
               <div className={styles.profileImage}></div>
             </div>

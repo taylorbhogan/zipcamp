@@ -64,9 +64,27 @@ router.put(
   })
 );
 
+router.delete('/:id', asyncHandler(async function (req, res) {
+  // const itemId = await ItemsRepository.deleteItem(req.params.id);
+  
+  const spot = await Spot.findByPk(req.params.id);
+  const spotId = spot.id
+  if (!spot) throw new Error('Cannot find spot');
+  await Spot.destroy({ where: { id: spot.id }});
+
+  return res.json({ spotId });
+}));
 
 
 
+
+// async function deleteItem(itemId) {
+//   // const item = await Item.findByPk(itemId);
+//   if (!item) throw new Error('Cannot find item');
+
+//   await Item.destroy({ where: { id: item.id }});
+//   return item.id;
+// }
 
 
 // router.put(

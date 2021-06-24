@@ -18,7 +18,7 @@ function SpotAddForm(){
   const [long , setLong] = useState('')
   const [blurb , setBlurb] = useState('')
   const [directions , setDirections] = useState('')
-  // useSelector pulls the info from state, where it was put by 
+  // useSelector pulls the info from state, where it was put by
   const areas = useSelector((state) => Object.values(state.areas))
   const [ area, setArea ] = useState('1')
   const usStates = useSelector(state => Object.values(state.states));
@@ -53,7 +53,7 @@ function SpotAddForm(){
 
     //await the dispatch of the thunk creator
     let createdSpot = await dispatch(createSpot(newSpot))
-    console.log("createdSpot", createdSpot);
+    // console.log("createdSpot", createdSpot);
     if (createdSpot) {
       //act on the response
       history.push(`/spots/${createdSpot.id}`);

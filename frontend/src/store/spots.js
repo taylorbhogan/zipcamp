@@ -83,13 +83,31 @@ export const editSpot = (newSpot) => async dispatch  => {
     body: JSON.stringify(newSpot)
   });
   if (response.ok) {
-    console.log("we already completed this - a string ------> front end");
+    // console.log("we already completed this - a string ------> front end");
     const newSpotData = await response.json();
     // I think all we need to do is fix the addOneSpot
     dispatch(editOneSpot(newSpotData))
     //the store is now updated because POST was successful
     return newSpotData
   }
+}
+export const deleteSpot = (spotId) => async dispatch  => {
+
+    console.log('inside the deleteSpot function');
+    // all of the below is copy pasted from editSpot
+  // const response = await csrfFetch(`/api/spots/${newSpot.id}`, {
+  //   method: 'PUT',
+  //   body: JSON.stringify(newSpot)
+  // });
+  // if (response.ok) {
+  //   // console.log("we already completed this - a string ------> front end");
+  //   const newSpotData = await response.json();
+  //   // I think all we need to do is fix the addOneSpot
+  //   dispatch(editOneSpot(newSpotData))
+  //   //the store is now updated because POST was successful
+  //   return newSpotData
+  // }
+  return null;
 }
 
 

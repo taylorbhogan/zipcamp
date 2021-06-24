@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 
 // Front-to-back: step 3
 // Define action types as constants
-const LOAD_STATES = 'areas/LOAD_STATES'
+const LOAD_STATES = 'states/LOAD_STATES'
 
 // Front-to-back: step 2
 // define action creators
@@ -29,6 +29,19 @@ export const getUsStates = () => async dispatch => {
 // Front-to-back: step 4
 // define an initial state
 const initialState = {};
+
+// const initialState = {
+  // I want to use this for the sortList function below, but including it here throws a React keys error
+  // list: []
+// };
+
+
+// The time and space complexity of the sort cannot be guaranteed as it depends on the implementation.
+// const sortList = (list) => {
+//   return list.sort((pokemonA, pokemonB) => {
+//     return pokemonA.no - pokemonB.no;
+//   }).map((pokemon) => pokemon.id);
+// };
 
 // Front-to-back: step 5
 // define a reducer

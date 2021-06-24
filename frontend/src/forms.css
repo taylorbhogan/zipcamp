@@ -22,6 +22,16 @@
   margin-bottom: 10px;
 }
 
+.formTextAreaInput{
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.formSelectInput{
+  /* height: 50px; */
+  margin-top: 20px;
+}
+
 .submitButton{
   background-color: var(--mainColorGreen);
   border-radius: 8px;

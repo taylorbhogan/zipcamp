@@ -4,25 +4,26 @@ import { useHistory } from 'react-router-dom';
 import { getAreas } from '../../store/areas'
 import { getUsStates } from '../../store/usStates'
 import '../../index.css'
-import { createSpot } from '../../store/spots';
+import { editSpot } from '../../store/spots';
 
-function SpotAddForm(){
+function SpotEditForm({spotId}){
   //
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [errors, setErrors] = useState([])
 
-  const [name, setName] = useState('')
-  const [lat, setLat] = useState('')
-  const [long , setLong] = useState('')
-  const [blurb , setBlurb] = useState('')
-  const [directions , setDirections] = useState('')
+  const spot = useSelector((state) => state.spots[spotId])
+  const [name, setName] = useState(spot?.name)
+  const [lat, setLat] = useState(spot?.lat)
+  const [long , setLong] = useState(spot?.long)
+  const [blurb , setBlurb] = useState(spot?.blurb)
+  const [directions , setDirections] = useState(spot?.directions)
   // useSelector pulls the info from state, where it was put by
   const areas = useSelector((state) => Object.values(state.areas))
-  const [ area, setArea ] = useState('1')
+  const [ area, setArea ] = useState(spot?.areaId)
   const usStates = useSelector(state => Object.values(state.states));
-  const [ stateId, setStateId ] = useState('1')
+  const [ stateId, setStateId ] = useState(spot?.stateId)
   const userId = useSelector(state => state.session.user.id);
 
 
@@ -40,6 +41,7 @@ function SpotAddForm(){
 
   //use the values set in state by the form inputs to build our payload
   const newSpot = {
+    ...spot,
     name,
     lat,
     long,
@@ -50,14 +52,20 @@ function SpotAddForm(){
     userId,
   };
 // console.log(newSpot);
-
+// TODO: Convert the below to an edit! Done. Just changed the words. Time to do the real work in the store
     //await the dispatch of the thunk creator
-    let createdSpot = await dispatch(createSpot(newSpot))
-    // console.log("createdSpot", createdSpot);
-    if (createdSpot) {
+    let editedSpot = await dispatch(editSpot(newSpot))
+    console.log("createdSpot", editedSpot);
+    if (editedSpot) {
       //act on the response
-      history.push(`/spots/${createdSpot.id}`);
+      history.push(`/spots/${editedSpot.id}`);
     }
+    // let createdSpot = await dispatch(createSpot(newSpot))
+    // console.log("createdSpot", createdSpot);
+    // if (createdSpot) {
+    //   //act on the response
+    //   history.push(`/spots/${createdSpot.id}`);
+    // }
   };
 
 
@@ -122,6 +130,7 @@ function SpotAddForm(){
           >
           {areas.map(area =>
             <option
+              selected={area.id === spot?.Area?.id}
               value={area.id}
               key={area.id}>{area.name}</option>
             )}
@@ -132,17 +141,18 @@ function SpotAddForm(){
           >
           {usStates.map(state =>
             <option
-              value={state.id}
+            selected={state.id === spot?.State?.id}
+            value={state.id}
               key={state.id}>{state.name}</option>
             )}
         </select>
         <button
           type="submit"
           className={'submitButton'}
-        >Create new Spot</button>
+        >Save your changes</button>
       </form>
     </div>
   )
 }
 
-export default SpotAddForm;
+export default SpotEditForm;

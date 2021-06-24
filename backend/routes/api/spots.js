@@ -64,15 +64,18 @@ router.put(
   })
 );
 
+// all we have to do here is get the db to delete the spot
 router.delete('/:id', asyncHandler(async function (req, res) {
-  // const itemId = await ItemsRepository.deleteItem(req.params.id);
-  
-  const spot = await Spot.findByPk(req.params.id);
-  const spotId = spot.id
+  console.log('------inside the delete route');
+  // const {spotId} = req.body.spotId
+  // the below works; I'm curious if I can use the body for the same purpose
+  const spotId = req.params.id
+  const spot = await Spot.findByPk(spotId);
   if (!spot) throw new Error('Cannot find spot');
-  await Spot.destroy({ where: { id: spot.id }});
+  await Spot.destroy({ where: { id: spotId }});
 
-  return res.json({ spotId });
+  return res.json('successfully deleted spot.....presumedly. check postbird');
+  // return res.json({ spotId });
 }));
 
 

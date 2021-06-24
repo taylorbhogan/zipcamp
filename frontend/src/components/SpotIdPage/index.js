@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import styles from './SpotIdPage.module.css'
-import { getSpot } from '../../store/spots'
+import { getSpot, deleteSpot } from '../../store/spots'
 import ActivityIcon from '../ActivityIcon';
 import SpotEditForm from '../SpotEditForm';
 
 function SpotIdPage(){
   // declare variables from hooks
   const sessionUser = useSelector(state => state.session.user);
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const {spotId} = useParams();
   // console.log("THIS IS MY CONSOLE LOG", spotId);
@@ -25,11 +25,16 @@ function SpotIdPage(){
   }, [dispatch, spotId])
 
   // console.log('spot', spot);
-  const deleteSpot = async (spotId) => {
+  const handleDelete = async (spotId) => {
     // successfully got this far...
     console.log(spotId);
-    // WARNING: uncommenting this and clicking the delete button === stack overflow
-    // let deletedSpot = await dispatch(deleteSpot(spotId))
+    // WARNING: clicking the delete button => stack overflow
+    // dispatch THUNK
+    let deletedSpot = await dispatch(deleteSpot(spotId))
+    if (deletedSpot) {
+      //act on the response
+      history.push(`/spots`);
+    }
   }
 
 
@@ -64,7 +69,7 @@ function SpotIdPage(){
                 <div className={styles.deleteOuterDiv}></div>
                   <button
                     hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
-                    onClick={() => deleteSpot(spotId)}
+                    onClick={() => handleDelete(spotId)}
                     className={styles.deleteOuterDiv}>
                     Delete
                   </button>

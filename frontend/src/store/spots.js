@@ -10,6 +10,7 @@ const SET_SPOTS = 'spots/SET_SPOTS';
 const SET_SPOT = 'spots/SET_SPOT'
 const ADD_ONE = 'spots/ADD_ONE'
 const EDIT_ONE = 'spots/EDIT_ONE'
+const DELETE_ONE = 'spots/DELETE_ONE'
 
 // define action creators. goal is to stamp out an action:
 // {
@@ -33,6 +34,14 @@ const editOneSpot = spot => ({
   type: ADD_ONE,
   spot,
 });
+// const editOneSpotNew = spot => ({
+//   type: EDIT_ONE,
+//   spot,
+// });
+const deleteOneSpot = spotId => ({
+  type: DELETE_ONE,
+  spotId
+})
 
 // define thunks **********************************************************/
 // it's possible to make these API calls from components and dispatch
@@ -74,16 +83,16 @@ export const createSpot = (formData) => async dispatch  => {
   }
 }
 
-// THUNK 4 - currently a mediocre clone of the above -- and we're making progress!!
+// THUNK 4
 export const editSpot = (newSpot) => async dispatch  => {
   // we successfully get in here thanks to the handleSubmit func in SpotEditForm.
-    // console.log('we already completed this - inside the editSpot function');
+    // console.log('inside the editSpot function');
   const response = await csrfFetch(`/api/spots/${newSpot.id}`, {
     method: 'PUT',
     body: JSON.stringify(newSpot)
   });
   if (response.ok) {
-    // console.log("we already completed this - a string ------> front end");
+    // console.log("-----------------> we made it back to the front end");
     const newSpotData = await response.json();
     // I think all we need to do is fix the addOneSpot
     dispatch(editOneSpot(newSpotData))
@@ -91,22 +100,34 @@ export const editSpot = (newSpot) => async dispatch  => {
     return newSpotData
   }
 }
+// THUNK 5
 export const deleteSpot = (spotId) => async dispatch  => {
 
-    console.log('inside the deleteSpot function');
-    // all of the below is copy pasted from editSpotf
-  // const response = await csrfFetch(`/api/spots/${newSpot.id}`, {
-  //   method: 'PUT',
-  //   body: JSON.stringify(newSpot)
-  // });
-  // if (response.ok) {
-  //   // console.log("we already completed this - a string ------> front end");
-  //   const newSpotData = await response.json();
-  //   // I think all we need to do is fix the addOneSpot
-  //   dispatch(editOneSpot(newSpotData))
-  //   //the store is now updated because POST was successful
-  //   return newSpotData
-  // }
+    console.log('inside the deleteSpot function in the store');
+
+  // the goal here is to travel to our API and ask it to talk to the db to delete the spot
+
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'DELETE',
+    // right now this works if I don't include a body and just use the params in the API...
+    // can I figure out how to use the body (don't need it here, but for learning/later?)
+    // body: JSON.stringify(spotId)
+  });
+
+  console.log('we have returned to the frontend from the API');
+
+  if (response.ok) {
+    // console.log("we made it back to the ~~~~~~~~~~~------> front end AND our response was OK");
+    const spotDeleteSuccessMessage = await response.json();
+    console.log(spotDeleteSuccessMessage);
+
+    dispatch(deleteOneSpot(spotId))
+
+    // I think all we need to do is fix the addOneSpot
+    // dispatch(editOneSpot(newSpotData))
+    //the store is now updated because POST was successful
+    return spotDeleteSuccessMessage
+  }
   return null;
 }
 
@@ -163,6 +184,29 @@ const spotsReducer = (state = initialState, action) => {
         [action.spot.id]: action.spot,
       };
     }
+    case DELETE_ONE: {
+      // copy the state into a new object
+      const allSpots = {...state};
+      // delete the spot entry in state
+      delete allSpots[action.spotId]
+      // return the updated state
+      return {
+        ...allSpots
+      }
+    }
+    // case SET_SPOTS:
+    //   // instantiate a new empty object to copy the state into
+    //   const allSpots = {};
+    //   action.spots.forEach((spot) => {
+    //     allSpots[spot.id] = spot;
+    //   })
+    //   return {
+    //     ...state,
+    //     ...allSpots,
+    //   }
+
+
+
     // case EDIT_ONE: {
     //   return {
     //     ...sta

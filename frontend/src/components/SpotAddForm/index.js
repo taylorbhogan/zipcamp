@@ -23,7 +23,7 @@ function SpotAddForm(){
   const [ area, setArea ] = useState('1')
   const usStates = useSelector(state => Object.values(state.states));
   const [ stateId, setStateId ] = useState('1')
-  const userId = useSelector(state => state.session.user.id);
+  const userId = useSelector(state => state.session.user?.id);
 
 
 

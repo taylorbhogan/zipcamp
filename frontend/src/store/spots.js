@@ -34,10 +34,10 @@ const editOneSpot = spot => ({
   type: ADD_ONE,
   spot,
 });
-// const editOneSpotNew = spot => ({
-//   type: EDIT_ONE,
-//   spot,
-// });
+const editOneSpotNew = spot => ({
+  type: EDIT_ONE,
+  spot,
+});
 const deleteOneSpot = spotId => ({
   type: DELETE_ONE,
   spotId
@@ -94,8 +94,9 @@ export const editSpot = (newSpot) => async dispatch  => {
   if (response.ok) {
     // console.log("-----------------> we made it back to the front end");
     const newSpotData = await response.json();
-    // I think all we need to do is fix the addOneSpot
-    dispatch(editOneSpot(newSpotData))
+    // editOneSpot works fine. trying a new one
+    // dispatch(editOneSpot(newSpotData))
+    dispatch(editOneSpotNew(newSpotData))
     //the store is now updated because POST was successful
     return newSpotData
   }
@@ -110,7 +111,7 @@ export const deleteSpot = (spotId) => async dispatch  => {
   const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'DELETE',
     // right now this works if I don't include a body and just use the params in the API...
-    // can I figure out how to use the body (don't need it here, but for learning/later?)
+    // is it even possible to send a body? (don't need it here, but for learning/later?)
     // body: JSON.stringify(spotId)
   });
 
@@ -183,6 +184,13 @@ const spotsReducer = (state = initialState, action) => {
         ...state,
         [action.spot.id]: action.spot,
       };
+    }
+    case EDIT_ONE: {
+
+      return {
+        ...state,
+        [action.spot.id]: action.spot
+      }
     }
     case DELETE_ONE: {
       // copy the state into a new object

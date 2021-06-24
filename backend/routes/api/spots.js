@@ -1,7 +1,12 @@
-const express = require('express')
-const router = express.Router();
+// WE ARE IN THE BACKEND - THIS IS EXPRESS, RUN BY NODE.
+// this is the end of the code road. we use this file to contact our database.
+// the requests to these routes come from the store in the frontend
+// we connect these routes to our app using api/index.js
 
-// import DB
+// create router
+const router = require('express').Router();
+
+// import models from /db so we can use sequelize to query the postgreSQL database **************************************************/
 const {
   Spot,
   Area,
@@ -9,45 +14,15 @@ const {
   User
 } = require('../../db/models')
 
-// import middleware
+// import middleware **********************************************************/
+
 const asyncHandler = require('express-async-handler');
 
 // extra functions
-// async function update(details) {
-//   const id = details.id;
-//   delete details.id;
-//   await Spot.update(
-//     details,
-//     {
-//       where: { id },
-//       returning: true,
-//       plain: true,
-//     }
-//   );
-//   return id;
-// }
 
 
-// async function one(id) {
-//   // return await Spot.scope("detailed").findByPk(id);
-//   return await Spot.findByPk(id);
-// }
+// use sequelize to query the postgreSQL database **************************************************/
 
-// API route
-// router.get('/', asyncHandler(async (req, res) => {
-//   const spots = await Area.findByPk(2);
-//   console.log("BACKEND CONSOLE SPOTS",spots);
-//   res.json(spots);
-// }))
-// //
-// router.get('/', asyncHandler(async (req, res) => {
-//   const spots = await Spot.findAll({include: Area});
-//   res.json(spots);
-// }))
-// router.get('/', asyncHandler(async (req, res) => {
-//   const areas = await Area.findAll();
-//   res.json(areas);
-// }))
 router.get('/', asyncHandler(async (req, res) => {
   const spots = await Spot.findAll({include: [Area, State]});
   res.json(spots);
@@ -59,10 +34,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
   });
   return res.json(spot);
 }));
-
-// async function createSpot(details){
-//   return spot.id;
-// }
 
 router.post(
   '/',
@@ -77,6 +48,27 @@ router.post(
   })
 );
 
+router.put(
+  '/:id',
+  // pokemonValidations.validateUpdate,
+  asyncHandler(async function (req, res) {
+
+    const id = req.body.id;
+    delete req.body.id;
+    await Spot.update(req.body,
+      {where: { id }}
+    )
+    const spot = await Spot.findByPk(id);
+
+    return res.json(spot);
+  })
+);
+
+
+
+
+
+
 // router.put(
 //   '/:id',
 //   // pokemonValidations.validateUpdate,
@@ -86,6 +78,11 @@ router.post(
 //     return res.json(spot);
 //   })
 // );
+
+
+
+
+
 
 
 

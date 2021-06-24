@@ -1,32 +1,32 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import { getAreas } from '../../store/areas'
 import { getUsStates } from '../../store/usStates'
 import '../../index.css'
-import { getSpot } from '../../store/spots'
-// import { editSpot } from '../../store/spots'
+import { editSpot } from '../../store/spots';
 
 function SpotEditForm({spotId}){
+  //
   const dispatch = useDispatch();
-  // is the state shared here? or can I use a new errors even though I declared one in LoginForm.js?
-  // const spots = useSelector((state) => Object.values(state.spots))
-  const spot = useSelector((state) => state.spots[spotId])
-  const [spotErrors, setSpotErrors] = useState([])
-  const [spotName, setSpotName] = useState(spot?.name)
-  const [spotLat, setSpotLat] = useState(spot?.lat)
-  const [spotLong , setSpotLong] = useState(spot?.long)
-  const [spotBlurb , setSpotBlurb] = useState(spot?.blurb)
-  const [spotDirections , setSpotDirections] = useState(spot?.directions)
-  // figure out what the state object will look like
-  const areas = useSelector((state) => Object.values(state.areas))
-  // const [ area, setArea ] = useState(areas[0])
-  const [ area, setArea ] = useState(spot?.Area?.name)
-  const usStates = useSelector(state => Object.values(state.states));
-  const [ stateId, setStateId ] = useState(areas[0])
+  const history = useHistory();
 
-  useEffect(() => {
-    dispatch(getSpot(spotId));
-  },[dispatch, spotId])
+  const [errors, setErrors] = useState([])
+
+  const spot = useSelector((state) => state.spots[spotId])
+  const [name, setName] = useState(spot?.name)
+  const [lat, setLat] = useState(spot?.lat)
+  const [long , setLong] = useState(spot?.long)
+  const [blurb , setBlurb] = useState(spot?.blurb)
+  const [directions , setDirections] = useState(spot?.directions)
+  // useSelector pulls the info from state, where it was put by
+  const areas = useSelector((state) => Object.values(state.areas))
+  const [ area, setArea ] = useState(spot?.areaId)
+  const usStates = useSelector(state => Object.values(state.states));
+  const [ stateId, setStateId ] = useState(spot?.stateId)
+  const userId = useSelector(state => state.session.user.id);
+
+
 
   useEffect(() => {
     dispatch(getAreas());
@@ -36,104 +36,114 @@ function SpotEditForm({spotId}){
     dispatch(getUsStates());
   },[dispatch])
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  // const handleSubmit = async (e) => {
-  //   console.log('inside the handle submit function');
-  //   e.preventDefault();
+  //use the values set in state by the form inputs to build our payload
+  const newSpot = {
+    ...spot,
+    name,
+    lat,
+    long,
+    blurb,
+    directions,
+    areaId: +area,
+    stateId: +stateId,
+    userId,
+  };
+// console.log(newSpot);
+// TODO: Convert the below to an edit! Done. Just changed the words. Time to do the real work in the store
+    //await the dispatch of the thunk creator
+    let editedSpot = await dispatch(editSpot(newSpot))
+    console.log("createdSpot", editedSpot);
+    if (editedSpot) {
+      //act on the response
+      history.push(`/spots/${editedSpot.id}`);
+    }
+    // let createdSpot = await dispatch(createSpot(newSpot))
+    // console.log("createdSpot", createdSpot);
+    // if (createdSpot) {
+    //   //act on the response
+    //   history.push(`/spots/${createdSpot.id}`);
+    // }
+  };
 
-  //   const payload = {
-  //     ...spot,
-  //     spotName,
-  //     spotLat,
-  //     spotLong,
-  //     spotBlurb,
-  //     spotDirections,
-  //     area,
-  //     stateId,
-  //   };
-
-  //   let updatedSpot = await dispatch(editSpot(payload))
-  //   if (updatedSpot) {
-  //     // history.push(`/pokemon/${updatedPokemon.id}`)
-  //     // hideForm();
-  //     console.log('updated the spot!');
-  //   }
-  // };
-
-  // const handleCancelClick = (e) => {
-  //   e.preventDefault();
-  //   // replicate click elsewhere? or is this why sites have that floating x top right...
-  // };
 
   return(
+
     <div>
       <form
         className='form'
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         >
         <h1
           className={'formHeader'}
-        >hello from spot edit form</h1>
+        >hello from spot add form</h1>
         <ul>
-          {spotErrors.map((error, idx) => (
+          {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <input
           type="text"
           className={'formInput'}
-          value={spotName}
+          value={name}
           placeholder={' spot name'}
-          onChange={(e) => setSpotName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
           />
         <input
           type="text"
           className={'formInput'}
-          value={spotLat}
+          value={lat}
           placeholder={' the most helpful latitude for retracing your steps'}
-          onChange={(e) => setSpotLat(e.target.value)}
+          onChange={(e) => setLat(e.target.value)}
           required
           />
         <input
           type="text"
           className={'formInput'}
-          value={spotLong}
+          value={long}
           placeholder={' ditto the longitude'}
-          onChange={(e) => setSpotLong(e.target.value)}
+          onChange={(e) => setLong(e.target.value)}
           required
           />
-          {/* check for later: any hiccups with the textareas not being inputs? */}
         <textarea
           type="text"
-          className={'formInput'}
-          value={spotBlurb}
+          className={'formTextAreaInput'}
+          value={blurb}
           placeholder={' what\'s the deal?'}
-          onChange={(e) => setSpotBlurb(e.target.value)}
+          onChange={(e) => setBlurb(e.target.value)}
           required
           />
         <textarea
           type="text"
-          className={'formInput'}
-          value={spotDirections}
+          className={'formTextAreaInput'}
+          value={directions}
           placeholder={' how do you find your way back?'}
-          onChange={(e) => setSpotDirections(e.target.value)}
+          onChange={(e) => setDirections(e.target.value)}
           required
           />
-        <select onChange={(e) => setArea(e.target.value)}>
+        <select
+          onChange={(e) => setArea(e.target.value)}
+          className={'formSelectInput'}
+          >
           {areas.map(area =>
             <option
               selected={area.id === spot?.Area?.id}
-              key={area.id}>{area.name}
-            </option>
+              value={area.id}
+              key={area.id}>{area.name}</option>
             )}
         </select>
-        <select onChange={(e) => setStateId(e.target.value)}>
+        <select
+          onChange={(e) => setStateId(e.target.value)}
+          className={'formSelectInput'}
+          >
           {usStates.map(state =>
             <option
-              selected={state.id === spot?.State?.id}
-              key={state.id}>{state.name}
-            </option>
+            selected={state.id === spot?.State?.id}
+            value={state.id}
+              key={state.id}>{state.name}</option>
             )}
         </select>
         <button

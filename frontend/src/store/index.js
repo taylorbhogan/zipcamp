@@ -6,6 +6,9 @@ import spotsReducer from './spots'
 import statesReducer from './usStates';
 
 // each of the keys in here are set on the state obj and are how I'll key into it
+// these are the slices of state
+// redux's state is just an object: right now it just has 4 categories
+// inside of those we can do other nestings if we choose to
 const rootReducer = combineReducers({
   session: sessionReducer,
   spots: spotsReducer,

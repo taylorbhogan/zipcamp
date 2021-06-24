@@ -35,7 +35,7 @@ const initialState = {};
 const areasReducer = (state = initialState, action) =>{
   switch(action.type){
     case LOAD_AREAS:
-      console.log('inside LOAD AREAS');
+      // console.log('inside LOAD AREAS');
       const allAreas = {};
       action.areas.forEach((area) => {
         allAreas[area.id] = area;

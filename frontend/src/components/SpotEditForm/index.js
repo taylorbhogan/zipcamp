@@ -6,7 +6,7 @@ import { getUsStates } from '../../store/usStates'
 import '../../index.css'
 import { editSpot } from '../../store/spots';
 
-function SpotEditForm({spotId}){
+function SpotEditForm({spotId, setShowModal}){
   //
   const dispatch = useDispatch();
   const history = useHistory();
@@ -25,6 +25,7 @@ function SpotEditForm({spotId}){
   const usStates = useSelector(state => Object.values(state.states));
   const [ stateId, setStateId ] = useState(spot?.stateId)
   const userId = useSelector(state => state.session.user.id);
+
 
 
 
@@ -58,6 +59,7 @@ function SpotEditForm({spotId}){
     console.log("createdSpot", editedSpot);
     if (editedSpot) {
       //act on the response
+      setShowModal(false)
       history.push(`/spots/${editedSpot.id}`);
     }
     // let createdSpot = await dispatch(createSpot(newSpot))

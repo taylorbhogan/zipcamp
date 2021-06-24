@@ -41,8 +41,16 @@ router.post(
   asyncHandler(async function (req, res) {
     const formData = req.body
     const spot = await Spot.create(formData)
+    // justin's solve to remove ?
+    // make the backend give the data back to the frontend so it only pulls from here rather than looking elsewhere
+
+    const spotIJustCreated = await Spot.findByPk(spot.id, {
+      include: User
+    })
+
+
     console.log("---------------------------> backend");
-    res.json(spot)
+    res.json(spotIJustCreated)
     // const id = await createSpot(req.body);
     // return res.redirect(`${req.baseUrl}/${id}`);
   })

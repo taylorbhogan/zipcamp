@@ -15,6 +15,7 @@ function SpotIdPage(){
   const {spotId} = useParams();
   // console.log("THIS IS MY CONSOLE LOG", spotId);
   const spot = useSelector((state) => state.spots[spotId])
+  // const userId = useSelector((state) => state.spots[spotId])
 
   const [showModal, setShowModal] = useState(false);
 
@@ -45,7 +46,7 @@ function SpotIdPage(){
         <div className={styles.mainSpotDivUnused}>
           {showModal && (
           <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
-            <SpotEditForm spotId={spot?.id}/>
+            <SpotEditForm setShowModal={setShowModal} spotId={spot?.id}/>
           </Modal>
         )}
           <div className={styles.SpotDivHeader}>
@@ -58,9 +59,13 @@ function SpotIdPage(){
             <div className={styles.SpotDivInfoLeft}>
               <div className={styles.userInfo}>
                 <div>Discovered by</div>
+                {/* removed ? after user */}
+                {/* code renders faster than it gets the info. so rather than do this, reformat the info we need so there is not a race */}
+                {/* justin did that by.... */}
                 <div>{spot?.User?.username}</div>
                 <div className={styles.editOuterDiv}></div>
                   <button
+                  // LOOK HERE
                     hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
                     onClick={() => setShowModal(true)}
                     className={styles.editDiv}>

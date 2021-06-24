@@ -75,10 +75,15 @@ export const createSpot = (formData) => async dispatch  => {
     body: JSON.stringify(formData)
   });
   // console.log("a string ------> front end");
+
   if (response.ok) {
     const newSpotData = await response.json();
+    // this data now has a key of user with the user object as its value because i include:d it
+
     dispatch(addOneSpot(newSpotData))
+    console.log("back in the front end, this is newSpotData", newSpotData);
     //the store is now updated because POST was successful
+    // justin does everything I did up to here, but does not return. so is this necessary?
     return newSpotData
   }
 }
@@ -152,8 +157,18 @@ export const deleteSpot = (spotId) => async dispatch  => {
 
 
 
-// define an initial state
+// define an initial state -
+// adding new keys here allow new nested slices of state
 const initialState = {};
+
+// William's example:
+// from: https://github.com/WJVincent/Anvil_2.0/blob/main/app/react-app/src/store/reducers/categories.js
+// const initialState = {
+//   default: [],
+//   user: [],
+//   all: [],
+// };
+
 
 // The reducers that receive the actions and return updated state are pure functions of the old state and the action.
 // called by .dispatch() each time an action is dispatched.
@@ -161,6 +176,8 @@ const initialState = {};
 const spotsReducer = (state = initialState, action) => {
   switch(action.type){
     // type is just used for routing. payload is what's used.
+    // THIS IS THE REDUX STATE, IN THE REDUX DEV TOOLS, NOT THE COMPONENT STATE
+    // I am not sending this anywhere. I am changing it RIGHT HERE.
     case SET_SPOTS:
       // instantiate a new empty object to copy the state into
       const allSpots = {};

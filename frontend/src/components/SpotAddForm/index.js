@@ -17,6 +17,11 @@ function SpotAddForm(){
   const [lat, setLat] = useState('')
   const [long , setLong] = useState('')
   const [blurb , setBlurb] = useState('')
+  // this is COMPONENT STATE (not redux state)
+  // which is why we can access this right here -- we have to use useSelector to get Redux's state
+  // because we can access this right here, we can prop thread to pass this info down
+  // it's never going to change in my dev tools because I'm only naming it here.
+  // it is only called blurb and setBlurb IN THIS FILE.
   const [directions , setDirections] = useState('')
   // useSelector pulls the info from state, where it was put by
   const areas = useSelector((state) => Object.values(state.areas))

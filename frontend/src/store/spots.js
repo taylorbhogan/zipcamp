@@ -159,7 +159,10 @@ export const deleteSpot = (spotId) => async dispatch  => {
 
 // define an initial state -
 // adding new keys here allow new nested slices of state
-const initialState = {};
+const initialState = {
+  allSpots: {},
+  currSpot: null
+};
 
 // William's example:
 // from: https://github.com/WJVincent/Anvil_2.0/blob/main/app/react-app/src/store/reducers/categories.js
@@ -174,26 +177,38 @@ const initialState = {};
 // called by .dispatch() each time an action is dispatched.
 // pay attention to the params: state is from dispatch and action is the action!
 const spotsReducer = (state = initialState, action) => {
+  let newState;
   switch(action.type){
     // type is just used for routing. payload is what's used.
     // THIS IS THE REDUX STATE, IN THE REDUX DEV TOOLS, NOT THE COMPONENT STATE
     // I am not sending this anywhere. I am changing it RIGHT HERE.
     case SET_SPOTS:
       // instantiate a new empty object to copy the state into
-      const allSpots = {};
+
+      newState = Object.assign({}, state)
       action.spots.forEach((spot) => {
-        allSpots[spot.id] = spot;
+        newState.allSpots[spot.id] = spot
       })
+
+      // newState.allSpots = action.spots
+
+      // const newAllSpots = {};
+      // action.spots.forEach((spot) => {
+      //   newAllSpots[spot.id] = spot;
+      // })
       return {
         ...state,
-        ...allSpots,
+        ...newState,
       }
     case SET_SPOT:
+      // copy state
+      newState = Object.assign({}, state)
+      // create the new spot object
       const thisSpot = {};
-      // console.log("action.spot", action.spot)
       thisSpot[action.spot.id] = action.spot;
+      // return the new state with the new spot object mixed in
       return {
-        // ...state,
+        ...state,
         ...thisSpot
       }
     case ADD_ONE: {

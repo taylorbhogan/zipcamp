@@ -1,8 +1,11 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styles from './StandardLinkButton.module.css'
+import { setCurrentSpot } from '../../store/spots';
+import { NavLink } from 'react-router-dom';
 
-function StandardLinkButton({buttonText, lightBackground, href}){
+
+function StandardLinkButton({buttonText, lightBackground, href, spotId}){
   let buttonStyle;
 
   if (lightBackground){
@@ -21,13 +24,13 @@ function StandardLinkButton({buttonText, lightBackground, href}){
   // }
 
   return (
-    <a
+    <NavLink
       className={styles.standardLinkButton}
-      href={href}
+      to={href}
       style={buttonStyle}
-      // onClick={setCurrSpot}
+      // onClick={setCurrSpot(spotId)}
       // onMouseOver={e => e.target.style = submitStyle}
-      >{buttonText}</a>
+      >{buttonText}</NavLink>
     )
 }
 

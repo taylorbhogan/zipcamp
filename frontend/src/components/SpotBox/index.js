@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SpotBox.module.css'
-import StandardLinkButton from '../StandardLinkButton';
+import SpotIdButton from '../ShowSpotIdButton';
 import ActivityIcon from '../ActivityIcon';
 import spotsReducer from '../../store/spots';
 
@@ -32,9 +32,10 @@ function SpotBox({spot}){
             <div className={styles.stateAbbreviation}>{spot.State?.name}</div>
           </div>
           <div className={styles.spotBlurb}>{spot.blurb}</div>
-          <StandardLinkButton
+          <SpotIdButton
             buttonText={'Check it out'}
             lightBackground={true}
+            spotId={spot.id}
             href={`/spots/${spot.id}`}/>
         </div>
       </div>

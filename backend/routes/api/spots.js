@@ -24,7 +24,7 @@ const asyncHandler = require('express-async-handler');
 // use sequelize to query the postgreSQL database **************************************************/
 
 router.get('/', asyncHandler(async (req, res) => {
-  const spots = await Spot.findAll({include: [Area, State]});
+  const spots = await Spot.findAll({include: [Area, State, User]});
   res.json(spots);
 }))
 

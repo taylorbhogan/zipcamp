@@ -3,27 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import styles from './SpotIdPage.module.css'
-import { getSpot, deleteSpot } from '../../store/spots'
+import { deleteSpot } from '../../store/spots'
+import { getSpot } from '../../store/spots'
 import ActivityIcon from '../ActivityIcon';
 import SpotEditForm from '../SpotEditForm';
 
 function SpotIdPage(){
-  // declare variables from hooks
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
   const {spotId} = useParams();
-  // console.log("THIS IS MY CONSOLE LOG", spotId);
-  const spot = useSelector((state) => state.spots[spotId])
-  // const userId = useSelector((state) => state.spots[spotId])
+  const spot = useSelector((state) => state.spots.allSpots[spotId])
 
   const [showModal, setShowModal] = useState(false);
 
-
-  // // use a react hook and cause a side effect
   useEffect(() => {
-    dispatch(getSpot(spotId))
-  }, [dispatch, spotId])
+    if (!spot){
+      dispatch(getSpot(spotId))
+    }
+  }, [dispatch, spotId, spot])
+
 
   // console.log('spot', spot);
   const handleDelete = async (spotId) => {

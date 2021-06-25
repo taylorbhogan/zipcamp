@@ -30,7 +30,15 @@ function SpotAddForm(){
   const [ stateId, setStateId ] = useState('1')
   const userId = useSelector(state => state.session.user?.id);
 
-
+  //This is where we validate. Is useEffect the right choice here? Would it be better to move it to a handleSubmit function as in SignupFormPage?
+  // useEffect(()=>{
+  //   const errors = [];
+  //   if(!name) errors.push('Please add a spot name.');
+  //   if(!lat) errors.push('Please add a latitude.')
+  //   if(!long) errors.push('Please add a longitude.')
+  //   if(!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
+  //   setErrors(errors)
+  // },[name,lat,long,blurb,directions])
 
   useEffect(() => {
     dispatch(getAreas());
@@ -43,17 +51,24 @@ function SpotAddForm(){
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const errors = [];
+    if(!name) errors.push('Please add a spot name.');
+    if(!lat) errors.push('Please add a latitude.')
+    if(!long) errors.push('Please add a longitude.')
+    if(!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
+    setErrors(errors)
+
   //use the values set in state by the form inputs to build our payload
-  const newSpot = {
-    name,
-    lat,
-    long,
-    blurb,
-    directions,
-    areaId: +area,
-    stateId: +stateId,
-    userId,
-  };
+    const newSpot = {
+      name,
+      lat,
+      long,
+      blurb,
+      directions,
+      areaId: +area,
+      stateId: +stateId,
+      userId,
+    };
 // console.log(newSpot);
 
     //await the dispatch of the thunk creator
@@ -119,7 +134,6 @@ function SpotAddForm(){
           value={directions}
           placeholder={' how do you find your way back?'}
           onChange={(e) => setDirections(e.target.value)}
-          required
           />
         <select
           onChange={(e) => setArea(e.target.value)}

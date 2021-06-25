@@ -41,6 +41,13 @@ function SpotEditForm({spotId, setShowModal}){
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const errors = [];
+    if(!name) errors.push('Please add a spot name.');
+    if(!lat) errors.push('Please add a latitude.')
+    if(!long) errors.push('Please add a longitude.')
+    if(!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
+    setErrors(errors)
+
   //use the values set in state by the form inputs to build our payload
   const newSpot = {
     ...spot,
@@ -102,7 +109,8 @@ function SpotEditForm({spotId, setShowModal}){
           value={name}
           placeholder={' spot name'}
           onChange={(e) => setName(e.target.value)}
-          required
+          // commented out to show frontend validation error array
+          // required
           />
         <input
           type="text"
@@ -110,7 +118,8 @@ function SpotEditForm({spotId, setShowModal}){
           value={lat}
           placeholder={' the most helpful latitude for retracing your steps'}
           onChange={(e) => setLat(e.target.value)}
-          required
+          // commented out to show frontend validation error array
+          // required
           />
         <input
           type="text"
@@ -118,7 +127,8 @@ function SpotEditForm({spotId, setShowModal}){
           value={long}
           placeholder={' ditto the longitude'}
           onChange={(e) => setLong(e.target.value)}
-          required
+          // commented out to show frontend validation error array
+          // required
           />
         <textarea
           type="text"
@@ -126,7 +136,8 @@ function SpotEditForm({spotId, setShowModal}){
           value={blurb}
           placeholder={' what\'s the deal?'}
           onChange={(e) => setBlurb(e.target.value)}
-          required
+          // commented out to show frontend validation error array
+          // required
           />
         <textarea
           type="text"
@@ -134,7 +145,6 @@ function SpotEditForm({spotId, setShowModal}){
           value={directions}
           placeholder={' how do you find your way back?'}
           onChange={(e) => setDirections(e.target.value)}
-          required
           />
         <select
           onChange={(e) => setArea(e.target.value)}

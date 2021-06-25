@@ -18,7 +18,8 @@ const {
 
 const asyncHandler = require('express-async-handler');
 
-// extra functions
+// import other stuff
+const spotValidations = require('../../validations/spots')
 
 
 // use sequelize to query the postgreSQL database **************************************************/
@@ -38,6 +39,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
 router.post(
   '/',
   // pokemonValidations.validateCreate,
+  spotValidations.validateCreate,
   asyncHandler(async function (req, res) {
     const formData = req.body
     const spot = await Spot.create(formData)
@@ -59,6 +61,7 @@ router.post(
 router.put(
   '/:id',
   // pokemonValidations.validateUpdate,
+  spotValidations.validateUpdate,
   asyncHandler(async function (req, res) {
 
     const id = req.body.id;

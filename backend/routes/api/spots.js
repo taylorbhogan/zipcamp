@@ -66,7 +66,9 @@ router.put(
     await Spot.update(req.body,
       {where: { id }}
     )
-    const spot = await Spot.findByPk(id);
+    const spot = await Spot.findByPk(id, {
+      include: User
+    })
 
     return res.json(spot);
   })

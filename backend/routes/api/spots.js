@@ -66,7 +66,9 @@ router.put(
     await Spot.update(req.body,
       {where: { id }}
     )
-    const spot = await Spot.findByPk(id);
+    const spot = await Spot.findByPk(id, {
+      include: [User, Area, State]
+    })
 
     return res.json(spot);
   })
@@ -80,10 +82,12 @@ router.delete('/:id', asyncHandler(async function (req, res) {
   const spotId = req.params.id
   const spot = await Spot.findByPk(spotId);
   if (!spot) throw new Error('Cannot find spot');
-  await Spot.destroy({ where: { id: spotId }});
+  const deletedSpot = await Spot.destroy({ where: { id: spotId }});
 
-  return res.json('successfully deleted spot.....presumedly. check postbird');
+  console.log('this is deletedSpot ==========>', deletedSpot);
+  // return res.json('successfully deleted spot.....presumedly. check postbird');
   // return res.json({ spotId });
+  res.json(deletedSpot);
 }));
 
 

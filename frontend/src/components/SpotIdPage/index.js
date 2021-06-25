@@ -18,8 +18,12 @@ function SpotIdPage(){
 
   const [showModal, setShowModal] = useState(false);
 
+  // without this, the info doesn't hit the page
+  // with it, we're not deleting from state
   useEffect(() => {
     if (!spot){
+      console.log('inside the SpotIdPage useEffect');
+      // the below is running when we try to delete.
       dispatch(getSpot(spotId))
     }
   }, [dispatch, spotId, spot])
@@ -29,7 +33,6 @@ function SpotIdPage(){
   const handleDelete = async (spotId) => {
     // successfully got this far...
     console.log(spotId);
-    // WARNING: clicking the delete button => stack overflow
     // dispatch THUNK
     let deletedSpot = await dispatch(deleteSpot(spotId))
     if (deletedSpot) {
@@ -53,6 +56,7 @@ function SpotIdPage(){
             <div className={styles.spotName}>{spot?.name}</div>
             <div className={styles.coordinates}>{spot?.lat}, {spot?.long}</div>
             {/* <div className={styles.areaName}>{spot?.areaId}</div> */}
+            {/* 11:52 problem is here vVv */}
             <div className={styles.areaName}>{spot?.Area?.name}</div>
           </div>
           <div className={styles.SpotDivInfo}>

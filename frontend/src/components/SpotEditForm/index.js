@@ -14,6 +14,7 @@ function SpotEditForm({spotId, setShowModal}){
   const [errors, setErrors] = useState([])
 
   const spot = useSelector((state) => state.spots.allSpots[spotId])
+  // how do I just make the above spot have the stateID already in it?
   const [name, setName] = useState(spot?.name)
   const [lat, setLat] = useState(spot?.lat)
   const [long , setLong] = useState(spot?.long)
@@ -69,6 +70,15 @@ function SpotEditForm({spotId, setShowModal}){
     //   history.push(`/spots/${createdSpot.id}`);
     // }
   };
+
+
+
+
+
+
+
+
+
 
 
   return(
@@ -129,21 +139,30 @@ function SpotEditForm({spotId, setShowModal}){
         <select
           onChange={(e) => setArea(e.target.value)}
           className={'formSelectInput'}
+        // // the change:
+        // value={spot.stateId}
+        // //
+          value={spot.areaId}
           >
           {areas.map(area =>
             <option
-              selected={area.id === spot?.Area?.id}
+              // selected={area.id === spot?.Area?.id}
               value={area.id}
               key={area.id}>{area.name}</option>
             )}
         </select>
         <select
+          // the change:
+          value={spot.stateId}
+          //
           onChange={(e) => setStateId(e.target.value)}
           className={'formSelectInput'}
           >
           {usStates.map(state =>
             <option
-            selected={state.id === spot?.State?.id}
+                      // the change:
+            // selected={state.id === spot?.State?.id}
+            //
             value={state.id}
               key={state.id}>{state.name}</option>
             )}

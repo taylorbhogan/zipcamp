@@ -16,6 +16,7 @@ function SpotsList(){
   // use the react hook useEffect to cause a side effect, which will fire off dispatch to the store.
   // we'll get data back because we're subscribed via useSelector
   useEffect(() => {
+    console.log("inside the SpotsList useEffect");
     dispatch(getSpots())
   }, [dispatch])
 

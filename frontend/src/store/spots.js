@@ -65,7 +65,10 @@ export const getSpot = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`);
   if (res.ok){
     const spot = await res.json();
-    dispatch(setSpot(spot));
+    console.log("this is the consolelog inside of getSpot TAYLOR",spot);
+    if (spot){
+      dispatch(setSpot(spot));
+    }
   }
 }
 
@@ -100,8 +103,10 @@ export const editSpot = (newSpot) => async dispatch  => {
   if (response.ok) {
     // console.log("-----------------> we made it back to the front end");
     const newSpotData = await response.json();
+    console.log("THIS IS NEWSPOTDATA",newSpotData);
     // editOneSpot works fine. trying a new one
     // dispatch(editOneSpot(newSpotData))
+    // the change I'm making at 9:02 is to use editOneSpot instead....same effect. change back to new, and now let's fix it
     dispatch(editOneSpotNew(newSpotData))
     //the store is now updated because POST was successful
     return newSpotData
@@ -110,24 +115,25 @@ export const editSpot = (newSpot) => async dispatch  => {
 // THUNK 5
 export const deleteSpot = (spotId) => async dispatch  => {
 
-    console.log('inside the deleteSpot function in the store');
+    console.log('DELETE - at the first line of deleteSpot');
 
-  // the goal here is to travel to our API and ask it to talk to the db to delete the spot
+    // the goal here is to travel to our API and ask it to talk to the db to delete the spot
 
-  const response = await csrfFetch(`/api/spots/${spotId}`, {
-    method: 'DELETE',
-    // right now this works if I don't include a body and just use the params in the API...
-    // is it even possible to send a body? (don't need it here, but for learning/later?)
-    // body: JSON.stringify(spotId)
-  });
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+      method: 'DELETE',
+      // right now this works if I don't include a body and just use the params in the API...
+      // is it even possible to send a body? (don't need it here, but for learning/later?)
+      // body: JSON.stringify(spotId)
+    });
 
-  console.log('we have returned to the frontend from the API');
+    console.log('DELETE - in deleteSpot; we have returned to the frontend from the API');
 
   if (response.ok) {
     // console.log("we made it back to the ~~~~~~~~~~~------> front end AND our response was OK");
     const spotDeleteSuccessMessage = await response.json();
-    console.log(spotDeleteSuccessMessage);
-
+    // console.log('spotDeleteSuccessMessage', spotDeleteSuccessMessage);
+    console.log("DELETE - YES!!! inside the if response ok section of the delete Thunk");
+    // 7:52: we've gotten this far. a look at the state indicates that we are not actually deleting from state with the following dispatch
     dispatch(deleteOneSpot(spotId))
 
     // I think all we need to do is fix the addOneSpot
@@ -202,8 +208,8 @@ const spotsReducer = (state = initialState, action) => {
         ...newState,
       }
     case SET_SPOT:
-      // copy state
-      newState = Object.assign({}, state)
+      // // copy state
+      // newState = Object.assign({}, state)
       // create the new spot object
       const thisSpot = {};
       thisSpot[action.spot.id] = action.spot;
@@ -222,20 +228,36 @@ const spotsReducer = (state = initialState, action) => {
       };
     }
     case EDIT_ONE: {
+      // newState = Object.assign({}, state)
+      // newState.allSpots[action.spot.id]: action.spot
+      const newlyEditedSpot = {}
+
+      const previousSpots = {...state.allSpots}
+      previousSpots[action.spot.id] = action.spot;
+
 
       return {
         ...state,
-        [action.spot.id]: action.spot
+        // sure, return the above, but we are going to overwrite the info at allSpots now
+        allSpots: {
+          // // first, spread out what we've already got
+          // ...state.allSpots,
+          // ...newlyEditedSpot
+          ...previousSpots
+        }
       }
     }
     case DELETE_ONE: {
       // copy the state into a new object
-      const allSpots = {...state};
+      newState = Object.assign({}, state)
+
+
+      // const allSpots = {...state};
       // delete the spot entry in state
-      delete allSpots[action.spotId]
+      delete newState.allSpots[action.spotId]
       // return the updated state
       return {
-        ...allSpots
+        ...newState
       }
     }
     // case SET_SPOTS:

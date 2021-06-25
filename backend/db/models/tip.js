@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Tip.associate = function(models) {
     // associations can be defined here
-    Tip.belongsTo(models.User, { foreignKey: 'userId '})
-    Tip.belongsTo(models.Spot, { foreignKey: 'spotId '})
+    Tip.belongsTo(models.User, { foreignKey: 'userId'})
+    Tip.belongsTo(models.Spot, { foreignKey: 'spotId'})
   };
   return Tip;
 };

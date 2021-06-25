@@ -7,6 +7,7 @@ import { deleteSpot } from '../../store/spots'
 import { getSpot } from '../../store/spots'
 import ActivityIcon from '../ActivityIcon';
 import SpotEditForm from '../SpotEditForm';
+import TipsList from '../TipsList';
 
 function SpotIdPage(){
   const sessionUser = useSelector(state => state.session.user);
@@ -97,19 +98,10 @@ function SpotIdPage(){
             <ActivityIcon />
             <ActivityIcon />
           </div>
-
-
-          {/* right now, I need the spot &&. why? */}
-          {/* <p>{spot && spot.id}</p> */}
-            <p>. </p>
-            <p>. </p>
-            <p>. </p>
-            <p>. </p>
-            <p>. </p>
-            <p>hi :)</p>
-
         </div>
-        <div className={styles.TipsUnused}></div>
+        <div className={styles.TipsUnused}>
+          <TipsList />
+        </div>
       </div>
     </div>
   )

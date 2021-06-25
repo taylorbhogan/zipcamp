@@ -1,0 +1,57 @@
+@import './../../index.css';
+
+.spotBoxContainer{
+  border: 1px solid black;
+  border-radius: var(--cardBorderRadius);
+  display: flex;
+  flex-direction: row;
+  margin: 20px 30px 20px 30px;
+  padding: 20px 20px 20px 20px;
+}
+
+.spotBoxContainerLeft{
+  display: flex;
+  flex-direction: column;
+}
+
+.spotImageDiv{
+  width: 90px;
+  height: 90px;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 45px;
+}
+
+.spotBoxContainerRight{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.spotName{
+  font-size: var(--cardHeaderSize)
+}
+
+.areaName{
+  font-size: 20px;
+}
+
+.activityDiv{
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  margin-top: 10px;
+  height: auto;
+}
+
+/* .profileImage{
+  border: solid 1px black;
+  height: 90px;
+  width: 90px;
+  border-radius: 45px;
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  background-color: whitesmoke;
+} */

@@ -98,31 +98,9 @@ function SpotIdPage(){
             <ActivityIcon />
             <ActivityIcon />
           </div>
-
-
-          {/* right now, I need the spot &&. why? */}
-          {/* <p>{spot && spot.id}</p> */}
-            <p>. </p>
-            <p>. </p>
-            <p>. </p>
-            <p>. </p>
-            <p>. </p>
-            <p>hi :)</p>
-
         </div>
         <div className={styles.TipsUnused}>
           <TipsList />
-        </div>
-        <div>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
-          <p>.</p>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { csrfFetch } from './csrf';
 
 // define action types (strings) as constants so we can put them into actions below
 
-// const SET_SPOTS = 'spots/SET_SPOTS';
+const SET_TIPS = 'spots/SET_TIPS';
 // const SET_SPOT = 'spots/SET_SPOT'
 const ADD_ONE = 'tips/ADD_ONE'
 // const EDIT_ONE = 'spots/EDIT_ONE'
@@ -25,9 +25,26 @@ const addOneTip = tip => ({
   tip,
 });
 
+const setTips = (tips) => ({
+  type: SET_TIPS,
+  tips,
+})
 
+//THUNK 2
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const getTips = () => async (dispatch) => {
+  // this is the fetch inside of the thunk inside of Redux zooming its way off to NodeJS over HTTP
+  const res = await csrfFetch('/api/tips');
+  // now we've come back from the backend
+  if (res.ok){
+    const tips = await res.json();
+    // dispatch calls the reducer, and the action creator above helps the reducer consume the object
+    dispatch(setTips(tips));
+  }
+}
 
-//THUNK 3
+//THUNK 1
 export const createTip = (formData) => async dispatch  => {
   const response = await csrfFetch('/api/tips', {
     method: 'POST',
@@ -47,6 +64,8 @@ export const createTip = (formData) => async dispatch  => {
   }
 }
 
+
+
 const initialState = {
   allTips: {},
   currTip: null
@@ -60,24 +79,24 @@ const tipsReducer = (state = initialState, action) => {
     // type is just used for routing. payload is what's used.
     // THIS IS THE REDUX STATE, IN THE REDUX DEV TOOLS, NOT THE COMPONENT STATE
     // I am not sending this anywhere. I am changing it RIGHT HERE.
-    // case SET_SPOTS:
-    //   // instantiate a new empty object to copy the state into
+    case SET_TIPS:
+      // instantiate a new empty object to copy the state into
 
-    //   newState = Object.assign({}, state)
-    //   action.spots.forEach((spot) => {
-    //     newState.allSpots[spot.id] = spot
-    //   })
+      newState = Object.assign({}, state)
+      action.tips.forEach((tip) => {
+        newState.allTips[tip.id] = tip
+      })
 
-    //   // newState.allSpots = action.spots
+      // newState.allSpots = action.spots
 
-    //   // const newAllSpots = {};
-    //   // action.spots.forEach((spot) => {
-    //   //   newAllSpots[spot.id] = spot;
-    //   // })
-    //   return {
-    //     ...state,
-    //     ...newState,
-    //   }
+      // const newAllSpots = {};
+      // action.spots.forEach((spot) => {
+      //   newAllSpots[spot.id] = spot;
+      // })
+      return {
+        ...state,
+        ...newState,
+      }
     // case SET_SPOT:
     //   // // copy state
     //   // newState = Object.assign({}, state)
@@ -93,11 +112,24 @@ const tipsReducer = (state = initialState, action) => {
     //     }
     //   }
     case ADD_ONE: {
+      const thisTip = {}
+      thisTip[action.tip.id] = action.tip;
       return {
         ...state,
-        [action.tip.id]: action.tip,
+        allTips: {
+          ...state.allTips,
+          ...thisTip
+        }
       };
     }
+    // ////////////////////////////////////////////////////////////////
+    // case ADD_ONE: {
+      //   return {
+        //     ...state,
+        //     [action.tip.id]: action.tip,
+        //   };
+        // }
+        // ////////////////////////////////////////////////////////////////
     // case EDIT_ONE: {
 
     //   const newlyEditedSpot = {}

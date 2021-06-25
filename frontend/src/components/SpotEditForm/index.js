@@ -13,7 +13,7 @@ function SpotEditForm({spotId, setShowModal}){
 
   const [errors, setErrors] = useState([])
 
-  const spot = useSelector((state) => state.spots[spotId])
+  const spot = useSelector((state) => state.spots.allSpots[spotId])
   const [name, setName] = useState(spot?.name)
   const [lat, setLat] = useState(spot?.lat)
   const [long , setLong] = useState(spot?.long)
@@ -80,7 +80,7 @@ function SpotEditForm({spotId, setShowModal}){
         >
         <h1
           className={'formHeader'}
-        >hello from spot add form</h1>
+        >hello from spot edit form</h1>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

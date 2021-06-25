@@ -9,12 +9,12 @@ module.exports = {
       Example:
       */
       return queryInterface.bulkInsert('Agencies', [
-        { id: 1, name: 'USFS' },
-        { id: 2, name: 'DOD' },
-        { id: 3, name: 'AFRH' },
-        { id: 4, name: 'BLM' },
-        { id: 5, name: 'NPS' },
-        { id: 6, name: 'FWS' },
+        { name: 'USFS' },
+        { name: 'DOD' },
+        { name: 'AFRH' },
+        { name: 'BLM' },
+        { name: 'NPS' },
+        { name: 'FWS' },
     ], {});
     },
 

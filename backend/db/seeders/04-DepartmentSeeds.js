@@ -9,9 +9,9 @@ module.exports = {
       Example:
       */
       return queryInterface.bulkInsert('Departments', [
-        { id: 1, name: 'Department of Agriculture' },
-        { id: 2, name: 'Department of Defense' },
-        { id: 3, name: 'Department of the Interior' },
+        { name: 'Department of Agriculture' },
+        { name: 'Department of Defense' },
+        { name: 'Department of the Interior' },
     ], {});
   },
 

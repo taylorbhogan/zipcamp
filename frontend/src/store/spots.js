@@ -2,6 +2,7 @@
 // we use this module to send fetch requests to the backend, which talks to the db
 // we access the store by dispatching thunks (using dispatch()) as a side effect in our components
 
+import { useDispatch } from 'react-redux';
 import { csrfFetch } from './csrf';
 
 
@@ -209,7 +210,10 @@ const spotsReducer = (state = initialState, action) => {
       // return the new state with the new spot object mixed in
       return {
         ...state,
-        ...thisSpot
+        allSpots: {
+          ...state.allSpots,
+          ...thisSpot
+        }
       }
     case ADD_ONE: {
       return {

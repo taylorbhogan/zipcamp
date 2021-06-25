@@ -14,6 +14,7 @@ function SpotIdPage(){
   const dispatch = useDispatch();
   const {spotId} = useParams();
   const spot = useSelector((state) => state.spots.allSpots[spotId])
+  // const spot = useSelector((state) => state.spots.currSpot)
 
   const [showModal, setShowModal] = useState(false);
 

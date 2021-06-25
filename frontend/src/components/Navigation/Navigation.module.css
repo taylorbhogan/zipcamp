@@ -88,7 +88,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 130px;
+  width: 250px;
+  padding: 10px 20px;
+  border-radius: var(--buttonBorderRadius);
   margin-right: var(--pageSidePadding);
   margin-bottom: var(--navbarBottomMargin);
+  background-color: var(--mainColorLightGrey);
 }

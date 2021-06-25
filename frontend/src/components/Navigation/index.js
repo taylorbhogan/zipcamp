@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import styles from './Navigation.module.css';
+import * as sessionActions from '../../store/session'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const [errors, setErrors] = useState([]);
+
+
+  const dispatch = useDispatch();
+
+  const handleDemoLogin = () => {
+    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  }
 
   let sessionLinks;
   if (sessionUser) {
@@ -20,7 +34,19 @@ function Navigation({ isLoaded }){
           <LoginFormModal />
         </div>
         <div>
+          <button
+            onClick={handleDemoLogin}
+          >Demo Login</button>
+        </div>
+        <div>
           <NavLink to='/signup'>Sign Up</NavLink>
+        </div>
+        <div>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
         </div>
       </div>
     );

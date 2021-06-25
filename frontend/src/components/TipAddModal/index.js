@@ -13,7 +13,7 @@ function TipAddModal(){
       >click me to add a tip</button>
       {showTipAddModal && (
         <Modal onClose={() => setShowTipAddModal(false)}>
-          <TipAddForm />
+          <TipAddForm setShowTipAddModal={setShowTipAddModal} />
         </Modal>
       )}
     </div>

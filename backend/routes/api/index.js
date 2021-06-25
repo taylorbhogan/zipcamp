@@ -5,12 +5,14 @@ const usersRouter = require('./users.js');
 const spotsRouter = require('./spots.js')
 const areasRouter = require('./areas.js')
 const statesRouter = require('./states.js')
+const tipsRouter = require('./tips.js')
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/spots', spotsRouter);
 router.use('/areas', areasRouter);
 router.use('/states', statesRouter)
+router.use('/tips', tipsRouter)
 
 
 

@@ -36,18 +36,10 @@ router.post(
   asyncHandler(async function (req, res) {
     const formData = req.body
     const tip = await Tip.create(formData)
-    // justin's solve to remove ?
-    // make the backend give the data back to the frontend so it only pulls from here rather than looking elsewhere
-
     const tipIJustCreated = await Tip.findByPk(tip.id, {
       include: [User, Spot]
     })
-
-
-    console.log("---------------------------> backend"),tipIJustCreated;
     res.json(tipIJustCreated)
-    // const id = await createSpot(req.body);
-    // return res.redirect(`${req.baseUrl}/${id}`);
   })
 );
 

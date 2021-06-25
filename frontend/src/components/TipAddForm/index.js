@@ -49,14 +49,10 @@ function TipAddForm({setShowTipAddModal}){
 
   //use the values set in state by the form inputs to build our payload
     const newTip = {
-
       userId,
       spotId,
       text: tipText,
       tipRating: 0
-      // directions,
-      // areaId: +area,
-      // stateId: +stateId,
     };
 // console.log(newTip);
 

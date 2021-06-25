@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { Modal } from '../../context/Modal';
 
@@ -7,15 +8,32 @@ import styles from './TipBox.module.css'
 import SpotIdButton from '../ShowSpotIdButton';
 import ActivityIcon from '../ActivityIcon';
 import spotsReducer from '../../store/spots';
+import { deleteTip } from '../../store/tips'
+
 import TipEditForm from '../TipEditForm';
 
 
 function TipBox({tip}){
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
 
-  console.log("THIS IS A TIP LOG",tip);
+
+  const handleDelete = async (tipId) => {
+    // successfully got this far...
+    // console.log(spotId);
+    // dispatch THUNK
+    let deletedTip = await dispatch(deleteTip(tipId))
+    if (deletedTip) {
+      //act on the response
+      history.push(`/spots/${tip.spotId}`);
+    }
+  }
+
+
+  // console.log("THIS IS A TIP LOG",tip);
   return(
     <div className={styles.spotBoxWrapper}>
       <div className={styles.spotBoxContainer}>
@@ -49,6 +67,14 @@ function TipBox({tip}){
               onClick={() => setShowModal(true)}
               className={styles.editDiv}>
               Edit
+            </button>
+          </div>
+          <div className={styles.deleteOuterDiv}>
+            <button
+              hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
+              onClick={() => handleDelete(tip.id)}
+              className={styles.deleteOuterDiv}>
+              Delete
             </button>
           </div>
           {/* <SpotIdButton

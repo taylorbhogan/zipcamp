@@ -10,7 +10,7 @@ const SET_TIPS = 'spots/SET_TIPS';
 // const SET_SPOT = 'spots/SET_SPOT'
 const ADD_ONE = 'tips/ADD_ONE'
 const EDIT_ONE = 'tips/EDIT_ONE'
-// const DELETE_ONE = 'spots/DELETE_ONE'
+const DELETE_ONE = 'tips/DELETE_ONE'
 
 
 // define action creators. goal is to stamp out an action:
@@ -34,6 +34,10 @@ const editOneTipNew = tip => ({
   type: EDIT_ONE,
   tip,
 });
+const deleteOneTip = tipId => ({
+  type: DELETE_ONE,
+  tipId
+})
 
 //THUNK 2
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,6 +93,41 @@ export const editTip = (newTip) => async dispatch  => {
     return newTipData
   }
 }
+
+export const deleteTip = (tipId) => async dispatch  => {
+
+  console.log('DELETE - at the first line of deleteSpot');
+
+  // the goal here is to travel to our API and ask it to talk to the db to delete the spot
+
+  const response = await csrfFetch(`/api/tips/${tipId}`, {
+    method: 'DELETE',
+    // right now this works if I don't include a body and just use the params in the API...
+    // is it even possible to send a body? (don't need it here, but for learning/later?)
+    // body: JSON.stringify(tipId)
+  });
+
+  console.log('DELETE - in deleteSpot; we have returned to the frontend from the API');
+
+if (response.ok) {
+  // console.log("we made it back to the ~~~~~~~~~~~------> front end AND our response was OK");
+  const tipDeleteSuccessMessage = await response.json();
+  // console.log('spotDeleteSuccessMessage', spotDeleteSuccessMessage);
+  console.log("DELETE - YES!!! inside the if response ok section of the delete Thunk");
+  // 7:52: we've gotten this far. a look at the state indicates that we are not actually deleting from state with the following dispatch
+  dispatch(deleteOneTip(tipId))
+
+  // I think all we need to do is fix the addOneSpot
+  // dispatch(editOneSpot(newSpotData))
+  //the store is now updated because POST was successful
+  return tipDeleteSuccessMessage
+}
+return null;
+}
+
+
+
+
 
 
 const initialState = {
@@ -156,6 +195,19 @@ const tipsReducer = (state = initialState, action) => {
           ...thisTip
         }
       };
+    }
+    case DELETE_ONE: {
+      // copy the state into a new object
+      newState = Object.assign({}, state)
+
+
+      // const allSpots = {...state};
+      // delete the spot entry in state
+      delete newState.allTips[action.tipId]
+      // return the updated state
+      return {
+        ...newState
+      }
     }
     // ////////////////////////////////////////////////////////////////
     // case ADD_ONE: {

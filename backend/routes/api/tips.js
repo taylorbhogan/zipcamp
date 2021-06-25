@@ -69,4 +69,19 @@ router.put(
   })
 );
 
+router.delete('/:id', asyncHandler(async function (req, res) {
+  console.log('------inside the delete route');
+  // const {spotId} = req.body.spotId
+  // the below works; I'm curious if I can use the body for the same purpose
+  const tipId = req.params.id
+  const tip = await Tip.findByPk(tipId);
+  if (!tip) throw new Error('Cannot find tip');
+  const deletedTip = await Tip.destroy({ where: { id: tipId }});
+
+  console.log('this is deletedTip ==========>', deletedTip);
+  // return res.json('successfully deleted spot.....presumedly. check postbird');
+  // return res.json({ spotId });
+  res.json(deletedTip);
+}));
+
 module.exports = router;

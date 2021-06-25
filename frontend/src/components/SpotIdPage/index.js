@@ -56,6 +56,7 @@ function SpotIdPage(){
             <div className={styles.spotName}>{spot?.name}</div>
             <div className={styles.coordinates}>{spot?.lat}, {spot?.long}</div>
             {/* <div className={styles.areaName}>{spot?.areaId}</div> */}
+            {/* 11:52 problem is here vVv */}
             <div className={styles.areaName}>{spot?.Area?.name}</div>
           </div>
           <div className={styles.SpotDivInfo}>

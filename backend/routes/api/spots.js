@@ -67,7 +67,7 @@ router.put(
       {where: { id }}
     )
     const spot = await Spot.findByPk(id, {
-      include: User
+      include: [User, Area, State]
     })
 
     return res.json(spot);

@@ -51,4 +51,22 @@ router.post(
   })
 );
 
+router.put(
+  '/:id',
+  // spotValidations.validateUpdate,
+  asyncHandler(async function (req, res) {
+
+    const id = req.body.id;
+    delete req.body.id;
+    await Tip.update(req.body,
+      {where: { id }}
+    )
+    const tip = await Tip.findByPk(id, {
+      include: [User, Spot]
+    })
+
+    return res.json(tip);
+  })
+);
+
 module.exports = router;

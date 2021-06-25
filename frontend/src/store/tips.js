@@ -9,7 +9,7 @@ import { csrfFetch } from './csrf';
 const SET_TIPS = 'spots/SET_TIPS';
 // const SET_SPOT = 'spots/SET_SPOT'
 const ADD_ONE = 'tips/ADD_ONE'
-// const EDIT_ONE = 'spots/EDIT_ONE'
+const EDIT_ONE = 'tips/EDIT_ONE'
 // const DELETE_ONE = 'spots/DELETE_ONE'
 
 
@@ -29,6 +29,11 @@ const setTips = (tips) => ({
   type: SET_TIPS,
   tips,
 })
+
+const editOneTipNew = tip => ({
+  type: EDIT_ONE,
+  tip,
+});
 
 //THUNK 2
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +69,26 @@ export const createTip = (formData) => async dispatch  => {
   }
 }
 
+// THUNK 3
+export const editTip = (newTip) => async dispatch  => {
+  // we successfully get in here thanks to the handleSubmit func in SpotEditForm.
+    // console.log('inside the editSpot function');
+  const response = await csrfFetch(`/api/tips/${newTip.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(newTip)
+  });
+  if (response.ok) {
+    // console.log("-----------------> we made it back to the front end");
+    const newTipData = await response.json();
+    console.log("THIS IS NEWSPOTDATA",newTipData);
+    // editOneSpot works fine. trying a new one
+    // dispatch(editOneSpot(newTipData))
+    // the change I'm making at 9:02 is to use editOneSpot instead....same effect. change back to new, and now let's fix it
+    dispatch(editOneTipNew(newTipData))
+    //the store is now updated because POST was successful
+    return newTipData
+  }
+}
 
 
 const initialState = {
@@ -111,6 +136,16 @@ const tipsReducer = (state = initialState, action) => {
     //       ...thisSpot
     //     }
     //   }
+    case EDIT_ONE: {
+      const previousTips = {...state.allTips}
+      previousTips[action.tip.id] = action.tip;
+      return {
+        ...state,
+        allTips: {
+          ...previousTips
+        }
+      }
+    }
     case ADD_ONE: {
       const thisTip = {}
       thisTip[action.tip.id] = action.tip;

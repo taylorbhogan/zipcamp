@@ -6,8 +6,11 @@ import ActivityIcon from '../ActivityIcon';
 // import asdf from '../../images/spotImages/spotImage1.png'
 
 function SpotBox({spot}){
-  const imgUrl = spot.SpotImages[0]?.imgUrl
-
+  // let imgUrl;
+  // if (spot.spotImages){
+    const imgUrl = spot.SpotImages[0]?.imgUrl
+  // }
+// console.log(imgUrl);
 
   return(
     <div className={styles.spotBoxWrapper}>
@@ -16,8 +19,15 @@ function SpotBox({spot}){
           <div className={styles.spotImageDiv}>
             <div
               className={styles.spotImage}
-              style={{backgroundImage: `url(../../images/spotImages/spotImage1.png)`}}
+              // style={{backgroundImage: `url(../../images/spotImages/spotImage1.png)`}}
+              // style={spot.SpotImages.length !== 0 ? {backgroundImage: `url(../../images/spotImages/${imgUrl})`} : {backgroundImage: `url(../../images/spotImages/spotImage0.png})`}}
+              // style={spot.SpotImages.length === 0 ? {backgroundImage: `url(../../images/spotImages/spotImage0.png})`} : {backgroundImage: `url(../../images/spotImages/${imgUrl})`} }
+              // style={spot.SpotImages.length === 0 ?  {backgroundImage: `url(../../images/spotImages/${imgUrl})`} :  {backgroundImage: `url(../../images/spotImages/spotImage0.png})`} }
+              // THIS WORKS
+              style={spot.SpotImages.length === 0 ? {backgroundColor: 'black'} : {backgroundImage: `url(../../images/spotImages/${imgUrl})`} }
+              // style={{backgroundImage: `url(../../images/spotImages/spotImage0)`} }
             >
+              {/* {<h2>{imgUrl}</h2>} */}
             </div>
             {/* <img
               className={styles.spotImage}

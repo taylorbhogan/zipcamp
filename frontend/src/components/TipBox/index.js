@@ -33,9 +33,8 @@ function TipBox({tip}){
   }
 
 
-  // console.log("THIS IS A TIP LOG",tip);
   return(
-    <div className={styles.spotBoxWrapper}>
+    <div className={styles.tipBoxWrapper}>
       <div className={styles.spotBoxContainer}>
         {showModal && (
             <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
@@ -43,14 +42,7 @@ function TipBox({tip}){
             </Modal>
           )}
         <div className={styles.spotBoxContainerLeft}>
-          <div className={styles.spotImageDiv}>
-            {/* <img
-              className={styles.spotImage}
-              alt={'a glimpse of this spot'}
-              src={''}
-            /> */}
-          <div className={styles.profileImage}></div>
-          </div>
+          <div className={styles.spotImageDiv}></div>
 
         </div>
         <div className={styles.spotBoxContainerRight}>

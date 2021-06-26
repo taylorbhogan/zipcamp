@@ -115,7 +115,7 @@ export const editSpot = (newSpot) => async dispatch  => {
 // THUNK 5
 export const deleteSpot = (spotId) => async dispatch  => {
 
-    console.log('DELETE - at the first line of deleteSpot');
+    console.log('inside deleteSpot in store/spots');
 
     // the goal here is to travel to our API and ask it to talk to the db to delete the spot
 
@@ -126,7 +126,7 @@ export const deleteSpot = (spotId) => async dispatch  => {
       // body: JSON.stringify(spotId)
     });
 
-    console.log('DELETE - in deleteSpot; we have returned to the frontend from the API');
+    // console.log('DELETE - in deleteSpot; we have returned to the frontend from the API');
 
   if (response.ok) {
     // console.log("we made it back to the ~~~~~~~~~~~------> front end AND our response was OK");

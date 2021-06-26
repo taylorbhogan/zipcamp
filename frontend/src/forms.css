@@ -42,3 +42,17 @@
 .submitButton:hover{
   background-color: var(--secondaryColorGreen);
 }
+
+/* when you update this, check on SpotEditForm */
+.warningButton{
+  background-color: pink;
+  border-radius: 8px;
+  padding: .75rem 0;
+  margin-top: 40px;
+}
+
+/* when you update this, check on SpotEditForm */
+.warningButton:hover{
+  background-color: black;
+  color: white;
+}

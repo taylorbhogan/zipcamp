@@ -5,6 +5,8 @@ import { getAreas } from '../../store/areas'
 import { getUsStates } from '../../store/usStates'
 import '../../index.css'
 import { editSpot } from '../../store/spots';
+import { deleteSpot } from '../../store/spots'
+import styles from './SpotEditForm.module.css'
 
 function SpotEditForm({spotId, setShowModal}){
   //
@@ -41,6 +43,10 @@ function SpotEditForm({spotId, setShowModal}){
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
+    // console.log("i am e", e);
+if (e.target.id !== 8){
+
     const errors = [];
     if(!name) errors.push('Please add a spot name.');
     if(!lat) errors.push('Please add a latitude.')
@@ -63,12 +69,12 @@ function SpotEditForm({spotId, setShowModal}){
 // console.log(newSpot);
 // TODO: Convert the below to an edit! Done. Just changed the words. Time to do the real work in the store
     //await the dispatch of the thunk creator
-    let editedSpot = await dispatch(editSpot(newSpot))
-    console.log("createdSpot", editedSpot);
-    if (editedSpot) {
-      //act on the response
-      setShowModal(false)
-      history.push(`/spots/${editedSpot.id}`);
+      let editedSpot = await dispatch(editSpot(newSpot))
+      console.log("createdSpot", editedSpot);
+      if (editedSpot) {
+        //act on the response
+        setShowModal(false)
+        history.push(`/spots/${editedSpot.id}`);
     }
     // let createdSpot = await dispatch(createSpot(newSpot))
     // console.log("createdSpot", createdSpot);
@@ -76,13 +82,25 @@ function SpotEditForm({spotId, setShowModal}){
     //   //act on the response
     //   history.push(`/spots/${createdSpot.id}`);
     // }
+
+    }
   };
 
 
 
 
 
-
+  const handleDelete = async (spotId) => {
+    // successfully got this far...
+    console.log(spotId);
+    // dispatch THUNK
+    let deletedSpot = await dispatch(deleteSpot(spotId))
+    console.log('inside handleDelete in SpotEditForm');
+    if (deletedSpot) {
+      //act on the response
+      history.push(`/spots`);
+    }
+  }
 
 
 
@@ -90,10 +108,11 @@ function SpotEditForm({spotId, setShowModal}){
 
   return(
 
-    <div>
+    <div className={styles.formContainer}>
       <form
         className='form'
         onSubmit={handleSubmit}
+        // onSubmit={e => e.target}
         >
         <h1
           className={'formHeader'}
@@ -152,7 +171,7 @@ function SpotEditForm({spotId, setShowModal}){
         // // the change:
         // value={spot.stateId}
         // //
-          value={spot.areaId}
+          value={spot?.areaId}
           >
           {areas.map(area =>
             <option
@@ -163,7 +182,7 @@ function SpotEditForm({spotId, setShowModal}){
         </select>
         <select
           // the change:
-          value={spot.stateId}
+          value={spot?.stateId}
           //
           onChange={(e) => setStateId(e.target.value)}
           className={'formSelectInput'}
@@ -182,6 +201,13 @@ function SpotEditForm({spotId, setShowModal}){
           className={'submitButton'}
         >Save your changes</button>
       </form>
+      <button
+        onClick={() => handleDelete(spot.id)}
+        className={styles.warningButton}
+        id={8}
+        >
+        Delete
+      </button>
     </div>
   )
 }

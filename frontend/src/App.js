@@ -9,6 +9,7 @@ import WelcomeMessage from './components/WelcomeMessage';
 import SpotsList from './components/SpotsList'
 import SpotIdPage from './components/SpotIdPage'
 import AreasList from './components/AreasList';
+import ScrollToTop from './components/ScrollToTop';
 import './index.css'
 
 function App() {
@@ -23,23 +24,25 @@ function App() {
       <div className='pageContainer'>
       <Navigation isLoaded={isLoaded} />
         {isLoaded && (
-          <Switch>
-            <Route exact path='/'>
-                <WelcomeMessage />
-            </Route>
-            <Route path='/signup'>
-              <SignupFormPage />
-            </Route>
-            <Route exact path='/spots'>
-              <SpotsList />
-            </Route>
-            <Route path='/spots/:spotId'>
-              <SpotIdPage />
-            </Route>
-            <Route path='/areas'>
-              <AreasList />
-            </Route>
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              <Route exact path='/'>
+                  <WelcomeMessage />
+              </Route>
+              <Route path='/signup'>
+                <SignupFormPage />
+              </Route>
+              <Route exact path='/spots'>
+                <SpotsList />
+              </Route>
+              <Route path='/spots/:spotId'>
+                <SpotIdPage />
+              </Route>
+              <Route path='/areas'>
+                <AreasList />
+              </Route>
+            </Switch>
+          </ScrollToTop>
         )}
       </div>
       <Footer />

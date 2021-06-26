@@ -55,7 +55,7 @@ function Navigation({ isLoaded }){
   return (
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
-        <div className={styles.navbarLeft}>w
+        <div className={styles.navbarLeft}>
           <div className={styles.navbarLogo}>
             zipcamp
           </div>

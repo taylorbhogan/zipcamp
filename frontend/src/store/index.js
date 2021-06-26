@@ -5,6 +5,7 @@ import sessionReducer from './session';
 import spotsReducer from './spots'
 import statesReducer from './usStates';
 import tipsReducer from './tips';
+import mapsReducer from './maps';
 
 // each of the keys in here are set on the state obj and are how I'll key into it
 // these are the slices of state
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   areas: areasReducer,
   states: statesReducer,
   tips: tipsReducer,
+  maps: mapsReducer,
 });
 
 

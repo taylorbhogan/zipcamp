@@ -2,19 +2,29 @@ import React from 'react'
 import styles from './SpotBox.module.css'
 import SpotIdButton from '../ShowSpotIdButton';
 import ActivityIcon from '../ActivityIcon';
-import spotsReducer from '../../store/spots';
+// import spotsReducer from '../../store/spots';
+// import asdf from '../../images/spotImages/spotImage1.png'
 
 function SpotBox({spot}){
+  const imgUrl = spot.SpotImages[0]?.imgUrl
+
+
   return(
     <div className={styles.spotBoxWrapper}>
       <div className={styles.spotBoxContainer}>
         <div className={styles.spotBoxContainerLeft}>
           <div className={styles.spotImageDiv}>
-            <img
+            <div
+              className={styles.spotImage}
+              style={{backgroundImage: `url(../../images/spotImages/spotImage1.png)`}}
+            >
+            </div>
+            {/* <img
               className={styles.spotImage}
               alt={'a glimpse of this spot'}
-              src={''}
-            />
+              // src='../../images/spotImages/spotImage1.png'
+              // style={{backgroundImage: `url(../../images/spotImages/spotImage1.png)`}}
+            /> */}
           </div>
           <div className={styles.activityDiv}>
             <ActivityIcon />

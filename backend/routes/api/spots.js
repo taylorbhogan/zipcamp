@@ -9,6 +9,7 @@ const router = require('express').Router();
 // import models from /db so we can use sequelize to query the postgreSQL database **************************************************/
 const {
   Spot,
+  SpotImage,
   Area,
   State,
   User
@@ -25,13 +26,13 @@ const spotValidations = require('../../validations/spots')
 // use sequelize to query the postgreSQL database **************************************************/
 
 router.get('/', asyncHandler(async (req, res) => {
-  const spots = await Spot.findAll({include: [Area, State, User]});
+  const spots = await Spot.findAll({include: [Area, State, User, SpotImage]});
   res.json(spots);
 }))
 
 router.get('/:id', asyncHandler(async (req, res) => {
   const spot = await Spot.findByPk(req.params.id,{
-    include: [User, Area, State]
+    include: [User, Area, State, SpotImage]
   });
   return res.json(spot);
 }));

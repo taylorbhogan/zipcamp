@@ -8,6 +8,7 @@ import { getSpot } from '../../store/spots'
 import ActivityIcon from '../ActivityIcon';
 import SpotEditForm from '../SpotEditForm';
 import TipsList from '../TipsList';
+import MapContainer from '../Maps';
 
 function SpotIdPage(){
   const sessionUser = useSelector(state => state.session.user);
@@ -91,6 +92,9 @@ function SpotIdPage(){
               <div className={styles.directionsHeader}>Directions:</div>
               <div className={styles.directions}>{spot && spot.directions}</div>
             </div>
+          </div>
+          <div>
+            <MapContainer />
           </div>
           <div className={styles.SpotDivActivities}>
             <ActivityIcon />

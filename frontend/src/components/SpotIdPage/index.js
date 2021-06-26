@@ -64,26 +64,22 @@ function SpotIdPage(){
           <div className={styles.SpotDivInfo}>
             <div className={styles.SpotDivInfoLeft}>
               <div className={styles.userInfo}>
-                <div>Discovered by</div>
-                {/* removed ? after user */}
-                {/* code renders faster than it gets the info. so rather than do this, reformat the info we need so there is not a race */}
-                {/* justin did that by.... */}
-                <div>{spot?.User?.username}</div>
-                <div className={styles.editOuterDiv}></div>
+                {spot?.userId === sessionUser.id && (
+                <p>Your Spot</p>
+              )}
+                {spot?.userId !== sessionUser.id && (
+                <>
+                  <div>Discovered by</div>
+                  <div>{spot?.User?.username}</div>
+                </>
+              )}
                   <button
-                  // LOOK HERE
                     hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
                     onClick={() => setShowModal(true)}
-                    className={styles.editDiv}>
-                    Edit
+                    className={styles.editButton}>
+                    Need to make changes?
                   </button>
                 <div className={styles.deleteOuterDiv}></div>
-                  <button
-                    hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
-                    onClick={() => handleDelete(spotId)}
-                    className={styles.deleteOuterDiv}>
-                    Delete
-                  </button>
               </div>
               <div className={styles.profileImage}></div>
             </div>

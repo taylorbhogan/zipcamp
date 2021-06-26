@@ -50,9 +50,6 @@ function TipsList(){
       <div className={styles.contentContainer}>
         <div className={styles.topWrapper}>
           <div className={styles.topContainer}>
-            <span>
-              I am the TipsList. My job is to show the Tip Add Modal and a map of all the tips.
-            </span>
               <TipAddModal />
           </div>
         </div>

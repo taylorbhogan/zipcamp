@@ -48,6 +48,7 @@
 }
 .SpotDivInfoRight{
   font-size: 25px;
+  /* background-color: rgba(241, 219, 121, 0.575); */
 }
 
 .directionsHeader{
@@ -82,7 +83,7 @@
 
 .userInfo{
   margin-left: 80px;
-  width: 130px;
+  width: 100px;
   /* position: absolute; */
   /* top: 0; */
 }
@@ -93,14 +94,27 @@
   padding-left: 50px;
 }
 
-.editOuterDiv{
+/* .editOuterDiv{
   padding-top: 15px;
+} */
+
+.editButton{
+  padding: 5px 0px 5px 0px;
+  font-size: 15px;
+  text-align: left;
+  font-family: inherit;
+  border: 0;
+  text-decoration: underline;
+  background-color: Transparent;
+  border-radius: 2px;
+  /* margin: 20px; */
 }
 
-.editDiv{
-  border: 1px solid black;
-  width: 70px;
-  padding-left: 30px;
+.editButton:hover{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.75);
+  transform: translate3d(1px, 1px, 0);
+  transition: all .1s;
 }
 
 .deleteOuterDiv{

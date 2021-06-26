@@ -46,13 +46,9 @@ function TipsList(){
   }, [dispatch])
 
   return(
-    <div className={styles.contentWrapper}>
+    <div className={styles.sectionContainer}>
+      <TipAddModal />
       <div className={styles.contentContainer}>
-        <div className={styles.topWrapper}>
-          <div className={styles.topContainer}>
-              <TipAddModal />
-          </div>
-        </div>
         {thisSpotTips.map((tip) => <TipBox key={tip.id} tip={tip} />)}
       </div>
     </div>

@@ -39,7 +39,6 @@ module.exports = {
         { spotId: 19, imgUrl: 'spotImage28.png', imgType: 'Fancy'},
         { spotId: 20, imgUrl: 'spotImage29.png', imgType: 'Fancy'},
         { spotId: 21, imgUrl: 'spotImage30.png', imgType: 'Fancy'},
-        { spotId: 22, imgUrl: 'spotImage31.png', imgType: 'Fancy'},
       ], {});
   },
 

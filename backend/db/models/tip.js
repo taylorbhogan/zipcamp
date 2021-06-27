@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       get() {
         // return moment(this.getDataValue('createdAt')).format('DD/MMMM/YYYY h:mm:ss');
-        return moment(this.getDataValue('createdAt')).format('[on] MMMM DD, YYYY [at] h:mm:ss');
+        // return moment(this.getDataValue('createdAt')).format('[on] MMMM DD, YYYY [at] h:mm:ss');
+        return moment(this.getDataValue('createdAt')).format('[On] MMMM DD, YYYY');
     }
     },
     updatedAt: {

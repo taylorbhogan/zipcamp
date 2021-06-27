@@ -3,22 +3,38 @@
 // then we use useJsApiLoader to do alllll the heavy lifting
 
 import React from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '600px',
+  width: '500px',
   height: '400px',
 };
 
-const center = {
-  lat: 38.9072,
-  lng: 77.0369,
-};
-const Maps = ({ apiKey }) => {
+// const defaultCenter = {
+//   lat: 41.9072,
+//   lng: -119.0369,
+// };
+const Maps = ({ apiKey, lat, long }) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
   });
+
+  const defaultCenter = {
+    lat: +lat,
+    lng: +long,
+  };
+  const pins = [
+    {
+      name: 'location 1',
+      location: {
+        lat: +lat,
+        lng: +long,
+      }
+    }
+  ]
+console.log('this is the gmaps info:',lat,long);
+
 
   return (
     // whereas in the docs the component is wrapped in LoadScript, here the map is only rendered if the loading happens
@@ -26,9 +42,20 @@ const Maps = ({ apiKey }) => {
       {isLoaded && (
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={center}
+          center={defaultCenter}
           zoom={10}
-        />
+        >
+          {
+            pins.map(item => {
+              return (
+              <Marker
+                key={item.name}
+                position={item.location}
+              />
+              )
+            })
+         }
+        </GoogleMap>
       )}
     </>
   );

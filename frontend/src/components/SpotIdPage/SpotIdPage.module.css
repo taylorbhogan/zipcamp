@@ -16,6 +16,7 @@
   width: 900px;
   background-color: var(--mainColorLightGrey);
   margin-top: var(--containerMarginTop);
+  margin-bottom: var(--containerMarginTop);
   margin-right: var(--containerMarginSide);
   margin-left: var(--containerMarginSide);
   padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
@@ -25,6 +26,7 @@
 
 .spotName{
   font-size: var(--pageHeaderSize);
+  margin-top: 0px;
 }
 
 .coordinates{
@@ -33,11 +35,17 @@
   margin-top: 5px;
 }
 
+.areaName{
+  margin-top: 8px;
+  font-size: 20px;
+}
+
 .SpotDivInfo{
   display: flex;
   flex-direction: row;
   border-top: solid 1px black;
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 70px;
   padding-top: 40px;
 }
 

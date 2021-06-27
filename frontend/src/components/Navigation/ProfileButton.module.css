@@ -15,7 +15,11 @@
   height: 30px;
   width: var(--navAccountButtonWidth);
   border-radius: var(--buttonBorderRadius);
-  background-color: var(--mainColorLightGrey);
+  background-color: #222222;
+  color: var(--mainColorGreen);
+  margin-right: 20px;
+  /* padding-top: 20px; */
+
 }
 
 .profileDropdown{

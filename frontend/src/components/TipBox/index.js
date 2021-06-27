@@ -35,7 +35,7 @@ function TipBox({tip}){
 
   return(
     <div className={styles.tipBoxWrapper}>
-      <div className={styles.spotBoxContainer}>
+      <div className={styles.tipCardContainer}>
         {showModal && (
             <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
               <TipEditForm setShowModal={setShowModal} spotId={1} tipId={tip.id}/>
@@ -48,32 +48,28 @@ function TipBox({tip}){
         <div className={styles.spotBoxContainerRight}>
           {/* <div className={styles.spotName}>{tip.id}</div> */}
           <div className={styles.locationDiv}>
-            <div className={styles.areaName}>{tip.User.username} wrote:</div>
-            <div className={styles.areaName}>Rating: {tip.rating}</div>
-            <div className={styles.areaName}>{tip.createdAt}</div>
+            <div className={styles.invisibleEditWrapper}>
+              <button
+                hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
+                onClick={() => setShowModal(true)}
+                className={styles.invisibleEdit}
+                >
+              Edit
+              </button>
+              <button
+                hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
+                onClick={() => handleDelete(tip.id)}
+                className={styles.invisibleDelete}
+              >
+              Delete
+              </button>
+            </div>
+            <div className={styles.createdAt}>{tip.createdAt}</div>
+            <div className={styles.username}>{tip.User.username} wrote:</div>
+            {tip.rating && (
+            <div className={styles.rating}>Rating: {tip.rating}</div>)}
           </div>
           <div className={styles.spotBlurb}>{tip.text}</div>
-          <div>
-            <button
-              hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
-              onClick={() => setShowModal(true)}
-              className={styles.editDiv}>
-              Edit
-            </button>
-          </div>
-          <div className={styles.deleteOuterDiv}>
-            <button
-              hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
-              onClick={() => handleDelete(tip.id)}
-              className={styles.deleteOuterDiv}>
-              Delete
-            </button>
-          </div>
-          {/* <SpotIdButton
-            buttonText={'Check it out'}
-            lightBackground={true}
-            // spotId={spot.id}
-            href={`/spots`}/> */}
         </div>
       </div>
     </div>

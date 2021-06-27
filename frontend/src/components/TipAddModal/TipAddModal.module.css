@@ -1,0 +1,100 @@
+.buttonWrapper{
+  position: relative;
+}
+
+.button{
+  position: absolute;
+  left: 320px;
+  top: 30px;
+  width: 100px;
+  background-color: Transparent;
+  border: 0;
+  text-decoration: underline;
+  font-size: 17px;
+}
+
+.button:hover{
+  cursor: pointer;
+  /* background-color: rgba(255, 255, 255, 0.75); */
+  transform: translate3d(1px, 1px, 0);
+  transition: all .1s;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .faUserParent{
+  font-size: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .targetDiv{
+  position: absolute;
+  left: 350px;
+  height: 100px;
+}
+
+.targetDiv:hover .button{
+  visibility: visible;
+}
+
+.targetDiv:hover .plus{
+  visibility: hidden;
+  width: 400px;
+} */
+
+/* .plus{
+  background-image: url(../../images/plus.png);
+  width: 100px;
+  height: 100px;
+  text-decoration: underline;
+
+} */

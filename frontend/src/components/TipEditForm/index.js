@@ -96,7 +96,7 @@ function TipEditForm({spotId, setShowModal, tipId}){
         >
         <h1
           className={'formHeader'}
-        >hello from tip edit form</h1>
+        >what's important to remember?</h1>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

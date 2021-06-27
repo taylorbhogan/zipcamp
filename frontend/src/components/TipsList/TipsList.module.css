@@ -14,12 +14,18 @@
 .contentContainer{
   /* sizing */
   width: 100%;
-  width: 600px;
+  width: 800px;
   background-color: var(--mainColorLightGrey);
   margin-right: var(--containerMarginSide);
   margin-left: var(--containerMarginSide);
-  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
+  padding-top: var(--containerPaddingTop);
+  padding-bottom: 80px;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  /* padding-left: var(--containerPaddingSide); */
   border-radius: var(--containerBorderRadius);
   /* flexing */
-  
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }

@@ -65,7 +65,7 @@ function SpotIdPage(){
             <div className={styles.SpotDivInfoLeft}>
               <div className={styles.userInfo}>
                 {spot?.userId === sessionUser.id && (
-                <p>Your Spot</p>
+                <p>You added this spot</p>
               )}
                 {spot?.userId !== sessionUser.id && (
                 <>
@@ -89,15 +89,18 @@ function SpotIdPage(){
               <div className={styles.directions}>{spot && spot.directions}</div>
             </div>
           </div>
-          {/* <div>
-            <MapContainer />
-          </div> */}
-          <div className={styles.SpotDivActivities}>
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
+          <div>
+            <MapContainer
+              lat={spot?.lat}
+              long={spot?.long}
+            />
           </div>
+          {/* <div className={styles.SpotDivActivities}>
+            <ActivityIcon />
+            <ActivityIcon />
+            <ActivityIcon />
+            <ActivityIcon />
+          </div> */}
         </div>
         <div className={styles.TipsUnused}>
           <TipsList />

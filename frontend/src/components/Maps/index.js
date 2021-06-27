@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getKey } from '../../store/maps';
 import Maps from './Maps';
 
-const MapContainer = () => {
+const MapContainer = ({lat, long}) => {
   const key = useSelector((state) => state.maps.key);
 
   const dispatch = useDispatch();
@@ -20,9 +20,14 @@ const MapContainer = () => {
   if (!key) {
     return null;
   }
+  // console.log('index.js this is the gmaps info:',lat,long);
 
   return (
-    <Maps apiKey={key} />
+    <Maps
+      apiKey={key}
+      lat={lat}
+      long={long}
+    />
   );
 };
 

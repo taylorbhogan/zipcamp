@@ -1,12 +1,78 @@
 @import './../../index.css';
 
-.spotBoxContainer{
-  border: 1px solid black;
+
+
+.tipCardContainer{
+  border: 2px solid rgb(124, 124, 124);
   border-radius: var(--cardBorderRadius);
+  /* background-color: var(--mainColorLightGrey); */
+  /* background-color: rgb(224, 224, 224); */
   display: flex;
   flex-direction: row;
   margin: 20px 30px 20px 30px;
-  padding: 20px 20px 20px 20px;
+  padding: 0px 20px 20px 20px;
+  width: 292px;
+  box-shadow: 0rem 0 .3rem .1rem #AAA;
+}
+
+.tipCardContainer:hover{
+  /* transform: translateY(-7px); */
+  box-shadow: -.4rem 0 1rem #999;
+  /* background-color: lightcoral; */
+  background-color: rgb(233, 233, 233);
+}
+
+.invisibleEditWrapper{
+  position: relative;
+}
+
+.invisibleEdit{
+  top: 0px;
+  visibility: hidden;
+  position: absolute;
+  left: 220px;
+  background-color: Transparent;
+  border: 0;
+  text-decoration: underline;
+}
+
+.invisibleDelete{
+  top: 25px;
+  visibility: hidden;
+  position: absolute;
+  left: 220px;
+  background-color: Transparent;
+  border: 0;
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.invisibleEdit:hover{
+  cursor: pointer;
+  transform: translate3d(1px, 1px, 0);
+  transition: all .1s;
+}
+
+
+
+.invisibleDelete:hover{
+  cursor: pointer;
+  font-weight: 700;
+  /* transform: translate3d(1px, 1px, 0); */
+  /* transition: all .1s; */
+  /* font-size: 14px; */
+}
+
+
+.tipCardContainer:hover .invisibleEdit{
+  visibility: visible;
+}
+.tipCardContainer:hover .invisibleDelete{
+  visibility: visible;
+}
+
+.invisibleEdit:hover .invisibleDelete{
+  visibility: visible;
 }
 
 .spotBoxContainerLeft{
@@ -14,13 +80,14 @@
   flex-direction: column;
 }
 
-.spotImageDiv{
-  width: 45px;
-  height: 45px;
+
+/* .spotImageDiv{
+  width: 20px;
+  height: 20px;
   border: 1px solid black;
   padding: 20px;
   border-radius: 45px;
-}
+} */
 
 .spotBoxContainerRight{
   display: flex;
@@ -32,8 +99,22 @@
   font-size: var(--cardHeaderSize)
 }
 
-.areaName{
-  font-size: 20px;
+.createdAt{
+  font-size: 1em;
+}
+
+.username{
+  font-size: 1.25em;
+}
+
+.rating{
+  font-size: 1.25em;
+
+}
+
+.spotBlurb{
+  font-size: 1.5em;
+  margin-top: 20px;
 }
 
 .activityDiv{

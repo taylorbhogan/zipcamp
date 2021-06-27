@@ -2,7 +2,7 @@
 // first we declare customizations that are then applied by the GoogleMap component
 // then we use useJsApiLoader to do alllll the heavy lifting
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import styles from './Maps.module.css'
 
@@ -15,7 +15,7 @@ const containerStyle = {
 
 const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
   const [ currentPosition, setCurrentPosition ] = useState({lat: 0, lng: 0});
-  const [ pinLocation, setpinLocation ] = useState({});
+  // const [ pinLocation, setpinLocation ] = useState({});
 
 
 
@@ -24,7 +24,7 @@ const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
     googleMapsApiKey: apiKey,
   });
 
-  const markerRef = useRef(null);
+  // const markerRef = useRef(null);
 
   // console.log('-------isAdding--------->',isAdding);
 

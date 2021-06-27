@@ -19,7 +19,7 @@ function TipsList(){
   const {spotId} = useParams()
   // useSelector accepts a single function, which we call a selector function.
   // A selector is a function that takes the entire Redux store state as its argument, reads some value from the state, and returns that result.
-  const spots = useSelector((state) => Object.values(state.spots.allSpots))
+  // const spots = useSelector((state) => Object.values(state.spots.allSpots))
 
   // const allKindsOfTips = useSelector((state) => state.tips)
   const tips = useSelector((state) => Object.values(state.tips.allTips))
@@ -34,7 +34,7 @@ function TipsList(){
   //   // }).map((tip) => tip.createdAt);
   // };
   // sortTips(thisSpotTips)
-  const hello = true;
+  // const hello = true;
 
 // I'm not sure what this should look like. Let's see if getting to the backend makes it make more sense
 

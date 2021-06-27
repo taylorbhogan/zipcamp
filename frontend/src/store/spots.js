@@ -2,7 +2,7 @@
 // we use this module to send fetch requests to the backend, which talks to the db
 // we access the store by dispatching thunks (using dispatch()) as a side effect in our components
 
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { csrfFetch } from './csrf';
 
 
@@ -31,10 +31,10 @@ const addOneSpot = spot => ({
   type: ADD_ONE,
   spot,
 });
-const editOneSpot = spot => ({
-  type: ADD_ONE,
-  spot,
-});
+// const editOneSpot = spot => ({
+//   type: ADD_ONE,
+//   spot,
+// });
 const editOneSpotNew = spot => ({
   type: EDIT_ONE,
   spot,
@@ -230,7 +230,7 @@ const spotsReducer = (state = initialState, action) => {
     case EDIT_ONE: {
       // newState = Object.assign({}, state)
       // newState.allSpots[action.spot.id]: action.spot
-      const newlyEditedSpot = {}
+      // const newlyEditedSpot = {}
 
       const previousSpots = {...state.allSpots}
       previousSpots[action.spot.id] = action.spot;

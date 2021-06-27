@@ -29,10 +29,10 @@ function SpotAddForm(){
   // useSelector pulls the info from state, where it was put by
   const areas = useSelector((state) => Object.values(state.areas))
   const [ area, setArea ] = useState('1')
-  const usStates = useSelector(state => Object.values(state.states));
-  const [ stateId, setStateId ] = useState('1')
+  // const usStates = useSelector(state => Object.values(state.states));
+  // const [ stateId, setStateId ] = useState('1')
   const userId = useSelector(state => state.session.user?.id);
-  const [location, setLocation] = useState({})
+  // const [location, setLocation] = useState({})
 
 
   //This is where we validate. Is useEffect the right choice here? Would it be better to move it to a handleSubmit function as in SignupFormPage?
@@ -151,7 +151,7 @@ function SpotAddForm(){
                     key={area.id}>{area.name}</option>
                   )}
               </select>
-              <select
+              {/* <select
                 onChange={(e) => setStateId(e.target.value)}
                 className={'formSelectInput'}
                 hidden={true}
@@ -161,7 +161,7 @@ function SpotAddForm(){
                     value={state.id}
                     key={state.id}>{state.name}</option>
                   )}
-              </select>
+              </select> */}
             </div>
             <div className={styles.coordsDiv}>
               <input

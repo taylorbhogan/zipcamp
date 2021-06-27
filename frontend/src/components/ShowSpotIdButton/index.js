@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import styles from './ShowSpotIdButton.module.css'
-import { setCurrentSpot } from '../../store/spots';
+// import { setCurrentSpot } from '../../store/spots';
 import { NavLink } from 'react-router-dom';
 
 

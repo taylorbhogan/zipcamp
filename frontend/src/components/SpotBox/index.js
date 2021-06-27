@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SpotBox.module.css'
 import ShowSpotIdButton from '../ShowSpotIdButton';
-import ActivityIcon from '../ActivityIcon';
+// import ActivityIcon from '../ActivityIcon';
 // import spotsReducer from '../../store/spots';
 // import asdf from '../../images/spotImages/spotImage1.png'
 

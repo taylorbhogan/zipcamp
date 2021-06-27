@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 
 import styles from './TipBox.module.css'
-import SpotIdButton from '../ShowSpotIdButton';
-import ActivityIcon from '../ActivityIcon';
-import spotsReducer from '../../store/spots';
+// import SpotIdButton from '../ShowSpotIdButton';
+// import ActivityIcon from '../ActivityIcon';
+// import spotsReducer from '../../store/spots';
 import { deleteTip } from '../../store/tips'
 
 import TipEditForm from '../TipEditForm';

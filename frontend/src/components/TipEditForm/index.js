@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { getAreas } from '../../store/areas'
-import { getUsStates } from '../../store/usStates'
+// import { getAreas } from '../../store/areas'
+// import { getUsStates } from '../../store/usStates'
 import '../../index.css'
 // import { editSpot } from '../../store/spots';
 import { editTip } from '../../store/tips';

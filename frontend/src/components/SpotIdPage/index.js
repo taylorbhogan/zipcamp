@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import styles from './SpotIdPage.module.css'
-import { deleteSpot } from '../../store/spots'
+// import { deleteSpot } from '../../store/spots'
 import { getSpot } from '../../store/spots'
-import ActivityIcon from '../ActivityIcon';
+// import ActivityIcon from '../ActivityIcon';
 import SpotEditForm from '../SpotEditForm';
 import TipsList from '../TipsList';
 import MapContainer from '../Maps';
 
 function SpotIdPage(){
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const {spotId} = useParams();
   const spot = useSelector((state) => state.spots.allSpots[spotId])
@@ -32,16 +32,16 @@ function SpotIdPage(){
 
 
   // console.log('spot', spot);
-  const handleDelete = async (spotId) => {
-    // successfully got this far...
-    console.log(spotId);
-    // dispatch THUNK
-    let deletedSpot = await dispatch(deleteSpot(spotId))
-    if (deletedSpot) {
-      //act on the response
-      history.push(`/spots`);
-    }
-  }
+  // const handleDelete = async (spotId) => {
+  //   // successfully got this far...
+  //   console.log(spotId);
+  //   // dispatch THUNK
+  //   let deletedSpot = await dispatch(deleteSpot(spotId))
+  //   if (deletedSpot) {
+  //     //act on the response
+  //     history.push(`/spots`);
+  //   }
+  // }
 
 
   return(

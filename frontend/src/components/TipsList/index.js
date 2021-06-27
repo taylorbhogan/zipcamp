@@ -34,7 +34,7 @@ function TipsList(){
   //   // }).map((tip) => tip.createdAt);
   // };
   // sortTips(thisSpotTips)
-
+  const hello = true;
 
 // I'm not sure what this should look like. Let's see if getting to the backend makes it make more sense
 
@@ -46,12 +46,16 @@ function TipsList(){
   }, [dispatch])
 
   return(
-    <div className={styles.sectionContainer}>
-      <TipAddModal />
-      <div className={styles.contentContainer}>
-        {thisSpotTips.map((tip) => <TipBox key={tip.id} tip={tip} />)}
+    <>
+      <div className={styles.sectionContainer}>
+        <TipAddModal thisSpotTips={thisSpotTips}/>
+        {(thisSpotTips.length > 0) && (
+          <div className={styles.contentContainer}>
+            {thisSpotTips.map((tip) => <TipBox key={tip.id} tip={tip} />)}
+          </div>
+        )}
       </div>
-    </div>
+    </>
   )
 }
 

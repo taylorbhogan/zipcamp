@@ -1,13 +1,22 @@
 @import './../../index.css';
 
 .spotBoxContainer{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: var(--cardBorderRadius);
+  background-color: var(--mainColorLightGrey);
+
   display: flex;
   flex-direction: row;
   margin: 20px 30px 20px 30px;
-  padding: 20px 20px 20px 20px;
+  padding: 30px 30px;
+  box-shadow: 0rem 0 .3rem .1rem #AAA;
+
 }
+.spotBoxContainer:hover{
+  box-shadow: -.4rem 0 1rem #999;
+
+}
+
 
 .spotBoxContainerLeft{
   display: flex;
@@ -19,6 +28,8 @@
   height: 200px;
   border: 1px solid black;
   padding: 20px;
+  border-radius: var(--cardBorderRadius);
+
 }
 
 .spotBoxContainerRight{
@@ -33,6 +44,18 @@
 
 .areaName{
   font-size: 20px;
+  margin-top: 10px;
+}
+
+.stateName{
+  margin-top: 10px;
+
+}
+
+.spotBlurb{
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
 .activityDiv{

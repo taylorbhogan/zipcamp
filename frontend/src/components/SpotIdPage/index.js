@@ -89,11 +89,14 @@ function SpotIdPage(){
               <div className={styles.directions}>{spot && spot.directions}</div>
             </div>
           </div>
-          <div>
-            <MapContainer
-              lat={spot?.lat}
-              long={spot?.long}
-            />
+          <div className={styles.mapContainerWrapper}>
+            <div className={styles.mapContainer}>
+              <MapContainer
+                lat={spot?.lat}
+                long={spot?.long}
+                />
+              <div className={styles.mapContainerBackground}></div>
+            </div>
           </div>
           {/* <div className={styles.SpotDivActivities}>
             <ActivityIcon />

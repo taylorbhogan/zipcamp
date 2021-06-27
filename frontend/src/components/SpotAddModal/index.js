@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Modal } from '../../context/Modal'
 import SpotAddForm from "../SpotAddForm";
+import styles from './SpotAddModal.module.css'
+import '../../index.css'
 
 
 function SpotAddModal(){
@@ -10,7 +12,9 @@ function SpotAddModal(){
     <div>
       <button
         onClick={() => setShowSpotAddModal(true)}
-      >click me to add a spot</button>
+        className={styles.addSpotButton}
+        // className={'submitButton'}
+      >add a new spot</button>
       {showSpotAddModal && (
         <Modal onClose={() => setShowSpotAddModal(false)}>
           <SpotAddForm />

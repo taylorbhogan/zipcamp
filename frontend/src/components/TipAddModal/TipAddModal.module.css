@@ -4,7 +4,7 @@
 
 .button{
   position: absolute;
-  left: 320px;
+  left: -420px;
   top: 30px;
   width: 100px;
   background-color: Transparent;
@@ -21,6 +21,15 @@
   font-weight: bold;
 }
 
+.buttonBackground{
+  width: 110px;
+  height: 50px;
+  background-color: lightcyan;
+  position: absolute;
+  left: -420px;
+  top: 15px;
+  border-radius: 1rem;
+}
 
 
 

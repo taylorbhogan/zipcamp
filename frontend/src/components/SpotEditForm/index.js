@@ -183,6 +183,7 @@ if (e.target.id !== 8){
         <select
           // the change:
           value={spot?.stateId}
+          hidden={true}
           //
           onChange={(e) => setStateId(e.target.value)}
           className={'formSelectInput'}

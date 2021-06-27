@@ -13,6 +13,7 @@
   padding: 0px 20px 20px 20px;
   width: 292px;
   box-shadow: 0rem 0 .3rem .1rem #AAA;
+  z-index: 1;
 }
 
 .tipCardContainer:hover{

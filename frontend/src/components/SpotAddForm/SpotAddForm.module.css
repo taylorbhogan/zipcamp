@@ -1,0 +1,45 @@
+.containerDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 1000px;
+}
+
+.leftDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.blurbInput{
+  height: 70px;
+  margin-bottom: 10px;
+}
+.directionsInput{
+  height: 110px;
+  margin-bottom: 10px;
+}
+
+.rightDiv{
+  display: flex;
+  flex-direction: column;
+}
+
+.coordsDiv{
+  display: flex;
+  flex-direction: column;
+}
+
+.infoDiv{
+  display: flex;
+  flex-direction: column;
+}
+
+.coords{
+  height: 28px;
+  margin-bottom: 10px;
+  border: none
+}
+
+

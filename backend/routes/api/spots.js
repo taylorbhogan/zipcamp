@@ -12,7 +12,10 @@ const {
   SpotImage,
   Area,
   State,
-  User
+  User,
+  Tip,
+  Adventure,
+  ActivitiesToSpot,
 } = require('../../db/models')
 
 // import middleware **********************************************************/
@@ -80,19 +83,88 @@ router.put(
 
 // all we have to do here is get the db to delete the spot
 router.delete('/:id', asyncHandler(async function (req, res) {
-  console.log('------inside the delete route');
-  // const {spotId} = req.body.spotId
-  // the below works; I'm curious if I can use the body for the same purpose
   const spotId = req.params.id
   const spot = await Spot.findByPk(spotId);
   if (!spot) throw new Error('Cannot find spot');
+//////////////////////////
+  const tips = await Tip.findAll({
+    where: {
+      spotId
+    }
+  })
+
+  for (let i = 0; i < tips.length; i++) {
+    const tip = tips[i];
+    await tip.destroy();
+  }
+//////////////////////////
+  const adventures = await Adventure.findAll({
+    where: {
+      spotId
+    }
+  })
+
+  for (let i = 0; i < adventures.length; i++) {
+    const adventure = adventures[i];
+    await adventure.destroy();
+  }
+//////////////////////////
+  const spotImages = await SpotImage.findAll({
+    where: {
+      spotId
+    }
+  })
+
+  for (let i = 0; i < spotImages.length; i++) {
+    const spotImage = spotImages[i];
+    await spotImage.destroy();
+  }
+//////////////////////////
+  const activitiesToSpots = await ActivitiesToSpot.findAll({
+    where: {
+      spotId
+    }
+  })
+
+  for (let i = 0; i < activitiesToSpots.length; i++) {
+    const activitiesToSpot = activitiesToSpots[i];
+    await activitiesToSpot.destroy();
+  }
+
+
+
+
   const deletedSpot = await Spot.destroy({ where: { id: spotId }});
 
-  console.log('this is deletedSpot ==========>', deletedSpot);
-  // return res.json('successfully deleted spot.....presumedly. check postbird');
-  // return res.json({ spotId });
   res.json(deletedSpot);
 }));
+
+// OG delete route sans comments / logs
+// router.delete('/:id', asyncHandler(async function (req, res) {
+//   const spotId = req.params.id
+//   const spot = await Spot.findByPk(spotId);
+//   if (!spot) throw new Error('Cannot find spot');
+//   const deletedSpot = await Spot.destroy({ where: { id: spotId }});
+
+//   res.json(deletedSpot);
+// }));
+
+
+// OG delete route with notes preserved
+// router.delete('/:id', asyncHandler(async function (req, res) {
+//   console.log('------inside the delete route');
+//   // const {spotId} = req.body.spotId
+//   // the below works; I'm curious if I can use the body for the same purpose
+//   const spotId = req.params.id
+//   const spot = await Spot.findByPk(spotId);
+//   if (!spot) throw new Error('Cannot find spot');
+//   const deletedSpot = await Spot.destroy({ where: { id: spotId }});
+
+//   console.log('this is deletedSpot ==========>', deletedSpot);
+//   // return res.json('successfully deleted spot.....presumedly. check postbird');
+//   // return res.json({ spotId });
+//   res.json(deletedSpot);
+// }));
 
 
 

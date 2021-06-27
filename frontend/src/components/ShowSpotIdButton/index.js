@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import styles from './StandardLinkButton.module.css'
+import styles from './ShowSpotIdButton.module.css'
 import { setCurrentSpot } from '../../store/spots';
 import { NavLink } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ function StandardLinkButton({buttonText, lightBackground, href, spotId}){
 
   if (lightBackground){
     buttonStyle = {
-      color: 'black',
+      // color: 'black',
       borderColor: 'black',
     }
   }

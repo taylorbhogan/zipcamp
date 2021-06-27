@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     userPlannerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+
     },
     startDate: {
       type: DataTypes.DATE,
@@ -22,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   Adventure.associate = function(models) {
     // associations can be defined here
     Adventure.belongsTo(models.Spot, { foreignKey: 'spotId'})
-    Adventure.belongsTo(models.User, { foreignKey: 'userId'})
+    Adventure.belongsTo(models.User, { foreignKey: 'userPlannerId'})
   };
   return Adventure;
 };

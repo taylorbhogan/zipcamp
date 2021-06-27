@@ -4,7 +4,10 @@ import { useHistory } from 'react-router-dom';
 import { getAreas } from '../../store/areas'
 import { getUsStates } from '../../store/usStates'
 import '../../index.css'
+import styles from './SpotAddForm.module.css'
 import { createSpot } from '../../store/spots';
+import MapContainer from '../Maps';
+
 
 function SpotAddForm(){
   //
@@ -29,6 +32,8 @@ function SpotAddForm(){
   const usStates = useSelector(state => Object.values(state.states));
   const [ stateId, setStateId ] = useState('1')
   const userId = useSelector(state => state.session.user?.id);
+  const [location, setLocation] = useState({})
+
 
   //This is where we validate. Is useEffect the right choice here? Would it be better to move it to a handleSubmit function as in SignupFormPage?
   // useEffect(()=>{
@@ -58,6 +63,12 @@ function SpotAddForm(){
     if(!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
     setErrors(errors)
 
+
+
+    const land = areas.find(land => land.id === +area)
+    console.log('this is land', land);
+    console.log('this is land.State.id', land.State.id);
+
   //use the values set in state by the form inputs to build our payload
     const newSpot = {
       name,
@@ -66,7 +77,8 @@ function SpotAddForm(){
       blurb,
       directions,
       areaId: +area,
-      stateId: +stateId,
+      // stateId: +stateId,
+      stateId: land.State.id,
       userId,
     };
 // console.log(newSpot);
@@ -80,6 +92,13 @@ function SpotAddForm(){
     }
   };
 
+  const getLocation = coords => {
+    // console.log("inside getLocation",coords);
+    // setLocation(coords);
+    setLat(coords.lat.toFixed(6))
+    setLong(coords.lng.toFixed(6))
+    // setShowMap(false);
+  };
 
   return(
 
@@ -90,73 +109,97 @@ function SpotAddForm(){
         >
         <h1
           className={'formHeader'}
-        >hello from spot add form</h1>
+        >add that spot so you can find your way back</h1>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <input
-          type="text"
-          className={'formInput'}
-          value={name}
-          placeholder={' spot name'}
-          onChange={(e) => setName(e.target.value)}
-          required
-          />
-        <input
-          type="text"
-          className={'formInput'}
-          value={lat}
-          placeholder={' the most helpful latitude for retracing your steps'}
-          onChange={(e) => setLat(e.target.value)}
-          required
-          />
-        <input
-          type="text"
-          className={'formInput'}
-          value={long}
-          placeholder={' ditto the longitude'}
-          onChange={(e) => setLong(e.target.value)}
-          required
-          />
-        <textarea
-          type="text"
-          className={'formTextAreaInput'}
-          value={blurb}
-          placeholder={' what\'s the deal?'}
-          onChange={(e) => setBlurb(e.target.value)}
-          required
-          />
-        <textarea
-          type="text"
-          className={'formTextAreaInput'}
-          value={directions}
-          placeholder={' how do you find your way back?'}
-          onChange={(e) => setDirections(e.target.value)}
-          />
-        <select
-          onChange={(e) => setArea(e.target.value)}
-          className={'formSelectInput'}
-          >
-          {areas.map(area =>
-            <option
-              value={area.id}
-              key={area.id}>{area.name}</option>
-            )}
-        </select>
-        <select
-          onChange={(e) => setStateId(e.target.value)}
-          className={'formSelectInput'}
-          >
-          {usStates.map(state =>
-            <option
-              value={state.id}
-              key={state.id}>{state.name}</option>
-            )}
-        </select>
+        <div className={styles.containerDiv}>
+          <div className={styles.leftDiv}>
+            <div className={styles.infoDiv}>
+              <input
+                type="text"
+                className={'formInput'}
+                value={name}
+                placeholder={' spot name'}
+                onChange={(e) => setName(e.target.value)}
+                required
+                />
+              <textarea
+                type="text"
+                className={styles.blurbInput}
+                value={blurb}
+                placeholder={' what\'s the deal?'}
+                onChange={(e) => setBlurb(e.target.value)}
+                required
+                />
+              <textarea
+                type="text"
+                className={styles.directionsInput}
+                value={directions}
+                placeholder={' how do you find your way back?'}
+                onChange={(e) => setDirections(e.target.value)}
+                />
+              <select
+                onChange={(e) => setArea(e.target.value)}
+                className={'formSelectInput'}
+                >
+                {areas.map(area =>
+                  <option
+                    value={area.id}
+                    key={area.id}>{area.name}</option>
+                  )}
+              </select>
+              <select
+                onChange={(e) => setStateId(e.target.value)}
+                className={'formSelectInput'}
+                hidden={true}
+                >
+                {usStates.map(state =>
+                  <option
+                    value={state.id}
+                    key={state.id}>{state.name}</option>
+                  )}
+              </select>
+            </div>
+            <div className={styles.coordsDiv}>
+              <input
+                type="text"
+                className={styles.coords}
+                value={lat}
+                placeholder={' latitude: enter manually here, or use the map'}
+                onChange={(e) => setLat(e.target.value)}
+                required
+                hidden={true}
+                />
+              <input
+                type="text"
+                hidden={true}
+                className={styles.coords}
+                value={long}
+                placeholder={' ditto the longitude'}
+                onChange={(e) => setLong(e.target.value)}
+                required
+                />
+
+            </div>
+          </div>
+          <div className={styles.rightDiv}>
+            <div>
+              <MapContainer
+                lat={lat}
+                long={long}
+                isAdding={true}
+                getLocation={getLocation}
+              />
+            </div>
+
+          </div>
+        </div>
         <button
           type="submit"
+          hidden={true}
           className={'submitButton'}
         >Create new Spot</button>
       </form>

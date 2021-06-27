@@ -4,11 +4,12 @@ import TipAddForm from "../TipAddForm";
 import styles from './TipAddModal.module.css'
 
 
-function TipAddModal(){
+function TipAddModal({thisSpotTips}){
   const [showTipAddModal, setShowTipAddModal] = useState(false);
 
   return(
     <div className={styles.buttonWrapper}>
+      {(thisSpotTips.length === 0) && (<div className={styles.buttonBackground}></div>)}
       <button
         onClick={() => setShowTipAddModal(true)}
         className={styles.button}

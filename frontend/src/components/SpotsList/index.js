@@ -25,9 +25,9 @@ function SpotsList(){
       <div className={styles.contentContainer}>
         <div className={styles.topWrapper}>
           <div className={styles.topContainer}>
-            <span>
+            {/* <span>
               scroll for possibilities, or
-            </span>
+            </span> */}
               <SpotAddModal />
           </div>
         </div>

@@ -100,6 +100,9 @@
   /* position: absolute;
   top: 0; */
   padding-left: 50px;
+  padding-right: 200px;
+  /* border: 1px solid black;
+  border-radius: 1rem; */
 }
 
 /* .editOuterDiv{
@@ -135,8 +138,35 @@
   width: 70px;
   padding-left: 20px;
 }
-
+zz
 .TipsUnused{
   margin-top: 0px;
   padding-top: 0px;
+}
+
+.mapContainerWrapper{
+  position: relative;
+  /* background-color: black; */
+  /* width: 800px; */
+}
+
+.mapContainer{
+  position: absolute;
+  z-index: 0;
+  left: 800px;
+  top: -435px;
+  z-index: 0;
+
+}
+
+.mapContainerBackground{
+  /* position: relative; */
+  width: 540px;
+  height: 440px;
+  background-color: #f3f3f4;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: -10;
+  border-radius: 5px;
 }

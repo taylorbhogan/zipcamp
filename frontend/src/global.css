@@ -5,12 +5,12 @@ html{
   background-size: cover;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
+/*
 .appContainer{
   position: relative;
   min-height: 100vh;
   width: 100%;
-}
+} */
 
 .pageContainer{
   /* position: relative;

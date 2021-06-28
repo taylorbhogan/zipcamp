@@ -49,13 +49,19 @@
   /* margin-bottom: var(--navbarBottomMargin); */
 }
 
+/* HERE'S THE LOGO */
 .navbarLogo{
   position: relative;
-  top: 16px;
+  top: 12px;
   color: white;
   text-decoration: none;
 
 }
+
+.navbarLogoLink{
+  text-decoration: none;
+}
+
 
 .navLinkList{
   margin-left: 20px;
@@ -113,7 +119,7 @@
   border-radius: 8px;
   font-size: 20px;
   box-shadow: 0rem 0 .1rem .1rem #222;
-
+  font-weight: bold;
 
 }
 
@@ -130,6 +136,8 @@
   height: 40px;
   border-radius: 8px;
   font-size: 20px;
+  font-weight: bold;
+  color: white;
   box-shadow: 0rem 0 .1rem .1rem #222;
   padding: auto auto;
   display: flex;
@@ -145,4 +153,15 @@
 .underline{
   text-decoration: none;
   color: black;
+}
+
+.welcomeDiv{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.levi{
+  margin-bottom: 17px;
+  margin-right: 18px;
 }

@@ -25,7 +25,15 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div
+        className={styles.welcomeDiv}
+      >
+        <div className={styles.levi}>
+          Welcome back, {sessionUser.username}.
+        </div>
+        <ProfileButton user={sessionUser} />
+      </div>
+
     );
   } else {
     sessionLinks = (
@@ -70,11 +78,13 @@ function Navigation({ isLoaded }){
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
-          {/* <Link exact to='/'> */}
+          <Link
+            className={styles.navbarLogoLink}
+            exact to='/'>
             <div className={styles.navbarLogo}>
               zipcamp
             </div>
-          {/* </Link> */}
+          </Link>
           <div className={styles.navLinkList}>
             <div>
               <NavLink
@@ -103,6 +113,9 @@ function Navigation({ isLoaded }){
           </div>
         </div>
         <div  className={styles.navbarRight}>
+          {/* <div>
+            Welcome back,
+          </div> */}
           <div  className={styles.sessionLinks}>
             {isLoaded && sessionLinks}
           </div>

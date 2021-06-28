@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 function Footer (){
 
   return (
-    <div className={styles.footerWrapper}>
+    // <div className={styles.footerWrapper}>
       <footer className={styles.footer}>
         <div className={styles.footerLeft}>
           <span>created in 2021 by @taylorbhogan</span>
@@ -30,7 +30,7 @@ function Footer (){
           </a>
         </div>
       </footer>
-    </div>
+    // </div>
   )
 }
 

@@ -1,9 +1,17 @@
 @import './../../vars.css';
 
+/* .footerWrapper{
+  position: relative;
+  min-height: 100vh;
+
+} */
+
 .footer{
   position: fixed;
   bottom: 0;
   left: 0;
+  /* position: absolute;
+  bottom: 0; */
   background-color: var(--mainColorDarkGrey);
   width: 100%;
   height: var(--footerHeight);

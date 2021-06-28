@@ -24,7 +24,12 @@ function SpotBox({spot}){
               // style={spot.SpotImages.length === 0 ? {backgroundImage: `url(../../images/spotImages/spotImage0.png})`} : {backgroundImage: `url(../../images/spotImages/${imgUrl})`} }
               // style={spot.SpotImages.length === 0 ?  {backgroundImage: `url(../../images/spotImages/${imgUrl})`} :  {backgroundImage: `url(../../images/spotImages/spotImage0.png})`} }
               // THIS WORKS
-              style={spot.SpotImages.length === 0 ? {backgroundColor: 'black'} : {backgroundImage: `url(../../images/spotImages/${imgUrl})`} }
+              style={spot.SpotImages.length === 0 ? {backgroundColor: 'black'} : {
+                backgroundImage: `url(../../images/spotImages/${imgUrl})`,
+                backgroundPosition: "top",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+              } }
               // style={{backgroundImage: `url(../../images/spotImages/spotImage0)`} }
             >
               {/* {<h2>{imgUrl}</h2>} */}

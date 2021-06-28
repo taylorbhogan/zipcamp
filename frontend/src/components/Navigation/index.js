@@ -89,6 +89,7 @@ function Navigation({ isLoaded }){
             <div>
               <NavLink
                 className={styles.navLink}
+                id={styles.home}
                 activeClassName={styles.navLinkActive}
                 exact to='/'>home</NavLink>
             </div>

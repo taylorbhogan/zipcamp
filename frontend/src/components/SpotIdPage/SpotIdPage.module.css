@@ -163,6 +163,11 @@
 
 }
 
+.mapContainer:hover{
+  left: 780px;
+  transition: all .1s;
+}
+
 .mapContainerBackground{
   /* position: relative; */
   width: 540px;

@@ -9,12 +9,12 @@ function SpotAddModal(){
   const [showSpotAddModal, setShowSpotAddModal] = useState(false);
 
   return(
-    <div>
+    <div className={styles.addSpotButtonWrapper}>
       <button
         onClick={() => setShowSpotAddModal(true)}
         className={styles.addSpotButton}
         // className={'submitButton'}
-      >add a new spot</button>
+      >ADD A NEW SPOT</button>
       {showSpotAddModal && (
         <Modal onClose={() => setShowSpotAddModal(false)}>
           <SpotAddForm />

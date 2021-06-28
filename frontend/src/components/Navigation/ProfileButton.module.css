@@ -12,19 +12,25 @@
 }
 
 .accountButton{
-  height: 30px;
+  height: 40px;
   width: var(--navAccountButtonWidth);
   border-radius: var(--buttonBorderRadius);
   background-color: #222222;
   color: var(--mainColorGreen);
   margin-right: 20px;
   /* padding-top: 20px; */
+  /* border: 0; */
+  border: .1px solid black;
+}
 
+.accountButton:hover{
+  background-color: #333333;
+  cursor: pointer;
 }
 
 .profileDropdown{
   background-color: var(--mainColorLightGrey);
-  width: var(--navAccountButtonWidth);
+  width: 170px;
   position: absolute;
   top: 70px;
   padding: 5px 10px 10px 10px;

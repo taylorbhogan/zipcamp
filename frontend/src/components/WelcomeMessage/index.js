@@ -5,7 +5,7 @@ import './../../index.css'
 
 function WelcomeMessage(){
   const buttonText = 'find your way'
-  const buttonHref='/'
+  const buttonHref='/spots'
   return(
     <div className={styles.contentWrapper}>
       <div className={styles.welcomeMessageBox}>

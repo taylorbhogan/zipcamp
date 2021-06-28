@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -56,9 +56,11 @@ function Navigation({ isLoaded }){
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
-          <div className={styles.navbarLogo}>
-            zipcamp
-          </div>
+          {/* <Link exact to='/'> */}
+            <div className={styles.navbarLogo}>
+              zipcamp
+            </div>
+          {/* </Link> */}
           <div className={styles.navLinkList}>
             <div>
               <NavLink

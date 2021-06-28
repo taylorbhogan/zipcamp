@@ -21,7 +21,7 @@ function ProfileButton({ user }) {
 
     document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
+    return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
   const logout = (e) => {
@@ -36,7 +36,7 @@ function ProfileButton({ user }) {
           {/* Now you can use any of the free icons available in Font Awesome by adding the <i> element with the desired className to ber rendered in a React component. To change the size or color of the icon, wrap the <i> element in a parent element like a div. Manipulating the font-size of the parent element changes the size of the icon. The color of the parent element will be the color of the icon.  */}
           <div className={styles.faUserParent}>
             <span>Account</span>
-            <i className="fas fa-user-circle" />
+            {/* <i className={"fa-user-circle"} /> */}
           </div>
         </button>
       </div>

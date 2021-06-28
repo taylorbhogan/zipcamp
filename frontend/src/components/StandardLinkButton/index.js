@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 // import { useDispatch } from 'react-redux';
 import styles from './StandardLinkButton.module.css'
 
@@ -21,13 +22,13 @@ function StandardLinkButton({buttonText, lightBackground, href}){
   // }
 
   return (
-    <a
+    <Link
       className={styles.standardLinkButton}
-      href={href}
+      to={href}
       style={buttonStyle}
       // onClick={setCurrSpot}
       // onMouseOver={e => e.target.style = submitStyle}
-      >{buttonText}</a>
+      >{buttonText}</Link>
     )
 }
 

@@ -53,6 +53,8 @@
   position: relative;
   top: 16px;
   color: white;
+  text-decoration: none;
+  
 }
 
 .navLinkList{

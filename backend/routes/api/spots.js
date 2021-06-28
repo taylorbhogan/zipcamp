@@ -16,6 +16,7 @@ const {
   Tip,
   Adventure,
   ActivitiesToSpot,
+  // UserImage
 } = require('../../db/models')
 
 // import middleware **********************************************************/

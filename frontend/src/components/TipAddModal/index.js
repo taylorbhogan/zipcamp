@@ -9,7 +9,7 @@ function TipAddModal({thisSpotTips}){
 
   return(
     <div className={styles.buttonWrapper}>
-      {(thisSpotTips.length === 0) && (<div className={styles.buttonBackground}></div>)}
+      {/* {(thisSpotTips.length === 0) && (<div className={styles.buttonBackground}></div>)} */}
       <button
         onClick={() => setShowTipAddModal(true)}
         className={styles.button}

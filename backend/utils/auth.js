@@ -69,6 +69,7 @@ const requireAuth = [
     err.errors = ['Unauthorized'];
     err.status = 401;
     return next(err);
+    // return res.redirect('/');
   },
 ];
 

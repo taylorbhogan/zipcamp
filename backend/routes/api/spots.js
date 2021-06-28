@@ -5,6 +5,8 @@
 
 // create router
 const router = require('express').Router();
+const { requireAuth } = require('../../utils/auth.js');
+
 
 // import models from /db so we can use sequelize to query the postgreSQL database **************************************************/
 const {

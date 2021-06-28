@@ -29,7 +29,7 @@ function TipEditForm({spotId, setShowModal, tipId}){
   const userId = useSelector(state => state.session.user?.id);
   const tip = useSelector(state => state.tips.allTips[tipId]);
 
-  const [tipText , setTipText] = useState('')
+  const [tipText , setTipText] = useState(tip.text)
 
 
 

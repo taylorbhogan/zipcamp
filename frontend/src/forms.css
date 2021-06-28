@@ -45,7 +45,8 @@
 
 /* when you update this, check on SpotEditForm */
 .warningButton{
-  background-color: pink;
+  /* background-color: pink; */
+  border: 1.5px solid rgb(221, 90, 90);
   border-radius: 8px;
   padding: .75rem 0;
   margin-top: 40px;

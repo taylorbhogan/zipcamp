@@ -14,7 +14,7 @@ function Navigation({ isLoaded }){
   const dispatch = useDispatch();
 
   const handleDemoLogin = () => {
-    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" })).catch(
+    return dispatch(sessionActions.login({ credential: "Levi Shaber", password: "password" })).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -35,13 +35,27 @@ function Navigation({ isLoaded }){
         </div>
         <div>
           <button
+            className={styles.demoLoginButton}
             onClick={handleDemoLogin}
-          >Demo Login</button>
+            >try it out</button>
         </div>
         <div>
-          <NavLink to='/signup'>Sign Up</NavLink>
+          <Link
+            to='/signup'
+            className={styles.underline}
+            >
+            <div
+              className={styles.signUpLink}
+            >
+            <p
+              className={styles.join}
+            >join</p>
+            </div>
+            </Link>
         </div>
-        <div>
+        <div
+         className={styles.errorDiv}
+        >
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

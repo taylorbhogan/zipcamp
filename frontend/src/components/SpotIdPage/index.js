@@ -64,17 +64,17 @@ function SpotIdPage(){
           <div className={styles.SpotDivInfo}>
             <div className={styles.SpotDivInfoLeft}>
               <div className={styles.userInfo}>
-                {spot?.userId === sessionUser.id && (
+                {spot?.userId === sessionUser?.id && (
                 <p>You added this spot</p>
               )}
-                {spot?.userId !== sessionUser.id && (
+                {spot?.userId !== sessionUser?.id && (
                 <>
                   <div>Discovered by</div>
                   <div>{spot?.User?.username}</div>
                 </>
               )}
                   <button
-                    hidden={sessionUser && sessionUser.id === spot?.User?.id ? false : true}
+                    hidden={sessionUser && sessionUser?.id === spot?.User?.id ? false : true}
                     onClick={() => setShowModal(true)}
                     className={styles.editButton}>
                     Need to make changes?

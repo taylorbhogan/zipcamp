@@ -54,7 +54,7 @@
   top: 16px;
   color: white;
   text-decoration: none;
-  
+
 }
 
 .navLinkList{
@@ -86,14 +86,63 @@
   color: white
 }
 
+.errorDiv{
+  position: absolute;
+}
+
 .sessionLinksDiv{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 250px;
-  padding: 10px 20px;
+  width: 300px;
+  /* padding: 20px 20px 10px 20px; */
   border-radius: var(--buttonBorderRadius);
   margin-right: var(--pageSidePadding);
   margin-bottom: var(--navbarBottomMargin);
-  background-color: var(--mainColorLightGrey);
+  margin-top: 30px;
+  /* background-color: var(--mainColorLightGrey); */
+}
+
+.demoLoginButton{
+  /* color: pink; */
+  /* padding: var(--sessionButtonTopBottomPadding) var(--sessionButtonLeftRightPadding); */
+  margin-top: 20px;
+  /* margin-right: 20px; */
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0rem 0 .1rem .1rem #222;
+
+
+}
+
+.demoLoginButton:hover{
+  background-color: var(--secondaryColorGreen);
+}
+
+.signUpLink{
+  text-decoration: none;
+  /* padding: var(--sessionButtonTopBottomPadding) var(--sessionButtonLeftRightPadding); */
+  margin-top: 20px;
+  background-color: var(--mainColorGreen);
+  width: 80px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0rem 0 .1rem .1rem #222;
+  padding: auto auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUpLink:hover{
+  background-color: var(--secondaryColorGreen);
+}
+
+.underline{
+  text-decoration: none;
+  color: black;
 }

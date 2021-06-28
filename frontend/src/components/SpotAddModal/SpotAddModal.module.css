@@ -4,17 +4,18 @@
 
 .addSpotButton{
   background-color: var(--mainColorGreen);
-  border-radius: 2px;
+  border-radius: 4px;
+  box-shadow: 0rem 0 .3rem .1rem #555;
   border: 0;
 
   padding: 20px 30px;
 
-  width: 200px;
+  width: 300px;
   height: 150px;
 
   position: fixed;
   top: 180px;
-  left: 1280px;
+  left: 1360px;
 
   font-size: 24px;
   font-weight: bold;

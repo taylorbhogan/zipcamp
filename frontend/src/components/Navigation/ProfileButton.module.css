@@ -2,7 +2,6 @@
 
 .navbarRight{
   margin-right: 30px;
-  padding-bottom: var(--navbarBottomMargin);
 }
 
 .faUserParent{
@@ -18,9 +17,12 @@
   background-color: #222222;
   color: var(--mainColorGreen);
   margin-right: 20px;
+  /* margin-top: 20px; */
   /* padding-top: 20px; */
   /* border: 0; */
   border: .1px solid black;
+  margin-bottom: 10px;
+
 }
 
 .accountButton:hover{
@@ -42,5 +44,14 @@
 }
 
 .warningButton{
+  border: 3px solid var(--mainColorWarning);
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.warningButton:hover{
   background-color: var(--mainColorWarning);
+  color: white;
 }

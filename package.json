@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "moment": "^2.29.1"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }

@@ -10,21 +10,5 @@
   },
   "dependencies": {
     "moment": "^2.29.1"
-  },
-  "name": "authenticate-me",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/taylorbhogan/solo_project_1-express_react-camp.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/taylorbhogan/solo_project_1-express_react-camp/issues"
-  },
-  "homepage": "https://github.com/taylorbhogan/solo_project_1-express_react-camp#readme",
-  "description": ""
+  }
 }

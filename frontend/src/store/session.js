@@ -18,7 +18,7 @@ export const removeUser = () => {
   }
 }
 
-/* ------ DEFINE THUNK CREATORS ------ */
+/* ------ DEFINE THUNK ACTION CREATORS ------ */
 
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;

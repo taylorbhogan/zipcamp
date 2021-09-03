@@ -99,7 +99,7 @@ function Navigation({ isLoaded }){
                 activeClassName={styles.navLinkActive}
                 exact to ='/spots'>spots</NavLink>
             </div>
-            <div>
+            {/* <div>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
@@ -110,7 +110,7 @@ function Navigation({ isLoaded }){
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact to ='/users/adventures'>upcoming adventures</NavLink>
-            </div>
+            </div> */}
           </div>
         </div>
         <div  className={styles.navbarRight}>

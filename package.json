@@ -8,10 +8,8 @@
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend"
   },
-  "dependencies": {
-    "moment": "^2.29.1"
-  },
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "npm": "7.x"
   }
 }

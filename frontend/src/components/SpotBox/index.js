@@ -9,6 +9,7 @@ function SpotBox({spot}){
   // let imgUrl;
   // if (spot.spotImages){
     const imgUrl = spot.SpotImages[0]?.imgUrl
+    console.log('imgUrl-----------------',imgUrl);
   // }
 // console.log(imgUrl);
 
@@ -17,7 +18,7 @@ function SpotBox({spot}){
       <div className={styles.spotBoxContainer}>
         <div className={styles.spotBoxContainerLeft}>
           <div className={styles.spotImageDiv}>
-            <div
+            {/* <div
               className={styles.spotImage}
               // style={{backgroundImage: `url(../../images/spotImages/spotImage1.png)`}}
               // style={spot.SpotImages.length !== 0 ? {backgroundImage: `url(../../images/spotImages/${imgUrl})`} : {backgroundImage: `url(../../images/spotImages/spotImage0.png})`}}
@@ -31,24 +32,16 @@ function SpotBox({spot}){
                 backgroundSize: "contain",
               } }
               // style={{backgroundImage: `url(../../images/spotImages/spotImage0)`} }
-            >
+            > */}
               {/* {<h2>{imgUrl}</h2>} */}
-            </div>
-            {/* <img
+            {/* </div> */}
+            <img
               className={styles.spotImage}
               alt={'a glimpse of this spot'}
-              // src='../../images/spotImages/spotImage1.png'
+              src={imgUrl}
               // style={{backgroundImage: `url(../../images/spotImages/spotImage1.png)`}}
-            /> */}
+            />
           </div>
-          {/* <div className={styles.activityDiv}>
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-          </div> */}
         </div>
         <div className={styles.spotBoxContainerRight}>
           <div className={styles.spotName}>{spot.name}</div>

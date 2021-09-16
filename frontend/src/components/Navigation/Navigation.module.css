@@ -27,6 +27,7 @@
   }
 
 }
+
 .navbarWrapper{
   position: fixed;
   z-index: 100;
@@ -53,6 +54,13 @@
   flex-direction: row;
   align-items: flex-end;
   margin-left: 30px;
+}
+
+.navbarRight{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: var(--navbarHeight);
 }
 
 /* HERE'S THE LOGO */
@@ -109,8 +117,6 @@
 
 .signUpLink{
   text-decoration: none;
-  /* padding: var(--sessionButtonTopBottomPadding) var(--sessionButtonLeftRightPadding); */
-  /* margin-top: 20px; */
   background-color: var(--mainColorGreen);
   width: 80px;
   height: 40px;
@@ -130,19 +136,17 @@
   background-color: var(--secondaryColorGreen);
 }
 
-.removeUnderline{
-  text-decoration: none;
-}
-
 .welcomeDiv{
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-}
-
-.levi{
-  margin-bottom: 17px;
-  margin-right: 18px;
+  align-items: center;
   color: #777;
   font-weight: 700;
+  margin-right: var(--pageSidePadding);
+  /* margin-bottom: 10px; */
+}
+
+.username{
+  /* margin-bottom: 17px; */
+  margin-right: 18px;
 }

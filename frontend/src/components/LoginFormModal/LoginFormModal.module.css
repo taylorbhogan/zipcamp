@@ -2,13 +2,8 @@
   background-color: var(--mainColorGreen);
   border-radius: 8px;
   border: 0;
-
-  /* padding: 5px 5px; */
-  /* padding: var(--sessionButtonTopBottomPadding) var(--sessionButtonLeftRightPadding); */
-  margin-top: 20px;
-  /* margin-right: 15px; */
-  /* margin-top: 40px; */
   width: 80px;
+  /* padding: .5rem 1rem; */
   height: 40px;
   box-shadow: 0rem 0 .1rem .1rem #222;
   font-size: 20px;

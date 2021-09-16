@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import DemoLoginButton from '../parts/DemoLoginButton';
 import styles from './Navigation.module.css';
-import * as sessionActions from '../../store/session'
+// import * as sessionActions from '../../store/session'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleDemoLogin = () => {
-    return dispatch(sessionActions.login({ credential: "Levi Shaber", password: "password" })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
-  }
+  // const handleDemoLogin = () => {
+  //   return dispatch(sessionActions.login({ credential: "Levi Shaber", password: "password" })).catch(
+  //     async (res) => {
+  //       const data = await res.json();
+  //       if (data && data.errors) setErrors(data.errors);
+  //     }
+  //   );
+  // }
 
   let sessionLinks;
   if (sessionUser) {
@@ -41,11 +42,12 @@ function Navigation({ isLoaded }){
         <div>
           <LoginFormModal />
         </div>
-        <div>
-          <button
+        <div className={styles.demoLoginButtonWrapper}>
+          <DemoLoginButton buttonText={'try it out'}/>
+          {/* <button
             className={styles.demoLoginButton}
             onClick={handleDemoLogin}
-            >try it out</button>
+            >try it out</button> */}
         </div>
         <div>
           <Link
@@ -61,7 +63,7 @@ function Navigation({ isLoaded }){
             </div>
             </Link>
         </div>
-        <div
+        {/* <div
          className={styles.errorDiv}
         >
         <ul>
@@ -69,7 +71,7 @@ function Navigation({ isLoaded }){
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -104,8 +106,8 @@ function Navigation({ isLoaded }){
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact to ='/areas'>public lands</NavLink>
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
@@ -114,9 +116,6 @@ function Navigation({ isLoaded }){
           </div>
         </div>
         <div  className={styles.navbarRight}>
-          {/* <div>
-            Welcome back,
-          </div> */}
           <div  className={styles.sessionLinks}>
             {isLoaded && sessionLinks}
           </div>

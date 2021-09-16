@@ -116,22 +116,22 @@
   /* background-color: var(--mainColorLightGrey); */
 }
 
-.demoLoginButton{
-  /* color: pink; */
-  /* padding: var(--sessionButtonTopBottomPadding) var(--sessionButtonLeftRightPadding); */
+/* .demoLoginButton{
   margin-top: 20px;
-  /* margin-right: 20px; */
   width: 100px;
   height: 40px;
   border-radius: 8px;
   font-size: 20px;
   box-shadow: 0rem 0 .1rem .1rem #222;
   font-weight: bold;
-
 }
 
 .demoLoginButton:hover{
   background-color: var(--secondaryColorGreen);
+} */
+
+.demoLoginButtonWrapper{
+  margin-top: 20px;
 }
 
 .signUpLink{

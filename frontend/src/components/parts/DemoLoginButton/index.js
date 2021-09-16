@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../../store/session'
 import styles from './DemoLoginButton.module.css'
 
-const DemoLoginButton = ({buttonText, closeFunction}) => {
+const DemoLoginButton = ({ buttonText, closeFunction }) => {
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
@@ -19,15 +19,16 @@ const DemoLoginButton = ({buttonText, closeFunction}) => {
 
   return (
     <div>
+      {errors.length > 0 &&
       <ul>
-      {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-      </ul>
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>}
       <button
         onClick={handleDemoLogin}
         className={styles.button}
-        >
+      >
         {buttonText}
       </button>
     </div>

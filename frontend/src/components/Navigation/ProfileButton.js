@@ -40,12 +40,12 @@ function ProfileButton({ user }) {
         <div className={styles.profileDropdown}>
           <div>{user.username}</div>
           <div>{user.email}</div>
-            <button
-              onClick={logout}
-              className={styles.warningButton}
-            >
-              Log Out
-            </button>
+          <button
+            onClick={logout}
+            className={styles.warningButton}
+          >
+            Log Out
+          </button>
         </div>
       )}
     </div>

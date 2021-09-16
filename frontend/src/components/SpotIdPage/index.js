@@ -106,7 +106,7 @@ function SpotIdPage(){
           </div> */}
         </div>
         <div className={styles.TipsUnused}>
-          <TipsList />
+          <TipsList spot={spot}/>
         </div>
       </div>
     </div>

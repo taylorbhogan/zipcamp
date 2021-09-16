@@ -1,0 +1,22 @@
+.button{
+  border: none;
+  background: none;
+  background-color: var(--mainColorLightGrey);
+  cursor: pointer;
+  padding: 0 10px;
+  font-family: inherit;
+  /* text-decoration: underline; */
+  /* color: var(--mainColorGreen); */
+  /* margin-top: 20px; */
+  /* width: 100px; */
+  height: 40px;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0rem 0 .1rem .1rem #222;
+  font-weight: bold;
+  margin: 0;
+}
+
+.button:hover{
+  color: var(--secondaryColorGreen);
+}

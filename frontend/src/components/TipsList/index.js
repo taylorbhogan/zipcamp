@@ -13,7 +13,7 @@ import TipBox from '../TipBox'
 // import SpotAddModal from '../SpotAddModal';
 import TipAddModal from '../TipAddModal'
 
-function TipsList(){
+function TipsList({spot}){
   // declare variables from hooks
   const dispatch = useDispatch();
   const {spotId} = useParams()
@@ -48,7 +48,7 @@ function TipsList(){
   return(
     <>
       <div className={styles.sectionContainer}>
-        <TipAddModal thisSpotTips={thisSpotTips}/>
+        <TipAddModal spot={spot} thisSpotTips={thisSpotTips}/>
         {(thisSpotTips.length > 0) && (
           <div className={styles.contentContainer}>
             {thisSpotTips.map((tip) => <TipBox key={tip.id} tip={tip} />)}

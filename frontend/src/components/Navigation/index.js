@@ -1,75 +1,29 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import DemoLoginButton from '../parts/DemoLoginButton';
 import styles from './Navigation.module.css';
-import * as sessionActions from '../../store/session'
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
-  const [errors, setErrors] = useState([]);
-
-
-  const dispatch = useDispatch();
-
-  const handleDemoLogin = () => {
-    return dispatch(sessionActions.login({ credential: "Levi Shaber", password: "password" })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
-  }
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div
-        className={styles.welcomeDiv}
-      >
-        <div className={styles.levi}>
+      <div className={styles.welcomeDiv}>
+        <div className={styles.username}>
           Welcome back, {sessionUser.username}.
         </div>
         <ProfileButton user={sessionUser} />
       </div>
-
     );
   } else {
     sessionLinks = (
       <div className={styles.sessionLinksDiv}>
-        <div>
-          <LoginFormModal />
-        </div>
-        <div>
-          <button
-            className={styles.demoLoginButton}
-            onClick={handleDemoLogin}
-            >try it out</button>
-        </div>
-        <div>
-          <Link
-            to='/signup'
-            className={styles.underline}
-            >
-            <div
-              className={styles.signUpLink}
-            >
-            <p
-              className={styles.join}
-            >join</p>
-            </div>
-            </Link>
-        </div>
-        <div
-         className={styles.errorDiv}
-        >
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        </div>
+        <LoginFormModal />
+        <DemoLoginButton buttonText={'try it out'} />
+        <NavLink to='/signup' className={styles.signUpLink}>join</NavLink>
       </div>
     );
   }
@@ -78,48 +32,34 @@ function Navigation({ isLoaded }){
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
-          <Link
-            className={styles.navbarLogoLink}
-            exact to='/'>
-            <div className={styles.navbarLogo}>
-              zipcamp
-            </div>
-          </Link>
+          <NavLink
+            className={styles.navbarLogo}
+            exact to='/'
+          >
+            zipcamp
+          </NavLink>
           <div className={styles.navLinkList}>
-            <div>
-              <NavLink
-                className={styles.navLink}
-                id={styles.home}
-                activeClassName={styles.navLinkActive}
-                exact to='/'>home</NavLink>
-            </div>
-            <div>
-              <NavLink
-                className={styles.navLink}
-                activeClassName={styles.navLinkActive}
-                exact to ='/spots'>spots</NavLink>
-            </div>
-            {/* <div>
-              <NavLink
-                className={styles.navLink}
-                activeClassName={styles.navLinkActive}
-                exact to ='/areas'>public lands</NavLink>
-            </div>
-            <div>
-              <NavLink
+            <NavLink
+              className={styles.navLink}
+              id={styles.home}
+              activeClassName={styles.navLinkActive}
+              exact to='/'>home</NavLink>
+            <NavLink
+              className={styles.navLink}
+              activeClassName={styles.navLinkActive}
+              exact to='/spots'>spots</NavLink>
+            <NavLink
+              className={styles.navLink}
+              activeClassName={styles.navLinkActive}
+              exact to='/areas'>public lands</NavLink>
+            {/* <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
-                exact to ='/users/adventures'>upcoming adventures</NavLink>
-            </div> */}
+                exact to ='/users/adventures'>upcoming adventures</NavLink> */}
           </div>
         </div>
-        <div  className={styles.navbarRight}>
-          {/* <div>
-            Welcome back,
-          </div> */}
-          <div  className={styles.sessionLinks}>
-            {isLoaded && sessionLinks}
-          </div>
+        <div className={styles.navbarRight}>
+          {isLoaded && sessionLinks}
         </div>
       </div>
     </div>

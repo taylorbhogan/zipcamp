@@ -18,12 +18,19 @@ const DemoLoginButton = ({buttonText, closeFunction}) => {
   }
 
   return (
-    <button
-      onClick={handleDemoLogin}
-      className={styles.button}
-      >
-      {errors.length > 0 ? errors : buttonText}
-    </button>
+    <div>
+      <ul>
+      {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+      </ul>
+      <button
+        onClick={handleDemoLogin}
+        className={styles.button}
+        >
+        {buttonText}
+      </button>
+    </div>
   )
 }
 

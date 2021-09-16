@@ -7,21 +7,8 @@ import DemoLoginButton from '../parts/DemoLoginButton';
 import styles from './Navigation.module.css';
 // import * as sessionActions from '../../store/session'
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
-  // const [errors, setErrors] = useState([]);
-
-
-  // const dispatch = useDispatch();
-
-  // const handleDemoLogin = () => {
-  //   return dispatch(sessionActions.login({ credential: "Levi Shaber", password: "password" })).catch(
-  //     async (res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) setErrors(data.errors);
-  //     }
-  //   );
-  // }
 
   let sessionLinks;
   if (sessionUser) {
@@ -39,39 +26,9 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <div className={styles.sessionLinksDiv}>
-        <div>
-          <LoginFormModal />
-        </div>
-        <div className={styles.demoLoginButtonWrapper}>
-          <DemoLoginButton buttonText={'try it out'}/>
-          {/* <button
-            className={styles.demoLoginButton}
-            onClick={handleDemoLogin}
-            >try it out</button> */}
-        </div>
-        <div>
-          <Link
-            to='/signup'
-            className={styles.underline}
-            >
-            <div
-              className={styles.signUpLink}
-            >
-            <p
-              className={styles.join}
-            >join</p>
-            </div>
-            </Link>
-        </div>
-        {/* <div
-         className={styles.errorDiv}
-        >
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        </div> */}
+        <LoginFormModal />
+        <DemoLoginButton buttonText={'try it out'} />
+        <Link to='/signup' className={styles.signUpLink}>join</Link>
       </div>
     );
   }
@@ -81,7 +38,7 @@ function Navigation({ isLoaded }){
       <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
           <Link
-            className={styles.navbarLogoLink}
+            className={styles.removeUnderline}
             exact to='/'>
             <div className={styles.navbarLogo}>
               zipcamp
@@ -99,7 +56,7 @@ function Navigation({ isLoaded }){
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
-                exact to ='/spots'>spots</NavLink>
+                exact to='/spots'>spots</NavLink>
             </div>
             {/* <div>
               <NavLink
@@ -115,8 +72,8 @@ function Navigation({ isLoaded }){
             </div> */}
           </div>
         </div>
-        <div  className={styles.navbarRight}>
-          <div  className={styles.sessionLinks}>
+        <div className={styles.navbarRight}>
+          <div className={styles.sessionLinks}>
             {isLoaded && sessionLinks}
           </div>
         </div>

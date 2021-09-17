@@ -7,7 +7,7 @@ const LOAD_STATES = 'states/LOAD_STATES'
 
 // Front-to-back: step 2
 // define action creators
-const load = (states) => ({
+const setStates = (states) => ({
   type: LOAD_STATES,
   states
 })
@@ -15,13 +15,12 @@ const load = (states) => ({
 // Front-to-back: step 1
 // define thunk creators
 export const getUsStates = () => async dispatch => {
-  // TODO: complete the api call?
   const res = await csrfFetch(`/api/states`);
 
   if (res.ok) {
     const states = await res.json();
-    // rename the load function?
-    dispatch(load(states));
+    dispatch(setStates(states));
+    return states
   }
 }
 

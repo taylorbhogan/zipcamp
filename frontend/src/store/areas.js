@@ -25,6 +25,21 @@ export const getAreas = () => async dispatch => {
   }
 }
 
+export const searchAreas = (designation, location) => async dispatch => {
+  console.log('designation, location---------------->',designation, location);
+  const res = await csrfFetch('/api/areas/search',{
+    method: 'POST',
+    body: JSON.stringify({
+      designation, location
+    }),
+  })
+
+  if (res.ok) {
+    const filteredAreas = await res.json()
+    dispatch(load(filteredAreas))
+  }
+}
+
 
 // Front-to-back: step 4
 // define an initial state
@@ -35,14 +50,13 @@ const initialState = {};
 const areasReducer = (state = initialState, action) =>{
   switch(action.type){
     case LOAD_AREAS:
-      // console.log('inside LOAD AREAS');
-      const allAreas = {};
+      console.log('inside LOAD AREAS');
+      const newState = {};
       action.areas.forEach((area) => {
-        allAreas[area.id] = area;
+        newState[area.id] = area;
       })
       return {
-        ...state,
-        ...allAreas
+        ...newState
       }
     default:
       return state

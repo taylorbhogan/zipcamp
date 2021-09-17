@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { csrfFetch } from '../../store/csrf';
 import ExploreResults from '../Explore/ExploreResults';
 import MapContainer from '../Maps';
 import styles from './AreasList.module.css'
@@ -8,6 +9,17 @@ import styles from './AreasList.module.css'
 function AreasList() {
   const [location, setLocation] = useState('The United States')
   const [designation, setDesignation] = useState('Public Lands')
+  const [designations, setDesignations] = useState([])
+
+useEffect(() => {
+  const fetchDesignations = async () => {
+    const res = await csrfFetch('/api/designations')
+    const data = await res.json()
+    setDesignations(data)
+    setDesignation(data[0].name + 's')
+  }
+  fetchDesignations()
+},[])
 
   return (
     <div className={styles.pageContainer}>

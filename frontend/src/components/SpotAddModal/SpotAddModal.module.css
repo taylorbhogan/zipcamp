@@ -1,5 +1,47 @@
-.addSpotButtonWrapper{
-
+@media screen and (min-width: 1400px) {
+  .addSpotButton{
+    top: 180px;
+    left: 80vw;
+    padding: 50px 30px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .addSpotButton{
+    left: 77vw;
+    padding: 50px 30px;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .addSpotButton{
+    top: 100px;
+    padding: 20px 30px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .addSpotButton{
+    left: 75vw;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .addSpotButton{
+    left: 73vw;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .addSpotButton{
+    left: 71vw;
+  }
+}
+@media screen and (max-width: 950px) {
+  .addSpotButton{
+    left: 69vw;
+  }
+}
+@media screen and (max-width: 900px) {
+  .addSpotButton{
+    left: 35vw;
+    padding: 20px 170px;
+  }
 }
 
 .addSpotButton{
@@ -8,14 +50,8 @@
   box-shadow: 0rem 0 .3rem .1rem #555;
   border: 0;
 
-  padding: 20px 30px;
-
-  width: 300px;
-  height: 150px;
 
   position: fixed;
-  top: 180px;
-  left: 1360px;
 
   font-size: 24px;
   font-weight: bold;

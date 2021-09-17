@@ -1,39 +1,10 @@
 @import './../../index.css';
 
 .contentWrapper{
-  /* margin-top: var(--navbarHeight); */
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  /* top: var(--navbarHeight); */
-  /* margin-top: 200px; */
-}
-
-.contentContainer{
-  /* width: 100%; */
-  width: 1000px;
-  background-color: var(--mainColorLightGrey);
-  margin-top: var(--containerMarginTop);
-  margin-right: var(--containerMarginSide);
-  margin-left: var(--containerMarginSide);
-  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
-  border-radius: var(--containerBorderRadius);
-}
-
-.topWrapper{
-  display: flex;
-  justify-content: center;
-}
-
-.topContainer{
-  /* border: 1px solid black; */
-  /* padding: 50px 200px; */
-}
-
-.addSpot{
-  margin-top: 30px;
-  border: 1px solid black;
 }

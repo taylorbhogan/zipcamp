@@ -1,22 +1,32 @@
 @import './../../index.css';
 
-.contentWrapper{
-  /* margin-top: var(--navbarHeight); */
+.pageContainer{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: var(--navbarHeight);
+  flex-direction: row;
+  width: 100vw;
+  padding-top: var(--navbarHeight);
 }
 
-.contentContainer{
-  /* width: 100%; */
-  width: 1300px;
-  background-color: var(--mainColorLightGrey);
-  margin-top: var(--containerMarginTop);
-  margin-right: var(--containerMarginSide);
-  margin-left: var(--containerMarginSide);
-  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
-  border-radius: var(--containerBorderRadius);
+.pageLeft{
+  width: 60vw;
+  height: 100vh;
+  background-color: var(--mainColorDarkGrey);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.search{
+  margin: 17vh 15vw 15vh 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 24px;
+  color: white;
+}
+
+
+.pageRight{
+  width: 40vw;
+  height: 100vh;
 }

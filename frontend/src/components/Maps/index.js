@@ -2,12 +2,15 @@
 // note: we didn't dispatch our thunk in this component in order to avoid an extra render when we haven't received the API key from the
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { getKey } from '../../store/maps';
 import Maps from './Maps';
+import ExploreMaps from './ExploreMaps';
 
-const MapContainer = ({lat, long, isAdding, getLocation}) => {
+const MapContainer = ({ lat, long, isAdding, getLocation }) => {
   const key = useSelector((state) => state.maps.key);
+  const location = useLocation()
 
   const dispatch = useDispatch();
 
@@ -23,13 +26,24 @@ const MapContainer = ({lat, long, isAdding, getLocation}) => {
   // console.log('index.js this is the gmaps info:',lat,long);
 
   return (
-    <Maps
-      apiKey={key}
-      lat={lat}
-      long={long}
-      isAdding={isAdding}
-      getLocation={getLocation}
-    />
+    <>
+      {location.pathname === '/areas' ?
+        <ExploreMaps
+          apiKey={key}
+          lat={lat}
+          long={long}
+          isAdding={isAdding}
+          getLocation={getLocation}
+          />
+      :
+        <Maps
+          apiKey={key}
+          lat={lat}
+          long={long}
+          isAdding={isAdding}
+          getLocation={getLocation}
+        />}
+    </>
   );
 };
 

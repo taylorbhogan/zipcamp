@@ -23,3 +23,31 @@ html{
   display: flex;
   flex-direction: column;
 }
+
+@media screen and (min-width: 1500px){
+  .contentContainer{
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 1500px){
+  .contentContainer{
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 1200px){
+  .contentContainer{
+    width: 80vw;
+  }
+}
+
+.contentContainer{
+  /* width: 100%; */
+  background-color: var(--mainColorLightGrey);
+  margin-top: var(--containerMarginTop);
+  margin-bottom: var(--containerMarginTop);
+  margin-right: var(--containerMarginSide);
+  margin-left: var(--containerMarginSide);
+  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
+  border-radius: var(--containerBorderRadius);
+}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux'
-import { useHistory } from "react-router-dom";
 import { Modal } from '../../context/Modal'
 import SpotAddForm from "../SpotAddForm";
 import PleaseLogin from '../parts/PleaseLogin'
@@ -10,7 +9,6 @@ import '../../index.css'
 
 function SpotAddModal(){
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
   const [showSpotAddModal, setShowSpotAddModal] = useState(false);
   const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
 
@@ -23,7 +21,7 @@ function SpotAddModal(){
   }
 
   return(
-    <div className={styles.addSpotButtonWrapper}>
+    <>
       <button
         onClick={handleClick}
         className={styles.addSpotButton}
@@ -39,7 +37,7 @@ function SpotAddModal(){
           <PleaseLogin setShowPleaseLoginModal={setShowPleaseLoginModal}/>
         </Modal>
       )}
-    </div>
+    </>
   )
 }
 

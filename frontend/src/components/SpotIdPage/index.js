@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
-import styles from './SpotIdPage.module.css'
-// import { deleteSpot } from '../../store/spots'
 import { getSpot } from '../../store/spots'
-// import ActivityIcon from '../ActivityIcon';
 import SpotEditForm from '../SpotEditForm';
 import TipsList from '../TipsList';
 import MapContainer from '../Maps';
+import styles from './SpotIdPage.module.css'
 
 function SpotIdPage(){
   const sessionUser = useSelector(state => state.session.user);
@@ -46,7 +44,7 @@ function SpotIdPage(){
 
   return(
     <div className={styles.contentWrapper}>
-      <div className={styles.contentContainer}>
+      <div className={'contentContainer'}>
         <div className={styles.spotImageCarouselUnused}></div>
         <div className={styles.mainSpotDivUnused}>
           {showModal && (

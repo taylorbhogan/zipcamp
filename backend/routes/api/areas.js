@@ -11,6 +11,35 @@ router.get('/', asyncHandler(async (req, res) => {
   res.json(areas);
 }))
 
+router.post('/search', asyncHandler(async function (req, res) {
+  const designationId = req.body.designation;
+  const stateId = req.body.location;
+
+  let filteredAreas;
+  if (designationId && !stateId){
+    filteredAreas = await Area.findAll({
+      where: { designationId },
+      include: State
+    })
+  }
+
+  if (stateId && !designationId){
+    filteredAreas = await Area.findAll({
+      where: { stateId },
+      include: State
+    })
+  }
+
+  if (stateId && designationId) {
+    filteredAreas = await Area.findAll({
+      where: { stateId, designationId },
+      include: State
+    })
+  }
+
+  res.json(filteredAreas)
+}))
+
 
 
 // router.get('/', asyncHandler(async (req, res) => {

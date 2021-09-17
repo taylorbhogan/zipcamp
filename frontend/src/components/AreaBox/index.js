@@ -3,7 +3,7 @@ import styles from './AreaBox.module.css'
 import StandardLinkButton from '../StandardLinkButton';
 // import ActivityIcon from '../ActivityIcon';
 
-function AreaBox(){
+function AreaBox({area}){
   return(
     <div className={styles.areaBoxWrapper}>
       <div className={styles.areaBoxContainer}>
@@ -20,17 +20,16 @@ function AreaBox(){
           </div>
         </div>
         <div className={styles.areaBoxContainerRight}>
-          <div className={styles.areaName}>Lassen National Forest</div>
+          <div className={styles.areaName}>{area.name}</div>
           <div className={styles.locationDiv}>
             <div className={styles.areaName}></div>
-            <div className={styles.stateName}>California</div>
+            <div className={styles.stateName}>{area?.State?.name}</div>
           </div>
-          <div className={styles.spotBlurb}>In 2017, three wolf pups were born in this forest. Their mother is a female wolf of unknown origins. Their father is the son of OR7, a wolf with a tracking device that was the first of its kind in almost a century to migrate into California from Oregon. As of July 2020, the pack has 14 members, with 8 new pups. The father of the pups is not related to any of the other California wolves and joined the pack in 2019.</div>
-          {/* <StandardLinkButton buttonText={'Check it out'}/> */}
-          <StandardLinkButton
+          {/* <div className={styles.spotBlurb}>In 2017, three wolf pups were born in this forest. Their mother is a female wolf of unknown origins. Their father is the son of OR7, a wolf with a tracking device that was the first of its kind in almost a century to migrate into California from Oregon. As of July 2020, the pack has 14 members, with 8 new pups. The father of the pups is not related to any of the other California wolves and joined the pack in 2019.</div> */}
+          {/* <StandardLinkButton
             buttonText={'Check it out'}
             lightBackground={true}
-            href=''/>
+            href=''/> */}
         </div>
       </div>
     </div>

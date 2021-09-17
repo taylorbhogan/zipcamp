@@ -7,6 +7,7 @@ const areasRouter = require('./areas.js')
 const statesRouter = require('./states.js')
 const tipsRouter = require('./tips.js')
 const mapsRouter = require('./maps');
+const designationsRouter = require('./designations')
 
 
 router.use('/session', sessionRouter);
@@ -16,7 +17,7 @@ router.use('/areas', areasRouter);
 router.use('/states', statesRouter)
 router.use('/tips', tipsRouter)
 router.use('/maps', mapsRouter);
-
+router.use('/designations', designationsRouter)
 
 
 

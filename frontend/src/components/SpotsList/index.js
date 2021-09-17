@@ -6,7 +6,7 @@ import styles from './SpotsList.module.css'
 import SpotBox from '../SpotBox';
 import SpotAddModal from '../SpotAddModal';
 
-function SpotsList(){
+function SpotsList() {
   // declare variables from hooks
   const dispatch = useDispatch();
   // useSelector accepts a single function, which we call a selector function.
@@ -20,15 +20,12 @@ function SpotsList(){
     dispatch(getSpots())
   }, [dispatch])
 
-  return(
+  return (
     <div className={styles.contentWrapper}>
       <div className={styles.contentContainer}>
         <div className={styles.topWrapper}>
           <div className={styles.topContainer}>
-            {/* <span>
-              scroll for possibilities, or
-            </span> */}
-              <SpotAddModal />
+            <SpotAddModal />
           </div>
         </div>
         {spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}

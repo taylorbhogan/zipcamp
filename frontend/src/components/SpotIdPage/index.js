@@ -8,104 +8,78 @@ import TipsList from '../TipsList';
 import MapContainer from '../Maps';
 import styles from './SpotIdPage.module.css'
 
-function SpotIdPage(){
+
+function SpotIdPage() {
   const sessionUser = useSelector(state => state.session.user);
-  // const history = useHistory();
   const dispatch = useDispatch();
-  const {spotId} = useParams();
+  const { spotId } = useParams();
   const spot = useSelector((state) => state.spots.allSpots[spotId])
-  // const spot = useSelector((state) => state.spots.currSpot)
 
   const [showModal, setShowModal] = useState(false);
 
-  // without this, the info doesn't hit the page
-  // with it, we're not deleting from state
+
   useEffect(() => {
-    if (!spot){
-      console.log('inside the SpotIdPage useEffect');
-      // the below is running when we try to delete.
+    if (!spot) {
       dispatch(getSpot(spotId))
     }
   }, [dispatch, spotId, spot])
 
 
-  // console.log('spot', spot);
-  // const handleDelete = async (spotId) => {
-  //   // successfully got this far...
-  //   console.log(spotId);
-  //   // dispatch THUNK
-  //   let deletedSpot = await dispatch(deleteSpot(spotId))
-  //   if (deletedSpot) {
-  //     //act on the response
-  //     history.push(`/spots`);
-  //   }
-  // }
-
-
-  return(
+  return (
     <div className={styles.contentWrapper}>
       <div className={'contentContainer'}>
-        <div className={styles.spotImageCarouselUnused}></div>
-        <div className={styles.mainSpotDivUnused}>
-          {showModal && (
+        <div className={styles.spotImageCarousel}></div>
+        {showModal && (
           <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
-            <SpotEditForm setShowModal={setShowModal} spotId={spot?.id}/>
+            <SpotEditForm setShowModal={setShowModal} spotId={spot?.id} />
           </Modal>
         )}
-          <div className={styles.SpotDivHeader}>
-            <div className={styles.spotName}>{spot?.name}</div>
-            <div className={styles.coordinates}>{spot?.lat}, {spot?.long}</div>
-            {/* <div className={styles.areaName}>{spot?.areaId}</div> */}
-            {/* 11:52 problem is here vVv */}
-            <div className={styles.areaName}>{spot?.Area?.name}</div>
-          </div>
+        <div className={styles.SpotDivHeader}>
+          <div className={styles.spotName}>{spot?.name}</div>
+          <div className={styles.coordinates}>{spot?.lat}, {spot?.long}</div>
+          <div className={styles.areaName}>{spot?.Area?.name}</div>
+        </div>
+        <div className={styles.midsection}>
           <div className={styles.SpotDivInfo}>
             <div className={styles.SpotDivInfoLeft}>
-              <div className={styles.userInfo}>
-                {spot?.userId === sessionUser?.id && (
-                <p>You added this spot</p>
-              )}
-                {spot?.userId !== sessionUser?.id && (
+              <div className={styles.profileImage}></div>
+              {(spot?.userId === sessionUser?.id ?
                 <>
-                  <div>Discovered by</div>
-                  <div>{spot?.User?.username}</div>
-                </>
-              )}
+                  <p>You added this spot</p>
                   <button
-                    hidden={sessionUser && sessionUser?.id === spot?.User?.id ? false : true}
                     onClick={() => setShowModal(true)}
                     className={styles.editButton}>
                     Need to make changes?
                   </button>
-                <div className={styles.deleteOuterDiv}></div>
-              </div>
-              <div className={styles.profileImage}></div>
+                </>
+                :
+                <>
+                  <p>Discovered by</p>
+                  <p>{spot?.User?.username}</p>
+                </>
+              )}
             </div>
             <div className={styles.SpotDivInfoRight}>
-              <div>{spot && spot.blurb}</div>
+              <div>{spot?.blurb}</div>
               <div className={styles.directionsHeader}>Directions:</div>
-              <div className={styles.directions}>{spot && spot.directions}</div>
+              <div className={styles.directions}>{spot?.directions}</div>
             </div>
           </div>
-          <div className={styles.mapContainerWrapper}>
-            <div className={styles.mapContainer}>
+            <div className={styles.mapContainerWrapper}>
               <MapContainer
                 lat={spot?.lat}
                 long={spot?.long}
-                />
-              <div className={styles.mapContainerBackground}></div>
+              />
             </div>
-          </div>
-          {/* <div className={styles.SpotDivActivities}>
+
+        </div>
+        {/* <div className={styles.SpotDivActivities}>
             <ActivityIcon />
             <ActivityIcon />
             <ActivityIcon />
             <ActivityIcon />
           </div> */}
-        </div>
-        <div className={styles.TipsUnused}>
-          <TipsList spot={spot}/>
-        </div>
+        <TipsList spot={spot} />
       </div>
     </div>
   )

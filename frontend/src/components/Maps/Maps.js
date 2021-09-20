@@ -8,8 +8,8 @@ import styles from './Maps.module.css'
 
 
 const containerStyle = {
-  width: '500px',
-  height: '400px',
+  width: '100%',
+  height: '100%',
 };
 
 

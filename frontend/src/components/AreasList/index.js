@@ -51,7 +51,8 @@ useEffect(() => {
           <Dropdown
             placeholder={'Public Lands'}
             items={designations}
-            setFunction={setDesignation}/>
+            setFunction={setDesignation}
+            plural={true}/>
           <span>in</span>
           <Dropdown
             placeholder={'The United States'}

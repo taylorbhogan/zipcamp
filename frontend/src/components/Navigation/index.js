@@ -48,10 +48,10 @@ function Navigation({ isLoaded }) {
               className={styles.navLink}
               activeClassName={styles.navLinkActive}
               exact to='/spots'>spots</NavLink>
-            <NavLink
+            {/* <NavLink
               className={styles.navLink}
               activeClassName={styles.navLinkActive}
-              exact to='/areas'>public lands</NavLink>
+              exact to='/areas'>public lands</NavLink> */}
             {/* <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}

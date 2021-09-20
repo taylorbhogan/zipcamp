@@ -55,4 +55,5 @@ body{
   margin-left: var(--containerMarginSide);
   padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
   border-radius: var(--containerBorderRadius);
+  position: relative;
 }

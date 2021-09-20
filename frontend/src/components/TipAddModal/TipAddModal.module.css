@@ -1,10 +1,12 @@
 .buttonWrapper{
   position: relative;
+  width: 100%;
 }
 
 .button{
   position: absolute;
-  left: -420px;
+  /* left: -420px; */
+  left: 0px;
   top: 30px;
   width: 90px;
   background-color: Transparent;

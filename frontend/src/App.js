@@ -9,6 +9,7 @@ import WelcomeMessage from './components/WelcomeMessage';
 import SpotsList from './components/SpotsList'
 import SpotIdPage from './components/SpotIdPage'
 import AreasList from './components/AreasList';
+import UserPage from './components/UserPage';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css'
 
@@ -40,6 +41,9 @@ function App() {
               </Route>
               <Route path='/areas'>
                 <AreasList />
+              </Route>
+              <Route path='/users'>
+                <UserPage />
               </Route>
             </Switch>
           </ScrollToTop>

@@ -186,7 +186,7 @@ function SpotAddForm(){
             </div>
           </div>
           <div className={styles.rightDiv}>
-            <div>
+            <div className={styles.mapContainerWrapper}>
               <MapContainer
                 lat={lat}
                 long={long}

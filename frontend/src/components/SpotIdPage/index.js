@@ -15,7 +15,7 @@ function SpotIdPage() {
   const { spotId } = useParams();
   const spot = useSelector((state) => state.spots.allSpots[spotId])
 
-  const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
 
   useEffect(() => {
@@ -29,9 +29,9 @@ function SpotIdPage() {
     <div className={styles.contentWrapper}>
       <div className={'contentContainer'}>
         <div className={styles.spotImageCarousel}></div>
-        {showModal && (
-          <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
-            <SpotEditForm setShowModal={setShowModal} spotId={spot?.id} />
+        {showEditModal && (
+          <Modal className={'modalCard'} onClose={() => setShowEditModal(false)}>
+            <SpotEditForm setShowModal={setShowEditModal} spotId={spot?.id} />
           </Modal>
         )}
         <div className={styles.SpotDivHeader}>
@@ -47,7 +47,7 @@ function SpotIdPage() {
                 <>
                   <p>You added this spot</p>
                   <button
-                    onClick={() => setShowModal(true)}
+                    onClick={() => setShowEditModal(true)}
                     className={styles.editButton}>
                     Need to make changes?
                   </button>

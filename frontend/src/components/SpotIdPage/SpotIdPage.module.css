@@ -2,8 +2,6 @@
 
 
 .contentWrapper{
-  /* margin-top: var(--navbarHeight); */
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

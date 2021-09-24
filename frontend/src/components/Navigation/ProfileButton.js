@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom'
 import * as sessionActions from '../../store/session';
 import styles from './ProfileButton.module.css'
 
@@ -40,6 +41,7 @@ function ProfileButton({ user }) {
         <div className={styles.profileDropdown}>
           <div>{user.username}</div>
           <div>{user.email}</div>
+          {/* <NavLink className={styles.navlink} to={`users/${user.id}`}>Your account</NavLink> */}
           <button
             onClick={logout}
             className={styles.warningButton}

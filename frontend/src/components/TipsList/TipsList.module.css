@@ -2,19 +2,16 @@
 
 .sectionContainer{
   margin-top: 30px;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  /* z-index: -1; */
 }
 
 
-/* content container's job is to to be the big bad flex box */
 .contentContainer{
   width: 100%;
-  /* width: 800px; */
   background-color: var(--mainColorLightGrey);
   margin-right: var(--containerMarginSide);
   margin-left: var(--containerMarginSide);

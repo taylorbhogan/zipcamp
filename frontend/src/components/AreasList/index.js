@@ -16,8 +16,16 @@ function AreasList() {
   const [designation, setDesignation] = useState(null)
   const [designations, setDesignations] = useState([])
   const [usStates, setUsStates] = useState([])
+  const [organizations, setOrganizations] = useState(['a', 'b'])
 
   const areas = useSelector(state => Object.values(state.areas))
+
+  const areaStats = {
+    'Alabama': {
+      'lat': 32.833572,
+      'long':  -86.678706,
+    }
+  }
 
   useEffect(() => {
     if (Object.keys(areas).length === 0) dispatch(getAreas())
@@ -43,16 +51,34 @@ useEffect(() => {
   dispatch(searchAreas(designation, location))
 },[dispatch, designation, location])
 
+useEffect(() => {
+  (async () => {
+    const res = await fetch(`/api/areas/from-rec-gov/organizations`)
+    const data = await res.json()
+    setOrganizations(data)
+    console.log('data---------->',data);
+
+
+  })()
+}, [])
+console.log('designations-------------->',designations);
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageLeft}>
         <div className={styles.search}>
           <span>Explore</span>
-          <Dropdown
+          {organizations.length > 0 ? <Dropdown
+            placeholder={'Public Lands'}
+            items={organizations}
+            setFunction={setDesignation}
+            plural={true}
+            /> : ['a', 'b']
+          }
+          {/* <Dropdown
             placeholder={'Public Lands'}
             items={designations}
             setFunction={setDesignation}
-            plural={true}/>
+            plural={true}/> */}
           <span>in</span>
           <Dropdown
             placeholder={'The United States'}
@@ -60,13 +86,15 @@ useEffect(() => {
             setFunction={setLocation}/>
         </div>
         {areas.map(area => (
-          <AreaBox area={area} />
+          <AreaBox key={area.id} area={area} />
         ))}
       </div>
       <div className={styles.pageRight}>
         <MapContainer
-          lat={41.067262}
-          long={-119.029180}
+          lat={areaStats['Alabama'].lat}
+          long={areaStats['Alabama'].long}
+          // lat={41.067262}
+          // long={-119.029180}
         />
       </div>
     </div>

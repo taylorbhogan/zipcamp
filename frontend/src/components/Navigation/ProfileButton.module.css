@@ -34,6 +34,7 @@
 
 .profileDropdown > * {
   margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .warningButton{
@@ -49,4 +50,9 @@
 .warningButton:hover{
   background-color: var(--mainColorWarning);
   color: white;
+}
+
+.navlink{
+  /* text-decoration: none; */
+  color: inherit;
 }

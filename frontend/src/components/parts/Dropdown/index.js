@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './Dropdown.module.css'
 
-const Dropdown = ({ placeholder, items, setFunction, plural }) => {
+const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState(null)
 
@@ -14,14 +14,14 @@ const Dropdown = ({ placeholder, items, setFunction, plural }) => {
   }
 
 
-
+console.log('items',items);
   return (
     <div>
       <div
         className={styles.header}
         onClick={toggle}
       >
-        {plural && <div>{selected ? selected.name + 's' : placeholder}</div>}
+        {plural && <div>{selected ? selected.name + ' lands' : placeholder}</div>}
         {!plural && <div>{selected ? selected.name : placeholder}</div>}
         {/* <div><i className="fas fa-caret-down"></i></div> */}
       </div>

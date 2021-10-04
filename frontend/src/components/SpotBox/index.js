@@ -12,7 +12,7 @@ function SpotBox({spot}){
             <img
               className={styles.spotImage}
               alt={'a glimpse of this spot'}
-              src={spot.SpotImages[0]?.imgUrl}
+              src={spot.SpotImages ? spot.SpotImages[0]?.imgUrl : null}
             />
           </div>
         </div>

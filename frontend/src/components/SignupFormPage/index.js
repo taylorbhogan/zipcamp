@@ -47,7 +47,7 @@ function SignupFormPage() {
             placeholder={' email'}
             ariaLabel={'email'}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            required={true}
           />
           <Input
             type="text"
@@ -55,7 +55,7 @@ function SignupFormPage() {
             placeholder={' username'}
             ariaLabel={'username'}
             onChange={(e) => setUsername(e.target.value)}
-            required
+            required={true}
           />
           <Input
             type="password"
@@ -63,7 +63,7 @@ function SignupFormPage() {
             placeholder={' password'}
             ariaLabel={'password'}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            required={true}
           />
           <Input
             type="password"
@@ -71,7 +71,7 @@ function SignupFormPage() {
             placeholder={' confirm password'}
             ariaLabel={'confirm password'}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required
+            required={true}
           />
           <button
             type="submit"

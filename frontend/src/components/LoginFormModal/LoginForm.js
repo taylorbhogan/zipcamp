@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import Input from "../parts/Input";
 import styles from './LoginForm.module.css'
 import './../../index.css'
 
@@ -34,30 +35,22 @@ function LoginForm() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        {/* <label className={'formInputLabel'}>
-          Username or Email:
-          <br /> */}
-        <input
+        <Input
           type="text"
-          className={'formInput'}
           value={credential}
           placeholder={' username'}
+          ariaLabel={'username'}
           onChange={(e) => setCredential(e.target.value)}
-          required
-          />
-        {/* </label> */}
-        {/* <label className={'formInputLabel'}>
-          Password:
-          <br /> */}
-        <input
+          required={true}
+        />
+        <Input
           type="password"
-          className={'formInput'}
           value={password}
           placeholder={' password'}
+          ariaLabel={'password'}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          required={true}
         />
-        {/* </label> */}
         <button
           type="submit"
           className={'submitButton'}

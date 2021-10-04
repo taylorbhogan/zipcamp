@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { getAreas } from '../../store/areas'
@@ -7,8 +7,9 @@ import '../../index.css'
 import { editSpot } from '../../store/spots';
 import { deleteSpot } from '../../store/spots'
 import styles from './SpotEditForm.module.css'
+import Input from '../parts/Input';
 
-function SpotEditForm({spotId, setShowModal}){
+function SpotEditForm({ spotId, setShowModal }) {
   //
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,14 +20,14 @@ function SpotEditForm({spotId, setShowModal}){
   // how do I just make the above spot have the stateID already in it?
   const [name, setName] = useState(spot?.name)
   const [lat, setLat] = useState(spot?.lat)
-  const [long , setLong] = useState(spot?.long)
-  const [blurb , setBlurb] = useState(spot?.blurb)
-  const [directions , setDirections] = useState(spot?.directions)
+  const [long, setLong] = useState(spot?.long)
+  const [blurb, setBlurb] = useState(spot?.blurb)
+  const [directions, setDirections] = useState(spot?.directions)
   // useSelector pulls the info from state, where it was put by
   const areas = useSelector((state) => Object.values(state.areas))
-  const [ area, setArea ] = useState(spot?.areaId)
+  const [area, setArea] = useState(spot?.areaId)
   const usStates = useSelector(state => Object.values(state.states));
-  const [ stateId, setStateId ] = useState(spot?.stateId)
+  const [stateId, setStateId] = useState(spot?.stateId)
   const userId = useSelector(state => state.session.user.id);
 
 
@@ -34,54 +35,54 @@ function SpotEditForm({spotId, setShowModal}){
 
   useEffect(() => {
     dispatch(getAreas());
-  },[dispatch])
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getUsStates());
-  },[dispatch])
+  }, [dispatch])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
 
     // console.log("i am e", e);
-if (e.target.id !== 8){
+    if (e.target.id !== 8) {
 
-    const errors = [];
-    if(!name) errors.push('Please add a spot name.');
-    if(!lat) errors.push('Please add a latitude.')
-    if(!long) errors.push('Please add a longitude.')
-    if(!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
-    setErrors(errors)
+      const errors = [];
+      if (!name) errors.push('Please add a spot name.');
+      if (!lat) errors.push('Please add a latitude.')
+      if (!long) errors.push('Please add a longitude.')
+      if (!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
+      setErrors(errors)
 
-  //use the values set in state by the form inputs to build our payload
-  const newSpot = {
-    ...spot,
-    name,
-    lat,
-    long,
-    blurb,
-    directions,
-    areaId: +area,
-    stateId: +stateId,
-    userId,
-  };
-// console.log(newSpot);
-// TODO: Convert the below to an edit! Done. Just changed the words. Time to do the real work in the store
-    //await the dispatch of the thunk creator
+      //use the values set in state by the form inputs to build our payload
+      const newSpot = {
+        ...spot,
+        name,
+        lat,
+        long,
+        blurb,
+        directions,
+        areaId: +area,
+        stateId: +stateId,
+        userId,
+      };
+      // console.log(newSpot);
+      // TODO: Convert the below to an edit! Done. Just changed the words. Time to do the real work in the store
+      //await the dispatch of the thunk creator
       let editedSpot = await dispatch(editSpot(newSpot))
       console.log("createdSpot", editedSpot);
       if (editedSpot) {
         //act on the response
         setShowModal(false)
         history.push(`/spots/${editedSpot.id}`);
-    }
-    // let createdSpot = await dispatch(createSpot(newSpot))
-    // console.log("createdSpot", createdSpot);
-    // if (createdSpot) {
-    //   //act on the response
-    //   history.push(`/spots/${createdSpot.id}`);
-    // }
+      }
+      // let createdSpot = await dispatch(createSpot(newSpot))
+      // console.log("createdSpot", createdSpot);
+      // if (createdSpot) {
+      //   //act on the response
+      //   history.push(`/spots/${createdSpot.id}`);
+      // }
 
     }
   };
@@ -106,14 +107,13 @@ if (e.target.id !== 8){
 
 
 
-  return(
+  return (
 
     <div className={styles.formContainer}>
       <form
         className='form'
         onSubmit={handleSubmit}
-        // onSubmit={e => e.target}
-        >
+      >
         <h1
           className={'formHeader'}
         >hello from spot edit form</h1>
@@ -122,63 +122,64 @@ if (e.target.id !== 8){
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <input
+        <Input
           type="text"
-          className={'formInput'}
           value={name}
           placeholder={' spot name'}
+          ariaLabel={'spot name'}
           onChange={(e) => setName(e.target.value)}
-          // commented out to show frontend validation error array
-          // required
-          />
-        <input
+          // required false to show frontend validation error array
+          required={false}
+        />
+        <Input
           type="text"
           className={'formInput'}
           value={lat}
           placeholder={' the most helpful latitude for retracing your steps'}
+          ariaLabel={'the most helpful latitude for retracing your steps'}
           onChange={(e) => setLat(e.target.value)}
-          // commented out to show frontend validation error array
-          // required
-          />
-        <input
+          // required false to show frontend validation error array
+          required={false}
+        />
+        <Input
           type="text"
-          className={'formInput'}
           value={long}
           placeholder={' ditto the longitude'}
+          ariaLabel={'ditto the longitude'}
           onChange={(e) => setLong(e.target.value)}
-          // commented out to show frontend validation error array
-          // required
-          />
+          // required false to show frontend validation error array
+          required={false}
+        />
         <textarea
           type="text"
           className={'formTextAreaInput'}
           value={blurb}
           placeholder={' what\'s the deal?'}
           onChange={(e) => setBlurb(e.target.value)}
-          // commented out to show frontend validation error array
-          // required
-          />
+        // commented out to show frontend validation error array
+        // required
+        />
         <textarea
           type="text"
           className={'formTextAreaInput'}
           value={directions}
           placeholder={' how do you find your way back?'}
           onChange={(e) => setDirections(e.target.value)}
-          />
+        />
         <select
           onChange={(e) => setArea(e.target.value)}
           className={'formSelectInput'}
-        // // the change:
-        // value={spot.stateId}
-        // //
+          // // the change:
+          // value={spot.stateId}
+          // //
           value={spot?.areaId}
-          >
+        >
           {areas.map(area =>
             <option
               // selected={area.id === spot?.Area?.id}
               value={area.id}
               key={area.id}>{area.name}</option>
-            )}
+          )}
         </select>
         <select
           // the change:
@@ -187,15 +188,15 @@ if (e.target.id !== 8){
           //
           onChange={(e) => setStateId(e.target.value)}
           className={'formSelectInput'}
-          >
+        >
           {usStates.map(state =>
             <option
-                      // the change:
-            // selected={state.id === spot?.State?.id}
-            //
-            value={state.id}
+              // the change:
+              // selected={state.id === spot?.State?.id}
+              //
+              value={state.id}
               key={state.id}>{state.name}</option>
-            )}
+          )}
         </select>
         <button
           type="submit"
@@ -206,7 +207,7 @@ if (e.target.id !== 8){
         onClick={() => handleDelete(spot.id)}
         className={styles.warningButton}
         id={8}
-        >
+      >
         Delete
       </button>
     </div>

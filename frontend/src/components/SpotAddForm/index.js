@@ -7,6 +7,7 @@ import '../../index.css'
 import styles from './SpotAddForm.module.css'
 import { createSpot } from '../../store/spots';
 import MapContainer from '../Maps';
+import Input from '../parts/Input';
 
 
 function SpotAddForm(){
@@ -118,13 +119,13 @@ function SpotAddForm(){
         <div className={styles.containerDiv}>
           <div className={styles.leftDiv}>
             <div className={styles.infoDiv}>
-              <input
+              <Input
                 type="text"
-                className={'formInput'}
                 value={name}
                 placeholder={' spot name'}
+                ariaLabel={'spot name'}
                 onChange={(e) => setName(e.target.value)}
-                required
+                required={true}
                 />
               <textarea
                 type="text"

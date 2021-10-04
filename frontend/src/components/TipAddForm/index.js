@@ -16,15 +16,6 @@ function TipAddForm({ setShowTipAddModal }) {
 
   const userId = useSelector(state => state.session.user?.id);
 
-
-  // useEffect(() => {
-  //   dispatch(getAreas());
-  // },[dispatch])
-
-  // useEffect(() => {
-  //   dispatch(getUsStates());
-  // },[dispatch])
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -33,20 +24,15 @@ function TipAddForm({ setShowTipAddModal }) {
 
     setErrors(errors)
 
-    //use the values set in state by the form inputs to build our payload
     const newTip = {
       userId,
       spotId,
       text: tipText,
       tipRating: 0
     };
-    // console.log(newTip);
 
-    //await the dispatch of the thunk creator
     let createdTip = await dispatch(createTip(newTip))
-    // console.log("createdTip", createdTip);
     if (createdTip) {
-      //act on the response
       setShowTipAddModal(false)
       history.push(`/spots/${spotId}`);
     }
@@ -54,10 +40,7 @@ function TipAddForm({ setShowTipAddModal }) {
 
 
   return (
-
-    <div
-      className={styles.addTipFormWrapper}
-    >
+    <div className={styles.addTipFormWrapper}>
       <form
         className='form'
         onSubmit={handleSubmit}

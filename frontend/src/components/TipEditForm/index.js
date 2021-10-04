@@ -1,46 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-// import { getAreas } from '../../store/areas'
-// import { getUsStates } from '../../store/usStates'
 import '../../index.css'
-// import { editSpot } from '../../store/spots';
 import { editTip } from '../../store/tips';
 import Input from '../parts/Input';
 
 function TipEditForm({spotId, setShowModal, tipId}){
-  //
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [errors, setErrors] = useState([])
-
-  // const spot = useSelector((state) => state.spots.allSpots[spotId])
-  // // how do I just make the above spot have the stateID already in it?
-  // const [name, setName] = useState(spot?.name)
-  // const [lat, setLat] = useState(spot?.lat)
-  // const [long , setLong] = useState(spot?.long)
-  // const [blurb , setBlurb] = useState(spot?.blurb)
-  // const [directions , setDirections] = useState(spot?.directions)
-  // // useSelector pulls the info from state, where it was put by
-  // const areas = useSelector((state) => Object.values(state.areas))
-  // const [ area, setArea ] = useState(spot?.areaId)
-  // const usStates = useSelector(state => Object.values(state.states));
-  // const [ stateId, setStateId ] = useState(spot?.stateId)
   const userId = useSelector(state => state.session.user?.id);
   const tip = useSelector(state => state.tips.allTips[tipId]);
 
   const [tipText , setTipText] = useState(tip.text)
-
-
-
-  // useEffect(() => {
-  //   dispatch(getAreas());
-  // },[dispatch])
-
-  // useEffect(() => {
-  //   dispatch(getUsStates());
-  // },[dispatch])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,20 +51,9 @@ function TipEditForm({spotId, setShowModal, tipId}){
     // }
   };
 
-
-
-
-
-
-
-
-
-
-
   return(
-
     <div>
-      <form
+      <form 
         className='form'
         onSubmit={handleSubmit}
         >

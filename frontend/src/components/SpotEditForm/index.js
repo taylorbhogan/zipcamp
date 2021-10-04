@@ -10,10 +10,8 @@ import styles from './SpotEditForm.module.css'
 import Input from '../parts/Input';
 
 function SpotEditForm({ spotId, setShowModal }) {
-  //
   const dispatch = useDispatch();
   const history = useHistory();
-
   const [errors, setErrors] = useState([])
 
   const spot = useSelector((state) => state.spots.allSpots[spotId])
@@ -23,15 +21,11 @@ function SpotEditForm({ spotId, setShowModal }) {
   const [long, setLong] = useState(spot?.long)
   const [blurb, setBlurb] = useState(spot?.blurb)
   const [directions, setDirections] = useState(spot?.directions)
-  // useSelector pulls the info from state, where it was put by
   const areas = useSelector((state) => Object.values(state.areas))
   const [area, setArea] = useState(spot?.areaId)
   const usStates = useSelector(state => Object.values(state.states));
   const [stateId, setStateId] = useState(spot?.stateId)
   const userId = useSelector(state => state.session.user.id);
-
-
-
 
   useEffect(() => {
     dispatch(getAreas());
@@ -44,8 +38,6 @@ function SpotEditForm({ spotId, setShowModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-    // console.log("i am e", e);
     if (e.target.id !== 8) {
 
       const errors = [];
@@ -55,7 +47,6 @@ function SpotEditForm({ spotId, setShowModal }) {
       if (!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
       setErrors(errors)
 
-      //use the values set in state by the form inputs to build our payload
       const newSpot = {
         ...spot,
         name,
@@ -67,48 +58,24 @@ function SpotEditForm({ spotId, setShowModal }) {
         stateId: +stateId,
         userId,
       };
-      // console.log(newSpot);
       // TODO: Convert the below to an edit! Done. Just changed the words. Time to do the real work in the store
       //await the dispatch of the thunk creator
       let editedSpot = await dispatch(editSpot(newSpot))
-      console.log("createdSpot", editedSpot);
       if (editedSpot) {
-        //act on the response
         setShowModal(false)
         history.push(`/spots/${editedSpot.id}`);
       }
-      // let createdSpot = await dispatch(createSpot(newSpot))
-      // console.log("createdSpot", createdSpot);
-      // if (createdSpot) {
-      //   //act on the response
-      //   history.push(`/spots/${createdSpot.id}`);
-      // }
-
     }
   };
 
-
-
-
-
   const handleDelete = async (spotId) => {
-    // successfully got this far...
-    console.log(spotId);
-    // dispatch THUNK
     let deletedSpot = await dispatch(deleteSpot(spotId))
-    console.log('inside handleDelete in SpotEditForm');
     if (deletedSpot) {
-      //act on the response
       history.push(`/spots`);
     }
   }
 
-
-
-
-
   return (
-
     <div className={styles.formContainer}>
       <form
         className='form'
@@ -168,9 +135,6 @@ function SpotEditForm({ spotId, setShowModal }) {
         <select
           onChange={(e) => setArea(e.target.value)}
           className={'formSelectInput'}
-          // // the change:
-          // value={spot.stateId}
-          // //
           value={spot?.areaId}
         >
           {areas.map(area =>
@@ -181,18 +145,13 @@ function SpotEditForm({ spotId, setShowModal }) {
           )}
         </select>
         <select
-          // the change:
           value={spot?.stateId}
           hidden={true}
-          //
           onChange={(e) => setStateId(e.target.value)}
           className={'formSelectInput'}
         >
           {usStates.map(state =>
             <option
-              // the change:
-              // selected={state.id === spot?.State?.id}
-              //
               value={state.id}
               key={state.id}>{state.name}</option>
           )}

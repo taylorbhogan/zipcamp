@@ -133,7 +133,6 @@ function SpotEditForm({ spotId, setShowModal }) {
         />
         <Input
           type="text"
-          className={'formInput'}
           value={lat}
           placeholder={' the most helpful latitude for retracing your steps'}
           ariaLabel={'the most helpful latitude for retracing your steps'}
@@ -150,21 +149,21 @@ function SpotEditForm({ spotId, setShowModal }) {
           // required false to show frontend validation error array
           required={false}
         />
-        <textarea
-          type="text"
-          className={'formTextAreaInput'}
+        <Input
+          type="textarea"
           value={blurb}
           placeholder={' what\'s the deal?'}
           onChange={(e) => setBlurb(e.target.value)}
-        // commented out to show frontend validation error array
-        // required
+          // required false to show frontend validation error array
+          required={false}
         />
         <textarea
-          type="text"
-          className={'formTextAreaInput'}
+          type="textarea"
           value={directions}
           placeholder={' how do you find your way back?'}
           onChange={(e) => setDirections(e.target.value)}
+          // required false to show frontend validation error array
+          required={false}
         />
         <select
           onChange={(e) => setArea(e.target.value)}

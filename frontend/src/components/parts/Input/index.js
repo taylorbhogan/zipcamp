@@ -5,7 +5,7 @@ const Input = ({ type, value, placeholder, ariaLabel, onChange, required }) => {
     <>
       {type === 'text' ?
         <input
-          type={type}
+          type='text'
           value={value}
           placeholder={placeholder}
           ariaLabel={ariaLabel}
@@ -15,6 +15,13 @@ const Input = ({ type, value, placeholder, ariaLabel, onChange, required }) => {
         ></input>
         :
         <textarea
+          type='textarea'
+          value={value}
+          placeholder={placeholder}
+          ariaLabel={ariaLabel}
+          onChange={onChange}
+          required={required}
+          className={styles.formTextAreaInput}
         ></textarea>
       }
     </>

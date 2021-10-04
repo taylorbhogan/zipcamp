@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import '../../index.css'
 // import { editSpot } from '../../store/spots';
 import { editTip } from '../../store/tips';
+import Input from '../parts/Input';
 
 function TipEditForm({spotId, setShowModal, tipId}){
   //
@@ -102,12 +103,13 @@ function TipEditForm({spotId, setShowModal, tipId}){
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <textarea
-          type="text"
-          className={'formTextAreaInput'}
+        <Input
+          type="textarea"
           value={tipText}
           placeholder={' what do you want to remember for next time?'}
+          ariaLabel={'what do you want to remember for next time?'}
           onChange={(e) => setTipText(e.target.value)}
+          required={true}
           />
         <button
           type="submit"

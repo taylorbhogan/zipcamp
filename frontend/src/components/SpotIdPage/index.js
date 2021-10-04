@@ -10,13 +10,12 @@ import styles from './SpotIdPage.module.css'
 
 
 function SpotIdPage() {
-  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const { spotId } = useParams();
-  const spot = useSelector((state) => state.spots.allSpots[spotId])
-
   const [showEditModal, setShowEditModal] = useState(false);
 
+  const sessionUser = useSelector(state => state.session.user);
+  const spot = useSelector((state) => state.spots.allSpots[spotId])
 
   useEffect(() => {
     if (!spot) {

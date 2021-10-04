@@ -16,11 +16,11 @@
   margin-right: var(--containerMarginSide);
   margin-left: var(--containerMarginSide);
   padding-top: var(--containerPaddingTop);
-  padding-bottom: 80px;
   padding-right: 3rem;
+  padding-bottom: 80px;
   padding-left: 3rem;
   border-radius: var(--containerBorderRadius);
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }

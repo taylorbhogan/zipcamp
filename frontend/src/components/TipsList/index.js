@@ -5,7 +5,7 @@ import { getTips } from '../../store/tips'
 
 import styles from './TipsList.module.css'
 import TipBox from '../TipBox'
-import TipAddModal from '../TipAddModal'
+import TipButton from '../TipButton'
 
 function TipsList({ spot }) {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function TipsList({ spot }) {
 
   return (
       <div className={styles.sectionContainer}>
-        <TipAddModal spot={spot} thisSpotTips={thisSpotTips} />
+        <TipButton spot={spot} thisSpotTips={thisSpotTips} />
         {(thisSpotTips.length > 0) && (
           <div className={styles.contentContainer}>
             {thisSpotTips.map((tip) => <TipBox key={tip.id} tip={tip} />)}

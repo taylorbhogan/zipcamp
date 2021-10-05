@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import Input from "../parts/Input";
 import styles from './LoginForm.module.css'
 import './../../index.css'
+import FormErrors from "../parts/FormErrors";
 
 
 function LoginForm() {
@@ -30,11 +31,7 @@ function LoginForm() {
         onSubmit={handleSubmit}
       >
         <h1 className={'formHeader'}>Welcome back.</h1>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+        <FormErrors errors={errors}/>
         <Input
           type="text"
           value={credential}

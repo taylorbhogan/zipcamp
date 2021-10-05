@@ -8,6 +8,7 @@ import { editSpot } from '../../store/spots';
 import { deleteSpot } from '../../store/spots'
 import styles from './SpotEditForm.module.css'
 import Input from '../parts/Input';
+import FormErrors from '../parts/FormErrors';
 
 function SpotEditForm({ spotId, setShowModal }) {
   const dispatch = useDispatch();
@@ -84,11 +85,7 @@ function SpotEditForm({ spotId, setShowModal }) {
         <h1
           className={'formHeader'}
         >hello from spot edit form</h1>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+        <FormErrors errors={errors}/>
         <Input
           type="text"
           value={name}

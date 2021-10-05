@@ -5,6 +5,7 @@ import Input from "../parts/Input";
 import * as sessionActions from "../../store/session";
 
 import styles from './SignupForm.module.css'
+import FormErrors from "../parts/FormErrors";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -38,16 +39,14 @@ function SignupFormPage() {
           onSubmit={handleSubmit}
           className={'form'}
         >
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
+          <FormErrors errors={errors}/>
           <Input
             type="text"
             value={email}
             placeholder={' email'}
             ariaLabel={'email'}
             onChange={(e) => setEmail(e.target.value)}
-            required={true}
+            required={false}
           />
           <Input
             type="text"
@@ -55,7 +54,7 @@ function SignupFormPage() {
             placeholder={' username'}
             ariaLabel={'username'}
             onChange={(e) => setUsername(e.target.value)}
-            required={true}
+            required={false}
           />
           <Input
             type="password"
@@ -63,7 +62,7 @@ function SignupFormPage() {
             placeholder={' password'}
             ariaLabel={'password'}
             onChange={(e) => setPassword(e.target.value)}
-            required={true}
+            required={false}
           />
           <Input
             type="password"
@@ -71,7 +70,7 @@ function SignupFormPage() {
             placeholder={' confirm password'}
             ariaLabel={'confirm password'}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            required={true}
+            required={false}
           />
           <button
             type="submit"

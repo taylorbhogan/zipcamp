@@ -1,16 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-import { Modal } from '../../context/Modal';
-
-import styles from './TipBox.module.css'
-// import SpotIdButton from '../ShowSpotIdButton';
-// import ActivityIcon from '../ActivityIcon';
-// import spotsReducer from '../../store/spots';
 import { deleteTip } from '../../store/tips'
-
-import TipEditForm from '../TipEditForm';
+import TipForm from '../TipForm';
+import { Modal } from '../../context/Modal';
+import styles from './TipBox.module.css'
 
 
 function TipBox({tip}){
@@ -19,26 +13,19 @@ function TipBox({tip}){
   const history = useHistory();
   const dispatch = useDispatch();
 
-
-
   const handleDelete = async (tipId) => {
-    // successfully got this far...
-    // console.log(spotId);
-    // dispatch THUNK
     let deletedTip = await dispatch(deleteTip(tipId))
     if (deletedTip) {
-      //act on the response
       history.push(`/spots/${tip.spotId}`);
     }
   }
-
 
   return(
     <div className={styles.tipBoxWrapper}>
       <div className={styles.tipCardContainer}>
         {showModal && (
             <Modal className={'modalCard'} onClose={() => setShowModal(false)}>
-              <TipEditForm setShowModal={setShowModal} spotId={1} tipId={tip.id}/>
+              <TipForm setShowTipForm={setShowModal} tipId={tip.id}/>
             </Modal>
           )}
         <div className={styles.spotBoxContainerLeft}>
@@ -46,7 +33,6 @@ function TipBox({tip}){
 
         </div>
         <div className={styles.spotBoxContainerRight}>
-          {/* <div className={styles.spotName}>{tip.id}</div> */}
           <div className={styles.locationDiv}>
             <div className={styles.invisibleEditWrapper}>
               <button

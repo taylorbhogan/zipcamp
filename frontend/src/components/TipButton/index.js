@@ -5,12 +5,12 @@ import TipForm from "../TipForm";
 import styles from './TipButton.module.css'
 
 
-function TipButton({thisSpotTips, spot}){
+function TipButton({ spot }) {
   const sessionUser = useSelector(state => state.session.user);
 
   const [showTipForm, setShowTipForm] = useState(false);
 
-  return(
+  return (
     <div className={styles.buttonWrapper}>
       {<button
         hidden={sessionUser && sessionUser.id === spot?.userId ? false : true}

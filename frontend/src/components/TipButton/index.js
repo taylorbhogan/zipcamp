@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Modal } from '../../context/Modal'
-import TipAddForm from "../TipAddForm";
-import styles from './TipAddModal.module.css'
+import TipForm from "../TipForm";
+import styles from './TipButton.module.css'
 
 
-function TipAddModal({thisSpotTips, spot}){
+function TipButton({thisSpotTips, spot}){
   const sessionUser = useSelector(state => state.session.user);
 
-  const [showTipAddModal, setShowTipAddModal] = useState(false);
+  const [showTipForm, setShowTipForm] = useState(false);
 
   return(
     <div className={styles.buttonWrapper}>
       {<button
         hidden={sessionUser && sessionUser.id === spot?.userId ? false : true}
-        onClick={() => setShowTipAddModal(true)}
+        onClick={() => setShowTipForm(true)}
         className={styles.button}
       >
         add a tip
       </button>}
-      {showTipAddModal && (
-        <Modal onClose={() => setShowTipAddModal(false)}>
-          <TipAddForm setShowTipAddModal={setShowTipAddModal} />
+      {showTipForm && (
+        <Modal onClose={() => setShowTipForm(false)}>
+          <TipForm isNew={true} setShowTipForm={setShowTipForm} />
         </Modal>
       )}
     </div>
   )
 }
 
-export default TipAddModal;
+export default TipButton;

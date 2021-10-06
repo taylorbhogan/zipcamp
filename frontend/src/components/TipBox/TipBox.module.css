@@ -1,99 +1,50 @@
 @import './../../index.css';
 
-
-
 .tipCardContainer{
   border: 2px solid rgb(124, 124, 124);
   border-radius: var(--cardBorderRadius);
-  /* background-color: var(--mainColorLightGrey); */
-  /* background-color: rgb(224, 224, 224); */
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 20px 30px 20px 30px;
-  padding: 0px 20px 20px 20px;
+  padding: 20px;
   width: 292px;
   box-shadow: 0rem 0 .3rem .1rem #AAA;
-  z-index: 1;
 }
 
 .tipCardContainer:hover{
-  /* transform: translateY(-7px); */
   box-shadow: -.4rem 0 1rem #999;
-  /* background-color: lightcoral; */
   background-color: rgb(233, 233, 233);
 }
 
-.invisibleEditWrapper{
+.tipCardContainer:hover .buttons {
+  visibility: visible;
+}
+
+.buttons{
   position: relative;
+  visibility: hidden;
 }
 
-.invisibleEdit{
+.editButton, .deleteButton{
+  position: absolute;
+  text-decoration: underline;
+  background-color: Transparent;
+  left: 220px;
+  border: 0;
+  cursor: pointer;
+}
+
+.editButton{
   top: 0px;
-  visibility: hidden;
-  position: absolute;
-  left: 220px;
-  background-color: Transparent;
-  border: 0;
-  text-decoration: underline;
 }
 
-.invisibleDelete{
+.deleteButton{
   top: 25px;
-  visibility: hidden;
-  position: absolute;
-  left: 220px;
-  background-color: Transparent;
-  border: 0;
-  text-decoration: underline;
-  font-size: 13px;
 }
 
-.invisibleEdit:hover{
-  cursor: pointer;
-  transform: translate3d(1px, 1px, 0);
+.deleteButton:hover, .editButton:hover{
   transition: all .1s;
-}
-
-
-
-.invisibleDelete:hover{
-  cursor: pointer;
   font-weight: 700;
-  /* transform: translate3d(1px, 1px, 0); */
-  /* transition: all .1s; */
-  /* font-size: 14px; */
-}
-
-
-.tipCardContainer:hover .invisibleEdit{
-  visibility: visible;
-}
-.tipCardContainer:hover .invisibleDelete{
-  visibility: visible;
-}
-
-.invisibleEdit:hover .invisibleDelete{
-  visibility: visible;
-}
-
-.spotBoxContainerLeft{
-  display: flex;
-  flex-direction: column;
-}
-
-
-/* .spotImageDiv{
-  width: 20px;
-  height: 20px;
-  border: 1px solid black;
-  padding: 20px;
-  border-radius: 45px;
-} */
-
-.spotBoxContainerRight{
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
 }
 
 .spotName{
@@ -113,27 +64,7 @@
 
 }
 
-.spotBlurb{
+.tipText{
   font-size: 1.5em;
   margin-top: 20px;
 }
-
-.activityDiv{
-  display: flex;
-  width: 300px;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  margin-top: 10px;
-  height: auto;
-}
-
-/* .profileImage{
-  border: solid 1px black;
-  height: 90px;
-  width: 90px;
-  border-radius: 45px;
-  position: absolute;
-  top: -20px;
-  left: -30px;
-  background-color: whitesmoke;
-} */

@@ -4,19 +4,18 @@ import { useParams } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import { getSpot } from '../../store/spots'
 import SpotEditForm from '../SpotEditForm';
+import SpotAddForm from '../SpotAddForm';
 import TipsList from '../TipsList';
 import MapContainer from '../Maps';
 import styles from './SpotIdPage.module.css'
 
-
 function SpotIdPage() {
-  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const { spotId } = useParams();
-  const spot = useSelector((state) => state.spots.allSpots[spotId])
-
   const [showEditModal, setShowEditModal] = useState(false);
 
+  const sessionUser = useSelector(state => state.session.user);
+  const spot = useSelector((state) => state.spots.allSpots[spotId])
 
   useEffect(() => {
     if (!spot) {
@@ -31,7 +30,8 @@ function SpotIdPage() {
         <div className={styles.spotImageCarousel}></div>
         {showEditModal && (
           <Modal className={'modalCard'} onClose={() => setShowEditModal(false)}>
-            <SpotEditForm setShowModal={setShowEditModal} spotId={spot?.id} />
+            {/* <SpotEditForm setShowModal={setShowEditModal} spotId={spot?.id} /> */}
+            <SpotAddForm />
           </Modal>
         )}
         <div className={styles.SpotDivHeader}>

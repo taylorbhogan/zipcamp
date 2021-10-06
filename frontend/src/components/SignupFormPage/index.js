@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Input from "../parts/Input";
 import * as sessionActions from "../../store/session";
 
 import styles from './SignupForm.module.css'
+import FormErrors from "../parts/FormErrors";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -37,53 +39,39 @@ function SignupFormPage() {
           onSubmit={handleSubmit}
           className={'form'}
         >
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          {/* <label>
-            Email<br /> */}
-            <input
-              type="text"
-              value={email}
-              className={'formInput'}
-              placeholder={' email'}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              />
-          {/* </label> */}
-          {/* <label>
-            Username<br /> */}
-            <input
-              type="text"
-              value={username}
-              className={'formInput'}
-              placeholder={' username'}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              />
-          {/* </label> */}
-          {/* <label>
-            Password<br /> */}
-            <input
-              type="password"
-              value={password}
-              className={'formInput'}
-              placeholder={' password'}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              />
-          {/* </label> */}
-          {/* <label>
-            Confirm Password<br /> */}
-            <input
-              type="password"
-              value={confirmPassword}
-              className={'formInput'}
-              placeholder={' confirm password'}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          {/* </label> */}
+          <FormErrors errors={errors}/>
+          <Input
+            type="text"
+            value={email}
+            placeholder={' email'}
+            ariaLabel={'email'}
+            onChange={(e) => setEmail(e.target.value)}
+            required={false}
+          />
+          <Input
+            type="text"
+            value={username}
+            placeholder={' username'}
+            ariaLabel={'username'}
+            onChange={(e) => setUsername(e.target.value)}
+            required={false}
+          />
+          <Input
+            type="password"
+            value={password}
+            placeholder={' password'}
+            ariaLabel={'password'}
+            onChange={(e) => setPassword(e.target.value)}
+            required={false}
+          />
+          <Input
+            type="password"
+            value={confirmPassword}
+            placeholder={' confirm password'}
+            ariaLabel={'confirm password'}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required={false}
+          />
           <button
             type="submit"
             className={'submitButton'}

@@ -12,14 +12,6 @@
   width: 400px;
 }
 
-.blurbInput{
-  height: 70px;
-  margin-bottom: 10px;
-}
-.directionsInput{
-  height: 110px;
-  margin-bottom: 10px;
-}
 
 .rightDiv{
   display: flex;

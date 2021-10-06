@@ -12,21 +12,6 @@
   color: var(--mainColorDarkGrey);
 }
 
-.formInputLabel{
-  color: var(--mainColorDarkGrey);
-  padding: 20px;
-}
-
-.formInput{
-  height: 28px;
-  margin-bottom: 10px;
-}
-
-.formTextAreaInput{
-  height: 50px;
-  margin-bottom: 10px;
-}
-
 .formSelectInput{
   /* height: 50px; */
   margin-top: 20px;

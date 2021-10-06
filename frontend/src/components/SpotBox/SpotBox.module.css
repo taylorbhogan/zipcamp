@@ -1,6 +1,6 @@
 @import './../../index.css';
 
-.spotBoxContainer{
+.container{
   /* border: 1px solid black; */
   border-radius: var(--cardBorderRadius);
   background-color: var(--mainColorLightGrey);
@@ -12,13 +12,13 @@
   box-shadow: 0rem 0 .3rem .1rem #AAA;
 
 }
-.spotBoxContainer:hover{
+.container:hover{
   box-shadow: -.4rem 0 1rem #999;
 
 }
 
 
-.spotBoxContainerLeft{
+.containerLeft{
   display: flex;
   flex-direction: column;
 }
@@ -37,7 +37,7 @@
   object-fit: cover;
 }
 
-.spotBoxContainerRight{
+.containerRight{
   display: flex;
   flex-direction: column;
   padding: 20px;

@@ -23,12 +23,12 @@ function App() {
   return (
     <div className='appContainer'>
       <div className='pageContainer'>
-      <Navigation isLoaded={isLoaded} />
+        <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <ScrollToTop>
             <Switch>
               <Route exact path='/'>
-                  <WelcomeMessage />
+                <WelcomeMessage />
               </Route>
               <Route path='/signup'>
                 <SignupFormPage />

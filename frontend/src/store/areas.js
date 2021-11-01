@@ -25,18 +25,22 @@ export const getAreas = () => async dispatch => {
   }
 }
 
-export const searchAreas = (designation, location) => async dispatch => {
-  console.log('designation, location---------------->',designation, location);
-  const res = await csrfFetch('/api/areas/search',{
-    method: 'POST',
-    body: JSON.stringify({
-      designation, location
-    }),
-  })
+export const searchAreas = (organization, location) => async dispatch => {
+  console.log('organization, location---------------->',organization, location);
+  try{
+    const res = await csrfFetch('/api/areas/from-rec-gov/area-search',{
+      method: 'POST',
+      body: JSON.stringify({
+        organization, location
+      }),
+    })
 
-  if (res.ok) {
-    const filteredAreas = await res.json()
-    dispatch(load(filteredAreas))
+    if (res.ok) {
+      const filteredAreas = await res.json()
+      dispatch(load(filteredAreas))
+    }
+  } catch(e) {
+    console.log('error in searchAreas',e);
   }
 }
 
@@ -50,7 +54,7 @@ const initialState = {};
 const areasReducer = (state = initialState, action) =>{
   switch(action.type){
     case LOAD_AREAS:
-      console.log('inside LOAD AREAS');
+      // console.log('inside LOAD AREAS');
       const newState = {};
       action.areas.forEach((area) => {
         newState[area.id] = area;

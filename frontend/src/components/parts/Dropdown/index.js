@@ -9,12 +9,11 @@ const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
 
   const handleSelection = (item) => {
     setSelected(item);
-    setFunction(item.id);
+    setFunction(item);
     toggle();
   }
 
 
-console.log('items',items);
   return (
     <div>
       <div

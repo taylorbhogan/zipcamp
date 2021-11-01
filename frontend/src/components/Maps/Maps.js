@@ -13,7 +13,7 @@ const containerStyle = {
 };
 
 
-const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
+const Maps = ({ apiKey, lat, long, isAdding = false, getLocation, multiMarker = false }) => {
   const [ currentPosition, setCurrentPosition ] = useState({lat: 0, lng: 0});
   // const [ pinLocation, setpinLocation ] = useState({});
 
@@ -91,12 +91,18 @@ const footer = (
           center={isAdding ? currentPosition : pin.location}
           zoom={10}
         >
-          <Marker
+          {!multiMarker && <Marker
             key={pin.name}
             position={isAdding ? currentPosition : pin.location}
             draggable={true}
             onDragEnd={(e) => onMarkerDragEnd(e)}
-          />
+          />}
+          {multiMarker && <Marker
+            key={pin.name}
+            position={isAdding ? currentPosition : pin.location}
+            draggable={true}
+            onDragEnd={(e) => onMarkerDragEnd(e)}
+          />}
           {/* {
             isAdding ?
             <Marker

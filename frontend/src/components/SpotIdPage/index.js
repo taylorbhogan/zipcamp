@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Modal } from '../../context/Modal';
 import { getSpot } from '../../store/spots'
-import SpotEditForm from '../SpotEditForm';
 import SpotAddForm from '../SpotAddForm';
 import TipsList from '../TipsList';
 import MapContainer from '../Maps';
@@ -30,7 +29,6 @@ function SpotIdPage() {
         <div className={styles.spotImageCarousel}></div>
         {showEditModal && (
           <Modal className={'modalCard'} onClose={() => setShowEditModal(false)}>
-            {/* <SpotEditForm setShowModal={setShowEditModal} spotId={spot?.id} /> */}
             <SpotAddForm />
           </Modal>
         )}
@@ -65,20 +63,13 @@ function SpotIdPage() {
               <div className={styles.directions}>{spot?.directions}</div>
             </div>
           </div>
-            <div className={styles.mapContainerWrapper}>
-              <MapContainer
-                lat={spot?.lat}
-                long={spot?.long}
-              />
-            </div>
-
+          <div className={styles.mapContainerWrapper}>
+            <MapContainer
+              lat={spot?.lat}
+              long={spot?.long}
+            />
+          </div>
         </div>
-        {/* <div className={styles.SpotDivActivities}>
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-            <ActivityIcon />
-          </div> */}
         <TipsList spot={spot} />
       </div>
     </div>

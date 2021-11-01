@@ -51,7 +51,6 @@ function SpotAddForm(){
     console.log('this is land', land);
     console.log('this is land.State.id', land.State.id);
 
-  //use the values set in state by the form inputs to build our payload
     const newSpot = {
       name,
       lat,
@@ -63,13 +62,9 @@ function SpotAddForm(){
       stateId: land.State.id,
       userId,
     };
-// console.log(newSpot);
 
-    //await the dispatch of the thunk creator
     let createdSpot = await dispatch(createSpot(newSpot))
-    // console.log("createdSpot", createdSpot);
     if (createdSpot) {
-      //act on the response
       history.push(`/spots/${createdSpot.id}`);
     }
   };

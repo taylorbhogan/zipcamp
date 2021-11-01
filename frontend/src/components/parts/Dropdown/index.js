@@ -25,15 +25,14 @@ const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
         {/* <div><i className="fas fa-caret-down"></i></div> */}
       </div>
       {open &&
-        <div className={styles.options}>
-          <ul>
-            {items.map((item) => (
-              <li key={item.id}>
-                <button onClick={() => handleSelection(item)}>{item.name}</button>
-              </li>
-            ))}
-          </ul>
-        </div>}
+        <ul className={styles.options}>
+          {items.map((item) => (
+            <li key={item.id}>
+              <button onClick={() => handleSelection(item)}>{item.name}</button>
+            </li>
+          ))}
+        </ul>
+      }
     </div>
   )
 }

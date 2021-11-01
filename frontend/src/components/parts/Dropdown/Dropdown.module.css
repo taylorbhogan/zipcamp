@@ -8,6 +8,7 @@
   height: 25vh;
   overflow-y: scroll;
   padding: 0;
+  background-color: var(--mainColorLightGrey);
 }
 
 .options li {

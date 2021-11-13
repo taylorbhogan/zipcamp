@@ -37,6 +37,7 @@ export const searchAreas = (organization, location) => async dispatch => {
 
     if (res.ok) {
       const filteredAreas = await res.json()
+      // console.log('success! :)');
       dispatch(load(filteredAreas))
     }
   } catch(e) {

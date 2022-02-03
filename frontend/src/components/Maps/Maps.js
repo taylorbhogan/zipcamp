@@ -17,14 +17,17 @@ const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
     googleMapsApiKey: apiKey,
   });
 
-  const success = (devicePosition) => {
+  const positionSuccessAftereffect = (devicePosition) => {
     const lat = devicePosition.coords.latitude;
     const lng = devicePosition.coords.longitude;
     setCurrentPosition({ lat, lng });
   }
+  const error = () => {
+    alert('There was an error accessing your position')
+  }
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
+    navigator.geolocation.getCurrentPosition(positionSuccessAftereffect, error);
   }, [])
 
 

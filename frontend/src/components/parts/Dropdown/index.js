@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './Dropdown.module.css'
 
 const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
+  const dropdownRef = useRef();
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState(null)
 
@@ -13,9 +14,22 @@ const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
     toggle();
   }
 
+  useEffect(() => {
+    const handler = e => {
+      if (!dropdownRef.current.contains(e.target)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+
+  })
 
   return (
-    <div>
+    <div ref={dropdownRef}>
       <div
         className={styles.header}
         onClick={toggle}
@@ -25,15 +39,14 @@ const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
         {/* <div><i className="fas fa-caret-down"></i></div> */}
       </div>
       {open &&
-        <div className={styles.options}>
-          <ul>
-            {items.map((item) => (
-              <li key={item.id}>
-                <button onClick={() => handleSelection(item)}>{item.name}</button>
-              </li>
-            ))}
-          </ul>
-        </div>}
+        <ul className={styles.options}>
+          {items.map((item) => (
+            <li key={item.id}>
+              <button onClick={() => handleSelection(item)}>{item.name}</button>
+            </li>
+          ))}
+        </ul>
+      }
     </div>
   )
 }

@@ -42,14 +42,29 @@ function AreasList() {
     dispatch(searchAreas(organization?.id, usState?.abbreviation))
   }, [dispatch, organization, usState])
 
+
   useEffect(() => {
+
     (async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`)
       const data = await res.json()
-      setOrganizations(data)
-      // console.log('data---------->',data);
-
-
+      const filterOut = [
+        'STATE PARKS',
+        'FEDERAL',
+        'Smithsonian Institution',
+        'Utah',
+        'Maryland',
+        'Texas',
+        'Virginia',
+        'New Mexico',
+        'US Air Force',
+        'Smithsonian Institution Affiliations Program',
+        '',
+      ]
+      const filteredData = data.filter(datum => {
+        return !filterOut.includes(datum.name)
+      })
+      setOrganizations(filteredData)
     })()
   }, [])
   // console.log('organizations-------------->',organizations);

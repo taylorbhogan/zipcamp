@@ -5,14 +5,12 @@
 
 .options{
   position: absolute;
+  height: 25vh;
   overflow-y: scroll;
-
+  padding: 0;
+  background-color: var(--mainColorLightGrey);
 }
 
 .options li {
   list-style-type: none;
-}
-
-.options button {
-  
 }

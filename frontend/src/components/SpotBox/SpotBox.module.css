@@ -1,22 +1,18 @@
 @import './../../index.css';
 
 .container{
-  /* border: 1px solid black; */
   border-radius: var(--cardBorderRadius);
   background-color: var(--mainColorLightGrey);
-
   display: flex;
   flex-direction: row;
   margin: 20px 30px 20px 30px;
   padding: 30px 30px;
   box-shadow: 0rem 0 .3rem .1rem #AAA;
-
 }
+
 .container:hover{
   box-shadow: -.4rem 0 1rem #999;
-
 }
-
 
 .containerLeft{
   display: flex;
@@ -29,8 +25,8 @@
   border: 1px solid black;
   padding: 20px;
   border-radius: var(--cardBorderRadius);
-
 }
+
 .spotImage{
   height: 100%;
   width: 100%;

@@ -81,6 +81,7 @@ console.log('inside backend');
   const organizationId = req.body.organization;
   const stateAbbreviation = req.body.location;
   console.log(req.body);
+  console.log('end of body');
 
   const recGovRes = await fetch(`https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0&state=${stateAbbreviation}`, {
     method: 'GET',
@@ -92,7 +93,7 @@ console.log('inside backend');
     const recGovJson = await recGovRes.json();
     const recData = recGovJson['RECDATA']
 
-
+  console.log('recData', recData);
     let areaArray = recData.map(area => (
       {
         'name': area['RecAreaName'],

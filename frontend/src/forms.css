@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: stretch;
   padding: 40px 40px 20px 40px;
-  background-color: var(--mainColorLightGrey);
-  /* border-radius: var(--cardBorderRadius); */
+  background-color: var(--mainColorLightGreyOpaque);
+  border-radius: var(--cardBorderRadius);
 }
 
 .formHeader{

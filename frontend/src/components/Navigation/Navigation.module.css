@@ -84,7 +84,6 @@
   font-size: 30px;
   text-decoration: none;
   font-weight: 600;
-  /* border: 2px solid black; */
   padding: 4px 24px 0 24px;
   border-radius: 4px;
   background-color: #222222;
@@ -92,9 +91,6 @@
 
 .navLink:hover{
   color: var(--secondaryColorGreen);
-  /* background-color: #333333; */
-  /* border: 1px solid black; */
-  /* border-bottom: none; */
 }
 
 .navLinkActive{
@@ -144,10 +140,8 @@
   color: #777;
   font-weight: 700;
   margin-right: var(--pageSidePadding);
-  /* margin-bottom: 10px; */
 }
 
 .username{
-  /* margin-bottom: 17px; */
   margin-right: 18px;
 }

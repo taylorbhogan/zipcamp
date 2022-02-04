@@ -26,7 +26,7 @@ function SpotAddModal(){
         onClick={handleClick}
         className={styles.addSpotButton}
         // className={'submitButton'}
-      >ADD A NEW SPOT</button>
+      >+ spot</button>
       {showSpotAddModal && (
         <Modal onClose={() => setShowSpotAddModal(false)}>
           <SpotAddForm />

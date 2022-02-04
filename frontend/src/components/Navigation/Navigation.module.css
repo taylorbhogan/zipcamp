@@ -81,10 +81,7 @@
 
 
 .navLink{
-  margin-left: 10px;
-  margin-top: 10px;
   font-size: 30px;
-  color: var(--mainColorGreen);
   text-decoration: none;
   font-weight: 600;
   /* border: 2px solid black; */
@@ -95,13 +92,14 @@
 
 .navLink:hover{
   color: var(--secondaryColorGreen);
-  background-color: #333333;
-  border: 1px solid black;
-  border-bottom: none;
+  /* background-color: #333333; */
+  /* border: 1px solid black; */
+  /* border-bottom: none; */
 }
 
 .navLinkActive{
-  color: white
+  color: var(--mainColorGreen);
+
 }
 
 .errorDiv{

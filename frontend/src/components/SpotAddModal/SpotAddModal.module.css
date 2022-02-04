@@ -1,4 +1,4 @@
-@media screen and (min-width: 1400px) {
+/* @media screen and (min-width: 1400px) {
   .addSpotButton{
     top: 180px;
     left: 80vw;
@@ -42,7 +42,7 @@
     left: 35vw;
     padding: 20px 170px;
   }
-}
+} */
 
 .addSpotButton{
   background-color: var(--mainColorGreen);
@@ -51,12 +51,11 @@
   border: 0;
 
 
-  position: fixed;
+  /* position: fixed; */
 
   font-size: 24px;
   font-weight: bold;
   color: white;
-
 }
 
 .addSpotButton:hover{

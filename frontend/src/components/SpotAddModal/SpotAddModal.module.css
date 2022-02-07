@@ -1,6 +1,6 @@
 .addSpotButton{
   background-color: var(--mainColorGreen);
-  border-radius: 4px;
+  border-radius: var(--buttonBorderRadius);
   box-shadow: 0rem 0 .3rem .1rem #555;
   border: 0;
   font-size: 24px;

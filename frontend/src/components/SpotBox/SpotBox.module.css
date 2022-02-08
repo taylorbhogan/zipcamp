@@ -45,10 +45,6 @@
   padding: 20px;
 }
 
-.spotName{
-  font-size: var(--cardHeaderSize)
-}
-
 .areaName{
   font-size: 20px;
   margin-top: 10px;
@@ -56,20 +52,8 @@
 
 .stateName{
   margin-top: 10px;
-
 }
 
 .spotBlurb{
   margin-top: 10px;
-  margin-bottom: 10px;
-
-}
-
-.activityDiv{
-  display: flex;
-  width: 300px;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  margin-top: 10px;
-  height: auto;
 }

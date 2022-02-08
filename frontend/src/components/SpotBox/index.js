@@ -17,7 +17,7 @@ function SpotBox({ spot }) {
         </div>
       </div>
       <div className={styles.containerRight}>
-        <div className={styles.spotName}>{spot.name}</div>
+        <h1 className={styles.spotName}>{spot.name}</h1>
         <div className={styles.locationDiv}>
           <div className={styles.areaName}>{spot.Area?.name}</div>
           <div className={styles.stateName}>{spot.State?.name}</div>

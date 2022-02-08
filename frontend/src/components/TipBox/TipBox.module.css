@@ -47,10 +47,6 @@
   font-weight: 700;
 }
 
-.spotName{
-  font-size: var(--cardHeaderSize)
-}
-
 .createdAt{
   font-size: 1em;
 }

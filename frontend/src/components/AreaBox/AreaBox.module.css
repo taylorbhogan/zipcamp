@@ -27,19 +27,6 @@
   padding: 20px;
 }
 
-.areaName{
-  font-size: var(--cardHeaderSize)
-}
-
 .stateName{
   font-size: 20px;
-}
-
-.activityDiv{
-  display: flex;
-  width: 300px;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  margin-top: 10px;
-  height: auto;
 }

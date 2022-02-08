@@ -15,12 +15,9 @@ function AreaBox({area}){
               src={''}
             />
           </div>
-          <div className={styles.activityDiv}>
-
-          </div>
         </div>
         <div className={styles.areaBoxContainerRight}>
-          <div className={styles.areaName}>{area.name}</div>
+          <h1 className={styles.areaName}>{area.name}</h1>
           <div className={styles.locationDiv}>
             <div className={styles.areaName}></div>
             <div className={styles.stateName}>{area?.State?.name}</div>

@@ -45,15 +45,6 @@
   padding: 20px;
 }
 
-.areaName{
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-.stateName{
-  margin-top: 10px;
-}
-
-.spotBlurb{
+.containerRight :not(:first-child){
   margin-top: 10px;
 }

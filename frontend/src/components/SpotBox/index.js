@@ -3,9 +3,10 @@ import styles from './SpotBox.module.css'
 import ShowSpotIdButton from '../ShowSpotIdButton';
 
 function SpotBox({ spot }) {
-
   return (
-    <div className={styles.container}>
+    <a
+    href={`/spots/${spot.id}`}
+    className={styles.container}>
       <div className={styles.containerLeft}>
         <div className={styles.spotImageDiv}>
           <img
@@ -22,13 +23,13 @@ function SpotBox({ spot }) {
           <div className={styles.stateName}>{spot.State?.name}</div>
         </div>
         <div className={styles.spotBlurb}>{spot.blurb}</div>
-        <ShowSpotIdButton
+        {/* <ShowSpotIdButton
           buttonText={'Check it out'}
           lightBackground={true}
           spotId={spot.id}
-          href={`/spots/${spot.id}`} />
+          href={`/spots/${spot.id}`} /> */}
       </div>
-    </div>
+    </a>
   )
 }
 

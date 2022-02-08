@@ -23,11 +23,11 @@ function SpotBox({ spot }) {
           <div className={styles.stateName}>{spot.State?.name}</div>
         </div>
         <div className={styles.spotBlurb}>{spot.blurb}</div>
-        <ShowSpotIdButton
+        {/* <ShowSpotIdButton
           buttonText={'Check it out'}
           lightBackground={true}
           spotId={spot.id}
-          href={`/spots/${spot.id}`} />
+          href={`/spots/${spot.id}`} /> */}
       </div>
     </a>
   )

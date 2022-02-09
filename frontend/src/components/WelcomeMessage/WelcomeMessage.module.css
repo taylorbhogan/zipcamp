@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   border-radius: var(--cardBorderRadius);
-  box-shadow: var(--cardBoxShadow);
+  box-shadow: 0px 8px 16px 0px var(--mainColorGreen);
   margin: 50px auto 0 auto;
 }
 

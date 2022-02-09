@@ -6,6 +6,7 @@ import { getSpot } from '../../store/spots'
 import SpotAddForm from '../SpotAddForm';
 import TipsList from '../TipsList';
 import MapContainer from '../Maps';
+import SpotFinderCard from '../SpotFinderCard';
 import styles from './SpotIdPage.module.css'
 
 function SpotIdPage() {
@@ -13,7 +14,10 @@ function SpotIdPage() {
   const { spotId } = useParams();
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const sessionUser = useSelector(state => state.session.user);
+  const setEditModal = () => {
+    setShowEditModal(true)
+  }
+
   const spot = useSelector((state) => state.spots.allSpots[spotId])
 
   useEffect(() => {
@@ -39,24 +43,9 @@ function SpotIdPage() {
         </div>
         <div className={styles.midsection}>
           <div className={styles.SpotDivInfo}>
-            <div className={styles.SpotDivInfoLeft}>
-              <div className={styles.profileImage}></div>
-              {(spot?.userId === sessionUser?.id ?
-                <>
-                  <p>You added this spot</p>
-                  <button
-                    onClick={() => setShowEditModal(true)}
-                    className={styles.editButton}>
-                    Need to make changes?
-                  </button>
-                </>
-                :
-                <>
-                  <p>Discovered by</p>
-                  <p>{spot?.User?.username}</p>
-                </>
-              )}
-            </div>
+            <SpotFinderCard
+              spotId={spotId}
+              setEditModal={setEditModal}/>
             <div className={styles.SpotDivInfoRight}>
               <div>{spot?.blurb}</div>
               <div className={styles.directionsHeader}>Directions:</div>

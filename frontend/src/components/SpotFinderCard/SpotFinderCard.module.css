@@ -1,0 +1,32 @@
+.SpotDivInfoLeft{
+  /* padding-right: 80px; */
+  font-size: 20px;
+  position: relative;
+  margin-left: 80px;
+
+}
+
+.profileImage{
+  /* border: solid 1px black; */
+  height: 90px;
+  width: 90px;
+  border-radius: 45px;
+  position: absolute;
+  top: -20px;
+  left: -110px;
+  background-image: url('../../images/userImages/userImage1.jpeg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.editButton{
+  padding: 5px 0px 5px 0px;
+  font-size: 15px;
+  text-align: left;
+  font-family: inherit;
+  border: 0;
+  text-decoration: underline;
+  background-color: Transparent;
+  border-radius: 2px;
+}

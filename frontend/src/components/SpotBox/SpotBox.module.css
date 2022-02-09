@@ -12,12 +12,11 @@
   text-decoration: none;
   color: inherit;
   transition: all 400ms ease;
-  box-shadow: 0rem 0 .3rem .1rem #AAA;
-
+  box-shadow: var(--cardBoxShadow);
 }
 
 .container:hover{
-  box-shadow: 0 0 .5rem .5rem #AAA;
+  box-shadow: var(--cardBoxShadowHover);
   transform: scale(1.01);
 }
 

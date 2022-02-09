@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './AreaBox.module.css'
-import StandardLinkButton from '../StandardLinkButton';
+// import StandardLinkButton from '../StandardLinkButton';
 // import ActivityIcon from '../ActivityIcon';
 
 function AreaBox({area}){

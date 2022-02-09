@@ -21,8 +21,8 @@
   --cardBorderWidth: 1px;
   --cardBorderStyle: solid;
   --cardBorderRadius: 10px;
-  --cardBoxShadow: 0px 8px 16px 0px var(--mainColorGreen);
-
+  --cardBoxShadow: 0rem 0 .3rem .1rem #AAA;
+  --cardBoxShadowHover: 0 0 .5rem .5rem #AAA;
 
   /* ---- BUTTONS ---- */
   --buttonPaddingTop: .25rem;

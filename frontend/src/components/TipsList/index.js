@@ -21,7 +21,7 @@ function TipsList({ spot }) {
   }, [dispatch])
 
   return (
-      <div className={styles.sectionContainer}>
+      <div className={styles.container}>
         <TipButton spot={spot} thisSpotTips={thisSpotTips} />
         {(thisSpotTips.length > 0) && (
           <div className={styles.contentContainer}>

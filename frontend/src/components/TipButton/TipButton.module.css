@@ -4,11 +4,14 @@
 }
 
 .button{
-  position: absolute;
+  /* position: absolute; */
   /* left: -420px; */
-  left: 0px;
-  top: 30px;
-  width: 90px;
+  /* left: 0px;
+  top: 30px; */
+  margin: 20px 0;
+  width: var(--cardFinderWidth);
+  box-sizing: border-box;
+
   background-color: Transparent;
   border: 0;
   text-decoration: underline;

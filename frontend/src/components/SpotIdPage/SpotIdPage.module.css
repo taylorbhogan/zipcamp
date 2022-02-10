@@ -29,6 +29,7 @@
 .SpotDivInfo{
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   border-top: solid 1px black;
   margin-top: 15px;
   margin-bottom: 70px;

@@ -1,45 +1,22 @@
-.buttonWrapper{
-  position: relative;
-  width: 100%;
-}
-
 .button{
-  /* position: absolute; */
-  /* left: -420px; */
-  /* left: 0px;
-  top: 30px; */
   margin: 20px 0;
   width: var(--cardFinderWidth);
   box-sizing: border-box;
-
-  background-color: Transparent;
+  background-color: #d3d3d3;
   border: 0;
   text-decoration: underline;
   font-size: 17px;
   border: 1px solid black;
   border-radius: 7px;
   padding: 7px 0;
+  cursor: pointer;
 }
 
 .button:hover{
-  cursor: pointer;
-  /* background-color: rgba(255, 255, 255, 0.75); */
   transform: translate3d(1px, 1px, 0);
   transition: all .1s;
   font-weight: bold;
 }
-
-.buttonBackground{
-  width: 110px;
-  height: 50px;
-  background-color: lightcyan;
-  position: absolute;
-  left: -420px;
-  top: 15px;
-  border-radius: 1rem;
-}
-
-
 
 
 

@@ -21,10 +21,10 @@ function TipsList({ spot }) {
   }, [dispatch])
 
   return (
-      <div className={styles.sectionContainer}>
+      <div className={styles.container}>
         <TipButton spot={spot} thisSpotTips={thisSpotTips} />
         {(thisSpotTips.length > 0) && (
-          <div className={styles.contentContainer}>
+          <div className={styles.tips}>
             {thisSpotTips.map((tip) => <TipBox key={tip.id} tip={tip} />)}
           </div>
         )}

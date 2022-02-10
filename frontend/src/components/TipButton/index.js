@@ -11,7 +11,7 @@ function TipButton({ spot }) {
   const [showTipForm, setShowTipForm] = useState(false);
 
   return (
-    <div className={styles.buttonWrapper}>
+    <>
       {<button
         hidden={sessionUser && sessionUser.id === spot?.userId ? false : true}
         onClick={() => setShowTipForm(true)}
@@ -24,7 +24,7 @@ function TipButton({ spot }) {
           <TipForm isNew={true} setShowTipForm={setShowTipForm} />
         </Modal>
       )}
-    </div>
+    </>
   )
 }
 

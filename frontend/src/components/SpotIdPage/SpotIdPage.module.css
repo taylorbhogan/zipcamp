@@ -29,6 +29,7 @@
 .SpotDivInfo{
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   border-top: solid 1px black;
   margin-top: 15px;
   margin-bottom: 70px;
@@ -66,12 +67,7 @@
 
 
 
-.editButton:hover{
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.75);
-  transform: translate3d(1px, 1px, 0);
-  transition: all .1s;
-}
+
 
 .deleteOuterDiv{
   padding-top: 15px;

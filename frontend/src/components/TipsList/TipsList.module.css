@@ -1,26 +1,20 @@
 @import './../../index.css';
 
-.sectionContainer{
+.container{
   margin-top: 30px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  background-color: var(--mainColorLightGrey);
+  border-radius: var(--containerBorderRadius);
 }
 
 
-.contentContainer{
-  width: 100%;
-  background-color: var(--mainColorLightGrey);
-  margin-right: var(--containerMarginSide);
-  margin-left: var(--containerMarginSide);
-  padding-top: var(--containerPaddingTop);
-  padding-right: 3rem;
-  padding-bottom: 80px;
-  padding-left: 3rem;
-  border-radius: var(--containerBorderRadius);
+
+.tips{
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: flex-start;
 }

@@ -22,17 +22,18 @@
 }
 
 .container button{
-  padding: 5px 0px 5px 0px;
-  font-size: 15px;
+  padding: 5px 10px;
+  font-size: 13px;
   font-family: inherit;
   border: 0;
-  text-decoration: underline;
   border-radius: var(--buttonBorderRadius);
   cursor: pointer;
+  transition: all 300ms ease;
+  box-shadow: var(--ButtonBoxShadow);
+  background-color: #d3d3d3;
 }
 
 .container button:hover{
-  background-color: rgba(255, 255, 255, 0.75);
-  transform: translate3d(1px, 1px, 0);
-  transition: all .1s;
+  box-shadow: var(--ButtonBoxShadowHover);
+  transform: scale(1.02);
 }

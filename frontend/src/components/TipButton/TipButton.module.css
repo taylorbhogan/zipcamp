@@ -4,18 +4,18 @@
   box-sizing: border-box;
   background-color: #d3d3d3;
   border: 0;
-  text-decoration: underline;
   font-size: 17px;
-  border: 1px solid black;
+  font-weight: bold;
   border-radius: 7px;
   padding: 7px 0;
   cursor: pointer;
   transition: all 300ms ease;
+  box-shadow: var(--ButtonBoxShadow);
 
 }
 
 .button:hover{
-  box-shadow: var(--cardBoxShadow);
+  box-shadow: var(--ButtonBoxShadowHover);
   transform: scale(1.02);
 }
 

@@ -30,6 +30,8 @@
   --buttonBorderRadius: 3px;
   --sessionButtonTopBottomPadding: .5rem;
   --sessionButtonLeftRightPadding: 2rem;
+  --ButtonBoxShadow: 0rem 0 .1rem .1rem #DDD;
+  --ButtonBoxShadowHover: 0rem 0 .3rem .1rem #AAA;
 
   /* ---- INPUTS ---- */
   --inputLabelSize: 10px;

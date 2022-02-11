@@ -11,7 +11,7 @@ import MapContainer from '../Maps';
 import Input from '../parts/Input';
 
 
-function SpotAddForm(){
+function SpotAddForm({ onClose }){
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -65,6 +65,7 @@ function SpotAddForm(){
 
     let createdSpot = await dispatch(createSpot(newSpot))
     if (createdSpot) {
+      onClose()
       history.push(`/spots/${createdSpot.id}`);
     }
   };

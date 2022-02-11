@@ -10,12 +10,13 @@
   border-radius: 7px;
   padding: 7px 0;
   cursor: pointer;
+  transition: all 300ms ease;
+
 }
 
 .button:hover{
-  transform: translate3d(1px, 1px, 0);
-  transition: all .1s;
-  font-weight: bold;
+  box-shadow: var(--cardBoxShadow);
+  transform: scale(1.02);
 }
 
 

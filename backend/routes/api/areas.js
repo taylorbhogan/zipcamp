@@ -22,7 +22,6 @@ router.post(
 
     let filteredAreas;
     if (designationId && !stateId) {
-      console.log("case a");
       filteredAreas = await Area.findAll({
         where: { designationId },
         include: State,
@@ -30,7 +29,6 @@ router.post(
     }
 
     if (stateId && !designationId) {
-      console.log("case b");
       filteredAreas = await Area.findAll({
         where: { stateId },
         include: State,
@@ -38,7 +36,6 @@ router.post(
     }
 
     if (stateId && designationId) {
-      console.log("case c");
       filteredAreas = await Area.findAll({
         where: { stateId, designationId },
         include: State,
@@ -74,11 +71,8 @@ router.get(
 router.post(
   "/from-rec-gov/area-search",
   asyncHandler(async (req, res) => {
-    console.log("inside backend");
     const organizationId = req.body.organization;
     const stateAbbreviation = req.body.location;
-    console.log(req.body);
-    console.log("end of body");
 
     const recGovRes = await fetch(
       `https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0&state=${stateAbbreviation}`,
@@ -92,7 +86,6 @@ router.post(
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
 
-    console.log("recData", recData);
     let areaArray = recData.map((area) => ({
       name: area["RecAreaName"],
       id: area["RecAreaID"],

@@ -32,7 +32,7 @@ function SpotAddModal() {
       </button>
       {showSpotAddModal && (
         <Modal onClose={() => setShowSpotAddModal(false)}>
-          <SpotAddForm onClose={() => setShowSpotAddModal(false)}/>
+          <SpotAddForm onClose={() => setShowSpotAddModal(false)} />
         </Modal>
       )}
       {showPleaseLoginModal && (

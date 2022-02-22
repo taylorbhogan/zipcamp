@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { getSpot } from "../../store/spots";
 import SpotAddForm from "../SpotAddForm";
-// import SpotEditForm from "../SpotEditForm";
 import TipsList from "../TipsList";
 import MapContainer from "../Maps";
 import SpotFinderCard from "../SpotFinderCard";
@@ -36,7 +35,6 @@ function SpotIdPage() {
             className={"modalCard"}
             onClose={() => setShowEditModal(false)}
           >
-            {/* <SpotEditForm /> */}
             <SpotAddForm />
           </Modal>
         )}

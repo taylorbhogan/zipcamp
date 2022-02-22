@@ -1,10 +1,6 @@
 @import './../../vars.css';
 
 .contentWrapper{
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; */
   position: relative;
   top: 200px;
 }

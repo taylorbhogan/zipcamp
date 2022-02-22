@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./SpotBox.module.css";
-// import ShowSpotIdButton from "../ShowSpotIdButton";
 
 function SpotBox({ spot }) {
   return (
@@ -19,11 +18,6 @@ function SpotBox({ spot }) {
         <h2 className={styles.areaName}>{spot.Area?.name}</h2>
         <div className={styles.stateName}>{spot.State?.name}</div>
         <div className={styles.spotBlurb}>{spot.blurb}</div>
-        {/* <ShowSpotIdButton
-          buttonText={'Check it out'}
-          lightBackground={true}
-          spotId={spot.id}
-          href={`/spots/${spot.id}`} /> */}
       </div>
     </a>
   );

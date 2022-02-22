@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import Input from "../parts/Input";
 import * as sessionActions from "../../store/session";
 
-import styles from './SignupForm.module.css'
+import styles from "./SignupForm.module.css";
 import FormErrors from "../parts/FormErrors";
 
 function SignupFormPage() {
@@ -21,61 +21,58 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      return dispatch(
+        sessionActions.signup({ email, username, password })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
   };
 
   return (
-    <div
-      className={styles.pageContainer}
-    >
+    <div className={styles.pageContainer}>
       <div className={styles.signupForm}>
-        <form
-          onSubmit={handleSubmit}
-          className={'form'}
-        >
-          <FormErrors errors={errors}/>
+        <form onSubmit={handleSubmit} className={"form"}>
+          <FormErrors errors={errors} />
           <Input
             type="text"
             value={email}
-            placeholder={' email'}
-            ariaLabel={'email'}
+            placeholder={" email"}
+            ariaLabel={"email"}
             onChange={(e) => setEmail(e.target.value)}
             required={false}
           />
           <Input
             type="text"
             value={username}
-            placeholder={' username'}
-            ariaLabel={'username'}
+            placeholder={" username"}
+            ariaLabel={"username"}
             onChange={(e) => setUsername(e.target.value)}
             required={false}
           />
           <Input
             type="password"
             value={password}
-            placeholder={' password'}
-            ariaLabel={'password'}
+            placeholder={" password"}
+            ariaLabel={"password"}
             onChange={(e) => setPassword(e.target.value)}
             required={false}
           />
           <Input
             type="password"
             value={confirmPassword}
-            placeholder={' confirm password'}
-            ariaLabel={'confirm password'}
+            placeholder={" confirm password"}
+            ariaLabel={"confirm password"}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required={false}
           />
-          <button
-            type="submit"
-            className={'submitButton'}
-          >Sign Up</button>
+          <button type="submit" className={"submitButton"}>
+            Sign Up
+          </button>
         </form>
       </div>
     </div>

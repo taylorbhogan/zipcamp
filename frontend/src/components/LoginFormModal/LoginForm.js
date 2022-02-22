@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import Input from "../parts/Input";
-import styles from './LoginForm.module.css'
-import './../../index.css'
+import styles from "./LoginForm.module.css";
+import "./../../index.css";
 import FormErrors from "../parts/FormErrors";
-
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -26,32 +25,28 @@ function LoginForm() {
 
   return (
     <div className={styles.loginForm}>
-      <form
-        className={'form'}
-        onSubmit={handleSubmit}
-      >
-        <h1 className={'formHeader'}>Welcome back.</h1>
-        <FormErrors errors={errors}/>
+      <form className={"form"} onSubmit={handleSubmit}>
+        <h1 className={"formHeader"}>Welcome back.</h1>
+        <FormErrors errors={errors} />
         <Input
           type="text"
           value={credential}
-          placeholder={' username'}
-          ariaLabel={'username'}
+          placeholder={" username"}
+          ariaLabel={"username"}
           onChange={(e) => setCredential(e.target.value)}
           required={true}
         />
         <Input
           type="password"
           value={password}
-          placeholder={' password'}
-          ariaLabel={'password'}
+          placeholder={" password"}
+          ariaLabel={"password"}
           onChange={(e) => setPassword(e.target.value)}
           required={true}
         />
-        <button
-          type="submit"
-          className={'submitButton'}
-        >Log In</button>
+        <button type="submit" className={"submitButton"}>
+          Log In
+        </button>
       </form>
     </div>
   );

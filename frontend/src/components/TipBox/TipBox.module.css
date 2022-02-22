@@ -42,7 +42,8 @@
   top: 25px;
 }
 
-.deleteButton:hover, .editButton:hover{
+.deleteButton:hover,
+.editButton:hover{
   transition: all .1s;
   font-weight: 700;
 }

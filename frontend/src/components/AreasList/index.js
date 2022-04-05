@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsStates } from "../../store/usStates";
 import MapContainer from "../Maps";
-import { getAreas, searchAreas } from "../../store/areas";
+import { searchAreas } from "../../store/areas";
 import AreaBox from "../AreaBox";
 import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
 
 function AreasList() {
   const dispatch = useDispatch();
-  const [usState, setUsState] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const [usStates, setUsStates] = useState([]);
   const [organization, setOrganization] = useState(null);
   const [organizations, setOrganizations] = useState([]);
@@ -24,25 +24,27 @@ function AreasList() {
     },
   };
 
-  useEffect(() => {
-    dispatch(getAreas());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAreas());
+  // }, [dispatch]);
 
   useEffect(() => {
-    (async () => {
+    const fetchSelectableLocations = async () => {
       const usStates = await dispatch(getUsStates());
       setUsStates(usStates);
-    })();
+    };
+    fetchSelectableLocations();
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(searchAreas(organization?.id, usState?.abbreviation));
-  }, [dispatch, organization, usState]);
+    dispatch(searchAreas(organization?.id, selectedLocation?.abbreviation));
+  }, [dispatch, organization, selectedLocation]);
 
   useEffect(() => {
     (async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`);
       const data = await res.json();
+      console.log("data", data);
       const filterOut = [
         "STATE PARKS",
         "FEDERAL",
@@ -81,7 +83,7 @@ function AreasList() {
           <Dropdown
             placeholder={"The United States"}
             items={usStates}
-            setFunction={setUsState}
+            setFunction={setSelectedLocation}
           />
         </div>
         {areas.map((area) => (

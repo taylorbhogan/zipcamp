@@ -75,7 +75,7 @@ router.post(
     const stateAbbreviation = req.body.location;
 
     const recGovRes = await fetch(
-      `https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0&state=${stateAbbreviation}`,
+      `https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
       {
         method: "GET",
         headers: {

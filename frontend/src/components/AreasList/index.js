@@ -24,10 +24,6 @@ function AreasList() {
     },
   };
 
-  // useEffect(() => {
-  //   dispatch(getAreas());
-  // }, [dispatch]);
-
   useEffect(() => {
     const fetchSelectableLocations = async () => {
       const usStates = await dispatch(getUsStates());
@@ -41,7 +37,7 @@ function AreasList() {
   }, [dispatch, organization, selectedLocation]);
 
   useEffect(() => {
-    (async () => {
+    const fetchOrganizations = async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`);
       const data = await res.json();
       console.log("data", data);
@@ -62,7 +58,8 @@ function AreasList() {
         return !filterOut.includes(datum.name);
       });
       setOrganizations(filteredData);
-    })();
+    }
+    fetchOrganizations()
   }, []);
   return (
     <div className={styles.pageContainer}>

@@ -30,3 +30,7 @@
 .stateName{
   font-size: 20px;
 }
+
+.locationDiv a {
+  text-decoration: none;
+}

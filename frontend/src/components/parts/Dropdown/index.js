@@ -30,10 +30,9 @@ const Dropdown = ({ placeholder, items, setFunction, plural }) => {
   return (
     <div ref={dropdownRef}>
       <div className={styles.header} onClick={toggle}>
-        {plural && (
-          <div>{selected ? selected.name + " lands" : placeholder}</div>
-        )}
-        {!plural && <div>{selected ? selected.name : placeholder}</div>}
+        <div>
+          {selected ? `${selected.name}${plural && " lands"}` : placeholder}
+        </div>
       </div>
       {open && (
         <ul className={styles.options}>

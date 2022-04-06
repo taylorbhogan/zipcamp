@@ -1,32 +1,36 @@
 @import './../../vars.css';
 
 @media screen and (min-width: 1000px) {
-  .navbarLogo{
-    font-size: 60px;
+  #navbarLogoShort{
+    display: none;
   }
   .navLinkList{
-    display: flex;
     flex-direction: row;
-    gap: 10px;
   }
 }
 
-@media screen and (max-width: 1100px) {
-  #home{
+@media screen and (max-width: 1350px) {
+  .navLinkList a {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .username {
     display: none;
   }
 }
 
 @media screen and (max-width: 1000px) {
-  .navbarLogo{
-    font-size: 40px;
+  #navbarLogoLong{
+    display: none;
   }
+}
+@media screen and (max-width: 700px) {
   .navLinkList{
     background-color: var(--mainColorDarkGrey);
     position: absolute;
     top: 30px;
     left: -50px;
-    display: flex;
     flex-direction: column;
     padding: 40px 20px 20px 40px;
     z-index: -100;
@@ -70,11 +74,15 @@
   position: relative;
   top: 12px;
   color: white;
+  font-size: 60px;
+
   text-decoration: none;
 }
 
 .navLinkList{
   margin-left: 20px;
+  display: flex;
+  gap: 10px;
 }
 
 .navLink{

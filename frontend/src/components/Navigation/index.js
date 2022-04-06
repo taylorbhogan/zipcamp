@@ -43,17 +43,25 @@ function Navigation({ isLoaded }) {
               className={styles.navLink}
               activeClassName={styles.navLinkActive}
               exact
-              to="/spots"
+              to="/areas"
             >
-              spots
+              public lands
             </NavLink>
             <NavLink
               className={styles.navLink}
               activeClassName={styles.navLinkActive}
               exact
-              to="/areas"
+              to="/spots"
             >
-              public lands
+              community spots
+            </NavLink>
+            <NavLink
+              className={styles.navLink}
+              activeClassName={styles.navLinkActive}
+              exact
+              to="/my-spots"
+            >
+              my spots
             </NavLink>
             <SpotAddModal />
           </div>

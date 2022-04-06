@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import parse from "html-react-parser";
 import truncate from "truncate-html";
+import SpotAddModal from "../SpotAddModal"
 import styles from "./AreaBox.module.css";
 
 function AreaBox({ area }) {
@@ -14,7 +15,7 @@ function AreaBox({ area }) {
           <h2 className={styles.locationDiv}>{area.orgName}</h2>
         </div>
         <div>
-          <button>Button</button>
+          <SpotAddModal />
         </div>
       </div>
       {isOpen ? (

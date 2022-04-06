@@ -2,14 +2,23 @@
 
 .areaBox {
   border-radius: var(--cardBorderRadius);
-  background-color: var(--mainColorLightGrey);
+  /* background-color: var(--mainColorLightGrey); */
+  /* background-color: #2b2d33; */
+  /* background-color: #111214; */
+  background-color: #141a16;
   display: flex;
   flex-direction: column;
   margin: 20px 30px 20px 30px;
   padding: 30px 40px;
   transition: all 400ms ease;
   box-shadow: var(--cardBoxShadow);
+  line-height: 1.5;
   cursor: pointer;
+}
+
+.areaBox * {
+  color: white;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 }
 
 .areaBox:hover {
@@ -22,8 +31,13 @@
   align-items: center;
 }
 
+.top h1,h2 {
+  cursor: text;
+}
+
 .description{
   margin-top: 20px;
+  cursor: text;
 }
 
 .description a {

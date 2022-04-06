@@ -55,7 +55,14 @@ function SpotIdPage() {
             </div>
           </div>
           <div className={styles.mapContainerWrapper}>
-            <MapContainer lat={spot?.lat} long={spot?.long} />
+            <MapContainer
+              pins={{
+                pin: {
+                  latitude: spot?.lat,
+                  longitude: spot?.long,
+                },
+              }}
+            />
           </div>
         </div>
         <TipsList spot={spot} />

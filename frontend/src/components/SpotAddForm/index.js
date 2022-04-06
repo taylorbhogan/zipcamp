@@ -141,10 +141,12 @@ function SpotAddForm({ onClose }) {
           <div className={styles.rightDiv}>
             <div className={styles.mapContainerWrapper}>
               <MapContainer
-                lat={lat}
-                long={long}
                 isAdding={true}
                 getLocation={getLocation}
+                pins={{pin: {
+                  latitude: lat,
+                  longitude: long,
+                }}}
               />
             </div>
           </div>

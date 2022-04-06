@@ -47,11 +47,15 @@ function Navigation({ isLoaded }) {
             >
               spots
             </NavLink>
-            <SpotAddModal />
             <NavLink
               className={styles.navLink}
               activeClassName={styles.navLinkActive}
-              exact to='/areas'>public lands</NavLink>
+              exact
+              to="/areas"
+            >
+              public lands
+            </NavLink>
+            <SpotAddModal />
           </div>
         </div>
         <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>

@@ -6,4 +6,4 @@ exports.handleValidationErrors = function (req, _res, next) {
     return next({ status: 422, errors: errors.array() });
   }
   return next();
-}
+};

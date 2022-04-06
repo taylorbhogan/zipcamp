@@ -1,55 +1,51 @@
-import React, {useEffect, useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom';
-import { getAreas } from '../../store/areas'
-import { getUsStates } from '../../store/usStates'
-import FormErrors from '../parts/FormErrors';
-import '../../index.css'
-import styles from './SpotAddForm.module.css'
-import { createSpot } from '../../store/spots';
-import MapContainer from '../Maps';
-import Input from '../parts/Input';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getAreas } from "../../store/areas";
+import { getUsStates } from "../../store/usStates";
+import FormErrors from "../parts/FormErrors";
+import "../../index.css";
+import styles from "./SpotAddForm.module.css";
+import { createSpot } from "../../store/spots";
+import MapContainer from "../Maps";
+import Input from "../parts/Input";
 
-
-function SpotAddForm(){
+function SpotAddForm({ onClose }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [name, setName] = useState('')
-  const [lat, setLat] = useState('')
-  const [long , setLong] = useState('')
-  const [blurb , setBlurb] = useState('')
-  const [directions , setDirections] = useState('')
-  const [errors, setErrors] = useState([])
+  const [name, setName] = useState("");
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
+  const [blurb, setBlurb] = useState("");
+  const [directions, setDirections] = useState("");
+  const [errors, setErrors] = useState([]);
 
-  const areas = useSelector((state) => Object.values(state.areas))
-  const [ area, setArea ] = useState('1')
+  const areas = useSelector((state) => Object.values(state.areas));
+  const [area, setArea] = useState("1");
 
-  const userId = useSelector(state => state.session.user?.id);
+  const userId = useSelector((state) => state.session.user?.id);
 
   useEffect(() => {
     dispatch(getAreas());
-  },[dispatch])
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getUsStates());
-  },[dispatch])
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = [];
-    if(!name) errors.push('Please add a spot name.');
-    if(!lat) errors.push('Please add a latitude.')
-    if(!long) errors.push('Please add a longitude.')
-    if(!blurb) errors.push('you gotta give us a LITTLE something on the situation!')
-    setErrors(errors)
+    if (!name) errors.push("Please add a spot name.");
+    if (!lat) errors.push("Please add a latitude.");
+    if (!long) errors.push("Please add a longitude.");
+    if (!blurb)
+      errors.push("you gotta give us a LITTLE something on the situation!");
+    setErrors(errors);
 
-
-
-    const land = areas.find(land => land.id === +area)
-    console.log('this is land', land);
-    console.log('this is land.State.id', land.State.id);
+    const land = areas.find((land) => land.id === +area);
 
     const newSpot = {
       name,
@@ -58,71 +54,67 @@ function SpotAddForm(){
       blurb,
       directions,
       areaId: +area,
-      // stateId: +stateId,
       stateId: land.State.id,
       userId,
     };
 
-    let createdSpot = await dispatch(createSpot(newSpot))
+    let createdSpot = await dispatch(createSpot(newSpot));
     if (createdSpot) {
+      onClose();
       history.push(`/spots/${createdSpot.id}`);
     }
   };
 
-  const getLocation = coords => {
-    setLat(coords.lat.toFixed(6))
-    setLong(coords.lng.toFixed(6))
+  const getLocation = (coords) => {
+    setLat(coords.lat.toFixed(6));
+    setLong(coords.lng.toFixed(6));
   };
 
-  return(
-
+  return (
     <div>
-      <form
-        className='form'
-        onSubmit={handleSubmit}
-        >
-        <h1
-          className={'formHeader'}
-        >add that spot so you can find your way back</h1>
-        <FormErrors errors={errors}/>
+      <form className="form" onSubmit={handleSubmit}>
+        <h1 className={"formHeader"}>
+          add that spot so you can find your way back
+        </h1>
+        <FormErrors errors={errors} />
         <div className={styles.containerDiv}>
           <div className={styles.leftDiv}>
             <div className={styles.infoDiv}>
               <Input
                 type="text"
                 value={name}
-                placeholder={' spot name'}
-                ariaLabel={'spot name'}
+                placeholder={" spot name"}
+                ariaLabel={"spot name"}
                 onChange={(e) => setName(e.target.value)}
                 required={false}
-                />
+              />
               <Input
                 type="textarea"
                 value={blurb}
-                placeholder={' what\'s the deal?'}
-                ariaLabel={'what\'s the deal?'}
+                placeholder={" what's the deal?"}
+                ariaLabel={"what's the deal?"}
                 onChange={(e) => setBlurb(e.target.value)}
                 required={false}
-                rows={'5'}
-                />
+                rows={"5"}
+              />
               <Input
                 type="textarea"
                 value={directions}
-                placeholder={' how do you find your way back?'}
-                ariaLabel={'how do you find your way back?'}
+                placeholder={" how do you find your way back?"}
+                ariaLabel={"how do you find your way back?"}
                 onChange={(e) => setDirections(e.target.value)}
                 required={false}
-                rows={'8'}
-                />
+                rows={"8"}
+              />
               <select
                 onChange={(e) => setArea(e.target.value)}
-                className={'formSelectInput'}
-                >
-                {areas.map(area =>
-                  <option
-                    value={area.id}
-                    key={area.id}>{area.name}</option>
-                  )}
+                className={"formSelectInput"}
+              >
+                {areas.map((area) => (
+                  <option value={area.id} key={area.id}>
+                    {area.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className={styles.coordsDiv}>
@@ -130,21 +122,20 @@ function SpotAddForm(){
                 type="text"
                 className={styles.coords}
                 value={lat}
-                placeholder={' latitude: enter manually here, or use the map'}
+                placeholder={" latitude: enter manually here, or use the map"}
                 onChange={(e) => setLat(e.target.value)}
                 required
                 hidden={true}
-                />
+              />
               <input
                 type="text"
                 hidden={true}
                 className={styles.coords}
                 value={long}
-                placeholder={' ditto the longitude'}
+                placeholder={" ditto the longitude"}
                 onChange={(e) => setLong(e.target.value)}
                 required
-                />
-
+              />
             </div>
           </div>
           <div className={styles.rightDiv}>
@@ -156,17 +147,14 @@ function SpotAddForm(){
                 getLocation={getLocation}
               />
             </div>
-
           </div>
         </div>
-        <button
-          type="submit"
-          hidden={true}
-          className={'submitButton'}
-        >Create new Spot</button>
+        <button type="submit" hidden={true} className={"submitButton"}>
+          Create new Spot
+        </button>
       </form>
     </div>
-  )
+  );
 }
 
 export default SpotAddForm;

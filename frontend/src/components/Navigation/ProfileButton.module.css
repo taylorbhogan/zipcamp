@@ -1,7 +1,5 @@
 @import './../../vars.css';
 
-
-
 .faUserParent{
   font-size: 20px;
   display: flex;
@@ -53,6 +51,5 @@
 }
 
 .navlink{
-  /* text-decoration: none; */
   color: inherit;
 }

@@ -1,54 +1,49 @@
-import { useState, useRef, useEffect } from 'react'
-import styles from './Dropdown.module.css'
+import { useState, useRef, useEffect } from "react";
+import styles from "./Dropdown.module.css";
 
-const Dropdown = ({ placeholder, items, setFunction, plural, object }) => {
+// items may be an array or an object
+const Dropdown = ({ placeholder, item, items, setFunction, plural = false }) => {
   const dropdownRef = useRef();
-  const [open, setOpen] = useState(false)
-  const [selected, setSelected] = useState(null)
+  const [open, setOpen] = useState(false);
 
-  const toggle = () => setOpen(!open)
+  const toggle = () => setOpen(!open);
 
-  const handleSelection = (item) => {
-    setSelected(item);
-    setFunction(item);
+  const handleSelection = (sel) => {
+    setFunction(sel);
     toggle();
-  }
+  };
 
   useEffect(() => {
-    const handler = e => {
+    const handler = (e) => {
       if (!dropdownRef.current.contains(e.target)) {
-        setOpen(false)
+        setOpen(false);
       }
-    }
-    document.addEventListener('mousedown', handler)
+    };
+    document.addEventListener("mousedown", handler);
 
     return () => {
-      document.removeEventListener('mousedown', handler)
-    }
-
-  })
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   return (
-    <div ref={dropdownRef}>
-      <div
-        className={styles.header}
-        onClick={toggle}
-      >
-        {plural && <div>{selected ? selected.name + ' lands' : placeholder}</div>}
-        {!plural && <div>{selected ? selected.name : placeholder}</div>}
-        {/* <div><i className="fas fa-caret-down"></i></div> */}
+    <div style={{"position": "relative"}} ref={dropdownRef}>
+      <div className={styles.header} onClick={toggle}>
+        <div>
+          {item ? `${item.name}${plural ? " lands" : ""}` : placeholder}
+        </div>
       </div>
-      {open &&
+      {open && (
         <ul className={styles.options}>
-          {items.map((item) => (
-            <li key={item.id}>
-              <button onClick={() => handleSelection(item)}>{item.name}</button>
+          {Object.values(items).map((singleItem, idx) => (
+            <li key={singleItem.id ?? idx}>
+              <button onClick={() => handleSelection(singleItem)}>{singleItem.name}</button>
             </li>
           ))}
         </ul>
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Dropdown;

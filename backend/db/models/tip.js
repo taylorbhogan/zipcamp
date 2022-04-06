@@ -22,17 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
       get() {
-        // return moment(this.getDataValue('createdAt')).format('DD/MMMM/YYYY h:mm:ss');
-        // return moment(this.getDataValue('createdAt')).format('[on] MMMM DD, YYYY [at] h:mm:ss');
         return moment(this.getDataValue('createdAt')).format('[On] MMMM DD, YYYY');
     }
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
-    //   get() {
-    //     return moment(this.getDataValue('updatedAt')).format('DD/MM/YYYY h:mm:ss');
-    // }
     }
   }, {});
   Tip.associate = function(models) {
@@ -40,23 +35,6 @@ module.exports = (sequelize, DataTypes) => {
     Tip.belongsTo(models.User, { foreignKey: 'userId'})
     Tip.belongsTo(models.Spot, { foreignKey: 'spotId'})
   };
-
-  // Tip.findAll({
-  //   attributes: [
-  //       'id',
-  //       'userId',
-  //       'spotId',
-  //       'rating',
-  //       'text',
-  //       // [sequelize.fn('date_format', sequelize.col('createdAt'), '%Y-%m-%d'), 'formattedCreatedAt'],
-  //       [sequelize.fn('date_format'('createdAt', 'HH12:MI:SS'))],
-  //       'updatedAt'
-  //   ]})
-  //   .then(function(result) {
-  //     console.log(result);
-  //   });
-
-
 
   return Tip;
 };

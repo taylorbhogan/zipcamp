@@ -1,6 +1,5 @@
 @import './../../index.css';
 
-
 .contentWrapper{
   display: flex;
   flex-direction: column;
@@ -63,12 +62,6 @@
   flex-direction: row;
 }
 
-
-
-
-
-
-
 .deleteOuterDiv{
   padding-top: 15px;
 }
@@ -78,7 +71,6 @@
   width: 70px;
   padding-left: 20px;
 }
-
 
 @media screen and (min-width: 1500px) {
   .mapContainerWrapper{

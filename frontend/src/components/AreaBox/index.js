@@ -1,36 +1,32 @@
-import React from 'react'
-import styles from './AreaBox.module.css'
-// import StandardLinkButton from '../StandardLinkButton';
-// import ActivityIcon from '../ActivityIcon';
+import React, { useState } from "react";
+import parse from "html-react-parser";
+import truncate from "truncate-html";
+import SpotAddModal from "../SpotAddModal"
+import styles from "./AreaBox.module.css";
 
-function AreaBox({area}){
-  return(
-    <div className={styles.areaBoxWrapper}>
-      <div className={styles.areaBoxContainer}>
-        <div className={styles.areaBoxContainerLeft}>
-          <div className={styles.areaImageDiv}>
-            <img
-              className={styles.areaImage}
-              alt={'a glimpse of this area'}
-              src={''}
-            />
-          </div>
-        </div>
-        <div className={styles.areaBoxContainerRight}>
+function AreaBox({ area }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={styles.areaBox} onMouseDown={() => setIsOpen(!isOpen)}>
+      <div className={styles.top}>
+        <div>
           <h1 className={styles.areaName}>{area.name}</h1>
-          <div className={styles.locationDiv}>
-            <div className={styles.areaName}></div>
-            <div className={styles.stateName}>{area?.State?.name}</div>
-          </div>
-          {/* <div className={styles.spotBlurb}>In 2017, three wolf pups were born in this forest. Their mother is a female wolf of unknown origins. Their father is the son of OR7, a wolf with a tracking device that was the first of its kind in almost a century to migrate into California from Oregon. As of July 2020, the pack has 14 members, with 8 new pups. The father of the pups is not related to any of the other California wolves and joined the pack in 2019.</div> */}
-          {/* <StandardLinkButton
-            buttonText={'Check it out'}
-            lightBackground={true}
-            href=''/> */}
+          <h2 className={styles.locationDiv}>{area.orgName}</h2>
+        </div>
+        <div>
+          <SpotAddModal />
         </div>
       </div>
+      {isOpen ? (
+        <div className={styles.description}>{parse(area.description)}</div>
+      ) : (
+        <div className={styles.description}>
+          {truncate(area.description, 190, { stripTags: true })}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 export default AreaBox;

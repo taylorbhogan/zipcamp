@@ -1,30 +1,25 @@
-import { csrfFetch } from './csrf';
+import { csrfFetch } from "./csrf";
 
-/* ------ DEFINE ACTION TYPES AS CONSTANTS ------ */
-const SET_USER = 'session/SET_USER'
-const REMOVE_USER = 'session/REMOVE_USER'
+const SET_USER = "session/SET_USER";
+const REMOVE_USER = "session/REMOVE_USER";
 
-/* ------ DEFINE ACTION CREATORS ------ */
 export const setUser = (user) => {
   return {
     type: SET_USER,
     payload: user,
-  }
-}
+  };
+};
 
 export const removeUser = () => {
   return {
     type: REMOVE_USER,
-  }
-}
-
-/* ------ DEFINE THUNK ACTION CREATORS ------ */
+  };
+};
 
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
-  // send a post req to backend api with only the credential and password
-  const response = await csrfFetch('/api/session', {
-    method: 'POST',
+  const response = await csrfFetch("/api/session", {
+    method: "POST",
     body: JSON.stringify({
       credential,
       password,
@@ -35,8 +30,8 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
-export const restoreUser = () => async dispatch => {
-  const response = await csrfFetch('/api/session');
+export const restoreUser = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session");
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
@@ -58,24 +53,17 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await csrfFetch('/api/session', {
-    method: 'DELETE',
+  const response = await csrfFetch("/api/session", {
+    method: "DELETE",
   });
   dispatch(removeUser());
   return response;
 };
 
-/* ------ SELECTORS ------ */
-
-
-
-/* ------ DEFINE INITIAL STATE ------ */
-
 const initialState = {
-  user: null
-}
+  user: null,
+};
 
-/* ------ DEFINE REDUCER ------ */
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
@@ -89,10 +77,7 @@ const sessionReducer = (state = initialState, action) => {
       return newState;
     default:
       return state;
-        }
-      };
-
-
-/* ------ EXPORT REDUCER ------ */
+  }
+};
 
 export default sessionReducer;

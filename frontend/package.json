@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "html-react-parser": "^1.4.10",
     "js-cookie": "^2.2.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -15,7 +16,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "truncate-html": "^1.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

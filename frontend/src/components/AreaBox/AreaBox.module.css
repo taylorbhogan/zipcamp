@@ -1,32 +1,45 @@
-@import './../../index.css';
+@import "./../../index.css";
 
-.areaBoxContainer{
-  border: 1px solid black;
+.areaBox {
   border-radius: var(--cardBorderRadius);
+  /* background-color: var(--mainColorLightGrey); */
+  /* background-color: #2b2d33; */
+  /* background-color: #111214; */
+  background-color: #141a16;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 20px 30px 20px 30px;
-  padding: 20px 20px 20px 20px;
+  padding: 30px 40px;
+  transition: all 400ms ease;
+  box-shadow: var(--cardBoxShadow);
+  line-height: 1.5;
+  cursor: pointer;
 }
 
-.areaBoxContainerLeft{
+.areaBox * {
+  color: white;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+.areaBox:hover {
+  transform: scale(1.01);
+}
+
+.top{
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.areaImageDiv{
-  width: 300px;
-  height: 200px;
-  border: 1px solid black;
-  padding: 20px;
+.top h1,h2 {
+  cursor: text;
 }
 
-.areaBoxContainerRight{
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+.description{
+  margin-top: 20px;
+  cursor: text;
 }
 
-.stateName{
-  font-size: 20px;
+.description a {
+  text-decoration: none;
 }

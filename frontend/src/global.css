@@ -4,6 +4,7 @@ html{
   background: url('./images/background-star-2.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; */
 }
 
 body{

@@ -22,10 +22,10 @@
   font-size: 24px;
 }
 
-
 .link{
   color: var(--mainColorGreen);
 }
+
 .link:hover{
   color: var(--secondaryColorGreen);
 }

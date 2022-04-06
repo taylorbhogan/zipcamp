@@ -1,7 +1,8 @@
 .header{
   /* background-color: #888888; */
-  padding: .5rem 1rem;
+  /* padding: .5rem 1rem; */
   text-decoration: underline;
+  font-size: 1.3rem;
 }
 
 .options{

@@ -57,36 +57,32 @@ function AreasList() {
       const filteredData = data.filter((datum) => {
         return !filterOut.includes(datum.name);
       });
-      const obj = {}
-      filteredData.forEach(datum => {
+      const obj = {};
+      filteredData.forEach((datum) => {
         obj[datum.id] = datum;
-      })
+      });
       setOrganizations(obj);
-    }
-    fetchOrganizations()
+    };
+    fetchOrganizations();
   }, []);
 
   const clearSelection = () => {
-    setSelectedLocation('')
-    setOrganization('')
-  }
+    setSelectedLocation("");
+    setOrganization("");
+  };
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageLeft}>
         <div className={styles.search}>
           <span>Explore</span>
-          {Object.values(organizations).length > 0 ? (
-            <Dropdown
-              placeholder={"Public Lands"}
-              items={organizations}
-              item={organization}
-              setFunction={setOrganization}
-              plural={true}
-            />
-          ) : (
-            "Public Lands"
-          )}
+          <Dropdown
+            placeholder={"Public Lands"}
+            items={organizations}
+            item={organization}
+            setFunction={setOrganization}
+            plural={true}
+          />
           <span>in</span>
           <Dropdown
             placeholder={"The United States"}
@@ -97,8 +93,7 @@ function AreasList() {
           <button onClick={clearSelection}>clear</button>
         </div>
         {areas.map((area) => (
-          <AreaBox key={area.id} area={area}
-           />
+          <AreaBox key={area.id} area={area} />
         ))}
       </div>
       <div className={styles.pageRight}>

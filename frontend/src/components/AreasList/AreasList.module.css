@@ -13,11 +13,11 @@
   background-color: var(--mainColorDarkGrey);
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow-y: scroll;
 }
 
 .search{
-  /* margin: 17vh 14vw 15vh 14vw; */
   margin: 7rem 0 4rem 0;
   display: flex;
   flex-direction: row;
@@ -39,7 +39,6 @@
 
 .search > button {
   font-size: .8rem;
-
 }
 
 .pageRight{

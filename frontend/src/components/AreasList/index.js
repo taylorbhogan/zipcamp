@@ -7,6 +7,7 @@ import { searchAreas } from "../../store/areas";
 import AreaBox from "../AreaBox";
 import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
+import MessageNoAreas from "./MessageNoAreas";
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -92,9 +93,9 @@ function AreasList() {
           />
           <button onClick={clearSelection}>clear</button>
         </div>
-        {areas.map((area) => (
+        {areas.length > 0 ? areas.map((area) => (
           <AreaBox key={area.id} area={area} />
-        ))}
+        )) : <MessageNoAreas />}
       </div>
       <div className={styles.pageRight}>
         <MapContainer

@@ -1,0 +1,9 @@
+.message{
+  background-color: var(--grey1);
+  padding: 30px 40px;
+  border-radius: var(--cardBorderRadius);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

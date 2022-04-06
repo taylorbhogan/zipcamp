@@ -17,15 +17,29 @@
 }
 
 .search{
-  margin: 17vh 14vw 15vh 14vw;
+  /* margin: 17vh 14vw 15vh 14vw; */
+  margin: 7rem 0 4rem 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   font-size: 24px;
   color: white;
 }
 
+.search button {
+  background: none;
+  border: none;
+  background-color: var(--grey1);
+  color: white;
+  padding: .5rem;
+  border-radius: var(--buttonBorderRadius);
+}
+
+.search > button {
+  font-size: .8rem;
+
+}
 
 .pageRight{
   width: 40vw;

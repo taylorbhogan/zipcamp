@@ -27,7 +27,7 @@ const Dropdown = ({ placeholder, item, items, setFunction, plural = false }) => 
   });
 
   return (
-    <div ref={dropdownRef}>
+    <div style={{"position": "relative"}} ref={dropdownRef}>
       <div className={styles.header} onClick={toggle}>
         <div>
           {item ? `${item.name}${plural ? " lands" : ""}` : placeholder}

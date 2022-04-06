@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./Dropdown.module.css";
 
-const Dropdown = ({ placeholder, items, setFunction, plural }) => {
+const Dropdown = ({ placeholder, items, setFunction, plural = false }) => {
   const dropdownRef = useRef();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -36,8 +36,9 @@ const Dropdown = ({ placeholder, items, setFunction, plural }) => {
       </div>
       {open && (
         <ul className={styles.options}>
-          {items.map((item) => (
-            <li key={item.id}>
+          {Object.values(items).map((item, idx) => (
+          // {items.map((item, idx) => (
+            <li key={item.id ?? idx}>
               <button onClick={() => handleSelection(item)}>{item.name}</button>
             </li>
           ))}

@@ -40,7 +40,7 @@ function AreasList() {
     const fetchOrganizations = async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`);
       const data = await res.json();
-      console.log("data", data);
+
       const filterOut = [
         "STATE PARKS",
         "FEDERAL",
@@ -57,7 +57,11 @@ function AreasList() {
       const filteredData = data.filter((datum) => {
         return !filterOut.includes(datum.name);
       });
-      setOrganizations(filteredData);
+      const obj = {}
+      filteredData.forEach(datum => {
+        obj[datum.id] = datum;
+      })
+      setOrganizations(obj);
     }
     fetchOrganizations()
   }, []);
@@ -66,10 +70,11 @@ function AreasList() {
       <div className={styles.pageLeft}>
         <div className={styles.search}>
           <span>Explore</span>
-          {organizations.length > 0 ? (
+          {Object.values(organizations).length > 0 ? (
             <Dropdown
               placeholder={"Public Lands"}
               items={organizations}
+              // items={Object.values(organizations)}
               setFunction={setOrganization}
               plural={true}
             />
@@ -84,7 +89,9 @@ function AreasList() {
           />
         </div>
         {areas.map((area) => (
-          <AreaBox key={area.id} area={area} />
+          <AreaBox key={area.id} area={area}
+          organizations={organizations}
+           />
         ))}
       </div>
       <div className={styles.pageRight}>

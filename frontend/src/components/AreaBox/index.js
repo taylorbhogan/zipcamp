@@ -3,11 +3,8 @@ import parse from "html-react-parser";
 import truncate from "truncate-html";
 import styles from "./AreaBox.module.css";
 
-function AreaBox({ area, organizations }) {
+function AreaBox({ area }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log("organizations", organizations);
-  console.log(area);
 
   return (
     <div

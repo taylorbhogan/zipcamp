@@ -71,6 +71,23 @@ router.get(
 router.post(
   "/from-rec-gov/area-search",
   asyncHandler(async (req, res) => {
+    // first get the organizations to add the orgName key
+    const organizationsJSON = await fetch(
+      "https://ridb.recreation.gov/api/v1/organizations?limit=50&offset=0",
+      {
+        method: "GET",
+        headers: {
+          apiKey: recreationGovAPIKey,
+        },
+      }
+    );
+    const {RECDATA} = await organizationsJSON.json();
+    const organizations = {}
+    RECDATA.forEach(org => {
+      organizations[org.OrgID] = org.OrgName
+    })
+
+    // then move on to the main work
     const organizationId = req.body.organization;
     const stateAbbreviation = req.body.location;
 
@@ -85,11 +102,12 @@ router.post(
     );
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
-
+      // console.log('recData',recData);
     let areaArray = recData.map((area) => ({
       name: area["RecAreaName"],
       id: area["RecAreaID"],
       orgID: area["ParentOrgID"],
+      orgName: organizations[area["ParentOrgID"]],
       description: area["RecAreaDescription"],
       longitude: area["RecAreaLongitude"],
       latitude: area["RecAreaLatitude"],

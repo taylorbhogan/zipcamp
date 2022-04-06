@@ -74,7 +74,6 @@ function AreasList() {
             <Dropdown
               placeholder={"Public Lands"}
               items={organizations}
-              // items={Object.values(organizations)}
               setFunction={setOrganization}
               plural={true}
             />
@@ -90,7 +89,6 @@ function AreasList() {
         </div>
         {areas.map((area) => (
           <AreaBox key={area.id} area={area}
-          organizations={organizations}
            />
         ))}
       </div>

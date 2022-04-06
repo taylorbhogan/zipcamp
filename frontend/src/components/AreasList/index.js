@@ -93,7 +93,7 @@ function AreasList() {
         )}
       </div>
       <div className={styles.pageRight}>
-        <MapContainer pins={areas} />
+        <MapContainer pins={areas} zoom={3} />
       </div>
     </div>
   );

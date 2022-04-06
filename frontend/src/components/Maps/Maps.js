@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./Maps.module.css";
 
-const Maps = ({ apiKey, isAdding = false, getLocation, pins }) => {
+const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10 }) => {
   const [currentPosition, setCurrentPosition] = useState({
     lat: 37.76737,
     lng: -122.49986,
@@ -74,7 +74,7 @@ const Maps = ({ apiKey, isAdding = false, getLocation, pins }) => {
                     lng: -95.194464,
                   }
             }
-            zoom={10}
+            zoom={zoom}
           >
             {Object.values(pins).map((pushpin) => (
               <Marker

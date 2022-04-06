@@ -18,13 +18,6 @@ function AreasList() {
 
   const areas = useSelector((state) => Object.values(state.areas));
 
-  const areaStats = {
-    Alabama: {
-      lat: 32.833572,
-      long: -86.678706,
-    },
-  };
-
   useEffect(() => {
     const fetchSelectableLocations = async () => {
       const usStates = await dispatch(getUsStates());
@@ -93,15 +86,14 @@ function AreasList() {
           />
           <button onClick={clearSelection}>clear</button>
         </div>
-        {areas.length > 0 ? areas.map((area) => (
-          <AreaBox key={area.id} area={area} />
-        )) : <MessageNoAreas />}
+        {areas.length > 0 ? (
+          areas.map((area) => <AreaBox key={area.id} area={area} />)
+        ) : (
+          <MessageNoAreas />
+        )}
       </div>
       <div className={styles.pageRight}>
-        <MapContainer
-          lat={areaStats["Alabama"].lat}
-          long={areaStats["Alabama"].long}
-        />
+        <MapContainer pins={areas} />
       </div>
     </div>
   );

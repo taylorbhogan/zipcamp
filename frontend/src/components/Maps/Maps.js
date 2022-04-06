@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./Maps.module.css";
 
-const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
+const Maps = ({ apiKey, isAdding = false, getLocation, pins }) => {
   const [currentPosition, setCurrentPosition] = useState({
     lat: 37.76737,
     lng: -122.49986,
@@ -38,14 +38,6 @@ const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
     setCurrentPosition({ lat, lng });
   };
 
-  const pin = {
-    name: "location 1",
-    location: {
-      lat: +lat,
-      lng: +long,
-    },
-  };
-
   const footer = (
     <div className={styles.footerWrapper}>
       <div className={styles.footerContainer}>
@@ -68,15 +60,39 @@ const Maps = ({ apiKey, lat, long, isAdding = false, getLocation }) => {
         <>
           <GoogleMap
             mapContainerStyle={containerStyle}
-            center={isAdding ? currentPosition : pin.location}
+            center={
+              isAdding
+                ? currentPosition
+                : Object.values(pins).length === 1
+                ? {
+                    lat: +Object.values(pins)[0].latitude,
+                    lng: +Object.values(pins)[0].longitude,
+                  }
+                : {
+                  // approx. middle of continental US
+                    lat: 38.118235,
+                    lng: -95.194464,
+                  }
+            }
             zoom={10}
           >
-            <Marker
-              key={pin.name}
-              position={isAdding ? currentPosition : pin.location}
-              draggable={true}
-              onDragEnd={(e) => onMarkerDragEnd(e)}
-            />
+            {Object.values(pins).map((pushpin) => (
+              <Marker
+                key={pushpin.name ?? "pin"}
+                position={{
+                  lat:
+                    pushpin.latitude === ""
+                      ? currentPosition.lat
+                      : +pushpin.latitude,
+                  lng:
+                    pushpin.longitude === ""
+                      ? currentPosition.lng
+                      : +pushpin.longitude,
+                }}
+                draggable={true}
+                onDragEnd={(e) => onMarkerDragEnd(e)}
+              />
+            ))}
           </GoogleMap>
           {isAdding ? footer : null}
         </>

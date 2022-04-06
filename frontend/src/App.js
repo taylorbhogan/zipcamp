@@ -12,6 +12,7 @@ import AreasList from './components/AreasList';
 import UserPage from './components/UserPage';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css'
+import MySpots from './components/MySpots';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
               </Route>
               <Route path='/spots/:spotId'>
                 <SpotIdPage />
+              </Route>
+              <Route path='/my-spots'>
+                <MySpots />
               </Route>
               <Route path='/areas'>
                 <AreasList />

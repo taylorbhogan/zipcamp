@@ -65,6 +65,12 @@ function AreasList() {
     }
     fetchOrganizations()
   }, []);
+
+  const clearSelection = () => {
+    setSelectedLocation('')
+    setOrganization('')
+  }
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageLeft}>
@@ -74,6 +80,7 @@ function AreasList() {
             <Dropdown
               placeholder={"Public Lands"}
               items={organizations}
+              item={organization}
               setFunction={setOrganization}
               plural={true}
             />
@@ -83,9 +90,11 @@ function AreasList() {
           <span>in</span>
           <Dropdown
             placeholder={"The United States"}
+            item={selectedLocation}
             items={usStates}
             setFunction={setSelectedLocation}
           />
+          <button onClick={clearSelection}>clear</button>
         </div>
         {areas.map((area) => (
           <AreaBox key={area.id} area={area}

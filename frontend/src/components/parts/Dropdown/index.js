@@ -2,16 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./Dropdown.module.css";
 
 // items may be an array or an object
-const Dropdown = ({ placeholder, items, setFunction, plural = false }) => {
+const Dropdown = ({ placeholder, item, items, setFunction, plural = false }) => {
   const dropdownRef = useRef();
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
 
   const toggle = () => setOpen(!open);
 
-  const handleSelection = (item) => {
-    setSelected(item);
-    setFunction(item);
+  const handleSelection = (sel) => {
+    setFunction(sel);
     toggle();
   };
 
@@ -32,14 +30,14 @@ const Dropdown = ({ placeholder, items, setFunction, plural = false }) => {
     <div ref={dropdownRef}>
       <div className={styles.header} onClick={toggle}>
         <div>
-          {selected ? `${selected.name}${plural && " lands"}` : placeholder}
+          {item ? `${item.name}${plural ? " lands" : ""}` : placeholder}
         </div>
       </div>
       {open && (
         <ul className={styles.options}>
-          {Object.values(items).map((item, idx) => (
-            <li key={item.id ?? idx}>
-              <button onClick={() => handleSelection(item)}>{item.name}</button>
+          {Object.values(items).map((singleItem, idx) => (
+            <li key={singleItem.id ?? idx}>
+              <button onClick={() => handleSelection(singleItem)}>{singleItem.name}</button>
             </li>
           ))}
         </ul>

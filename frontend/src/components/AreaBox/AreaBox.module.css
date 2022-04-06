@@ -1,25 +1,31 @@
-@import './../../index.css';
+@import "./../../index.css";
 
-.areaBox{
-  /* border: 1px solid black; */
+.areaBox {
   border-radius: var(--cardBorderRadius);
   background-color: var(--mainColorLightGrey);
   display: flex;
   flex-direction: column;
   margin: 20px 30px 20px 30px;
-  padding: 20px 20px 20px 20px;
-
+  padding: 30px 40px;
   transition: all 400ms ease;
   box-shadow: var(--cardBoxShadow);
+  cursor: pointer;
 }
-.areaBox:hover{
+
+.areaBox:hover {
   transform: scale(1.01);
 }
 
-.stateName{
-  font-size: 20px;
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.locationDiv a {
+.description{
+  margin-top: 20px;
+}
+
+.description a {
   text-decoration: none;
 }

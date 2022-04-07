@@ -8,6 +8,7 @@ import AreaBox from "../AreaBox";
 import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
 import MessageNoAreas from "./MessageNoAreas";
+import LoadingContent from "../parts/LoadingContent"
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function AreasList() {
   const [organization, setOrganization] = useState(null);
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const areas = useSelector((state) => Object.values(state.areas));
 
@@ -28,7 +30,15 @@ function AreasList() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(searchAreas(organization?.id, selectedLocation?.abbreviation));
+    const fetchAreas = async () => {
+      const fetch = await dispatch(
+        searchAreas(organization?.id, selectedLocation?.abbreviation)
+      );
+      if (fetch !== "error") {
+        setIsLoaded(true);
+      }
+    };
+    fetchAreas();
   }, [dispatch, organization, selectedLocation]);
 
   useEffect(() => {
@@ -87,10 +97,16 @@ function AreasList() {
           />
           <button onClick={clearSelection}>clear</button>
         </div>
-        {areas.length > 0 ? (
-          areas.map((area) => <AreaBox key={area.id} area={area} selectedArea={selectedArea}/>)
+        {isLoaded ? (
+          areas.length > 0 ? (
+            areas.map((area) => (
+              <AreaBox key={area.id} area={area} selectedArea={selectedArea} />
+            ))
+          ) : (
+            <MessageNoAreas />
+          )
         ) : (
-          <MessageNoAreas />
+          <LoadingContent />
         )}
       </div>
       <div className={styles.pageRight}>

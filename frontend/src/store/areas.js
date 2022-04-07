@@ -33,7 +33,7 @@ export const searchAreas = (organization, location) => async (dispatch) => {
       dispatch(load(filteredAreas));
     }
   } catch (e) {
-    console.log("error in searchAreas", e);
+    return "error";
   }
 };
 

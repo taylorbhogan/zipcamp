@@ -15,6 +15,7 @@ function AreasList() {
   const [usStates, setUsStates] = useState([]);
   const [organization, setOrganization] = useState(null);
   const [organizations, setOrganizations] = useState([]);
+  const [selectedArea, setSelectedArea] = useState(null);
 
   const areas = useSelector((state) => Object.values(state.areas));
 
@@ -87,13 +88,13 @@ function AreasList() {
           <button onClick={clearSelection}>clear</button>
         </div>
         {areas.length > 0 ? (
-          areas.map((area) => <AreaBox key={area.id} area={area} />)
+          areas.map((area) => <AreaBox key={area.id} area={area} selectedArea={selectedArea}/>)
         ) : (
           <MessageNoAreas />
         )}
       </div>
       <div className={styles.pageRight}>
-        <MapContainer pins={areas} zoom={3} />
+        <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />
       </div>
     </div>
   );

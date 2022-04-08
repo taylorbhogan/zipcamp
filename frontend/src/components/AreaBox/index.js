@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import parse from "html-react-parser";
 import truncate from "truncate-html";
 import SpotAddModal from "../SpotAddModal"
 import styles from "./AreaBox.module.css";
 
-function AreaBox({ area }) {
+function AreaBox({ area, selectedArea }) {
   const [isOpen, setIsOpen] = useState(false);
+  const areaRef = useRef()
+
+  useEffect(() => {
+    if (selectedArea?.id === area.id){
+      areaRef.current.scrollIntoView({behavior: 'smooth'})
+    }
+  },[selectedArea, area])
 
   return (
-    <div className={styles.areaBox} onMouseDown={() => setIsOpen(!isOpen)}>
+    <div ref={areaRef} className={styles.areaBox} onMouseDown={() => setIsOpen(!isOpen)}>
       <div className={styles.top}>
         <div>
           <h1 className={styles.areaName}>{area.name}</h1>

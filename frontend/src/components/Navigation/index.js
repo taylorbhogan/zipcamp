@@ -35,8 +35,11 @@ function Navigation({ isLoaded }) {
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
-          <NavLink className={styles.navbarLogo} exact to="/">
+          <NavLink id={styles.navbarLogoLong} className={styles.navbarLogo} exact to="/">
             zipcamp
+          </NavLink>
+          <NavLink id={styles.navbarLogoShort}className={styles.navbarLogo} exact to="/">
+            z
           </NavLink>
           <div className={styles.navLinkList}>
             <NavLink

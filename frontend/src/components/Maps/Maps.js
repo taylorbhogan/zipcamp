@@ -91,6 +91,12 @@ const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunct
                       : +pushpin.longitude,
                 }}
                 draggable={true}
+                label={{
+                  text: "\uea99",
+                  fontFamily: "Material Icons",
+                  color: "#ffffff",
+                  fontSize: "18px",
+                }}
                 onClick={() => setFunction(pushpin)}
                 onDragEnd={(e) => onMarkerDragEnd(e)}
               />

@@ -1,0 +1,23 @@
+.search{
+  margin: 7rem 0 4rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 24px;
+  color: white;
+}
+
+.search button {
+  background: none;
+  border: none;
+  background-color: var(--grey1);
+  color: white;
+  padding: .5rem;
+  border-radius: var(--buttonBorderRadius);
+}
+
+.search > button {
+  font-size: .8rem;
+}

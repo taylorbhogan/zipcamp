@@ -9,6 +9,7 @@ import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
 import MessageNoAreas from "./MessageNoAreas";
 import LoadingContent from "../parts/LoadingContent"
+import ControlPanel from "./ControlPanel";
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -79,24 +80,15 @@ function AreasList() {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageLeft}>
-        <div className={styles.search}>
-          <span>Explore</span>
-          <Dropdown
-            placeholder={"Public Lands"}
-            items={organizations}
-            item={organization}
-            setFunction={setOrganization}
-            plural={true}
-          />
-          <span>in</span>
-          <Dropdown
-            placeholder={"The United States"}
-            item={selectedLocation}
-            items={usStates}
-            setFunction={setSelectedLocation}
-          />
-          <button onClick={clearSelection}>clear</button>
-        </div>
+        <ControlPanel
+          organizations={organizations}
+          organization={organization}
+          setOrganization={setOrganization}
+          selectedLocation={selectedLocation}
+          usStates={usStates}
+          setSelectedLocation={setSelectedLocation}
+          clearSelection={clearSelection}
+        />
         {isLoaded ? (
           areas.length > 0 ? (
             areas.map((area) => (

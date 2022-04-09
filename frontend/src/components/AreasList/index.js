@@ -19,7 +19,7 @@ function AreasList() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [ resultsPerPage, setResultsPerPage ] = useState(25)
   const areas = useSelector((state) => Object.values(state.areas));
 
   useEffect(() => {

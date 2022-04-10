@@ -27,8 +27,9 @@ export const searchAreas = (organization, location) => async (dispatch) => {
     });
 
     if (res.ok) {
-      const filteredAreas = await res.json();
-      dispatch(load(filteredAreas));
+      const data = await res.json();
+      const {areaArray, totalCount} = data
+      dispatch(load(areaArray));
     }
   } catch (e) {
     return "error";

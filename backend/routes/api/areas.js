@@ -102,7 +102,8 @@ router.post(
     );
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
-      // console.log('recData',recData);
+    const totalCount = recGovJson.METADATA.RESULTS.TOTAL_COUNT;
+      console.log('totalCount',totalCount);
     let areaArray = recData.map((area) => ({
       name: area["RecAreaName"],
       id: area["RecAreaID"],
@@ -116,8 +117,8 @@ router.post(
     if (organizationId) {
       areaArray = areaArray.filter((area) => area.orgID === organizationId);
     }
-
-    res.json(areaArray);
+    console.log(areaArray.length)
+    res.json({areaArray, totalCount});
   })
 );
 

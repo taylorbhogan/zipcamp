@@ -95,8 +95,8 @@ router.post(
     console.log('------resultsPerPage----',resultsPerPage);
     console.log('------stateAbbrev----',stateAbbreviation);
     console.log('----------',typeof resultsPerPage);
-  
 
+    
     const recGovRes = await fetch(
       // `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=1${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
       `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=${offset}`,

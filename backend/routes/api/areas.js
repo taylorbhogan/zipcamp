@@ -90,9 +90,10 @@ router.post(
     // then move on to the main work
     const organizationId = req.body.organization;
     const stateAbbreviation = req.body.location;
+    const resultsPerPage = req.body.resultsPerPage;
 
     const recGovRes = await fetch(
-      `https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
+      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=0${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
       {
         method: "GET",
         headers: {

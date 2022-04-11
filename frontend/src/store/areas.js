@@ -17,13 +17,14 @@ export const getAreas = () => async (dispatch) => {
   }
 };
 
-export const searchAreas = (organization, location) => async (dispatch) => {
+export const searchAreas = (organization, location, resultsPerPage) => async (dispatch) => {
   try {
     const res = await csrfFetch("/api/areas/from-rec-gov/area-search", {
       method: "POST",
       body: JSON.stringify({
         organization,
         location,
+        resultsPerPage,
       }),
     });
 

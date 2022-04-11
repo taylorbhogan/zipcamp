@@ -8,7 +8,7 @@ import AreaBox from "../AreaBox";
 import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
 import MessageNoAreas from "./MessageNoAreas";
-import LoadingContent from "../parts/LoadingContent"
+import LoadingContent from "../parts/LoadingContent";
 import ControlPanel from "./ControlPanel";
 
 function AreasList() {
@@ -19,8 +19,10 @@ function AreasList() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [ resultsPerPage, setResultsPerPage ] = useState(25)
-  const areas = useSelector((state) => Object.values(state.areas.searchResults));
+  const [resultsPerPage, setResultsPerPage] = useState(25);
+  const areas = useSelector((state) =>
+    Object.values(state.areas.searchResults)
+  );
 
   useEffect(() => {
     const fetchSelectableLocations = async () => {
@@ -33,7 +35,11 @@ function AreasList() {
   useEffect(() => {
     const fetchAreas = async () => {
       const fetch = await dispatch(
-        searchAreas(organization?.id, selectedLocation?.abbreviation)
+        searchAreas(
+          organization?.id,
+          selectedLocation?.abbreviation,
+          resultsPerPage
+        )
       );
       if (fetch !== "error") {
         setIsLoaded(true);

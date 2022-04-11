@@ -20,7 +20,7 @@ function AreasList() {
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [ resultsPerPage, setResultsPerPage ] = useState(25)
-  const areas = useSelector((state) => Object.values(state.areas));
+  const areas = useSelector((state) => Object.values(state.areas.searchResults));
 
   useEffect(() => {
     const fetchSelectableLocations = async () => {

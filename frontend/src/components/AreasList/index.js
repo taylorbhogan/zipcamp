@@ -10,6 +10,7 @@ import styles from "./AreasList.module.css";
 import MessageNoAreas from "./MessageNoAreas";
 import LoadingContent from "../parts/LoadingContent";
 import ControlPanel from "./ControlPanel";
+import Pagination from "../parts/Pagination/Pagination";
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function AreasList() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [resultsPerPage, setResultsPerPage] = useState(25);
+  const [resultsPerPage, setResultsPerPage] = useState(1);
   const areas = useSelector((state) =>
     Object.values(state.areas.searchResults)
   );
@@ -38,7 +39,8 @@ function AreasList() {
         searchAreas(
           organization?.id,
           selectedLocation?.abbreviation,
-          resultsPerPage
+          resultsPerPage,
+          2,
         )
       );
       if (fetch !== "error") {
@@ -106,6 +108,7 @@ function AreasList() {
         ) : (
           <LoadingContent />
         )}
+        <Pagination resultsPerPage={resultsPerPage}/>
       </div>
       <div className={styles.pageRight}>
         <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />

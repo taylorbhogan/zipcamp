@@ -1,0 +1,5 @@
+.container {
+  background-color: var(--mainColorLightGrey);
+  padding: 3rem;
+  margin-bottom: 1rem;
+}

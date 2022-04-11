@@ -91,9 +91,15 @@ router.post(
     const organizationId = req.body.organization;
     const stateAbbreviation = req.body.location;
     const resultsPerPage = req.body.resultsPerPage;
+    const offset = req.body.offset;
+    console.log('------resultsPerPage----',resultsPerPage);
+    console.log('------stateAbbrev----',stateAbbreviation);
+    console.log('----------',typeof resultsPerPage);
+  
 
     const recGovRes = await fetch(
-      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=0${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
+      // `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=1${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
+      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=${offset}`,
       {
         method: "GET",
         headers: {
@@ -103,6 +109,8 @@ router.post(
     );
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
+    console.log('recData.length',recData.length);
+    console.log('recData',recData);
     const totalCount = recGovJson.METADATA.RESULTS.TOTAL_COUNT;
       console.log('totalCount',totalCount);
     let areaArray = recData.map((area) => ({

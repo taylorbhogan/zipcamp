@@ -20,7 +20,9 @@ function AreasList() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [resultsPerPage, setResultsPerPage] = useState(1);
+  const [resultsPerPage, setResultsPerPage] = useState(25);
+  const [resultPageNum, setResultPageNum] = useState(1)
+
   const areas = useSelector((state) =>
     Object.values(state.areas.searchResults)
   );
@@ -40,7 +42,7 @@ function AreasList() {
           organization?.id,
           selectedLocation?.abbreviation,
           resultsPerPage,
-          2,
+          resultsPerPage * (resultPageNum - 1),
         )
       );
       if (fetch !== "error") {
@@ -48,7 +50,7 @@ function AreasList() {
       }
     };
     fetchAreas();
-  }, [dispatch, organization, selectedLocation]);
+  }, [dispatch, organization, selectedLocation, resultPageNum]);
 
   useEffect(() => {
     const fetchOrganizations = async () => {
@@ -108,7 +110,7 @@ function AreasList() {
         ) : (
           <LoadingContent />
         )}
-        <Pagination resultsPerPage={resultsPerPage}/>
+        <Pagination resultsPerPage={resultsPerPage} resultPageNum={resultPageNum} setResultPageNum={setResultPageNum}/>
       </div>
       <div className={styles.pageRight}>
         <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />

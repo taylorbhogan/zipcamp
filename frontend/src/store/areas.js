@@ -32,8 +32,8 @@ export const searchAreas = (organization, location, resultsPerPage, offset) => a
     if (res.ok) {
       const data = await res.json();
       const {areaArray, totalCount} = data
-      console.log("areaArray",areaArray);
-      console.log("totalCount",totalCount);
+      // console.log("areaArray",areaArray);
+      // console.log("totalCount",totalCount);
       dispatch(load(areaArray, totalCount));
     }
   } catch (e) {

@@ -1,3 +1,5 @@
+import PageButton from "./PageButton";
+
 const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
   if (resultPages.length <= 10) {
     return (
@@ -24,17 +26,13 @@ const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
   }
 
   if (resultPageNum > resultPages.length - 5) {
-    console.log(resultPages.length);
-    console.log();
     return (
       <>
         {resultPages.slice(-10).map((page, idx) => (
-          <button
-            onClick={() => setResultPageNum(resultPages.length - 9 + idx)}
-            key={idx}
-          >
-            {resultPages.length - 9 + idx}
-          </button>
+          <PageButton
+            onClick={setResultPageNum}
+            value={resultPages.length - 9 + idx}
+          />
         ))}
       </>
     );

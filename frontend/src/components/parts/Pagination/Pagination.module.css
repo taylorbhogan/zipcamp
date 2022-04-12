@@ -1,0 +1,24 @@
+.container {
+  border: 1px solid var(--mainColorLightGrey);
+  border-radius: var(--containerBorderRadius);
+  padding: 2rem 3rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  border: none;
+  background: none;
+  padding: none;
+  padding: .5rem;
+  margin: .25rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.button:hover{
+  text-decoration: underline;
+}

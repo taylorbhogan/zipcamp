@@ -8,8 +8,9 @@ import AreaBox from "../AreaBox";
 import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
 import MessageNoAreas from "./MessageNoAreas";
-import LoadingContent from "../parts/LoadingContent"
+import LoadingContent from "../parts/LoadingContent";
 import ControlPanel from "./ControlPanel";
+import Pagination from "../parts/Pagination/Pagination";
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -19,8 +20,12 @@ function AreasList() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [ resultsPerPage, setResultsPerPage ] = useState(25)
-  const areas = useSelector((state) => Object.values(state.areas));
+  const [resultsPerPage, setResultsPerPage] = useState(25);
+  const [resultPageNum, setResultPageNum] = useState(1)
+
+  const areas = useSelector((state) =>
+    Object.values(state.areas.searchResults)
+  );
 
   useEffect(() => {
     const fetchSelectableLocations = async () => {
@@ -33,14 +38,19 @@ function AreasList() {
   useEffect(() => {
     const fetchAreas = async () => {
       const fetch = await dispatch(
-        searchAreas(organization?.id, selectedLocation?.abbreviation)
+        searchAreas(
+          organization?.id,
+          selectedLocation?.abbreviation,
+          resultsPerPage,
+          resultsPerPage * (resultPageNum - 1),
+        )
       );
       if (fetch !== "error") {
         setIsLoaded(true);
       }
     };
     fetchAreas();
-  }, [dispatch, organization, selectedLocation]);
+  }, [dispatch, organization, selectedLocation, resultPageNum]);
 
   useEffect(() => {
     const fetchOrganizations = async () => {
@@ -100,6 +110,7 @@ function AreasList() {
         ) : (
           <LoadingContent />
         )}
+        <Pagination resultsPerPage={resultsPerPage} resultPageNum={resultPageNum} setResultPageNum={setResultPageNum}/>
       </div>
       <div className={styles.pageRight}>
         <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />

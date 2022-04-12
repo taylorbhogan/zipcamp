@@ -21,7 +21,7 @@ function SpotAddForm({ onClose }) {
   const [directions, setDirections] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const areas = useSelector((state) => Object.values(state.areas));
+  const areas = useSelector((state) => Object.values(state.areas.searchResults));
   const [area, setArea] = useState("1");
 
   const userId = useSelector((state) => state.session.user?.id);

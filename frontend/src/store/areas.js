@@ -2,9 +2,10 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_AREAS = "areas/LOAD_AREAS";
 
-const load = (areas) => ({
+const load = (areas, length) => ({
   type: LOAD_AREAS,
   areas,
+  length
 });
 
 export const getAreas = () => async (dispatch) => {
@@ -16,35 +17,40 @@ export const getAreas = () => async (dispatch) => {
   }
 };
 
-export const searchAreas = (organization, location) => async (dispatch) => {
+export const searchAreas = (organization, location, resultsPerPage, offset) => async (dispatch) => {
   try {
     const res = await csrfFetch("/api/areas/from-rec-gov/area-search", {
       method: "POST",
       body: JSON.stringify({
         organization,
         location,
+        resultsPerPage,
+        offset
       }),
     });
 
     if (res.ok) {
       const data = await res.json();
       const {areaArray, totalCount} = data
-      dispatch(load(areaArray));
+      // console.log("areaArray",areaArray);
+      // console.log("totalCount",totalCount);
+      dispatch(load(areaArray, totalCount));
     }
   } catch (e) {
     return "error";
   }
 };
 
-const initialState = {};
+const initialState = {searchResults: {}, searchResultsLength: 0};
 
 const areasReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_AREAS:
-      const newState = {};
+      const newState = {searchResults: {}, searchResultsLength: 0};
       action.areas.forEach((area) => {
-        newState[area.id] = area;
+        newState.searchResults[area.id] = area;
       });
+      newState.searchResultsLength = action.length;
       return {
         ...newState,
       };

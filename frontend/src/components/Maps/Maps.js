@@ -3,7 +3,14 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./Maps.module.css";
 
-const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunction }) => {
+const Maps = ({
+  apiKey,
+  isAdding = false,
+  getLocation,
+  pins,
+  zoom = 10,
+  setFunction,
+}) => {
   const [currentPosition, setCurrentPosition] = useState({
     lat: 37.76737,
     lng: -122.49986,
@@ -19,18 +26,24 @@ const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunct
     googleMapsApiKey: apiKey,
   });
 
-  const positionSuccessAftereffect = (devicePosition) => {
-    const lat = devicePosition.coords.latitude;
-    const lng = devicePosition.coords.longitude;
-    setCurrentPosition({ lat, lng });
-  };
-  const error = () => {
-    alert("There was an error accessing your position");
-  };
-
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(positionSuccessAftereffect, error);
-  }, []);
+    if (isAdding) {
+      const positionSuccessAftereffect = (devicePosition) => {
+        const lat = devicePosition.coords.latitude;
+        const lng = devicePosition.coords.longitude;
+        setCurrentPosition({ lat, lng });
+      };
+      const error = () => {
+        alert(
+          "An error occurred while accessing your position. Did a recent update change your device settings?"
+        );
+      };
+      navigator.geolocation.getCurrentPosition(
+        positionSuccessAftereffect,
+        error
+      );
+    }
+  }, [isAdding]);
 
   const onMarkerDragEnd = (e) => {
     const lat = e.latLng.lat();
@@ -69,7 +82,7 @@ const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunct
                     lng: +Object.values(pins)[0].longitude,
                   }
                 : {
-                  // approx. middle of continental US
+                    // approx. middle of continental US
                     lat: 38.118235,
                     lng: -95.194464,
                   }

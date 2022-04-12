@@ -21,7 +21,7 @@ function SpotEditForm({ spotId, setShowModal }) {
   const [long, setLong] = useState(spot?.long);
   const [blurb, setBlurb] = useState(spot?.blurb);
   const [directions, setDirections] = useState(spot?.directions);
-  const areas = useSelector((state) => Object.values(state.areas));
+  const areas = useSelector((state) => Object.values(state.areas.searchResults));
   const [area, setArea] = useState(spot?.areaId);
   const usStates = useSelector((state) => Object.values(state.states));
   const [stateId, setStateId] = useState(spot?.stateId);

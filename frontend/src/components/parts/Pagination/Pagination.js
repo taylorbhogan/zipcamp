@@ -24,14 +24,14 @@ const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum }) => {
 
   return (
     <div className={styles.container}>
-      {resultPageNum > 1 && <button onClick={pagePrev}>Prev</button>}
+      {resultPageNum > 1 && <button className={styles.button} onClick={pagePrev}>Prev</button>}
       <PageButtons
         resultPages={resultPages}
         setResultPageNum={setResultPageNum}
         resultPageNum={resultPageNum}
       />
       {resultPageNum < resultPages.length && (
-        <button onClick={pageNext}>Next</button>
+        <button className={styles.button} onClick={pageNext}>Next</button>
       )}
     </div>
   );

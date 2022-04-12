@@ -14,37 +14,6 @@ router.get(
   })
 );
 
-router.post(
-  "/search",
-  asyncHandler(async function (req, res) {
-    const designationId = req.body.organization;
-    const stateId = req.body.location;
-
-    let filteredAreas;
-    if (designationId && !stateId) {
-      filteredAreas = await Area.findAll({
-        where: { designationId },
-        include: State,
-      });
-    }
-
-    if (stateId && !designationId) {
-      filteredAreas = await Area.findAll({
-        where: { stateId },
-        include: State,
-      });
-    }
-
-    if (stateId && designationId) {
-      filteredAreas = await Area.findAll({
-        where: { stateId, designationId },
-        include: State,
-      });
-    }
-    res.json(filteredAreas);
-  })
-);
-
 router.get(
   "/from-rec-gov/organizations",
   asyncHandler(async (req, res) => {
@@ -69,7 +38,7 @@ router.get(
 );
 
 router.post(
-  "/from-rec-gov/area-search",
+  "/search",
   asyncHandler(async (req, res) => {
     // first get the organizations to add the orgName key
     const organizationsJSON = await fetch(
@@ -96,7 +65,7 @@ router.post(
     console.log('------stateAbbrev----',stateAbbreviation);
     console.log('----------',typeof resultsPerPage);
 
-    
+
     const recGovRes = await fetch(
       // `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=1${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
       `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=${offset}`,

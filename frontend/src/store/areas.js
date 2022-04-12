@@ -19,7 +19,7 @@ export const getAreas = () => async (dispatch) => {
 
 export const searchAreas = (organization, location, resultsPerPage, offset) => async (dispatch) => {
   try {
-    const res = await csrfFetch("/api/areas/from-rec-gov/area-search", {
+    const res = await csrfFetch("/api/areas/search", {
       method: "POST",
       body: JSON.stringify({
         organization,

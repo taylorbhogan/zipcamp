@@ -5,9 +5,7 @@ const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
     return (
       <>
         {resultPages.map((page, idx) => (
-          <button onClick={() => setResultPageNum(idx + 1)} key={idx}>
-            {idx + 1}
-          </button>
+          <PageButton onClick={setResultPageNum} value={idx + 1} />
         ))}
       </>
     );
@@ -17,9 +15,7 @@ const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
     return (
       <>
         {resultPages.slice(0, 10).map((page, idx) => (
-          <button onClick={() => setResultPageNum(idx + 1)} key={idx}>
-            {idx + 1}
-          </button>
+          <PageButton onClick={setResultPageNum} value={idx + 1} />
         ))}
       </>
     );
@@ -40,36 +36,16 @@ const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
 
   return (
     <>
-      <button onClick={() => setResultPageNum(resultPageNum - 5)}>
-        {resultPageNum - 5}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum - 4)}>
-        {resultPageNum - 4}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum - 3)}>
-        {resultPageNum - 3}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum - 2)}>
-        {resultPageNum - 2}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum - 1)}>
-        {resultPageNum - 1}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum)}>
-        {resultPageNum}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum + 1)}>
-        {resultPageNum + 1}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum + 2)}>
-        {resultPageNum + 2}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum + 3)}>
-        {resultPageNum + 3}
-      </button>
-      <button onClick={() => setResultPageNum(resultPageNum + 4)}>
-        {resultPageNum + 4}
-      </button>
+      <PageButton onClick={setResultPageNum} value={resultPageNum - 5} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum - 4} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum - 3} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum - 2} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum - 1} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum + 1} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum + 2} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum + 3} />
+      <PageButton onClick={setResultPageNum} value={resultPageNum + 4} />
     </>
   );
 };

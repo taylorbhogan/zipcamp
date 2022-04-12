@@ -4,6 +4,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./Maps.module.css";
 
 const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunction }) => {
+  const [error, setError] = useState('')
   const [currentPosition, setCurrentPosition] = useState({
     lat: 37.76737,
     lng: -122.49986,
@@ -19,18 +20,22 @@ const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunct
     googleMapsApiKey: apiKey,
   });
 
-  const positionSuccessAftereffect = (devicePosition) => {
-    const lat = devicePosition.coords.latitude;
-    const lng = devicePosition.coords.longitude;
-    setCurrentPosition({ lat, lng });
-  };
-  const error = () => {
-    alert("There was an error accessing your position");
-  };
-
   useEffect(() => {
+    if (isAdding){
+
+      const positionSuccessAftereffect = (devicePosition) => {
+        const lat = devicePosition.coords.latitude;
+        const lng = devicePosition.coords.longitude;
+        setCurrentPosition({ lat, lng });
+      setError('')
+    };
+    const error = () => {
+      alert("There was an error accessing your position");
+      setError("There was an error accessing your position")
+    };
     navigator.geolocation.getCurrentPosition(positionSuccessAftereffect, error);
-  }, []);
+  }
+  }, [isAdding]);
 
   const onMarkerDragEnd = (e) => {
     const lat = e.latLng.lat();
@@ -58,6 +63,7 @@ const Maps = ({ apiKey, isAdding = false, getLocation, pins, zoom = 10, setFunct
     <>
       {isLoaded ? (
         <>
+          {error.length > 0 && <div>{error}</div>}
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={

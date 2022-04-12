@@ -1,6 +1,6 @@
-import styles from "./FormErrors.module.css";
+import styles from "./Errors.module.css";
 
-const FormErrors = ({ errors }) => {
+const Errors = ({ errors }) => {
   return (
     <ul className={styles.errors}>
       {errors
@@ -12,4 +12,4 @@ const FormErrors = ({ errors }) => {
   );
 };
 
-export default FormErrors;
+export default Errors;

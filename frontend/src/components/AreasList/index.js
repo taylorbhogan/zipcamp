@@ -11,6 +11,7 @@ import MessageNoAreas from "./MessageNoAreas";
 import LoadingContent from "../parts/LoadingContent";
 import ControlPanel from "./ControlPanel";
 import Pagination from "../parts/Pagination/Pagination";
+import Errors from "../parts/Errors";
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -81,7 +82,7 @@ function AreasList() {
         setOrganizations(obj);
       } else {
         console.log(...data.errors);
-        setErrors(...errors, ...data.errors)
+        setErrors([...errors, ...data.errors])
       }
     };
     fetchOrganizations();
@@ -104,7 +105,7 @@ function AreasList() {
           setSelectedLocation={setSelectedLocation}
           clearSelection={clearSelection}
         />
-        {errors.length > 0 && errors}
+        {errors.length > 0 && <Errors errors={errors}/> }
         {isLoaded ? (
           areas.length > 0 ? (
             areas.map((area) => (

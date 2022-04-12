@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAreas } from "../../store/areas";
 import { getUsStates } from "../../store/usStates";
-import FormErrors from "../parts/FormErrors";
+import Errors from "../parts/Errors";
 import "../../index.css";
 import styles from "./SpotAddForm.module.css";
 import { createSpot } from "../../store/spots";
@@ -76,7 +76,7 @@ function SpotAddForm({ onClose }) {
         <h1 className={"formHeader"}>
           add that spot so you can find your way back
         </h1>
-        <FormErrors errors={errors} />
+        <Errors errors={errors} />
         <div className={styles.containerDiv}>
           <div className={styles.leftDiv}>
             <div className={styles.infoDiv}>

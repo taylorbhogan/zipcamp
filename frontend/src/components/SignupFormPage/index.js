@@ -5,7 +5,7 @@ import Input from "../parts/Input";
 import * as sessionActions from "../../store/session";
 
 import styles from "./SignupForm.module.css";
-import FormErrors from "../parts/FormErrors";
+import Errors from "../parts/Errors";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function SignupFormPage() {
     <div className={styles.pageContainer}>
       <div className={styles.signupForm}>
         <form onSubmit={handleSubmit} className={"form"}>
-          <FormErrors errors={errors} />
+          <Errors errors={errors} />
           <Input
             type="text"
             value={email}

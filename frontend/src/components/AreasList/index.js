@@ -110,7 +110,7 @@ function AreasList() {
         ) : (
           <LoadingContent />
         )}
-        <Pagination resultsPerPage={resultsPerPage} resultPageNum={resultPageNum} setResultPageNum={setResultPageNum}/>
+        <Pagination isLoaded={isLoaded} resultsPerPage={resultsPerPage} resultPageNum={resultPageNum} setResultPageNum={setResultPageNum}/>
       </div>
       <div className={styles.pageRight}>
         <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />

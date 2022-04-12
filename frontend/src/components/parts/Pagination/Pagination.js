@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import PageButtons from "./PageButtons";
 import styles from "./Pagination.module.css";
 
-const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum }) => {
+const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum, isLoaded }) => {
   const totalSearchResults = useSelector(
     (state) => state.areas.searchResultsLength
   );
@@ -22,7 +22,8 @@ const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum }) => {
     setResultPageNum(++resultPageNum);
   };
 
-  return (
+
+  return isLoaded && (
     <div className={styles.container}>
       {resultPageNum > 1 && <button className={styles.button} onClick={pagePrev}>Prev</button>}
       <PageButtons

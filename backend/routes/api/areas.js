@@ -60,14 +60,12 @@ router.post(
 
     // move on to the main work
     const organizationId = req.body.organization;
-    const stateAbbreviation = req.body.location;
+    const stateAbbreviation = req.body.location === undefined ? '' : req.body.location;
     const resultsPerPage = req.body.resultsPerPage;
     const offset = req.body.offset;
 
     const recGovRes = await fetch(
-      // `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=1${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
-      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=${offset}`,
-      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}${stateAbbreviation === undefined ? '' : `&state=[${stateAbbreviation}]`}&offset=${offset}`,
+      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&state=${stateAbbreviation}&offset=${offset}`,
       {
         method: "GET",
         headers: {

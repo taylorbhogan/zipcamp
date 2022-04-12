@@ -12,3 +12,14 @@
 .button:hover{
   text-decoration: underline;
 }
+
+.isSelected{
+  font-weight: bold;
+  color: black;
+  cursor: text;
+  text-decoration: none;
+}
+/* must remain below .button rules */
+.isSelected:hover{
+  text-decoration: none;
+}

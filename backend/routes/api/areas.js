@@ -14,37 +14,6 @@ router.get(
   })
 );
 
-router.post(
-  "/search",
-  asyncHandler(async function (req, res) {
-    const designationId = req.body.organization;
-    const stateId = req.body.location;
-
-    let filteredAreas;
-    if (designationId && !stateId) {
-      filteredAreas = await Area.findAll({
-        where: { designationId },
-        include: State,
-      });
-    }
-
-    if (stateId && !designationId) {
-      filteredAreas = await Area.findAll({
-        where: { stateId },
-        include: State,
-      });
-    }
-
-    if (stateId && designationId) {
-      filteredAreas = await Area.findAll({
-        where: { stateId, designationId },
-        include: State,
-      });
-    }
-    res.json(filteredAreas);
-  })
-);
-
 router.get(
   "/from-rec-gov/organizations",
   asyncHandler(async (req, res) => {
@@ -69,7 +38,7 @@ router.get(
 );
 
 router.post(
-  "/from-rec-gov/area-search",
+  "/search",
   asyncHandler(async (req, res) => {
     // first get the organizations to add the orgName key
     const organizationsJSON = await fetch(
@@ -82,24 +51,21 @@ router.post(
       }
     );
     const {RECDATA} = await organizationsJSON.json();
+
+    // set orgNames into the organizations object for instant lookup later; there are likely to be fewer organizations than areas
     const organizations = {}
     RECDATA.forEach(org => {
       organizations[org.OrgID] = org.OrgName
     })
 
-    // then move on to the main work
+    // move on to the main work
     const organizationId = req.body.organization;
-    const stateAbbreviation = req.body.location;
+    const stateAbbreviation = req.body.location === undefined ? '' : req.body.location;
     const resultsPerPage = req.body.resultsPerPage;
     const offset = req.body.offset;
-    console.log('------resultsPerPage----',resultsPerPage);
-    console.log('------stateAbbrev----',stateAbbreviation);
-    console.log('----------',typeof resultsPerPage);
 
-    
     const recGovRes = await fetch(
-      // `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=1${stateAbbreviation !== undefined && `&state=${stateAbbreviation}`}`,
-      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&offset=${offset}`,
+      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&state=${stateAbbreviation}&offset=${offset}`,
       {
         method: "GET",
         headers: {
@@ -109,10 +75,8 @@ router.post(
     );
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
-    console.log('recData.length',recData.length);
-    console.log('recData',recData);
     const totalCount = recGovJson.METADATA.RESULTS.TOTAL_COUNT;
-      console.log('totalCount',totalCount);
+
     let areaArray = recData.map((area) => ({
       name: area["RecAreaName"],
       id: area["RecAreaID"],
@@ -123,10 +87,19 @@ router.post(
       latitude: area["RecAreaLatitude"],
     }));
 
+    // the rec.gov API for /recareas does not offer organization(s) as a parameter.
+    // in its current iteration, this API route takes the 50 areas that were returned by the given query and THEN filters on organization.
+    // as a result (b/c rec.gov's db isn't organized by organization), as the user pages through results, each result page will feature varying numbers of areas.
+    // TODO:
+    // implement a more powerful search route.
+    // 1. if the API req has an organizationId attached, query the database repeatedly to build our own array of areas
+    // 2. filter that array as seen below
+    // 3. ∆ totalCount's declaration to let; reassign its value here to the filtered array's length
+    // but then, what to send?
+    // // the first 25 results, and then page through -- but how? this sounds like cacheing...how to implement?
     if (organizationId) {
       areaArray = areaArray.filter((area) => area.orgID === organizationId);
     }
-    console.log(areaArray.length)
     res.json({areaArray, totalCount});
   })
 );

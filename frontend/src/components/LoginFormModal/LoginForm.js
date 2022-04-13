@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Input from "../parts/Input";
 import styles from "./LoginForm.module.css";
 import "./../../index.css";
-import FormErrors from "../parts/FormErrors";
+import Errors from "../parts/Errors";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function LoginForm() {
     <div className={styles.loginForm}>
       <form className={"form"} onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>Welcome back.</h1>
-        <FormErrors errors={errors} />
+        <Errors errors={errors} />
         <Input
           type="text"
           value={credential}

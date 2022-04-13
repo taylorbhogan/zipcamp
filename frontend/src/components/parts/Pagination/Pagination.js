@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import PageButtons from "./PageButtons";
 import styles from "./Pagination.module.css";
 
-const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum }) => {
+const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum, isLoaded }) => {
   const totalSearchResults = useSelector(
     (state) => state.areas.searchResultsLength
   );
   const [resultPages, setResultPages] = useState([]);
 
   useEffect(() => {
-    const numResultsPages = Math.ceil(totalSearchResults / resultsPerPage);
+    const numResultsPages = Math.ceil(totalSearchResults === undefined ? 0 : totalSearchResults / resultsPerPage);
     setResultPages(Array(numResultsPages).fill(null));
   }, [resultsPerPage, totalSearchResults]);
 
@@ -22,7 +22,8 @@ const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum }) => {
     setResultPageNum(++resultPageNum);
   };
 
-  return (
+
+  return isLoaded && (
     <div className={styles.container}>
       {resultPageNum > 1 && <button className={styles.button} onClick={pagePrev}>Prev</button>}
       <PageButtons

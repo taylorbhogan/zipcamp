@@ -19,7 +19,7 @@ export const getAreas = () => async (dispatch) => {
 
 export const searchAreas = (organization, location, resultsPerPage, offset) => async (dispatch) => {
   try {
-    const res = await csrfFetch("/api/areas/from-rec-gov/area-search", {
+    const res = await csrfFetch("/api/areas/search", {
       method: "POST",
       body: JSON.stringify({
         organization,
@@ -32,8 +32,6 @@ export const searchAreas = (organization, location, resultsPerPage, offset) => a
     if (res.ok) {
       const data = await res.json();
       const {areaArray, totalCount} = data
-      // console.log("areaArray",areaArray);
-      // console.log("totalCount",totalCount);
       dispatch(load(areaArray, totalCount));
     }
   } catch (e) {

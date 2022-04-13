@@ -11,6 +11,7 @@ import MessageNoAreas from "./MessageNoAreas";
 import LoadingContent from "../parts/LoadingContent";
 import ControlPanel from "./ControlPanel";
 import Pagination from "../parts/Pagination/Pagination";
+import Errors from "../parts/Errors";
 
 function AreasList() {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ function AreasList() {
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [resultsPerPage, setResultsPerPage] = useState(25);
-  const [resultPageNum, setResultPageNum] = useState(1)
+  const [resultPageNum, setResultPageNum] = useState(1);
+  const [errors, setErrors] = useState([]);
 
   const areas = useSelector((state) =>
     Object.values(state.areas.searchResults)
@@ -42,7 +44,7 @@ function AreasList() {
           organization?.id,
           selectedLocation?.abbreviation,
           resultsPerPage,
-          resultsPerPage * (resultPageNum - 1),
+          resultsPerPage * (resultPageNum - 1)
         )
       );
       if (fetch !== "error") {
@@ -56,28 +58,32 @@ function AreasList() {
     const fetchOrganizations = async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`);
       const data = await res.json();
-
-      const filterOut = [
-        "STATE PARKS",
-        "FEDERAL",
-        "Smithsonian Institution",
-        "Utah",
-        "Maryland",
-        "Texas",
-        "Virginia",
-        "New Mexico",
-        "US Air Force",
-        "Smithsonian Institution Affiliations Program",
-        "",
-      ];
-      const filteredData = data.filter((datum) => {
-        return !filterOut.includes(datum.name);
-      });
-      const obj = {};
-      filteredData.forEach((datum) => {
-        obj[datum.id] = datum;
-      });
-      setOrganizations(obj);
+      if (res.ok){
+        const filterOut = [
+          "STATE PARKS",
+          "FEDERAL",
+          "Smithsonian Institution",
+          "Utah",
+          "Maryland",
+          "Texas",
+          "Virginia",
+          "New Mexico",
+          "US Air Force",
+          "Smithsonian Institution Affiliations Program",
+          "",
+        ];
+        const filteredData = data.filter((datum) => {
+          return !filterOut.includes(datum.name);
+        });
+        const obj = {};
+        filteredData.forEach((datum) => {
+          obj[datum.id] = datum;
+        });
+        setOrganizations(obj);
+      } else {
+        console.log(...data.errors);
+        setErrors([...errors, ...data.errors])
+      }
     };
     fetchOrganizations();
   }, []);
@@ -99,6 +105,7 @@ function AreasList() {
           setSelectedLocation={setSelectedLocation}
           clearSelection={clearSelection}
         />
+        {errors.length > 0 && <Errors errors={errors}/> }
         {isLoaded ? (
           areas.length > 0 ? (
             areas.map((area) => (
@@ -110,7 +117,12 @@ function AreasList() {
         ) : (
           <LoadingContent />
         )}
-        <Pagination resultsPerPage={resultsPerPage} resultPageNum={resultPageNum} setResultPageNum={setResultPageNum}/>
+        <Pagination
+          isLoaded={isLoaded}
+          resultsPerPage={resultsPerPage}
+          resultPageNum={resultPageNum}
+          setResultPageNum={setResultPageNum}
+        />
       </div>
       <div className={styles.pageRight}>
         <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />

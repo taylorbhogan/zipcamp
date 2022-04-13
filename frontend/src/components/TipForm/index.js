@@ -5,7 +5,7 @@ import "../../index.css";
 import { createTip, editTip } from "../../store/tips";
 import styles from "./TipForm.module.css";
 import Input from "../parts/Input";
-import FormErrors from "../parts/FormErrors";
+import Errors from "../parts/Errors";
 import CloseModalButton from "../parts/CloseModalButton";
 
 function TipForm({ setShowTipForm, tipId }) {
@@ -66,7 +66,7 @@ function TipForm({ setShowTipForm, tipId }) {
       <CloseModalButton closeFunction={() => setShowTipForm(false)} />
       <form className="form" onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>add a tip</h1>
-        <FormErrors errors={errors} />
+        <Errors errors={errors} />
         <Input
           type="textarea"
           value={tipText}

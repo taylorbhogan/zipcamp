@@ -1,13 +1,20 @@
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SpotAddModal from "../SpotAddModal";
 import DemoLoginButton from "../parts/DemoLoginButton";
+import { getAllAreas } from "../../store/allAreas";
 import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    dispatch(getAllAreas());
+  }, [dispatch]);
 
   let sessionLinks;
   if (sessionUser) {
@@ -66,7 +73,7 @@ function Navigation({ isLoaded }) {
             >
               my spots
             </NavLink>
-            <SpotAddModal />
+            <SpotAddModal isUsingUserLocation={true}/>
           </div>
         </div>
         <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>

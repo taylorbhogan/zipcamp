@@ -10,19 +10,21 @@ import { createSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
 
-function SpotAddForm({ onClose }) {
+function SpotAddForm({ onClose, selectedArea }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [name, setName] = useState("");
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
+  const [lat, setLat] = useState(selectedArea ? selectedArea.lat ? selectedArea.lat : "37.674874" : "");
+  const [long, setLong] = useState(selectedArea ? selectedArea.lng ? selectedArea.lng : "-122.440264" : "");
   const [blurb, setBlurb] = useState("");
   const [directions, setDirections] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const areas = useSelector((state) => Object.values(state.areas.searchResults));
-  const [area, setArea] = useState("1");
+  const areas = useSelector((state) =>
+    Object.values(state.areas.searchResults)
+  );
+  const [area, setArea] = useState(selectedArea ? selectedArea.id : "1");
 
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -109,6 +111,7 @@ function SpotAddForm({ onClose }) {
               <select
                 onChange={(e) => setArea(e.target.value)}
                 className={"formSelectInput"}
+                defaultValue={selectedArea?.id}
               >
                 {areas.map((area) => (
                   <option value={area.id} key={area.id}>
@@ -143,10 +146,12 @@ function SpotAddForm({ onClose }) {
               <MapContainer
                 isAdding={true}
                 getLocation={getLocation}
-                pins={{pin: {
-                  latitude: lat,
-                  longitude: long,
-                }}}
+                pins={{
+                  pin: {
+                    latitude: lat,
+                    longitude: long,
+                  },
+                }}
               />
             </div>
           </div>

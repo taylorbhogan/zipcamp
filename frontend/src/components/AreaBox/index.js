@@ -22,7 +22,7 @@ function AreaBox({ area, selectedArea }) {
           <h2 className={styles.locationDiv}>{area.orgName}</h2>
         </div>
         <div>
-          <SpotAddModal />
+          <SpotAddModal selectedArea={area}/>
         </div>
       </div>
       {isOpen ? (

@@ -10,6 +10,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const areas = await Area.findAll({ include: State });
+
     res.json(areas);
   })
 );
@@ -50,17 +51,18 @@ router.post(
         },
       }
     );
-    const {RECDATA} = await organizationsJSON.json();
+    const { RECDATA } = await organizationsJSON.json();
 
     // set orgNames into the organizations object for instant lookup later; there are likely to be fewer organizations than areas
-    const organizations = {}
-    RECDATA.forEach(org => {
-      organizations[org.OrgID] = org.OrgName
-    })
+    const organizations = {};
+    RECDATA.forEach((org) => {
+      organizations[org.OrgID] = org.OrgName;
+    });
 
     // move on to the main work
     const organizationId = req.body.organization;
-    const stateAbbreviation = req.body.location === undefined ? '' : req.body.location;
+    const stateAbbreviation =
+      req.body.location === undefined ? "" : req.body.location;
     const resultsPerPage = req.body.resultsPerPage;
     const offset = req.body.offset;
 
@@ -100,7 +102,7 @@ router.post(
     if (organizationId) {
       areaArray = areaArray.filter((area) => area.orgID === organizationId);
     }
-    res.json({areaArray, totalCount});
+    res.json({ areaArray, totalCount });
   })
 );
 

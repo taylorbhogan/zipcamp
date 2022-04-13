@@ -15,8 +15,8 @@ function SpotAddForm({ onClose, selectedArea }) {
   const history = useHistory();
 
   const [name, setName] = useState("");
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
+  const [lat, setLat] = useState(selectedArea ? selectedArea.lat ? selectedArea.lat : "37.674874" : "");
+  const [long, setLong] = useState(selectedArea ? selectedArea.lng ? selectedArea.lng : "-122.440264" : "");
   const [blurb, setBlurb] = useState("");
   const [directions, setDirections] = useState("");
   const [errors, setErrors] = useState([]);
@@ -24,7 +24,7 @@ function SpotAddForm({ onClose, selectedArea }) {
   const areas = useSelector((state) =>
     Object.values(state.areas.searchResults)
   );
-  const [area, setArea] = useState(selectedArea ? selectedArea : "1");
+  const [area, setArea] = useState(selectedArea ? selectedArea.id : "1");
 
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -111,7 +111,7 @@ function SpotAddForm({ onClose, selectedArea }) {
               <select
                 onChange={(e) => setArea(e.target.value)}
                 className={"formSelectInput"}
-                defaultValue={selectedArea}
+                defaultValue={selectedArea?.id}
               >
                 {areas.map((area) => (
                   <option value={area.id} key={area.id}>

@@ -10,7 +10,7 @@ import { createSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
 
-function SpotAddForm({ onClose, selectedArea, allAreas, isUsingUserLocation = false }) {
+function SpotAddForm({ onClose, selectedArea, isUsingUserLocation = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -24,6 +24,9 @@ function SpotAddForm({ onClose, selectedArea, allAreas, isUsingUserLocation = fa
   const [area, setArea] = useState(selectedArea ? selectedArea.id : "4");
 
   const userId = useSelector((state) => state.session.user?.id);
+    const allAreas = useSelector((state) =>
+    Object.values(state.allAreas)
+  );
 
   useEffect(() => {
     dispatch(getUsStates());

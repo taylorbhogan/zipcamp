@@ -9,64 +9,9 @@ const asyncHandler = require("express-async-handler");
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // const areas = await Area.findAll({ include: State });
+    const areas = await Area.findAll({ include: State });
 
-    const recGovRes = await fetch(
-      `https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=0`,
-      {
-        method: "GET",
-        headers: {
-          apiKey: recreationGovAPIKey,
-        },
-      }
-    );
-    const recGovJson = await recGovRes.json();
-    const recData = recGovJson["RECDATA"];
-    const totalCount = recGovJson.METADATA.RESULTS.TOTAL_COUNT;
-
-    let areaArray = recData.map((area) => ({
-      name: area["RecAreaName"],
-      id: area["RecAreaID"],
-      orgID: area["ParentOrgID"],
-      // orgName: organizations[area["ParentOrgID"]],
-      description: area["RecAreaDescription"],
-      longitude: area["RecAreaLongitude"],
-      latitude: area["RecAreaLatitude"],
-    }));
-
-
-    if (totalCount > 50){
-      for (let offset = 50; offset <= totalCount; offset += 50) {
-        const recGovRes = await fetch(
-          `https://ridb.recreation.gov/api/v1/recareas?limit=50&offset=${offset}`,
-          {
-            method: "GET",
-            headers: {
-              apiKey: recreationGovAPIKey,
-            },
-          }
-        );
-        const recGovJson = await recGovRes.json();
-        const recData = recGovJson["RECDATA"];
-        let tempArray = recData.map((area) => ({
-          name: area["RecAreaName"],
-          id: area["RecAreaID"],
-          orgID: area["ParentOrgID"],
-          // orgName: organizations[area["ParentOrgID"]],
-          description: area["RecAreaDescription"],
-          longitude: area["RecAreaLongitude"],
-          latitude: area["RecAreaLatitude"],
-        }));
-        areaArray.push(...tempArray);
-      }
-
-    }
-
-    console.log("totalCount", totalCount);
-    console.log("areaArrayLength",areaArray.length);
-    console.log('areaArray',areaArray);
-
-    res.json(areaArray);
+    res.json(areas);
   })
 );
 

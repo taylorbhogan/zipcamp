@@ -10,7 +10,7 @@ import { createSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
 
-function SpotAddForm({ onClose }) {
+function SpotAddForm({ onClose, selectedArea }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -22,7 +22,7 @@ function SpotAddForm({ onClose }) {
   const [errors, setErrors] = useState([]);
 
   const areas = useSelector((state) => Object.values(state.areas.searchResults));
-  const [area, setArea] = useState("1");
+  const [area, setArea] = useState(selectedArea ? selectedArea.id : "1");
 
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -106,7 +106,9 @@ function SpotAddForm({ onClose }) {
                 required={false}
                 rows={"8"}
               />
-              <select
+              {selectedArea ?
+              <div>{selectedArea.name}</div>
+              : <select
                 onChange={(e) => setArea(e.target.value)}
                 className={"formSelectInput"}
               >
@@ -115,7 +117,7 @@ function SpotAddForm({ onClose }) {
                     {area.name}
                   </option>
                 ))}
-              </select>
+              </select>}
             </div>
             <div className={styles.coordsDiv}>
               <input

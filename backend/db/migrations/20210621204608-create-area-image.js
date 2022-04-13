@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       areaId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         references: { model: 'Areas' }
       },

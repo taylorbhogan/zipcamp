@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getAreas } from "../../store/areas";
+// import { getAllAreas } from "../../store/allAreas";
 import { getUsStates } from "../../store/usStates";
 import Errors from "../parts/Errors";
 import "../../index.css";
@@ -10,27 +10,20 @@ import { createSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
 
-function SpotAddForm({ onClose, selectedArea }) {
+function SpotAddForm({ onClose, selectedArea, allAreas }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [name, setName] = useState("");
-  const [lat, setLat] = useState(selectedArea ? selectedArea.lat ? selectedArea.lat : "37.674874" : "");
-  const [long, setLong] = useState(selectedArea ? selectedArea.lng ? selectedArea.lng : "-122.440264" : "");
+  const [lat, setLat] = useState(selectedArea ? selectedArea.latitude ? selectedArea.latitude : "37.674874" : "");
+  const [long, setLong] = useState(selectedArea ? selectedArea.longitude ? selectedArea.longitude : "-122.440264" : "");
   const [blurb, setBlurb] = useState("");
   const [directions, setDirections] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const areas = useSelector((state) =>
-    Object.values(state.areas.searchResults)
-  );
   const [area, setArea] = useState(selectedArea ? selectedArea.id : "1");
 
   const userId = useSelector((state) => state.session.user?.id);
-
-  useEffect(() => {
-    dispatch(getAreas());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getUsStates());
@@ -47,7 +40,7 @@ function SpotAddForm({ onClose, selectedArea }) {
       errors.push("you gotta give us a LITTLE something on the situation!");
     setErrors(errors);
 
-    const land = areas.find((land) => land.id === +area);
+    const land = allAreas.find((land) => land.id === +area);
 
     const newSpot = {
       name,
@@ -113,7 +106,7 @@ function SpotAddForm({ onClose, selectedArea }) {
                 className={"formSelectInput"}
                 defaultValue={selectedArea?.id}
               >
-                {areas.map((area) => (
+                {allAreas.map((area) => (
                   <option value={area.id} key={area.id}>
                     {area.name}
                   </option>

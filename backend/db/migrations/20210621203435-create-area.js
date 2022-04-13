@@ -3,10 +3,8 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Areas', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(255)
       },
       name: {
         type: Sequelize.STRING(255),
@@ -43,6 +41,12 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT
+      },
+      latitude: {
+        type: Sequelize.DECIMAL(9,6)
+      },
+      longitude: {
+        type: Sequelize.DECIMAL(9,6)
       },
       createdAt: {
         allowNull: false,

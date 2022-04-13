@@ -9,10 +9,10 @@ module.exports = {
       Example:
       */
       return queryInterface.bulkInsert('AreaImages', [
-        { areaId: 22, imgUrl: 'string1.png', imgType: 'Fancy'},
-        { areaId: 14, imgUrl: 'string2.png', imgType: 'Fancy'},
-        { areaId: 21, imgUrl: 'string3.png', imgType: 'Fancy'},
-        { areaId: 42, imgUrl: 'string4.png', imgType: 'Fancy'},
+        { areaId: "99782", imgUrl: 'string1.png', imgType: 'Fancy'},
+        { areaId: "99", imgUrl: 'string2.png', imgType: 'Fancy'},
+        { areaId: "981", imgUrl: 'string3.png', imgType: 'Fancy'},
+        { areaId: "98", imgUrl: 'string4.png', imgType: 'Fancy'},
       ], {});
   },
 

@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Area = sequelize.define('Area', {
+    id: {
+      type: DataTypes.STRING(255),
+      primaryKey: true
+    },
     name: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -24,7 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     acres: DataTypes.INTEGER,
     designationDate: DataTypes.STRING(255),
     mileage: DataTypes.INTEGER,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    latitude: DataTypes.DECIMAL(9,6),
+    longitude: DataTypes.DECIMAL(9,6)
   }, {});
   Area.associate = function(models) {
     // associations can be defined here

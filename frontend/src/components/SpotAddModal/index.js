@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
+import { getAllAreas } from "../../store/allAreas";
 import SpotAddForm from "../SpotAddForm";
 import PleaseLogin from "../parts/PleaseLogin";
 import styles from "./SpotAddModal.module.css";
@@ -11,6 +12,15 @@ function SpotAddModal({selectedArea}) {
   const [showSpotAddModal, setShowSpotAddModal] = useState(false);
   const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
   const [buttonText, setButtonText] = useState("+");
+  const dispatch = useDispatch();
+
+  const allAreas = useSelector((state) =>
+    Object.values(state.allAreas)
+  );
+
+  useEffect(() => {
+    dispatch(getAllAreas());
+  }, [dispatch]);
 
   const handleClick = () => {
     if (sessionUser) {
@@ -32,7 +42,7 @@ function SpotAddModal({selectedArea}) {
       </button>
       {showSpotAddModal && (
         <Modal onClose={() => setShowSpotAddModal(false)}>
-          <SpotAddForm onClose={() => setShowSpotAddModal(false)} selectedArea={selectedArea}/>
+          <SpotAddForm onClose={() => setShowSpotAddModal(false)} selectedArea={selectedArea} allAreas={allAreas}/>
         </Modal>
       )}
       {showPleaseLoginModal && (

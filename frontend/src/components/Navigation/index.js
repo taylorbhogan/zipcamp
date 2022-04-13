@@ -66,7 +66,7 @@ function Navigation({ isLoaded }) {
             >
               my spots
             </NavLink>
-            <SpotAddModal />
+            <SpotAddModal isUsingUserLocation={true}/>
           </div>
         </div>
         <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>

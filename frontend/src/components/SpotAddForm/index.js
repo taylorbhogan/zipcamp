@@ -10,7 +10,7 @@ import { createSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
 
-function SpotAddForm({ onClose, selectedArea, allAreas }) {
+function SpotAddForm({ onClose, selectedArea, allAreas, isUsingUserLocation = false }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,7 +21,7 @@ function SpotAddForm({ onClose, selectedArea, allAreas }) {
   const [directions, setDirections] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const [area, setArea] = useState(selectedArea ? selectedArea.id : "1");
+  const [area, setArea] = useState(selectedArea ? selectedArea.id : "4");
 
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -48,11 +48,11 @@ function SpotAddForm({ onClose, selectedArea, allAreas }) {
       long,
       blurb,
       directions,
-      areaId: +area,
-      stateId: land.State.id,
+      areaId: area,
+      stateId: 1,
       userId,
     };
-
+console.log('newSpot',newSpot);
     let createdSpot = await dispatch(createSpot(newSpot));
     if (createdSpot) {
       onClose();
@@ -104,7 +104,7 @@ function SpotAddForm({ onClose, selectedArea, allAreas }) {
               <select
                 onChange={(e) => setArea(e.target.value)}
                 className={"formSelectInput"}
-                defaultValue={selectedArea?.id}
+                defaultValue={selectedArea ? selectedArea.id : allAreas[0]}
               >
                 {allAreas.map((area) => (
                   <option value={area.id} key={area.id}>
@@ -139,6 +139,8 @@ function SpotAddForm({ onClose, selectedArea, allAreas }) {
               <MapContainer
                 isAdding={true}
                 getLocation={getLocation}
+                isUsingUserLocation={isUsingUserLocation}
+                singlePin={true}
                 pins={{
                   pin: {
                     latitude: lat,

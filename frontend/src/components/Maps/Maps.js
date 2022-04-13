@@ -10,6 +10,8 @@ const Maps = ({
   pins,
   zoom = 3,
   setFunction,
+  singlePin,
+  isUsingUserLocation
 }) => {
   const [currentPosition, setCurrentPosition] = useState({
     lat: 37.76737,
@@ -27,7 +29,8 @@ const Maps = ({
   });
 
   useEffect(() => {
-    if (isAdding) {
+    // use current location
+    if (isUsingUserLocation) {
       const positionSuccessAftereffect = (devicePosition) => {
         const lat = devicePosition.coords.latitude;
         const lng = devicePosition.coords.longitude;
@@ -43,7 +46,7 @@ const Maps = ({
         error
       );
     }
-  }, [isAdding]);
+  }, [isUsingUserLocation]);
 
   const onMarkerDragEnd = (e) => {
     const lat = e.latLng.lat();
@@ -74,9 +77,10 @@ const Maps = ({
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={
-              isAdding
+              // use current position
+              isUsingUserLocation
                 ? currentPosition
-                : Object.values(pins).length === 1
+                : singlePin
                 ? {
                     lat: +Object.values(pins)[0].latitude,
                     lng: +Object.values(pins)[0].longitude,
@@ -115,6 +119,7 @@ const Maps = ({
               />
             ))}
           </GoogleMap>
+          {/* is adding at all */}
           {isAdding ? footer : null}
         </>
       ) : null}

@@ -21,8 +21,10 @@ function SpotAddForm({ onClose, selectedArea }) {
   const [directions, setDirections] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const areas = useSelector((state) => Object.values(state.areas.searchResults));
-  const [area, setArea] = useState(selectedArea ? selectedArea.id : "1");
+  const areas = useSelector((state) =>
+    Object.values(state.areas.searchResults)
+  );
+  const [area, setArea] = useState(selectedArea ? selectedArea : "1");
 
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -106,18 +108,17 @@ function SpotAddForm({ onClose, selectedArea }) {
                 required={false}
                 rows={"8"}
               />
-              {selectedArea ?
-              <div>{selectedArea.name}</div>
-              : <select
+              <select
                 onChange={(e) => setArea(e.target.value)}
                 className={"formSelectInput"}
+                defaultValue={selectedArea}
               >
                 {areas.map((area) => (
                   <option value={area.id} key={area.id}>
                     {area.name}
                   </option>
                 ))}
-              </select>}
+              </select>
             </div>
             <div className={styles.coordsDiv}>
               <input
@@ -145,10 +146,12 @@ function SpotAddForm({ onClose, selectedArea }) {
               <MapContainer
                 isAdding={true}
                 getLocation={getLocation}
-                pins={{pin: {
-                  latitude: lat,
-                  longitude: long,
-                }}}
+                pins={{
+                  pin: {
+                    latitude: lat,
+                    longitude: long,
+                  },
+                }}
               />
             </div>
           </div>

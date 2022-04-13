@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const AreaImage = sequelize.define('AreaImage', {
     areaId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     imgUrl: {

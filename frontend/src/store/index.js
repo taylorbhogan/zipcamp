@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import areasReducer from "./areas";
+import allAreasReducer from "./allAreas";
 import sessionReducer from "./session";
 import spotsReducer from "./spots";
 import statesReducer from "./usStates";
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   spots: spotsReducer,
   areas: areasReducer,
+  allAreas: allAreasReducer,
   states: statesReducer,
   tips: tipsReducer,
   maps: mapsReducer,

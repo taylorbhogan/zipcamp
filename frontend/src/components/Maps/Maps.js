@@ -8,7 +8,7 @@ const Maps = ({
   isAdding = false,
   getLocation,
   pins,
-  zoom = 10,
+  zoom = 3,
   setFunction,
 }) => {
   const [currentPosition, setCurrentPosition] = useState({

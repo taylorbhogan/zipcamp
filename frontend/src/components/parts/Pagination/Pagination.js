@@ -10,7 +10,7 @@ const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum, isLoaded 
   const [resultPages, setResultPages] = useState([]);
 
   useEffect(() => {
-    const numResultsPages = Math.ceil(totalSearchResults / resultsPerPage);
+    const numResultsPages = Math.ceil(totalSearchResults === undefined ? 0 : totalSearchResults / resultsPerPage);
     setResultPages(Array(numResultsPages).fill(null));
   }, [resultsPerPage, totalSearchResults]);
 

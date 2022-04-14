@@ -81,8 +81,11 @@ function AreasList() {
         });
         setOrganizations(obj);
       } else {
-        console.log(...data.errors);
-        setErrors([...errors, ...data.errors])
+        try {
+          setErrors([...errors, ...data?.errors])
+        } catch (e) {
+          console.log(e);
+        }
       }
     };
     fetchOrganizations();

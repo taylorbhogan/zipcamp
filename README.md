@@ -1,9 +1,8 @@
-# zipcamp
+# [zipcamp](https://zipcamp-by-taylorbhogan.herokuapp.com/)
 
-Explore our public lands and make note of the coolest spots you discover.
 ![Screen Shot 2022-04-13 at 5 53 37 PM](https://user-images.githubusercontent.com/79616733/163293279-424cfb52-d341-4812-8f43-7383b6c8636c.png)
 
-## Check out the live site here: [zipcamp](https://zipcamp-by-taylorbhogan.herokuapp.com/)
+Explore our public lands and make note of the coolest spots you discover.
 
 ## Technologies Used
 
@@ -52,7 +51,7 @@ Users can scroll through all of the public lands available via the Recreation.go
 
 ### Viewing and Creating Spots
 
-![Screen Shot 2022-04-13 at 5 57 09 PM](https://user-images.githubusercontent.com/79616733/163293330-44386163-2b75-466a-85a9-b45b251a26fc.png)
+![Screen Shot 2022-04-13 at 6 06 23 PM](https://user-images.githubusercontent.com/79616733/163294083-75e6fc6e-05cc-4add-adbe-a9c31e2db93b.png)
 
 Users can scroll through their existing spots and select one to view more information, including any tips that other users have left behind.
 

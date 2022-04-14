@@ -4,19 +4,28 @@ A web application for exploring our public lands and keeping track of the cooles
 
 ## Check out the live site here: [zipcamp](https://zipcamp-by-taylorbhogan.herokuapp.com/)
 
-# Technologies Used
+## Technologies Used
 
-## Back end 
+### Backend 
+- JavaScript
+- Express
+- Postgres
+- Sequelize
+- Bcrypt
 
-The back end was built using Python and Flask, and connects to a postgreSQL database via SQLAlchemy and Alembic. 
+### Frontend
+- JavaScript
+- React
+- Redux
+- CSS Modules
+- Google Maps API
+- Recreation.gov API
 
-## Front end
+### Deployment
 
-The front end was built with React and Redux, powered by JavaScript and Express. The Google Maps API was used for location rendering and easy lat + long input.
+This app was deployed to Heroku using the Heroku CLI. Data persists by way of a Postgres database.
 
-## Deployment
 
-This app was deployed to Heroku using GitHub Actions.
 
 # Features
 

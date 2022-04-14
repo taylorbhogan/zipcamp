@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import LoginForm from "./LoginForm";
-import "./../../vars.css";
 import styles from "./LoginFormModal.module.css";
 
 function LoginFormModal() {

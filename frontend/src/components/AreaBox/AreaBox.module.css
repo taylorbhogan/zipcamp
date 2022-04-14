@@ -1,5 +1,3 @@
-@import "./../../index.css";
-
 .areaBox {
   border-radius: var(--cardBorderRadius);
   /* background-color: var(--mainColorLightGrey); */

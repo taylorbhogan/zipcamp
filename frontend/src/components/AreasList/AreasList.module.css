@@ -1,5 +1,3 @@
-@import './../../index.css';
-
 .pageContainer{
   display: flex;
   flex-direction: row;

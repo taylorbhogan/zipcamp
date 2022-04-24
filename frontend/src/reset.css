@@ -1,0 +1,71 @@
+/**
+This reset file was inspired and influenced by the following minds:
+* @JoshWComeau
+* @hankchizljaw
+**/
+
+/* More intuitive box-sizing model. Note: some set html to border-box, then all to inherit. This is only helpful for a legacy project, wherein a content-box rule is applied to legacy elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+}
+
+/* More intuitive scroll-behavior */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Typographic tweaks:  */
+/* Improve text rendering on MacOS */
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* But 1.5 is a bit much for headers */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+/* Improve media defaults. Can you believe images are inline? */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove built-in form typography styles and too-small sizing (=> e.g. zoom on mobile) */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove animations, transitions, and smooth scroll for people who prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Create a root stacking context (for create-react-app's root element). Supported by all but ie. */
+#root {
+  isolation: isolate;
+}

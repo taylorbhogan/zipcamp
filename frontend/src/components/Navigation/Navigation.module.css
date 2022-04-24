@@ -72,9 +72,11 @@
   position: relative;
   top: 12px;
   color: white;
-  font-size: 60px;
-
   text-decoration: none;
+}
+
+.navbarLogo h1 {
+  font-size: 60px;
 }
 
 .navLinkList{

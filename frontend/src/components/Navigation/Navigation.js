@@ -42,11 +42,21 @@ function Navigation({ isLoaded }) {
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
         <div className={styles.navbarLeft}>
-          <NavLink id={styles.navbarLogoLong} className={styles.navbarLogo} exact to="/">
-            zipcamp
+          <NavLink
+            id={styles.navbarLogoLong}
+            className={styles.navbarLogo}
+            exact
+            to="/"
+          >
+            <h1>zipcamp</h1>
           </NavLink>
-          <NavLink id={styles.navbarLogoShort}className={styles.navbarLogo} exact to="/">
-            z
+          <NavLink
+            id={styles.navbarLogoShort}
+            className={styles.navbarLogo}
+            exact
+            to="/"
+            >
+            <h1>z</h1>
           </NavLink>
           <div className={styles.navLinkList}>
             <NavLink
@@ -55,7 +65,7 @@ function Navigation({ isLoaded }) {
               exact
               to="/areas"
             >
-              public lands
+              <h2>public lands</h2>
             </NavLink>
             <NavLink
               className={styles.navLink}
@@ -63,7 +73,7 @@ function Navigation({ isLoaded }) {
               exact
               to="/spots"
             >
-              community spots
+              <h2>community spots</h2>
             </NavLink>
             <NavLink
               className={styles.navLink}
@@ -71,9 +81,9 @@ function Navigation({ isLoaded }) {
               exact
               to="/my-spots"
             >
-              my spots
+              <h2>my spots</h2>
             </NavLink>
-            <SpotAddModal isUsingUserLocation={true}/>
+            <SpotAddModal isUsingUserLocation={true} />
           </div>
         </div>
         <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>

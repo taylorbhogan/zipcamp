@@ -1,3 +1,4 @@
-.addTipFormWrapper{
-  width: 60vw;
+.addTipFormContainer{
+  width: 80vw;
+  max-width: 800px;
 }

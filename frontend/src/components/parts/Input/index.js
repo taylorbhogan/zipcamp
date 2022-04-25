@@ -31,7 +31,7 @@ const Input = ({
         aria-label={ariaLabel}
         onChange={onChange}
         required={required}
-        className={styles.formTextAreaInput}
+        className={styles.input}
       ></textarea>
     );
   } else if (type === "password") {

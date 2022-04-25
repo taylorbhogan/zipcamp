@@ -1,4 +1,8 @@
 .button{
+  background: none;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
   position: absolute;
   right: 0;
 }

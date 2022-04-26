@@ -75,9 +75,8 @@ console.log('newSpot',newSpot);
           add that spot so you can find your way back
         </h1>
         <Errors errors={errors} />
-        <div className={styles.containerDiv}>
-          <div className={styles.leftDiv}>
-            <div className={styles.infoDiv}>
+        <div className={styles.container}>
+          <div className={styles.left}>
               <Input
                 type="text"
                 value={name}
@@ -93,7 +92,7 @@ console.log('newSpot',newSpot);
                 ariaLabel={"what's the deal?"}
                 onChange={(e) => setBlurb(e.target.value)}
                 required={false}
-                rows={"5"}
+                rows={"2"}
               />
               <Input
                 type="textarea"
@@ -102,7 +101,7 @@ console.log('newSpot',newSpot);
                 ariaLabel={"how do you find your way back?"}
                 onChange={(e) => setDirections(e.target.value)}
                 required={false}
-                rows={"8"}
+                rows={"2"}
               />
               <select
                 onChange={(e) => setArea(e.target.value)}
@@ -115,7 +114,6 @@ console.log('newSpot',newSpot);
                   </option>
                 ))}
               </select>
-            </div>
             <div className={styles.coordsDiv}>
               <input
                 type="text"
@@ -137,8 +135,7 @@ console.log('newSpot',newSpot);
               />
             </div>
           </div>
-          <div className={styles.rightDiv}>
-            <div className={styles.mapContainerWrapper}>
+            <div className={styles.wrapper}>
               <MapContainer
                 isAdding={true}
                 getLocation={getLocation}
@@ -152,7 +149,6 @@ console.log('newSpot',newSpot);
                 }}
               />
             </div>
-          </div>
         </div>
         <button type="submit" hidden={true} className={"submitButton"}>
           Create new Spot

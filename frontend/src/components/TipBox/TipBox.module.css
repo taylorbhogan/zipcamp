@@ -1,37 +1,28 @@
 @import './../../index.css';
 
-.tipCardContainer{
-  border: 2px solid rgb(124, 124, 124);
+.container{
   border-radius: var(--cardBorderRadius);
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 20px 30px 20px 30px;
   padding: 20px;
-  width: 200px;
+  width: 250px;
   box-shadow: 0rem 0 .3rem .1rem #AAA;
 }
 
-.tipCardContainer:hover{
+.container:hover{
   box-shadow: -.4rem 0 1rem #999;
-  background-color: rgb(233, 233, 233);
 }
 
-.tipCardContainer:hover .buttons {
-  visibility: visible;
-}
-
-.buttons{
-  position: relative;
-  visibility: hidden;
-}
-
-.editButton, .deleteButton{
-  position: absolute;
-  text-decoration: underline;
-  background-color: Transparent;
-  left: 220px;
-  border: 0;
+.editButton,
+.deleteButton{
   cursor: pointer;
+  background: none;
+  border: 0;
+  position: absolute;
+  right: 0px;
+  margin: 20px;
 }
 
 .editButton{
@@ -42,23 +33,18 @@
   top: 25px;
 }
 
-.deleteButton:hover,
-.editButton:hover{
-  transition: all .1s;
-  font-weight: 700;
+.username{
+  font-size: 1.25em;
 }
 
 .createdAt{
   font-size: 1em;
 }
 
-.username{
-  font-size: 1.25em;
-}
-
 .rating{
   font-size: 1.25em;
-
+  display: flex;
+  flex-direction: row;
 }
 
 .tipText{

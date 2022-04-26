@@ -9,6 +9,7 @@ import styles from "./TipBox.module.css";
 function TipBox({ tip }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  const [showButtons, setShowButtons] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -20,31 +21,49 @@ function TipBox({ tip }) {
   };
 
   return (
-    <div className={styles.tipCardContainer}>
+    <div
+      onMouseEnter={() => setShowButtons(true)}
+      onMouseLeave={() => setShowButtons(false)}
+      className={styles.container}
+    >
       {showModal && (
         <Modal className={"modalCard"} onClose={() => setShowModal(false)}>
           <TipForm setShowTipForm={setShowModal} tipId={tip.id} />
         </Modal>
       )}
-      <div className={styles.buttons}>
-        <button
-          hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
-          onClick={() => setShowModal(true)}
-          className={styles.editButton}
-        >
-          Edit
-        </button>
-        <button
-          hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
-          onClick={() => handleDelete(tip.id)}
-          className={styles.deleteButton}
-        >
-          Delete
-        </button>
-      </div>
-      <div className={styles.createdAt}>{tip.createdAt}</div>
-      <div className={styles.username}>{tip.User.username} wrote:</div>
-      {tip.rating && <div className={styles.rating}>Rating: {tip.rating}</div>}
+      {showButtons && (
+        <>
+          <button
+            hidden={
+              sessionUser && sessionUser.id === tip?.userId ? false : true
+            }
+            onClick={() => setShowModal(true)}
+            className={`material-icons ${styles.editButton}`}
+          >
+            edit
+          </button>
+          <button
+            hidden={
+              sessionUser && sessionUser.id === tip?.userId ? false : true
+            }
+            onClick={() => handleDelete(tip.id)}
+            className={`material-icons ${styles.deleteButton}`}
+          >
+            delete
+          </button>
+        </>
+      )}
+      <span className={styles.username}>{tip.User.username}:</span>
+      <span className={styles.createdAt}>{tip.createdAt}</span>
+      {tip.rating && (
+        <div className={styles.rating}>
+          {Array.from(Array(tip.rating).keys()).map((star, idx) => (
+            <span key={idx} className="material-icons">
+              grade
+            </span>
+          ))}
+        </div>
+      )}
       <div className={styles.tipText}>{tip.text}</div>
     </div>
   );

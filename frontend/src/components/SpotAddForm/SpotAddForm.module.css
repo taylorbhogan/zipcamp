@@ -1,14 +1,26 @@
 .container{
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 1000px;
+  width: 100%;
+  gap: 3rem;
+  padding-bottom: 6rem;
+}
+
+@media screen and (min-width: 1000px){
+  .container{
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 1000px){
+  .container{
+    flex-direction: column;
+  }
 }
 
 .left{
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 540px;
 }
 
 .coordsDiv{

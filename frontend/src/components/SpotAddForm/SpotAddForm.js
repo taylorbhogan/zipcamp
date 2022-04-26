@@ -70,7 +70,7 @@ console.log('newSpot',newSpot);
 
   return (
     <div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className={"form"} onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>
           add that spot so you can find your way back
         </h1>
@@ -92,7 +92,7 @@ console.log('newSpot',newSpot);
                 ariaLabel={"what's the deal?"}
                 onChange={(e) => setBlurb(e.target.value)}
                 required={false}
-                rows={"2"}
+                rows={"3"}
               />
               <Input
                 type="textarea"
@@ -101,7 +101,7 @@ console.log('newSpot',newSpot);
                 ariaLabel={"how do you find your way back?"}
                 onChange={(e) => setDirections(e.target.value)}
                 required={false}
-                rows={"2"}
+                rows={"4"}
               />
               <select
                 onChange={(e) => setArea(e.target.value)}

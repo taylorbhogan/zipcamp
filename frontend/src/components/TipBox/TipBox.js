@@ -9,6 +9,7 @@ import styles from "./TipBox.module.css";
 function TipBox({ tip }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  const [showButtons, setShowButtons] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -20,28 +21,38 @@ function TipBox({ tip }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      onMouseEnter={() => setShowButtons(true)}
+      onMouseLeave={() => setShowButtons(false)}
+      className={styles.container}
+    >
       {showModal && (
         <Modal className={"modalCard"} onClose={() => setShowModal(false)}>
           <TipForm setShowTipForm={setShowModal} tipId={tip.id} />
         </Modal>
       )}
-      <div className={styles.buttons}>
-        <button
-          hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
-          onClick={() => setShowModal(true)}
-          className={styles.editButton}
-        >
-          Edit
-        </button>
-        <button
-          hidden={sessionUser && sessionUser.id === tip?.userId ? false : true}
-          onClick={() => handleDelete(tip.id)}
-          className={styles.deleteButton}
-        >
-          Delete
-        </button>
-      </div>
+      {showButtons && (
+        <>
+          <button
+            hidden={
+              sessionUser && sessionUser.id === tip?.userId ? false : true
+            }
+            onClick={() => setShowModal(true)}
+            className={`material-icons ${styles.editButton}`}
+          >
+            edit
+          </button>
+          <button
+            hidden={
+              sessionUser && sessionUser.id === tip?.userId ? false : true
+            }
+            onClick={() => handleDelete(tip.id)}
+            className={`material-icons ${styles.deleteButton}`}
+          >
+            delete
+          </button>
+        </>
+      )}
       <span className={styles.username}>{tip.User.username}:</span>
       <span className={styles.createdAt}>{tip.createdAt}</span>
       {tip.rating && (

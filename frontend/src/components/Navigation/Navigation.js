@@ -55,7 +55,7 @@ function Navigation({ isLoaded }) {
             className={styles.navbarLogo}
             exact
             to="/"
-            >
+          >
             <h1>z</h1>
           </NavLink>
           <div className={styles.navLinkList}>
@@ -75,14 +75,16 @@ function Navigation({ isLoaded }) {
             >
               <h2>community spots</h2>
             </NavLink>
-            <NavLink
-              className={styles.navLink}
-              activeClassName={styles.navLinkActive}
-              exact
-              to="/my-spots"
-            >
-              <h2>my spots</h2>
-            </NavLink>
+            {sessionUser && (
+              <NavLink
+                className={styles.navLink}
+                activeClassName={styles.navLinkActive}
+                exact
+                to="/my-spots"
+              >
+                <h2>my spots</h2>
+              </NavLink>
+            )}
             <SpotAddModal isUsingUserLocation={true} />
           </div>
         </div>

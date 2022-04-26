@@ -1,21 +1,14 @@
-.faUserParent{
-  font-size: 20px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .accountButton{
-  height: 40px;
-  width: var(--navAccountButtonWidth);
-  border-radius: var(--buttonBorderRadius);
+  cursor: pointer;
+  color: var(--greyText);
   background-color: #222222;
-  color: var(--mainColorGreen);
-  border: .1px solid black;
+  border-radius: var(--buttonBorderRadius);
+  border: none;
+  padding: .5rem;
 }
 
 .accountButton:hover{
-  background-color: #333333;
-  cursor: pointer;
+  color: var(--mainColorGreen);
 }
 
 .profileDropdown{

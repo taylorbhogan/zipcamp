@@ -2,8 +2,9 @@
   background-color: var(--mainColorGreen);
   border-radius: 8px;
   padding: .75rem 0;
-  width: 400px;
+  width: 100%;
   color: white;
+  margin-top: .5rem;
   font-size: 18px;
   font-weight: bold;
 }
@@ -13,8 +14,6 @@
 }
 
 .footer{
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  margin: 40px;
+  margin-top: 1rem;
+  width: 100%;
 }

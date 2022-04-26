@@ -31,7 +31,7 @@ function SpotsList() {
       </div>
     </div>
   ) : (
-    <LoadingContent />
+    <LoadingContent options={{"margin-top": "15vh"}}/>
   );
 }
 

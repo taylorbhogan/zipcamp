@@ -2,7 +2,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import loadingMap from "./47956-area-map.json";
 import loadingCompass from "./80702-compass.json";
 
-const LoadingContent = ({location}) => {
+const LoadingContent = ({location, options}) => {
   switch (location) {
     case "areas":
       return (
@@ -17,7 +17,7 @@ const LoadingContent = ({location}) => {
         <Player
           src={loadingCompass}
           autoplay={true}
-          style={{ height: "300px", width: "300px" }}
+          style={{ height: "300px", width: "300px", ...options }}
         ></Player>
       );
   }

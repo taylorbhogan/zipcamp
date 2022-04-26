@@ -1,7 +1,6 @@
 @import './../../index.css';
 
-.tipCardContainer{
-  border: 2px solid rgb(124, 124, 124);
+.container{
   border-radius: var(--cardBorderRadius);
   display: flex;
   flex-direction: column;
@@ -11,12 +10,12 @@
   box-shadow: 0rem 0 .3rem .1rem #AAA;
 }
 
-.tipCardContainer:hover{
+.container:hover{
   box-shadow: -.4rem 0 1rem #999;
   background-color: rgb(233, 233, 233);
 }
 
-.tipCardContainer:hover .buttons {
+.container:hover .buttons {
   visibility: visible;
 }
 
@@ -58,7 +57,8 @@
 
 .rating{
   font-size: 1.25em;
-
+  display: flex;
+  flex-direction: row;
 }
 
 .tipText{

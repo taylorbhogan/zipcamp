@@ -20,7 +20,7 @@ function TipBox({ tip }) {
   };
 
   return (
-    <div className={styles.tipCardContainer}>
+    <div className={styles.container}>
       {showModal && (
         <Modal className={"modalCard"} onClose={() => setShowModal(false)}>
           <TipForm setShowTipForm={setShowModal} tipId={tip.id} />
@@ -42,9 +42,17 @@ function TipBox({ tip }) {
           Delete
         </button>
       </div>
-      <div className={styles.createdAt}>{tip.createdAt}</div>
-      <div className={styles.username}>{tip.User.username} wrote:</div>
-      {tip.rating && <div className={styles.rating}>Rating: {tip.rating}</div>}
+      <span className={styles.username}>{tip.User.username}:</span>
+      <span className={styles.createdAt}>{tip.createdAt}</span>
+      {tip.rating && (
+        <div className={styles.rating}>
+          {Array.from(Array(tip.rating).keys()).map((star, idx) => (
+            <span key={idx} className="material-icons">
+              grade
+            </span>
+          ))}
+        </div>
+      )}
       <div className={styles.tipText}>{tip.text}</div>
     </div>
   );

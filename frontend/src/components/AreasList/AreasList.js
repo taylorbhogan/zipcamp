@@ -118,7 +118,7 @@ function AreasList() {
             <MessageNoAreas />
           )
         ) : (
-          <LoadingContent />
+          <LoadingContent location={"areas"}/>
         )}
         <Pagination
           isLoaded={isLoaded}

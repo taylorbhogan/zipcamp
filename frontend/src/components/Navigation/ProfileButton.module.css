@@ -25,7 +25,7 @@
   right: 0;
   padding: 20px 20px 10px 20px;
   border-radius: var(--cardBorderRadius);
-  z-index: -100;
+  z-index: -1;
 }
 
 .profileDropdown > * {

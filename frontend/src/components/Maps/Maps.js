@@ -11,7 +11,7 @@ const Maps = ({
   zoom = 3,
   setFunction,
   singlePin,
-  isUsingUserLocation
+  isUsingUserLocation,
 }) => {
   const [currentPosition, setCurrentPosition] = useState({
     lat: 37.76737,
@@ -55,18 +55,16 @@ const Maps = ({
   };
 
   const footer = (
-    <div className={styles.footerWrapper}>
-      <div className={styles.footerContainer}>
-        <p className={styles.locationPrompt}>
-          Drag the pin to set your spot location, then click:
-        </p>
-        <button
-          className={styles.submitButton}
-          onClick={() => getLocation(currentPosition)}
-        >
-          Create new spot
-        </button>
-      </div>
+    <div className={styles.footer}>
+      <p className={styles.locationPrompt}>
+        Drag the pin to set your spot location, then click:
+      </p>
+      <button
+        className={styles.submitButton}
+        onClick={() => getLocation(currentPosition)}
+      >
+        Create new spot
+      </button>
     </div>
   );
 

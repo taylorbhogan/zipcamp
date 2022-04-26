@@ -4,8 +4,8 @@ const CloseModalButton = ({ closeFunction }) => {
   return (
     <button
       onClick={closeFunction}
-      className={styles.button}
-      >Close</button>
+      className={`material-icons ${styles.button}`}
+      >close</button>
   )
 }
 

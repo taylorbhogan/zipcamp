@@ -31,14 +31,14 @@
     left: -50px;
     flex-direction: column;
     padding: 40px 20px 20px 40px;
-    z-index: -100;
+    z-index: -1;
     border-radius: 1rem;
   }
 }
 
 .navbarWrapper{
   position: fixed;
-  z-index: 100;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;

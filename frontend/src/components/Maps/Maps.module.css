@@ -12,11 +12,9 @@
   background-color: var(--secondaryColorGreen);
 }
 
-.footerWrapper{
-  position: relative;
-}
-.footerContainer{
+.footer{
   position: absolute;
-  top: -100px;
-  left: -435px;
+  bottom: 0px;
+  left: 0px;
+  margin: 40px;
 }

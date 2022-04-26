@@ -1,29 +1,17 @@
-.containerDiv{
+.container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 1000px;
 }
 
-.leftDiv{
+.left{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 400px;
-}
-
-
-.rightDiv{
-  display: flex;
-  flex-direction: column;
+  width: 40%;
 }
 
 .coordsDiv{
-  display: flex;
-  flex-direction: column;
-}
-
-.infoDiv{
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +22,7 @@
   border: none
 }
 
-.mapContainerWrapper{
+.wrapper{
   height: 440px;
   width: 540px;
 }

@@ -62,7 +62,7 @@ function TipForm({ setShowTipForm, tipId }) {
   };
 
   return (
-    <div className={styles.addTipFormWrapper}>
+    <div className={styles.addTipFormContainer}>
       <CloseModalButton closeFunction={() => setShowTipForm(false)} />
       <form className="form" onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>add a tip</h1>

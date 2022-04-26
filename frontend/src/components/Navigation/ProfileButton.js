@@ -31,10 +31,11 @@ function ProfileButton({ user }) {
 
   return (
     <div>
-      <button className={styles.accountButton} onClick={openMenu}>
-        <div className={styles.faUserParent}>
-          <span>Account</span>
-        </div>
+      <button
+        className={`material-icons ${styles.accountButton}`}
+        onClick={openMenu}
+      >
+        menu
       </button>
       {showMenu && (
         <div className={styles.profileDropdown}>

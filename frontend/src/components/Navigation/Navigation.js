@@ -32,7 +32,7 @@ function Navigation({ isLoaded }) {
         <LoginFormModal />
         <DemoLoginButton buttonText={"try it out"} />
         <NavLink to="/signup" className={styles.signUpLink}>
-          join
+          sign up
         </NavLink>
       </div>
     );

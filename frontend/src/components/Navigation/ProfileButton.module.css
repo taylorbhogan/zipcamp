@@ -2,7 +2,7 @@
   cursor: pointer;
   color: var(--greyText);
   background-color: #222222;
-  border-radius: var(--buttonBorderRadius);
+  border-radius: var(--buttonBorderRadiusSmall);
   border: none;
   padding: .5rem;
 }

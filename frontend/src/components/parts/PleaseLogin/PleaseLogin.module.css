@@ -9,17 +9,7 @@
   font-size: 24px;
   background-color: var(--mainColorDarkGrey);
   color: white;
-  box-sizing: border-box;
-}
-
-.xButton{
-  border: none;
-  background: none;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
+  margin: auto;
 }
 
 .link{

@@ -1,47 +1,35 @@
-html{
+html {
   background: url('./images/background-star-2.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  /* font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; */
 }
 
-body{
+body {
   margin: 0;
 }
 
-h1{
+h1 {
   font-size: 30px;
   font-weight: 600;
   margin: 0;
 }
 
-h2{
+h2 {
   font-size: 20px;
   font-weight: 500;
   margin: 0;
 }
 
-/*
-.appContainer{
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-} */
-
-.pageContainer{
-  /* position: relative;
-  min-height: 100vh; */
-  /* padding-bottom: var(--footerHeight); */
+.pageContainer {
   margin-bottom: var(--footerHeight);
 }
 
-.verticalCenteringWrapper{
+.verticalCenteringWrapper {
   display: flex;
   flex-direction: column;
 }
 
-.contentWrapper{
-  /* margin-top: var(--navbarHeight); */
+.contentWrapper {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -52,31 +40,39 @@ h2{
 }
 
 
-@media screen and (min-width: 1500px){
-  .contentContainer{
+@media screen and (min-width: 1500px) {
+  .contentContainer {
     width: 60vw;
   }
 }
 
-@media screen and (max-width: 1500px){
-  .contentContainer{
+@media screen and (max-width: 1500px) {
+  .contentContainer {
     width: 70vw;
   }
 }
-@media screen and (max-width: 1200px){
-  .contentContainer{
+
+@media screen and (max-width: 1200px) {
+  .contentContainer {
     width: 80vw;
   }
 }
 
-.contentContainer{
-  /* width: 100%; */
+.contentContainer {
   background-color: var(--mainColorLightGrey);
   margin-top: var(--containerMarginTop);
   margin-bottom: var(--containerMarginTop);
   margin-right: var(--containerMarginSide);
   margin-left: var(--containerMarginSide);
-  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
+  padding: var(--containerPaddingTop) var(--containerPaddingSide);
   border-radius: var(--containerBorderRadius);
   position: relative;
+}
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
 }

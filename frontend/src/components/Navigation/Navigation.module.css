@@ -93,6 +93,11 @@
   border-radius: 4px;
   background-color: #222222;
   color: #777777;
+  transition: var(--transition);
+}
+
+.navLink h2 {
+  cursor: pointer;
 }
 
 .navLink:hover{
@@ -110,28 +115,22 @@
 .sessionLinksDiv{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 18vw;
-  min-width: 300px;
+  gap: 1rem;
   margin-right: var(--pageSidePadding);
 }
 
 .signUpLink{
   text-decoration: none;
   background-color: var(--mainColorGreen);
-  width: 80px;
-  height: 40px;
-  border-radius: 8px;
+  border-radius: var(--buttonBorderRadiusLarge);
+  height: var(--navButtonHeight);
+  padding: var(--buttonPadding);
   font-size: 20px;
   font-weight: bold;
   color: white;
-  box-shadow: 0rem 0 .1rem .1rem #222;
-  padding: auto auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  line-height: var(--navButtonHeight);
+  transition: var(--transition);
 }
 
 .signUpLink:hover{

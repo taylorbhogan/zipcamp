@@ -1,14 +1,14 @@
 .loginButton{
+  cursor: pointer;
+  border: none;
+  border-radius: var(--buttonBorderRadiusLarge);
   background-color: var(--mainColorGreen);
-  border-radius: 8px;
-  border: 0;
-  width: 80px;
-  height: 40px;
-  box-shadow: 0rem 0 .1rem .1rem #222;
+  height: var(--navButtonHeight);
+  padding: var(--buttonPadding);
   font-size: 20px;
   font-weight: bold;
   color: white;
-
+  transition: var(--transition);
 }
 
 .loginButton:hover{

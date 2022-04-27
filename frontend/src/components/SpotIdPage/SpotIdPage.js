@@ -35,7 +35,7 @@ function SpotIdPage() {
             className={"modalCard"}
             onClose={() => setShowEditModal(false)}
           >
-            <SpotAddForm />
+            <SpotAddForm spot={spot} selectedArea={spot.Area} onClose={() => setShowEditModal(false)}/>
           </Modal>
         )}
         <div className={styles.SpotDivHeader}>

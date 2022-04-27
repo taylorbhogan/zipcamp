@@ -37,7 +37,6 @@
   background-color: var(--secondaryColorGreen);
 }
 
-/* when you update this, check on SpotEditForm */
 .warningButton{
   border: 1.5px solid rgb(221, 90, 90);
   border-radius: 8px;
@@ -45,7 +44,6 @@
   margin-top: 40px;
 }
 
-/* when you update this, check on SpotEditForm */
 .warningButton:hover{
   background-color: black;
   color: white;

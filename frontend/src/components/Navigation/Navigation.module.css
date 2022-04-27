@@ -93,6 +93,11 @@
   border-radius: 4px;
   background-color: #222222;
   color: #777777;
+  transition: var(--transition);
+}
+
+.navLink h2 {
+  cursor: pointer;
 }
 
 .navLink:hover{

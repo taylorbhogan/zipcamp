@@ -9,6 +9,7 @@
   padding: 20px;
   width: 250px;
   box-shadow: 0rem 0 .3rem .1rem #AAA;
+  transition: var(--transition);
 }
 
 .container:hover{

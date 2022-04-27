@@ -36,7 +36,9 @@ export const getSpots = () => async (dispatch) => {
   if (res.ok) {
     const spots = await res.json();
     dispatch(setSpots(spots));
+    return spots;
   }
+  return "An unexpected error occurred while fetching your spots from our servers";
 };
 
 export const getSpot = (spotId) => async (dispatch) => {

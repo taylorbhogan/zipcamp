@@ -9,7 +9,9 @@ import styles from "./TipBox.module.css";
 function TipBox({ tip }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
-  const [showButtons, setShowButtons] = useState(true);
+  const [showButtons, setShowButtons] = useState(false);
+  const [editButtonHover, setEditButtonHover] = useState(false);
+  const [deleteButtonHover, setDeleteButtonHover] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -22,32 +24,34 @@ function TipBox({ tip }) {
 
   return (
     <div
+      className={styles.container}
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
-      className={styles.container}
     >
       {showModal && (
         <Modal className={"modalCard"} onClose={() => setShowModal(false)}>
           <TipForm setShowTipForm={setShowModal} tipId={tip.id} />
         </Modal>
       )}
-      {showButtons && (
+      {showButtons && sessionUser && sessionUser.id === tip?.userId && (
         <>
           <button
-            hidden={
-              sessionUser && sessionUser.id === tip?.userId ? false : true
-            }
+            className={`material-icons md-dark ${
+              !editButtonHover && "md-inactive"
+            } ${styles.editButton}`}
             onClick={() => setShowModal(true)}
-            className={`material-icons ${styles.editButton}`}
+            onMouseEnter={() => setEditButtonHover(true)}
+            onMouseLeave={() => setEditButtonHover(false)}
           >
             edit
           </button>
           <button
-            hidden={
-              sessionUser && sessionUser.id === tip?.userId ? false : true
-            }
+            className={`material-icons md-dark ${
+              !deleteButtonHover && "md-inactive"
+            } ${styles.deleteButton}`}
             onClick={() => handleDelete(tip.id)}
-            className={`material-icons ${styles.deleteButton}`}
+            onMouseEnter={() => setDeleteButtonHover(true)}
+            onMouseLeave={() => setDeleteButtonHover(false)}
           >
             delete
           </button>
@@ -64,7 +68,7 @@ function TipBox({ tip }) {
           ))}
         </div>
       )}
-      <div className={styles.tipText}>{tip.text}</div>
+      <p className={styles.tipText}>{tip.text}</p>
     </div>
   );
 }

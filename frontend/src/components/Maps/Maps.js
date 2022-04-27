@@ -51,6 +51,7 @@ const Maps = ({
   const onMarkerDragEnd = (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
+    getLocation({ lat, lng })
     setCurrentPosition({ lat, lng });
   };
 
@@ -63,7 +64,7 @@ const Maps = ({
         className={styles.submitButton}
         onClick={() => getLocation(currentPosition)}
       >
-        Create new spot
+        Save spot
       </button>
     </div>
   );

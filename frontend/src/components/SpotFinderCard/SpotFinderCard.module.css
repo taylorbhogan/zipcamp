@@ -6,6 +6,7 @@
   padding: 25px 25px;
   display: flex;
   flex-direction: column;
+  gap: .75rem;
   align-items: center;
   text-align: center;
   font-size: 20px;

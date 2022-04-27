@@ -9,6 +9,7 @@ import styles from "./SpotAddForm.module.css";
 import { createSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
+import CloseModalButton from "../parts/CloseModalButton";
 
 function SpotAddForm({ onClose, selectedArea, isUsingUserLocation = false }) {
   const dispatch = useDispatch();
@@ -70,6 +71,7 @@ console.log('newSpot',newSpot);
 
   return (
     <div>
+      <CloseModalButton closeFunction={() => onClose()} />
       <form className={"form"} onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>
           add that spot so you can find your way back

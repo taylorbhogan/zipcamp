@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getSpots } from "../../store/spots";
 import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
@@ -7,8 +8,10 @@ import styles from "./SpotsList.module.css";
 
 function SpotsList() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
   const dispatch = useDispatch();
   const spots = useSelector((state) => Object.values(state.spots.allSpots));
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     const fetchSpots = async () => {
@@ -25,13 +28,15 @@ function SpotsList() {
   return isLoaded ? (
     <div className={styles.contentWrapper}>
       <div className={"contentContainer"}>
-        {spots.map((spot) => (
-          <SpotBox key={spot.id} spot={spot} />
-        ))}
+        {location.pathname === "/my-spots"
+          ? spots
+              .filter((spot) => spot.userId === user.id)
+              .map((spot) => <SpotBox key={spot.id} spot={spot} />)
+          : spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
       </div>
     </div>
   ) : (
-    <LoadingContent options={{"margin-top": "15vh"}}/>
+    <LoadingContent options={{ marginTop: "15vh" }} />
   );
 }
 

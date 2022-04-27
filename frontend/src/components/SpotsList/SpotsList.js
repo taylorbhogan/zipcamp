@@ -4,10 +4,12 @@ import { useLocation } from "react-router-dom";
 import { getSpots } from "../../store/spots";
 import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
+import Errors from "../parts/Errors";
 import styles from "./SpotsList.module.css";
 
 function SpotsList() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [errors, setErrors] = useState([]);
   const location = useLocation();
   const dispatch = useDispatch();
   const spots = useSelector((state) => Object.values(state.spots.allSpots));
@@ -17,10 +19,9 @@ function SpotsList() {
     const fetchSpots = async () => {
       const response = await dispatch(getSpots());
       if (typeof response === "string") {
-        console.log("response", response);
-      } else {
-        setIsLoaded(true);
+        setErrors([response])
       }
+      setIsLoaded(true);
     };
     fetchSpots();
   }, [dispatch]);
@@ -28,6 +29,7 @@ function SpotsList() {
   return isLoaded ? (
     <div className={styles.contentWrapper}>
       <div className={"contentContainer"}>
+        <Errors errors={errors} />
         {location.pathname === "/my-spots"
           ? spots
               .filter((spot) => spot.userId === user.id)

@@ -27,14 +27,14 @@
   font-size: 13px;
   font-family: inherit;
   border: 0;
-  border-radius: var(--buttonBorderRadius);
+  border-radius: var(--buttonBorderRadiusSmall);
   cursor: pointer;
   transition: all 300ms ease;
-  box-shadow: var(--ButtonBoxShadow);
+  box-shadow: var(--buttonBoxShadowBlur);
   background-color: #d3d3d3;
 }
 
 .container button:hover{
-  box-shadow: var(--ButtonBoxShadowHover);
+  box-shadow: var(--buttonBoxShadowBlurHover);
   transform: scale(1.02);
 }

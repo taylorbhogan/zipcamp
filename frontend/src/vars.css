@@ -19,6 +19,7 @@
   --footerHeight: 5rem;
   --navbarHeight: 60px;
   --navbarBottomMargin: 10px;
+  --navButtonHeight: 2rem;
 
   /* ---- CARDS ---- */
   --cardBorderWidth: 1px;
@@ -28,13 +29,16 @@
   --cardBoxShadowHover: 0 0 .5rem .5rem #AAA;
 
   /* ---- BUTTONS ---- */
-  --buttonPaddingTop: .25rem;
-  --buttonPaddingSides: 1rem;
-  --buttonBorderRadius: 3px;
+  --buttonPadding: 0 1rem;
+  --buttonBorderRadiusSmall: 3px;
+  --buttonBorderRadiusLarge: 8px;
   --sessionButtonTopBottomPadding: .5rem;
   --sessionButtonLeftRightPadding: 2rem;
-  --ButtonBoxShadow: 0rem 0 .1rem .1rem #DDD;
-  --ButtonBoxShadowHover: 0rem 0 .3rem .1rem #AAA;
+  --buttonBoxShadowBlur: 0rem 0 .1rem .1rem #DDD;
+  --buttonBoxShadowBlurHover: 0rem 0 .3rem .1rem #AAA;
+  /* --buttonBoxShadow: 0rem 0 .1rem .1rem #222; */
+  /* --ButtonBoxShadowHover: 0rem 0 .3rem .1rem #AAA; */
+  --transition: all 200ms ease;
 
   /* ---- INPUTS ---- */
   --inputLabelSize: 10px;

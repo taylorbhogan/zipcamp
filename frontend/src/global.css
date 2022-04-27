@@ -76,7 +76,7 @@ h2{
   margin-bottom: var(--containerMarginTop);
   margin-right: var(--containerMarginSide);
   margin-left: var(--containerMarginSide);
-  padding: var(--containerPaddingTop) var(--containerPaddingSide) 0 var(--containerPaddingSide);
+  padding: var(--containerPaddingTop) var(--containerPaddingSide);
   border-radius: var(--containerBorderRadius);
   position: relative;
 }

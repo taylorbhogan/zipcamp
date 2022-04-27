@@ -6,6 +6,7 @@ import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
 import Errors from "../parts/Errors";
 import styles from "./SpotsList.module.css";
+import PleaseLogin from "../parts/PleaseLogin/PleaseLogin";
 
 function SpotsList() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,7 +20,7 @@ function SpotsList() {
     const fetchSpots = async () => {
       const response = await dispatch(getSpots());
       if (typeof response === "string") {
-        setErrors([response])
+        setErrors([response]);
       }
       setIsLoaded(true);
     };
@@ -31,9 +32,14 @@ function SpotsList() {
       <div className={"contentContainer"}>
         <Errors errors={errors} />
         {location.pathname === "/my-spots"
-          ? spots
-              .filter((spot) => spot.userId === user.id)
-              .map((spot) => <SpotBox key={spot.id} spot={spot} />)
+          ? user
+            ? spots
+                .filter((spot) => spot.userId === user.id)
+                .map((spot) => <SpotBox key={spot.id} spot={spot} />)
+            : <div>
+
+              <PleaseLogin />
+            </div>
           : spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
       </div>
     </div>

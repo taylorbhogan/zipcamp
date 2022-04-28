@@ -10,6 +10,7 @@ import { createSpot, editSpot } from "../../store/spots";
 import MapContainer from "../Maps";
 import Input from "../parts/Input";
 import CloseModalButton from "../parts/CloseModalButton";
+import AutocompleteDropdown from "../parts/AutocompleteDropdown";
 
 function SpotAddForm({
   spot,
@@ -148,6 +149,7 @@ function SpotAddForm({
                 </option>
               ))}
             </select>
+            <AutocompleteDropdown items={allAreas} setItem={setArea}/>
             <div className={styles.coordsDiv}>
               <input
                 type="text"

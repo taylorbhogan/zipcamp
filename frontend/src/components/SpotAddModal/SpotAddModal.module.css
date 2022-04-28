@@ -1,11 +1,11 @@
 .addSpotButton{
   background-color: var(--mainColorGreen);
   border-radius: var(--buttonBorderRadiusSmall);
-  box-shadow: 0rem 0 .3rem .1rem #555;
   border: 0;
   font-size: 24px;
   font-weight: bold;
   color: white;
+  padding: 0 .75rem;
 }
 
 .addSpotButton:hover{

@@ -7,7 +7,7 @@ import PleaseLogin from "../parts/PleaseLogin";
 import styles from "./SpotAddModal.module.css";
 import "../../index.css";
 
-function SpotAddModal({selectedArea, isUsingUserLocation}) {
+function SpotAddModal({selectedArea, isUsingUserLocation, fromNav}) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showSpotAddModal, setShowSpotAddModal] = useState(false);
   const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
@@ -33,6 +33,12 @@ function SpotAddModal({selectedArea, isUsingUserLocation}) {
   return (
     <>
       <button
+        style={fromNav ? {
+          "border-bottom-left-radius": "0px",
+          "border-bottom-right-radius": "0px"
+        } : {
+          "padding-bottom": "4px"
+        }}
         onClick={handleClick}
         className={styles.addSpotButton}
         onMouseEnter={() => setButtonText("+ spot")}

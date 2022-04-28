@@ -1,0 +1,22 @@
+.container ul {
+  background-color: var(--mainColorDarkGrey);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 0;
+}
+
+.container li {
+  color: white;
+  list-style-type: none;
+  padding: .75rem;
+}
+
+.container input {
+  width: 100%;
+  line-height: 3rem;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 3px;
+}

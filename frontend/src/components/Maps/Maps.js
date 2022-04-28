@@ -35,8 +35,8 @@ const Maps = ({
       const positionSuccessAftereffect = (devicePosition) => {
         const lat = devicePosition.coords.latitude;
         const lng = devicePosition.coords.longitude;
-        setLat(lat)
-        setLong(lng)
+        setLat(lat.toFixed(6))
+        setLong(lng.toFixed(6))
         setCurrentPosition({ lat, lng });
       };
       const error = () => {
@@ -49,7 +49,7 @@ const Maps = ({
         error
       );
     }
-  }, [isUsingUserLocation]);
+  }, [isUsingUserLocation, setLat, setLong]);
 
   const onMarkerDragEnd = (e) => {
     const lat = e.latLng.lat();

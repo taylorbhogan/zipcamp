@@ -34,15 +34,15 @@ function SpotAddForm({
     spot
       ? spot.lat // case edit
       : selectedArea
-      ? selectedArea.latitude // case launch from areaBox
-      : allAreas.area.latitude // case launch from Navigation: use the default
+      ? selectedArea?.latitude // case launch from areaBox
+      : allAreas.area?.latitude // case launch from Navigation: use the default
   );
   const [long, setLong] = useState(
     spot
       ? spot.long // case edit
       : selectedArea
-      ? selectedArea.longitude // case launch from areaBox
-      : allAreas.area.longitude // case launch from Navigation: use the default
+      ? selectedArea?.longitude // case launch from areaBox
+      : allAreas.area?.longitude // case launch from Navigation: use the default
   );
   const [blurb, setBlurb] = useState(spot?.blurb);
   const [directions, setDirections] = useState(spot?.directions);

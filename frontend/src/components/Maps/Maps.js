@@ -6,7 +6,8 @@ import styles from "./Maps.module.css";
 const Maps = ({
   apiKey,
   isAdding = false,
-  getLocation,
+  setLat,
+  setLong,
   pins,
   zoom = 3,
   setFunction,
@@ -34,6 +35,8 @@ const Maps = ({
       const positionSuccessAftereffect = (devicePosition) => {
         const lat = devicePosition.coords.latitude;
         const lng = devicePosition.coords.longitude;
+        setLat(lat.toFixed(6))
+        setLong(lng.toFixed(6))
         setCurrentPosition({ lat, lng });
       };
       const error = () => {
@@ -46,12 +49,13 @@ const Maps = ({
         error
       );
     }
-  }, [isUsingUserLocation]);
+  }, [isUsingUserLocation, setLat, setLong]);
 
   const onMarkerDragEnd = (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
-    getLocation({ lat, lng })
+    setLat(lat.toFixed(6))
+    setLong(lng.toFixed(6))
     setCurrentPosition({ lat, lng });
   };
 
@@ -62,7 +66,6 @@ const Maps = ({
       </p>
       <button
         className={styles.submitButton}
-        onClick={() => getLocation(currentPosition)}
       >
         Save spot
       </button>
@@ -98,11 +101,11 @@ const Maps = ({
                 title={pushpin.name ?? "pin"}
                 position={{
                   lat:
-                    pushpin.latitude === ""
+                  isUsingUserLocation
                       ? currentPosition.lat
                       : +pushpin.latitude,
                   lng:
-                    pushpin.longitude === ""
+                  isUsingUserLocation
                       ? currentPosition.lng
                       : +pushpin.longitude,
                 }}

@@ -18,30 +18,35 @@ function SpotAddForm({
   selectedArea,
   isUsingUserLocation = false,
 }) {
+  const userId = useSelector((state) => state.session.user?.id);
+  const allAreas = useSelector((state) => Object.values(state.allAreas));
   const dispatch = useDispatch();
   const history = useHistory();
+  // if spot.area, use that.
+  // if selected area, use that
+  // otherwise, it doesn't matter. dummy default, dealer's choice
+  console.log("spot", spot);
+  const [area, setArea] = useState(
+    spot ? spot.Area.id : selectedArea ? selectedArea.id : "4"
+  );
   const [name, setName] = useState(spot?.name);
   const [lat, setLat] = useState(
-    spot?.lat ? spot?.lat : selectedArea
-      ? selectedArea.latitude
-        ? selectedArea.latitude
-        : "37.674874"
-      : ""
+    spot
+      ? spot.lat // case edit
+      : selectedArea
+      ? selectedArea?.latitude // case launch from areaBox
+      : allAreas.area?.latitude // case launch from Navigation: use the default
   );
   const [long, setLong] = useState(
-    spot?.long ? spot?.long : selectedArea
-      ? selectedArea.longitude
-        ? selectedArea.longitude
-        : "-122.440264"
-      : ""
+    spot
+      ? spot.long // case edit
+      : selectedArea
+      ? selectedArea?.longitude // case launch from areaBox
+      : allAreas.area?.longitude // case launch from Navigation: use the default
   );
   const [blurb, setBlurb] = useState(spot?.blurb);
   const [directions, setDirections] = useState(spot?.directions);
   const [errors, setErrors] = useState([]);
-  const [area, setArea] = useState(selectedArea ? selectedArea.id : "4");
-
-  const userId = useSelector((state) => state.session.user?.id);
-  const allAreas = useSelector((state) => Object.values(state.allAreas));
 
   useEffect(() => {
     dispatch(getUsStates());
@@ -59,8 +64,8 @@ function SpotAddForm({
     setErrors(errors);
 
     const land = allAreas.find((land) => land.id === +area);
-    console.log('spot',spot);
-    if (spot === undefined){
+    console.log("spot", spot);
+    if (spot === undefined) {
       const newSpot = {
         name,
         lat,
@@ -88,18 +93,13 @@ function SpotAddForm({
         stateId: 1,
         userId,
       };
+      console.log("newSpot", newSpot);
       let createdSpot = await dispatch(editSpot(newSpot));
       if (createdSpot) {
         onClose();
         history.push(`/spots/${createdSpot.id}`);
       }
-
     }
-  };
-
-  const getLocation = (coords) => {
-    setLat(coords.lat.toFixed(6));
-    setLong(coords.lng.toFixed(6));
   };
 
   return (
@@ -138,43 +138,17 @@ function SpotAddForm({
               required={false}
               rows={"4"}
             />
-            <select
-              onChange={(e) => setArea(e.target.value)}
-              className={"formSelectInput"}
-              defaultValue={selectedArea ? selectedArea.id : allAreas[0]}
-            >
-              {allAreas.map((area) => (
-                <option value={area.id} key={area.id}>
-                  {area.name}
-                </option>
-              ))}
-            </select>
-            <AutocompleteDropdown items={allAreas} setItem={setArea}/>
-            <div className={styles.coordsDiv}>
-              <input
-                type="text"
-                className={styles.coords}
-                value={lat}
-                placeholder={" latitude: enter manually here, or use the map"}
-                onChange={(e) => setLat(e.target.value)}
-                required
-                hidden={true}
-              />
-              <input
-                type="text"
-                hidden={true}
-                className={styles.coords}
-                value={long}
-                placeholder={" ditto the longitude"}
-                onChange={(e) => setLong(e.target.value)}
-                required
-              />
-            </div>
+            <AutocompleteDropdown
+              items={allAreas}
+              setItem={setArea}
+              selectedArea={selectedArea}
+            />
           </div>
           <div className={styles.wrapper}>
             <MapContainer
               isAdding={true}
-              getLocation={getLocation}
+              setLat={setLat}
+              setLong={setLong}
               isUsingUserLocation={isUsingUserLocation}
               singlePin={true}
               pins={{

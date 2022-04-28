@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getKey } from "../../store/maps";
 import Maps from "./Maps";
 
-const MapContainer = ({ isAdding, getLocation, pins, zoom, setFunction, singlePin, isUsingUserLocation }) => {
+const MapContainer = ({ isAdding, setLat, setLong, pins, zoom, setFunction, singlePin, isUsingUserLocation }) => {
   const key = useSelector((state) => state.maps.key);
 
   const dispatch = useDispatch();
@@ -25,7 +25,8 @@ const MapContainer = ({ isAdding, getLocation, pins, zoom, setFunction, singlePi
     <Maps
       apiKey={key}
       isAdding={isAdding}
-      getLocation={getLocation}
+      setLat={setLat}
+      setLong={setLong}
       pins={pins}
       zoom={zoom}
       setFunction={setFunction}

@@ -33,12 +33,7 @@ module.exports = {
         { spotId: 14, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage22.png', imgType: 'Fancy'},
         { spotId: 15, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage23.png', imgType: 'Fancy'},
         { spotId: 16, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage24.png', imgType: 'Fancy'},
-        { spotId: 17, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage25.png', imgType: 'Fancy'},
         { spotId: 2, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage26.png', imgType: 'Fancy'},
-        { spotId: 18, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage27.png', imgType: 'Fancy'},
-        { spotId: 19, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage28.png', imgType: 'Fancy'},
-        { spotId: 20, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage29.png', imgType: 'Fancy'},
-        { spotId: 21, imgUrl: 'https://zipcamp-by-taylorbhogan.s3.us-west-2.amazonaws.com/spotImage30.png', imgType: 'Fancy'},
       ], {});
   },
 

@@ -85,7 +85,11 @@ function Navigation({ isLoaded }) {
                 <h2>my spots</h2>
               </NavLink>
             )}
-            <SpotAddModal isUsingUserLocation={true} />
+            <SpotAddModal isUsingUserLocation={true} selectedArea={{
+              id: 99,
+              latitude: "40.674874",
+              longitude: "-122.440264",
+            }}/>
           </div>
         </div>
         <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>

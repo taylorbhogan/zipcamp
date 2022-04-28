@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AutocompleteDropdown.module.css";
 
-const AutocompleteDropdown = ({ items }) => {
+const AutocompleteDropdown = ({ items, setItem }) => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [searchInput, setSearchInput] = useState("")
   const [openItemList, setOpenItemList] = useState(false)
@@ -26,6 +26,7 @@ const AutocompleteDropdown = ({ items }) => {
 
   const handleSelection = (e) => {
     setSearchInput(e.target.innerText)
+    setItem(e.target.id)
     setOpenItemList(false)
   }
 
@@ -35,7 +36,7 @@ const AutocompleteDropdown = ({ items }) => {
       {openItemList && (
         <ul>
           {filteredItems.map((item) => (
-            <li onClick={handleSelection} key={item.id}>{item.name}</li>
+            <li onClick={handleSelection} key={item.id} id={item.id}>{item.name}</li>
           ))}
         </ul>
       )}

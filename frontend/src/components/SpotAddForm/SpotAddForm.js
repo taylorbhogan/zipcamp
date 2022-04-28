@@ -48,7 +48,6 @@ function SpotAddForm({
   const [directions, setDirections] = useState(spot?.directions);
   const [errors, setErrors] = useState([]);
 
-
   useEffect(() => {
     dispatch(getUsStates());
   }, [dispatch]);
@@ -94,7 +93,7 @@ function SpotAddForm({
         stateId: 1,
         userId,
       };
-      console.log("newSpot",newSpot);
+      console.log("newSpot", newSpot);
       let createdSpot = await dispatch(editSpot(newSpot));
       if (createdSpot) {
         onClose();
@@ -139,18 +138,11 @@ function SpotAddForm({
               required={false}
               rows={"4"}
             />
-            <select
-              onChange={(e) => setArea(e.target.value)}
-              className={"formSelectInput"}
-              value={selectedArea ? selectedArea.id : allAreas[0]}
-            >
-              {allAreas.map((area) => (
-                <option value={area.id} key={area.id}>
-                  {area.name}
-                </option>
-              ))}
-            </select>
-            <AutocompleteDropdown items={allAreas} setItem={setArea} />
+            <AutocompleteDropdown
+              items={allAreas}
+              setItem={setArea}
+              selectedArea={selectedArea}
+            />
           </div>
           <div className={styles.wrapper}>
             <MapContainer

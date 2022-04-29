@@ -12,6 +12,7 @@
 .spotName{
   font-size: var(--pageHeaderSize);
   margin-top: 0px;
+  max-width: 700px;
 }
 
 .coordinates{
@@ -76,13 +77,8 @@
   .mapContainerWrapper{
     position: absolute;
     top: 50px;
-    left: 49vw;
+    left: 40vw;
     width: 500px;
-  }
-
-  .mapContainerWrapper:hover{
-    left: 47vw;
-    transition: all .1s;
   }
 }
 

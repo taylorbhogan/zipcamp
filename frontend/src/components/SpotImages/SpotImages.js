@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createSpotImage } from '../../store/spotImages';
 import styles from './SpotImages.module.css'
 
@@ -35,6 +35,8 @@ const SpotImages = ({spot}) => {
   return (
     <div className={styles.container}>
       <h2>Add your own photos of this spot!</h2>
+      {errors.length > 0 &&
+        errors.map((error) => <div key={error}>{error}</div>)}
       <form onSubmit={handleSubmit}>
         <label>
           <input type='file' onChange={updateFile} />

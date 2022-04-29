@@ -7,6 +7,7 @@ import spotsReducer from "./spots";
 import statesReducer from "./usStates";
 import tipsReducer from "./tips";
 import mapsReducer from "./maps";
+import spotImagesReducer from "./spotImages";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   states: statesReducer,
   tips: tipsReducer,
   maps: mapsReducer,
+  spotImages: spotImagesReducer,
 });
 
 let enhancer;

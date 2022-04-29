@@ -8,6 +8,7 @@ import TipsList from "../TipsList";
 import MapContainer from "../Maps";
 import SpotFinderCard from "../SpotFinderCard";
 import styles from "./SpotIdPage.module.css";
+import SpotImages from "../SpotImages/SpotImages";
 
 function SpotIdPage() {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ function SpotIdPage() {
           </div>
         </div>
         <TipsList spot={spot} />
+        <SpotImages spot={spot} />
       </div>
     </div>
   );

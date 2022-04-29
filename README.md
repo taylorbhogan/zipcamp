@@ -12,6 +12,7 @@ Explore our public lands and make note of the coolest spots you discover.
 - Postgres
 - Sequelize
 - Bcrypt
+- AWS S3
 
 ### Frontend
 - JavaScript

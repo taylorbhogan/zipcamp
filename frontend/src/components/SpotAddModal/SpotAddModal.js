@@ -34,8 +34,8 @@ function SpotAddModal({selectedArea, isUsingUserLocation, fromNav}) {
     <>
       <button
         style={fromNav ? {
-          "border-bottom-left-radius": "0px",
-          "border-bottom-right-radius": "0px"
+          "borderBottomLeftRadius": "0px",
+          "borderBottomRightRadius": "0px"
         } : {
           "padding-bottom": "4px"
         }}

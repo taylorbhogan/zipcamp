@@ -22,7 +22,7 @@ function TipsList({ spot }) {
 
   return (
     <div className={styles.container}>
-      <TipButton spot={spot} thisSpotTips={thisSpotTips} />
+      <TipButton spot={spot}/>
       {thisSpotTips.length > 0 && (
         <div className={styles.tips}>
           {thisSpotTips.map((tip) => (

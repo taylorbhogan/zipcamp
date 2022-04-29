@@ -1,0 +1,32 @@
+.container{
+  padding: 1rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--mainColorLightGrey);
+  border-radius: var(--containerBorderRadius);
+}
+
+.container h2{
+  padding: 1rem;
+}
+
+.container form {
+  padding-bottom: 1rem;
+}
+
+.imageContainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.container img {
+  width: 300px;
+  border-radius: .25rem;
+}

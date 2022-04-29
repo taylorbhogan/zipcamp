@@ -8,6 +8,7 @@ const statesRouter = require("./states.js");
 const tipsRouter = require("./tips.js");
 const mapsRouter = require("./maps");
 const designationsRouter = require("./designations");
+const imagesRouter = require("./images.js");
 
 router.use("/session", sessionRouter);
 router.use("/users", usersRouter);
@@ -17,6 +18,7 @@ router.use("/states", statesRouter);
 router.use("/tips", tipsRouter);
 router.use("/maps", mapsRouter);
 router.use("/designations", designationsRouter);
+router.use("/images", imagesRouter);
 
 /************************TESTS************************/
 

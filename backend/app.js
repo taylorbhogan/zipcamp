@@ -18,6 +18,8 @@ const app = express();
 app.use(morgan("dev"));
 // middleware for parsing cookies and JSON bodies of requests of Content-Type app/json
 app.use(cookieParser());
+// use Express's built-in urlEncoded method to assist parsing requests for S3 upload
+app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 // security middleware
 if (!isProduction) {

@@ -1,10 +1,12 @@
 # [zipcamp](https://zipcamp-by-taylorbhogan.herokuapp.com/) 
-<img width="757" align="right" alt="external-tech" src="https://user-images.githubusercontent.com/79616733/166068744-23d7f685-200c-4866-a34c-af4baa332736.png">
+<img width="500" align="right" alt="external-tech" src="https://user-images.githubusercontent.com/79616733/166082597-f4ea2216-0165-4c5c-9e4a-3e38d9054139.png">
+
+
+Explore our public lands and make note of the coolest spots you discover.
 
 
 ![Screen Shot 2022-04-13 at 5 53 37 PM](https://user-images.githubusercontent.com/79616733/163293279-424cfb52-d341-4812-8f43-7383b6c8636c.png)
 
-Explore our public lands and make note of the coolest spots you discover.
 
 ## Technologies Used
 

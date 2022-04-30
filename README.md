@@ -38,6 +38,7 @@ zipcamp users are able to:
 * View all spots added by themselves and fellow users
 * View all spots added by themselves exclusively
 * Add tips to spots they or others have added
+* Add images to spots they or others have added
 * Edit and delete all spots and tips they have created 
 
 ## Key Components

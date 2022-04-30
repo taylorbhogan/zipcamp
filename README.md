@@ -1,9 +1,7 @@
 # [zipcamp](https://zipcamp-by-taylorbhogan.herokuapp.com/) 
 <img width="500" align="right" alt="external-tech" src="https://user-images.githubusercontent.com/79616733/166082597-f4ea2216-0165-4c5c-9e4a-3e38d9054139.png">
 
-
-Explore our public lands and make note of the coolest spots you discover.
-
+Explore our public lands using your own search criteria and the familiar Google Maps UI, then save the memorable spots that you find along the way and take notes for your future visits. 
 
 ![Screen Shot 2022-04-13 at 5 53 37 PM](https://user-images.githubusercontent.com/79616733/163293279-424cfb52-d341-4812-8f43-7383b6c8636c.png)
 

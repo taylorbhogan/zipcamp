@@ -7,13 +7,16 @@ function WelcomeMessage() {
   const buttonText = "find your way";
   const buttonHref = "/areas";
   return (
-    <div className={styles.contentWrapper}>
+    <div className={styles.contentContainer}>
       <div className={styles.welcomeMessageBox}>
         <p className={styles.welcomeMessage}>
           the clearest way into the universe is through a forest wilderness.
         </p>
-        <StandardLinkButton buttonText={buttonText} href={buttonHref} />
+        <div className={styles.buttonWrapper}>
+          <StandardLinkButton buttonText={buttonText} href={buttonHref} />
+        </div>
       </div>
+      <img src="/images/siteBackground/background-star-2.jpg" alt="a stargazing silhouette"/>
     </div>
   );
 }

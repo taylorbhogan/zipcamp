@@ -45,16 +45,13 @@
 }
 
 .navbar{
-  background-color: var(--mainColorDarkGrey);
   height: var(--navbarHeight);
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
   top: 0px;
   width: 100%;
-  box-shadow: 0px 4px 8px 2px var(--mainColorGreen);
 }
 
 .navbarLeft{

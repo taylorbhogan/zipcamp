@@ -122,20 +122,24 @@
 
 .signUpLink{
   text-decoration: none;
-  background-color: var(--mainColorGreen);
-  border-radius: var(--buttonBorderRadiusLarge);
+  /* background-color: var(--mainColorGreen); */
+  /* border-radius: var(--buttonBorderRadiusLarge); */
   height: var(--navButtonHeight);
   padding: var(--buttonPadding);
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: white;
   text-align: center;
   line-height: var(--navButtonHeight);
   transition: var(--transition);
+  border-bottom: 2px solid transparent;
+
 }
 
 .signUpLink:hover{
-  background-color: var(--secondaryColorGreen);
+  /* background-color: var(--secondaryColorGreen); */
+  border-bottom: 2px solid var(--secondaryColorGreen);
+
 }
 
 .welcomeDiv{

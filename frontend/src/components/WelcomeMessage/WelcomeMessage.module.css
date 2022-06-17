@@ -22,6 +22,7 @@
   color: var(--mainColorWhite);
   font-size: 1.5rem;
   margin-bottom: 45px;
+  text-align: center;
 }
 
 .contentContainer img {

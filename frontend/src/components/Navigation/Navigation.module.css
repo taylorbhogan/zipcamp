@@ -1,38 +1,24 @@
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
   #navbarLogoShort{
     display: none;
   }
-  .navLinkList{
-    flex-direction: row;
+  .navbarRight{
+    gap: 1.8rem;
   }
 }
 
-@media screen and (max-width: 1350px) {
-  .navLinkList a {
-    font-size: 1rem;
-  }
-}
-@media screen and (max-width: 1150px) {
-  .navbarRight p {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   #navbarLogoLong{
     display: none;
   }
+  .navbarRight{
+    gap: 1rem;
+  }
 }
-@media screen and (max-width: 700px) {
-  .navLinkList{
-    background-color: var(--mainColorDarkGrey);
-    position: absolute;
-    top: 30px;
-    left: -50px;
-    flex-direction: column;
-    padding: 40px 20px 20px 40px;
-    z-index: -1;
-    border-radius: 1rem;
+
+@media screen and (max-width: 1150px) {
+  .navbarRight p {
+    display: none;
   }
 }
 
@@ -46,6 +32,7 @@
 
 .navbar{
   height: var(--navbarHeight);
+  background-color: var(--mainColorDarkGrey);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -65,7 +52,6 @@
   margin-bottom: var(--navbarBottomMargin);
   display: flex;
   flex-direction: row;
-  gap: 1.8rem;
   margin-right: var(--pageSidePadding);
 }
 

@@ -65,4 +65,6 @@
   --navAccountButtonWidth: 130px;
 
   --cardFinderWidth: 210px;
+  --navLinkBorderBottom: 2px solid transparent;
+  --navLinkBorderBottomHover: 2px solid var(--secondaryColorGreen);
 }

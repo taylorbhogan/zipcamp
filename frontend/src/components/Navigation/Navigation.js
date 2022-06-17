@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SpotAddModal from "../SpotAddModal";
 import DemoLoginButton from "../parts/DemoLoginButton";
 import { getAllAreas } from "../../store/allAreas";
+import * as sessionActions from "../../store/session";
 import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
@@ -16,81 +17,89 @@ function Navigation({ isLoaded }) {
     dispatch(getAllAreas());
   }, [dispatch]);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <div className={styles.welcomeDiv}>
-        <div className={styles.username}>
-          Welcome back, {sessionUser.username}.
-        </div>
-        <ProfileButton user={sessionUser} />
-      </div>
-    );
-  } else {
-    sessionLinks = (
-      <div className={styles.sessionLinksDiv}>
-        <LoginFormModal />
-        <NavLink to="/signup" className={styles.signUpLink}>
-          sign up
-        </NavLink>
-        <DemoLoginButton buttonText={"try it out"} />
-      </div>
-    );
-  }
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
 
   return (
-    <div className={styles.navbarWrapper}>
-      <div className={styles.navbar}>
-        <div className={styles.navbarLeft}>
-          <NavLink
-            id={styles.navbarLogoLong}
-            className={styles.navbarLogo}
-            exact
-            to="/"
-          >
-            <h1>zipcamp</h1>
-          </NavLink>
-          <NavLink
-            id={styles.navbarLogoShort}
-            className={styles.navbarLogo}
-            exact
-            to="/"
-          >
-            <h1>z</h1>
-          </NavLink>
-          <div className={styles.navLinkList}>
+    isLoaded && (
+      <div className={styles.navbarWrapper}>
+        <div className={styles.navbar}>
+          <div className={styles.navbarLeft}>
             <NavLink
-              className={styles.navLink}
-              activeClassName={styles.navLinkActive}
+              id={styles.navbarLogoLong}
+              className={styles.navbarLogo}
               exact
-              to="/areas"
+              to="/"
             >
-              <h2>public lands</h2>
+              <h1>zipcamp</h1>
             </NavLink>
             <NavLink
-              className={styles.navLink}
-              activeClassName={styles.navLinkActive}
+              id={styles.navbarLogoShort}
+              className={styles.navbarLogo}
               exact
-              to="/spots"
+              to="/"
             >
-              <h2>community spots</h2>
+              <h1>z</h1>
             </NavLink>
-            {sessionUser && (
+          </div>
+
+
+          <div className={styles.navbarRight}>
+            <div className={styles.sessionLinksDiv}>
               <NavLink
                 className={styles.navLink}
                 activeClassName={styles.navLinkActive}
                 exact
-                to="/my-spots"
+                to="/areas"
               >
-                <h2>my spots</h2>
+                public lands
               </NavLink>
-            )}
-            <SpotAddModal isUsingUserLocation={true} fromNav={true}/>
+              <NavLink
+                className={styles.navLink}
+                activeClassName={styles.navLinkActive}
+                exact
+                to="/spots"
+              >
+                community spots
+              </NavLink>
+
+              {sessionUser ? (
+                <>
+                  <NavLink
+                    className={styles.navLink}
+                    activeClassName={styles.navLinkActive}
+                    exact
+                    to="/my-spots"
+                  >
+                    my spots
+                  </NavLink>
+                  {/* <ProfileButton user={sessionUser} /> */}
+                  <button onClick={logout} className={styles.button}>log out</button>
+                  <SpotAddModal isUsingUserLocation={true} fromNav={true} />
+                </>
+              ) : (
+                <>
+                  <LoginFormModal />
+                  <NavLink to="/signup" className={styles.navLink}>
+                    sign up
+                  </NavLink>
+                  <DemoLoginButton buttonText={"demo login"} />
+                </>
+              )}
+            </div>
+            {/* {sessionUser && (
+            <div className={styles.welcomeDiv}>
+              <div className={styles.username}>
+                Welcome back, {sessionUser.username}.
+              </div>
+            </div>
+          )} */}
           </div>
         </div>
-        <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>
       </div>
-    </div>
+    )
   );
 }
 

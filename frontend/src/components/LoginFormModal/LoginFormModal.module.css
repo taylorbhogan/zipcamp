@@ -2,19 +2,14 @@
   cursor: pointer;
   border: none;
   background: none;
-  /* border-radius: var(--buttonBorderRadiusLarge); */
-  /* background-color: var(--mainColorGreen); */
   height: var(--navButtonHeight);
-  padding: var(--buttonPadding);
+  padding: 0;
   font-size: 20px;
-  /* font-weight: bold; */
   color: white;
   transition: var(--transition);
-  border-bottom: 2px solid transparent;
+  border-bottom: var(--navLinkBorderBottom);
 }
 
 .loginButton:hover{
-  /* background-color: var(--secondaryColorGreen); */
-  /* text-decoration: underline; */
-  border-bottom: 2px solid var(--secondaryColorGreen);
+  border-bottom: var(--navLinkBorderBottomHover);
 }

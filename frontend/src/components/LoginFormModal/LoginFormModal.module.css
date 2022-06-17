@@ -1,16 +1,20 @@
 .loginButton{
   cursor: pointer;
   border: none;
-  border-radius: var(--buttonBorderRadiusLarge);
-  background-color: var(--mainColorGreen);
+  background: none;
+  /* border-radius: var(--buttonBorderRadiusLarge); */
+  /* background-color: var(--mainColorGreen); */
   height: var(--navButtonHeight);
   padding: var(--buttonPadding);
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: white;
   transition: var(--transition);
+  border-bottom: 2px solid transparent;
 }
 
 .loginButton:hover{
-  background-color: var(--secondaryColorGreen);
+  /* background-color: var(--secondaryColorGreen); */
+  /* text-decoration: underline; */
+  border-bottom: 2px solid var(--secondaryColorGreen);
 }

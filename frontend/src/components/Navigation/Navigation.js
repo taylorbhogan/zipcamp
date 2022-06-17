@@ -30,10 +30,10 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <div className={styles.sessionLinksDiv}>
         <LoginFormModal />
-        <DemoLoginButton buttonText={"try it out"} />
         <NavLink to="/signup" className={styles.signUpLink}>
           sign up
         </NavLink>
+        <DemoLoginButton buttonText={"try it out"} />
       </div>
     );
   }

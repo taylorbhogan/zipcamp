@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SpotAddModal from "../SpotAddModal";
 import DemoLoginButton from "../parts/DemoLoginButton";
@@ -45,57 +44,49 @@ function Navigation({ isLoaded }) {
             </NavLink>
           </div>
 
-
           <div className={styles.navbarRight}>
-            <div className={styles.sessionLinksDiv}>
-              <NavLink
-                className={styles.navLink}
-                activeClassName={styles.navLinkActive}
-                exact
-                to="/areas"
-              >
-                public lands
-              </NavLink>
-              <NavLink
-                className={styles.navLink}
-                activeClassName={styles.navLinkActive}
-                exact
-                to="/spots"
-              >
-                community spots
-              </NavLink>
+            <NavLink
+              className={styles.navLink}
+              activeClassName={styles.navLinkActive}
+              exact
+              to="/areas"
+            >
+              public lands
+            </NavLink>
+            <NavLink
+              className={styles.navLink}
+              activeClassName={styles.navLinkActive}
+              exact
+              to="/spots"
+            >
+              community spots
+            </NavLink>
 
-              {sessionUser ? (
-                <>
-                  <NavLink
-                    className={styles.navLink}
-                    activeClassName={styles.navLinkActive}
-                    exact
-                    to="/my-spots"
-                  >
-                    my spots
-                  </NavLink>
-                  {/* <ProfileButton user={sessionUser} /> */}
-                  <button onClick={logout} className={styles.button}>log out</button>
-                  <SpotAddModal isUsingUserLocation={true} fromNav={true} />
-                </>
-              ) : (
-                <>
-                  <LoginFormModal />
-                  <NavLink to="/signup" className={styles.navLink}>
-                    sign up
-                  </NavLink>
-                  <DemoLoginButton buttonText={"demo login"} />
-                </>
-              )}
-            </div>
-            {/* {sessionUser && (
-            <div className={styles.welcomeDiv}>
-              <div className={styles.username}>
-                Welcome back, {sessionUser.username}.
-              </div>
-            </div>
-          )} */}
+            {sessionUser ? (
+              <>
+                <NavLink
+                  className={styles.navLink}
+                  activeClassName={styles.navLinkActive}
+                  exact
+                  to="/my-spots"
+                >
+                  my spots
+                </NavLink>
+                <button onClick={logout} className={styles.button}>
+                  log out
+                </button>
+                <SpotAddModal isUsingUserLocation={true} fromNav={true} />
+                <p>Welcome back, {sessionUser.username}.</p>
+              </>
+            ) : (
+              <>
+                <LoginFormModal />
+                <NavLink to="/signup" className={styles.navLink}>
+                  sign up
+                </NavLink>
+                <DemoLoginButton buttonText={"demo login"} />
+              </>
+            )}
           </div>
         </div>
       </div>

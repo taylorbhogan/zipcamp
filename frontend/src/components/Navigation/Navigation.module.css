@@ -13,7 +13,7 @@
   }
 }
 @media screen and (max-width: 1150px) {
-  .username {
+  .navbarRight p {
     display: none;
   }
 }
@@ -63,6 +63,10 @@
 
 .navbarRight{
   margin-bottom: var(--navbarBottomMargin);
+  display: flex;
+  flex-direction: row;
+  gap: 1.8rem;
+  margin-right: var(--pageSidePadding);
 }
 
 .navbarLogo{
@@ -99,24 +103,12 @@
   position: absolute;
 }
 
-.sessionLinksDiv{
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  margin-right: var(--pageSidePadding);
-}
-
-.welcomeDiv{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.navbarRight p {
   color: #777;
   font-weight: 700;
-  margin-right: var(--pageSidePadding);
-}
-
-.username{
-  margin-right: 18px;
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
 }
 
 

@@ -8,15 +8,17 @@ function WelcomeMessage() {
   const buttonHref = "/areas";
   return (
     <div className={styles.contentContainer}>
-      <div className={styles.welcomeMessageBox}>
-        <p className={styles.welcomeMessage}>
-          the clearest way into the universe is through a forest wilderness.
-        </p>
+      <div className={styles.welcomeMessage}>
+        <p>the clearest way into the universe is through a forest wilderness.</p>
+        <p>expore public lands and save the cool spots you discover.</p>
         <div className={styles.buttonWrapper}>
           <StandardLinkButton buttonText={buttonText} href={buttonHref} />
         </div>
       </div>
-      <img src="/images/siteBackground/background-star-2.jpg" alt="a stargazing silhouette"/>
+      <img
+        src="/images/siteBackground/background-star-2.jpg"
+        alt="a stargazing silhouette"
+      />
     </div>
   );
 }

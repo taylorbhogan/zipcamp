@@ -1,13 +1,22 @@
 .contentContainer{
   position: relative;
-  top: 200px;
+  top: 17vh;
 }
 
-.welcomeMessageBox{
+.welcomeMessage{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  color: var(--mainColorLightGrey);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.welcomeMessage :nth-child(2){
+  margin: 1rem 0 1.5rem 0;
+  color: var(--mainColorWhite);
+  font-size: 1.7rem;
 }
 
 .buttonWrapper {
@@ -16,13 +25,6 @@
   display: flex;
   justify-content: center;
   border-radius: var(--cardBorderRadius);
-}
-
-.welcomeMessage{
-  color: var(--mainColorWhite);
-  font-size: 1.5rem;
-  margin-bottom: 45px;
-  text-align: center;
 }
 
 .contentContainer img {

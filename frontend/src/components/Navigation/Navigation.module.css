@@ -1,38 +1,24 @@
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
   #navbarLogoShort{
     display: none;
   }
-  .navLinkList{
-    flex-direction: row;
+  .navbarRight{
+    gap: 1.8rem;
   }
 }
 
-@media screen and (max-width: 1350px) {
-  .navLinkList a {
-    font-size: 1rem;
-  }
-}
-@media screen and (max-width: 1150px) {
-  .username {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   #navbarLogoLong{
     display: none;
   }
+  .navbarRight{
+    gap: 1rem;
+  }
 }
-@media screen and (max-width: 700px) {
-  .navLinkList{
-    background-color: var(--mainColorDarkGrey);
-    position: absolute;
-    top: 30px;
-    left: -50px;
-    flex-direction: column;
-    padding: 40px 20px 20px 40px;
-    z-index: -1;
-    border-radius: 1rem;
+
+@media screen and (max-width: 1150px) {
+  .navbarRight p {
+    display: none;
   }
 }
 
@@ -45,16 +31,14 @@
 }
 
 .navbar{
-  background-color: var(--mainColorDarkGrey);
   height: var(--navbarHeight);
+  background-color: var(--mainColorDarkGrey);
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
   top: 0px;
   width: 100%;
-  box-shadow: 0px 4px 8px 2px var(--mainColorGreen);
 }
 
 .navbarLeft{
@@ -66,6 +50,9 @@
 
 .navbarRight{
   margin-bottom: var(--navbarBottomMargin);
+  display: flex;
+  flex-direction: row;
+  margin-right: var(--pageSidePadding);
 }
 
 .navbarLogo{
@@ -79,30 +66,19 @@
   font-size: 60px;
 }
 
-.navLinkList{
-  margin-left: 20px;
-  display: flex;
-  gap: 10px;
-}
-
 .navLink{
-  font-size: 30px;
   text-decoration: none;
-  font-weight: 600;
-  padding: 4px 24px 0 24px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background-color: #222222;
-  color: #777777;
+  height: var(--navButtonHeight);
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  line-height: var(--navButtonHeight);
   transition: var(--transition);
-}
-
-.navLink h2 {
-  cursor: pointer;
+  border-bottom: var(--navLinkBorderBottom);
 }
 
 .navLink:hover{
-  color: var(--secondaryColorGreen);
+  border-bottom: var(--navLinkBorderBottomHover);
 }
 
 .navLinkActive{
@@ -113,40 +89,27 @@
   position: absolute;
 }
 
-.sessionLinksDiv{
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  margin-right: var(--pageSidePadding);
-}
-
-.signUpLink{
-  text-decoration: none;
-  background-color: var(--mainColorGreen);
-  border-radius: var(--buttonBorderRadiusLarge);
-  height: var(--navButtonHeight);
-  padding: var(--buttonPadding);
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  line-height: var(--navButtonHeight);
-  transition: var(--transition);
-}
-
-.signUpLink:hover{
-  background-color: var(--secondaryColorGreen);
-}
-
-.welcomeDiv{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.navbarRight p {
   color: #777;
   font-weight: 700;
-  margin-right: var(--pageSidePadding);
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
 }
 
-.username{
-  margin-right: 18px;
+
+.button{
+  cursor: pointer;
+  border: none;
+  background: none;
+  height: var(--navButtonHeight);
+  padding: 0;
+  font-size: 20px;
+  color: white;
+  transition: var(--transition);
+  border-bottom: var(--navLinkBorderBottom);
+}
+
+.button:hover{
+  border-bottom: var(--navLinkBorderBottomHover);
 }

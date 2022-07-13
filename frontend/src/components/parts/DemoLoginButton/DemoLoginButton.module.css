@@ -1,16 +1,18 @@
 .button{
   cursor: pointer;
   border: none;
-  border-radius: var(--buttonBorderRadiusLarge);
-  background-color: var(--mainColorLightGrey);
+  border-radius: calc(var(--navButtonHeight) / 2);
+  background-color: var(--mainColorGreen);
   height: var(--navButtonHeight);
   padding: var(--buttonPadding);
   font-family: inherit;
   font-size: 20px;
-  font-weight: bold;
   transition: var(--transition);
+  border: 1px solid transparent;
 }
 
 .button:hover{
-  color: var(--secondaryColorGreen);
+  color: var(--mainColorGreen);
+  background-color: var(--mainColorDarkGrey);
+  border: 1px solid var(--mainColorGreen);
 }

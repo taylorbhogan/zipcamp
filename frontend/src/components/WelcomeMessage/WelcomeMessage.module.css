@@ -1,23 +1,36 @@
-.contentWrapper{
+.contentContainer{
   position: relative;
   top: 200px;
 }
 
 .welcomeMessageBox{
-  background-color: var(--mainColorDarkGrey);
-  height: 20rem;
-  width: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin: 0 auto;
+}
+
+.buttonWrapper {
+  background-color: var(--grey2);
+  width: 500px;
+  display: flex;
+  justify-content: center;
   border-radius: var(--cardBorderRadius);
-  box-shadow: 0px 8px 16px 0px var(--mainColorGreen);
-  margin: 50px auto 0 auto;
 }
 
 .welcomeMessage{
   color: var(--mainColorWhite);
-  font-size: 16px;
-  padding-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.contentContainer img {
+  border-radius: var(--cardBorderRadius);
+  height: 50vh;
+  object-fit: cover;
+  position: relative;
+  top: -30px;
+  margin: 0 auto;
+  z-index: -1;
 }

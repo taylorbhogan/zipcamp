@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SpotAddModal from "../SpotAddModal";
 import DemoLoginButton from "../parts/DemoLoginButton";
 import { getAllAreas } from "../../store/allAreas";
+import * as sessionActions from "../../store/session";
 import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
@@ -16,56 +16,42 @@ function Navigation({ isLoaded }) {
     dispatch(getAllAreas());
   }, [dispatch]);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <div className={styles.welcomeDiv}>
-        <div className={styles.username}>
-          Welcome back, {sessionUser.username}.
-        </div>
-        <ProfileButton user={sessionUser} />
-      </div>
-    );
-  } else {
-    sessionLinks = (
-      <div className={styles.sessionLinksDiv}>
-        <LoginFormModal />
-        <DemoLoginButton buttonText={"try it out"} />
-        <NavLink to="/signup" className={styles.signUpLink}>
-          sign up
-        </NavLink>
-      </div>
-    );
-  }
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+  };
 
   return (
-    <div className={styles.navbarWrapper}>
-      <div className={styles.navbar}>
-        <div className={styles.navbarLeft}>
-          <NavLink
-            id={styles.navbarLogoLong}
-            className={styles.navbarLogo}
-            exact
-            to="/"
-          >
-            <h1>zipcamp</h1>
-          </NavLink>
-          <NavLink
-            id={styles.navbarLogoShort}
-            className={styles.navbarLogo}
-            exact
-            to="/"
-          >
-            <h1>z</h1>
-          </NavLink>
-          <div className={styles.navLinkList}>
+    isLoaded && (
+      <div className={styles.navbarWrapper}>
+        <div className={styles.navbar}>
+          <div className={styles.navbarLeft}>
+            <NavLink
+              id={styles.navbarLogoLong}
+              className={styles.navbarLogo}
+              exact
+              to="/"
+            >
+              <h1>zipcamp</h1>
+            </NavLink>
+            <NavLink
+              id={styles.navbarLogoShort}
+              className={styles.navbarLogo}
+              exact
+              to="/"
+            >
+              <h1>z</h1>
+            </NavLink>
+          </div>
+
+          <div className={styles.navbarRight}>
             <NavLink
               className={styles.navLink}
               activeClassName={styles.navLinkActive}
               exact
               to="/areas"
             >
-              <h2>public lands</h2>
+              public lands
             </NavLink>
             <NavLink
               className={styles.navLink}
@@ -73,24 +59,38 @@ function Navigation({ isLoaded }) {
               exact
               to="/spots"
             >
-              <h2>community spots</h2>
+              community spots
             </NavLink>
-            {sessionUser && (
-              <NavLink
-                className={styles.navLink}
-                activeClassName={styles.navLinkActive}
-                exact
-                to="/my-spots"
-              >
-                <h2>my spots</h2>
-              </NavLink>
+
+            {sessionUser ? (
+              <>
+                <NavLink
+                  className={styles.navLink}
+                  activeClassName={styles.navLinkActive}
+                  exact
+                  to="/my-spots"
+                >
+                  my spots
+                </NavLink>
+                <button onClick={logout} className={styles.button}>
+                  log out
+                </button>
+                <SpotAddModal isUsingUserLocation={true} fromNav={true} />
+                <p>Welcome back, {sessionUser.username}.</p>
+              </>
+            ) : (
+              <>
+                <LoginFormModal />
+                <NavLink to="/signup" className={styles.navLink}>
+                  sign up
+                </NavLink>
+                <DemoLoginButton buttonText={"demo login"} />
+              </>
             )}
-            <SpotAddModal isUsingUserLocation={true} fromNav={true}/>
           </div>
         </div>
-        <div className={styles.navbarRight}>{isLoaded && sessionLinks}</div>
       </div>
-    </div>
+    )
   );
 }
 

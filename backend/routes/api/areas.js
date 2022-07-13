@@ -53,7 +53,7 @@ router.post(
     );
     const { RECDATA } = await organizationsJSON.json();
 
-    // set orgNames into the organizations object for instant lookup later; there are likely to be fewer organizations than areas
+    // set orgNames into the organizations object for instant lookup later
     const organizations = {};
     RECDATA.forEach((org) => {
       organizations[org.OrgID] = org.OrgName;
@@ -66,15 +66,19 @@ router.post(
     const resultsPerPage = req.body.resultsPerPage;
     const offset = req.body.offset;
 
-    const recGovRes = await fetch(
-      `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&state=${stateAbbreviation}&offset=${offset}`,
-      {
-        method: "GET",
-        headers: {
-          apiKey: recreationGovAPIKey,
-        },
-      }
-    );
+    let apiUrl = "";
+    if (organizationId === undefined) {
+      apiUrl = `https://ridb.recreation.gov/api/v1/recareas?limit=${resultsPerPage}&state=${stateAbbreviation}&offset=${offset}`;
+    } else {
+      apiUrl = `https://ridb.recreation.gov/api/v1/organizations/${organizationId}/recareas?limit=${resultsPerPage}&state=${stateAbbreviation}&offset=${offset}`;
+    }
+
+    const recGovRes = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        apiKey: recreationGovAPIKey,
+      },
+    });
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
     const totalCount = recGovJson.METADATA.RESULTS.TOTAL_COUNT;
@@ -89,19 +93,6 @@ router.post(
       latitude: area["RecAreaLatitude"],
     }));
 
-    // the rec.gov API for /recareas does not offer organization(s) as a parameter.
-    // in its current iteration, this API route takes the 50 areas that were returned by the given query and THEN filters on organization.
-    // as a result (b/c rec.gov's db isn't organized by organization), as the user pages through results, each result page will feature varying numbers of areas.
-    // TODO:
-    // implement a more powerful search route.
-    // 1. if the API req has an organizationId attached, query the database repeatedly to build our own array of areas
-    // 2. filter that array as seen below
-    // 3. ∆ totalCount's declaration to let; reassign its value here to the filtered array's length
-    // but then, what to send?
-    // // the first 25 results, and then page through -- but how? this sounds like cacheing...how to implement?
-    if (organizationId) {
-      areaArray = areaArray.filter((area) => area.orgID === organizationId);
-    }
     res.json({ areaArray, totalCount });
   })
 );

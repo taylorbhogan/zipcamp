@@ -5,8 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getKey } from "../../store/maps";
 import Maps from "./Maps";
+import MapsUserLocation from "./MapsUserLocation";
 
-const MapContainer = ({ isAdding, setLat, setLong, pins, zoom, setFunction, singlePin, isUsingUserLocation }) => {
+const MapContainer = ({
+  isAdding,
+  setLat,
+  setLong,
+  pins,
+  zoom,
+  setFunction,
+  singlePin,
+  isUsingUserLocation,
+}) => {
   const key = useSelector((state) => state.maps.key);
 
   const dispatch = useDispatch();
@@ -21,18 +31,25 @@ const MapContainer = ({ isAdding, setLat, setLong, pins, zoom, setFunction, sing
     return null;
   }
 
-  return (
-    <Maps
-      apiKey={key}
-      isAdding={isAdding}
-      setLat={setLat}
-      setLong={setLong}
-      pins={pins}
-      zoom={zoom}
-      setFunction={setFunction}
-      singlePin={singlePin}
-      isUsingUserLocation={isUsingUserLocation}
+  return isUsingUserLocation ? (
+    <MapsUserLocation
+    apiKey={key}
+    setLat={setLat}
+    setLong={setLong}
+    pins={pins}
+    setFunction={setFunction}
     />
+    ) : (
+      <Maps
+        apiKey={key}
+        isAdding={isAdding}
+        setLat={setLat}
+        setLong={setLong}
+        pins={pins}
+        zoom={zoom}
+        setFunction={setFunction}
+        singlePin={singlePin}
+      />
   );
 };
 

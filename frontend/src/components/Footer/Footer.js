@@ -5,9 +5,10 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerLeft}>
-        <span>created in 2021 by @taylorbhogan</span>
+        <span>Created using Express, React, Redux, Google Maps, and AWS S3</span>
       </div>
       <div className={styles.footerRight}>
+        <a id={styles.tbh} href="https://taylorbhogan.dev/">© Taylor B Hogan</a>
         <a
           href="https://github.com/taylorbhogan"
           target="_blank"

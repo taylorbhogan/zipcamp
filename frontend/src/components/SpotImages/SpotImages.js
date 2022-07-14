@@ -63,8 +63,9 @@ const SpotImages = ({ spot }) => {
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className={styles.fileUpload}>
           <input type="file" onChange={updateFile} />
+          choose file
         </label>
         {image !== null && <button type="submit">Upload image</button>}
       </form>

@@ -14,7 +14,35 @@
 }
 
 .container form {
+  width: var(--cardFinderWidth);
   padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+input[type="file"]{
+  display: none;
+}
+
+.fileUpload{
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: var(--bigButtonBackgroundColor);
+  width: var(--cardFinderWidth);
+  border: 0;
+  font-size: var(--bigButtonFontSize);
+  font-weight: bold;
+  border-radius: var(--bigButtonBorderRadius);
+  padding: var(--bigButtonPadding);
+  cursor: pointer;
+  transition: var(bigButtonTransition);
+  box-shadow: var(--buttonBoxShadowBlur);
+  text-align: center;
+}
+
+.fileUpload:hover{
+  box-shadow: var(--buttonBoxShadowBlurHover);
+  transform: scale(1.02);
 }
 
 .imageContainer{

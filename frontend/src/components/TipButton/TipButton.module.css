@@ -1,15 +1,15 @@
 .button{
-  margin: 20px 0;
+  margin: var(--bigButtonMargin);
   width: var(--cardFinderWidth);
   box-sizing: border-box;
-  background-color: #d3d3d3;
+  background-color: var(--bigButtonBackgroundColor);
   border: 0;
-  font-size: 17px;
+  font-size: var(--bigButtonFontSize);
   font-weight: bold;
-  border-radius: 7px;
-  padding: 7px 0;
+  border-radius: var(--bigButtonBorderRadius);
+  padding: var(--bigButtonPadding);
   cursor: pointer;
-  transition: all 300ms ease;
+  transition: var(bigButtonTransition);
   box-shadow: var(--buttonBoxShadowBlur);
 
 }

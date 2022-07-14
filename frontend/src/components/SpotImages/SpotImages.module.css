@@ -14,20 +14,41 @@
 }
 
 .container form {
-  width: var(--cardFinderWidth);
   padding-bottom: 1rem;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 input[type="file"]{
   display: none;
 }
 
-.fileUpload{
+.fileSelect{
+  width: var(--cardFinderWidth);
   cursor: pointer;
   box-sizing: border-box;
   background-color: var(--bigButtonBackgroundColor);
+  width: var(--cardFinderWidth);
+  border: 0;
+  font-size: var(--bigButtonFontSize);
+  font-weight: bold;
+  border-radius: var(--bigButtonBorderRadius);
+  padding: var(--bigButtonPadding);
+  cursor: pointer;
+  transition: var(bigButtonTransition);
+  box-shadow: var(--buttonBoxShadowBlur);
+  text-align: center;
+}
+
+.fileUpload{
+  width: var(--cardFinderWidth);
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: var(--mainColorGreen);
+  color: white;
   width: var(--cardFinderWidth);
   border: 0;
   font-size: var(--bigButtonFontSize);

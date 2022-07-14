@@ -10,8 +10,6 @@ const SpotImages = ({ spot }) => {
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const spotImages = spot?.SpotImages;
-  console.log("spotImages", spotImages);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -39,7 +37,6 @@ const SpotImages = ({ spot }) => {
     setSelectedPhoto(+e.target.id);
     setShowModal(true);
   };
-  console.log("selectedPhoto", selectedPhoto);
 
   const rotateLeft = () => {
     if (selectedPhoto === 0) {
@@ -63,11 +60,11 @@ const SpotImages = ({ spot }) => {
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
       <form onSubmit={handleSubmit}>
-        <label className={styles.fileUpload}>
+        <label className={styles.fileSelect}>
           <input type="file" onChange={updateFile} />
           choose file
         </label>
-        {image !== null && <button type="submit">Upload image</button>}
+        {image !== null && <button type="submit" className={styles.fileUpload}>upload image</button>}
       </form>
       <div className={styles.imageContainer}>
         {spot?.SpotImages.length > 0 ? (

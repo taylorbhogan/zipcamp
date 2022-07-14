@@ -13,7 +13,7 @@ const Maps = ({
   setFunction,
   singlePin = false,
 }) => {
-
+console.log("pins",pins);
   const containerStyle = {
     width: "100%",
     height: "100%",

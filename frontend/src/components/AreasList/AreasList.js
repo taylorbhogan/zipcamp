@@ -71,6 +71,23 @@ function AreasList() {
           "US Air Force",
           "Smithsonian Institution Affiliations Program",
           "",
+          "Tennessee Valley Authority",
+          "Department of the Interior",
+          "National Register of Historic Places",
+          "Department of Commerce",
+          "Department of Defense",
+          "Department of Agriculture",
+          "National Archives and Records Administration",
+          "American Battle Monuments Commission",
+          "Department of the Treasury",
+          "Bureau of Engraving and Printing",
+          "Historic Hotels of America",
+          "National Historic Landmark",
+          "United States Geological Survey",
+          "Bureau of Reclamation",
+          "Commander, Navy Installation Command (CNIC)",
+          "Booz Allen Hamilton",
+          "Department of Transportation",
         ];
         const filteredData = data.filter((datum) => {
           return !filterOut.includes(datum.name);

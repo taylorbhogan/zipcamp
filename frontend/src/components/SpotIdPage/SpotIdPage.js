@@ -57,6 +57,8 @@ function SpotIdPage() {
           </div>
           <div className={styles.mapContainerWrapper}>
             <MapContainer
+              zoom={14}
+              singlePin={true}
               pins={{
                 pin: {
                   latitude: spot?.lat,

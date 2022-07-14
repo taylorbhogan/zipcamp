@@ -11,7 +11,7 @@ const Maps = ({
   pins,
   zoom = 3,
   setFunction,
-  singlePin,
+  singlePin = false,
 }) => {
 
   const containerStyle = {

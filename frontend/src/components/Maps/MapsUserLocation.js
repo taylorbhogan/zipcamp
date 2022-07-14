@@ -50,7 +50,7 @@ const MapsUserLocation = ({ apiKey, setLat, setLong, pins, setFunction }) => {
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={currentPosition}
-            zoom={10}
+            zoom={14}
           >
             {Object.values(pins).map((pushpin) => (
               <Marker

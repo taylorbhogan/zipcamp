@@ -41,9 +41,9 @@ h2 {
 }
 
 
-@media screen and (min-width: 1500px) {
+/* @media screen and (min-width: 1500px) {
   .contentContainer {
-    width: 60vw;
+    width: 70vw;
   }
 }
 
@@ -55,11 +55,11 @@ h2 {
 
 @media screen and (max-width: 1200px) {
   .contentContainer {
-    width: 80vw;
   }
-}
+} */
 
 .contentContainer {
+  width: 80vw;
   background-color: var(--mainColorLightGrey);
   margin-top: var(--containerMarginTop);
   margin-bottom: var(--containerMarginTop);

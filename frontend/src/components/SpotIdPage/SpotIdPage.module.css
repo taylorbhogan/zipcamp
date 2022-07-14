@@ -9,6 +9,22 @@
   top: var(--navbarHeight);
 }
 
+.topsection{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 900px){
+  .topsection{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
 .spotName{
   font-size: var(--pageHeaderSize);
   margin-top: 0px;
@@ -26,71 +42,28 @@
   font-size: 20px;
 }
 
-.SpotDivInfo{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  border-top: solid 1px black;
-  margin-top: 15px;
-  margin-bottom: 70px;
-  padding-top: 40px;
-  padding-right: 10%;
-  position: relative;
-}
-
-.SpotDivInfoRight{
+.spotInfo{
   font-size: 25px;
-  padding-left: 50px;
-  padding-right: 200px;
-}
-
-.directionsHeader{
-  padding-top: 40px;
-  font-size: 20px;
 }
 
 .directions{
-  padding-top: 10px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  font-size: 20px;
 }
 
-.SpotDivActivities{
-  margin-top: 50px;
-  padding-top: 20px;
-  padding-bottom: 40px;
-  border-top: solid 1px black;
-  border-bottom: solid 1px black;
+.midsection{
   display: flex;
-  flex-direction: row;
+  gap: 3rem;
 }
 
-.deleteOuterDiv{
-  padding-top: 15px;
-}
-
-.deleteDiv{
-  border: 1px solid black;
-  width: 70px;
-  padding-left: 20px;
-}
-
-@media screen and (min-width: 1500px) {
-  .mapContainerWrapper{
-    position: absolute;
-    top: 50px;
-    left: 40vw;
-    width: 600px;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .mapContainerWrapper{
-    width: 100%;
+@media (max-width: 1200px) {
+  .midsection{
+    flex-direction: column-reverse;
   }
 }
 
 .mapContainerWrapper{
-  height: 500px;
-  background-color: #f3f3f4;
-  padding: 20px;
-  border-radius: 5px;
+  height: 350px;
+  width: 100%;
 }

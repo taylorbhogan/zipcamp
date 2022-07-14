@@ -17,6 +17,7 @@ const Maps = ({
   const containerStyle = {
     width: "100%",
     height: "100%",
+    borderRadius: "5px",
   };
 
   const { isLoaded } = useJsApiLoader({

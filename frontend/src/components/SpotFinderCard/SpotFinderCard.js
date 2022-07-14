@@ -10,15 +10,19 @@ function SpotFinderCard({ setEditModal, spotId }) {
     <div className={styles.container}>
       {spot?.userId === sessionUser?.id ? (
         <>
+          <div>
+            <p>You added this spot</p>
+            <button onClick={setEditModal}>Need to make changes?</button>
+          </div>
           <div className={styles.profileImage}></div>
-          <p>You added this spot</p>
-          <button onClick={setEditModal}>Need to make changes?</button>
         </>
       ) : (
         <>
-          <p>Discovered by:</p>
+          <div>
+            <p>Discovered by:</p>
+            <p>{spot?.User?.username}</p>
+          </div>
           <div className={styles.profileImage}></div>
-          <p>{spot?.User?.username}</p>
         </>
       )}
     </div>

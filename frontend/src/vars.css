@@ -1,21 +1,28 @@
 :root {
-  /* ---- PAGE ---- */
-  --pageSidePadding: 30px;
-  --pageHeaderSize: 60px;
+  /* ---- CONTAINERS ---- */
+  --containerMarginTop: 9rem;
+  --containerBorderRadius: 10px;
+
+  /* ---- NAVIGATION ---- */
+  --navSidePadding: 30px;
+  --navbarHeight: 60px;
+  --navLinkBorderBottom: 2px solid transparent;
+  --navLinkBorderBottomHover: 2px solid var(--green2);
+  --navButtonHeight: 2rem;
+  --footerHeight: 3.5rem;
 
   /* ---- COLORS ---- */
-  --mainColorGreen: #248232;
-  --secondaryColorGreen: #2BA84A;
-  /* --mainColorDarkGrey: #343539;before spotsId */
-  --mainColorDarkGrey: #343539;
-  --mainColorLightGrey: #f3f3f4d5;
-  --mainColorLightGreyOpaque: #f3f3f4;
-  --greyText: #7777777;
-  /* --mainColorLightGrey: #CCCCCC;before spotsId */
-  --mainColorWhite: #FFFFFF;
-  --mainColorWarning: rgb(221, 90, 90);
-  --grey1: #141a16;
-  --grey2: #222222;
+  --green1: #248232;
+  --green2: #2BA84A;
+
+  --red1: rgb(221, 90, 90);
+
+  --gray1: #343539;
+  --gray2: #f3f3f4d5;
+  --gray3: #f3f3f4;
+  --grey4: #141a16;
+  --grey5: #222222;
+
   --muiGray1: #CFD8DC;
   --muiGray2: #B0BEC5;
   --muiGray3: #90A4AE;
@@ -26,51 +33,24 @@
   --muiGray8: #37474F;
   --muiGray9: #263238;
 
-
-  --footerHeight: 3.5rem;
-  --navbarHeight: 60px;
-  --navbarBottomMargin: 10px;
-  --navButtonHeight: 2rem;
-
   /* ---- CARDS ---- */
   --cardBorderWidth: 1px;
   --cardBorderStyle: solid;
   --cardBorderRadius: 10px;
   --cardBoxShadow: 0rem 0 .3rem .1rem #AAA;
   --cardBoxShadowHover: 0 0 .5rem .5rem #AAA;
+  --cardFinderWidth: 210px;
 
   /* ---- BUTTONS ---- */
   --buttonPadding: 0 1rem;
   --buttonBorderRadiusSmall: 3px;
-  --buttonBorderRadiusLarge: 8px;
-  --sessionButtonTopBottomPadding: .5rem;
-  --sessionButtonLeftRightPadding: 2rem;
+  --buttonBorderRadiusLarge: 7px;
   --buttonBoxShadowBlur: 0rem 0 .1rem .1rem #DDD;
   --buttonBoxShadowBlurHover: 0rem 0 .3rem .1rem #AAA;
   --transition: all 200ms ease;
   --bigButtonMargin: 20px 0;
   --bigButtonBackgroundColor: d3d3d3;
   --bigButtonFontSize: 17px;
-  --bigButtonBorderRadius: 7px;
   --bigButtonPadding: 7px 0;
   --bigButtonTransition: all 300ms ease;
-
-  /* ---- INPUTS ---- */
-  --inputLabelSize: 10px;
-
-  /* ---- CONTAINERS ---- */
-  --containerMarginTop: 9rem;
-  --containerMarginSide: 30rem;
-  --containerPaddingSide: 4rem;
-  --containerPaddingTop: 4rem;
-  --containerBorderRadius: 10px;
-
-  /* ---- NAVIGATION ---- */
-  --navUnderlineHeight: .5em;
-  --navTransitionDuration: .5s;
-  --navAccountButtonWidth: 130px;
-
-  --cardFinderWidth: 210px;
-  --navLinkBorderBottom: 2px solid transparent;
-  --navLinkBorderBottomHover: 2px solid var(--secondaryColorGreen);
 }

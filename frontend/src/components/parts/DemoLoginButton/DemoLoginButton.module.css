@@ -2,7 +2,7 @@
   cursor: pointer;
   border: none;
   border-radius: calc(var(--navButtonHeight) / 2);
-  background-color: var(--mainColorGreen);
+  background-color: var(--green1);
   height: var(--navButtonHeight);
   padding: var(--buttonPadding);
   font-family: inherit;
@@ -12,7 +12,7 @@
 }
 
 .button:hover{
-  color: var(--mainColorGreen);
-  background-color: var(--mainColorDarkGrey);
-  border: 1px solid var(--mainColorGreen);
+  color: var(--green1);
+  background-color: var(--gray1);
+  border: 1px solid var(--green1);
 }

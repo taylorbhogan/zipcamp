@@ -6,7 +6,7 @@
   border: 0;
   font-size: var(--bigButtonFontSize);
   font-weight: bold;
-  border-radius: var(--bigButtonBorderRadius);
+  border-radius: var(--buttonBorderRadiusLarge);
   padding: var(--bigButtonPadding);
   cursor: pointer;
   transition: var(bigButtonTransition);

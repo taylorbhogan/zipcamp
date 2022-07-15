@@ -1,5 +1,5 @@
 .submitButton{
-  background-color: var(--mainColorGreen);
+  background-color: var(--green1);
   border-radius: 8px;
   padding: .75rem 0;
   width: 100%;
@@ -10,7 +10,7 @@
 }
 
 .submitButton:hover{
-  background-color: var(--secondaryColorGreen);
+  background-color: var(--green2);
 }
 
 .footer{

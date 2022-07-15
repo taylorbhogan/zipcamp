@@ -1,5 +1,5 @@
 .container {
-  background-color: var(--mainColorLightGrey);
+  background-color: var(--gray2);
   border-radius: var(--cardBorderRadius);
   box-shadow: var(--cardBoxShadow);
   min-width: var(--cardFinderWidth);
@@ -52,5 +52,5 @@
 }
 
 #confirmDelete {
-  background-color: var(--mainColorWarning);
+  background-color: var(--red1);
 }

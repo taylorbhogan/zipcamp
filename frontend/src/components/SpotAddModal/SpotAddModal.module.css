@@ -1,5 +1,5 @@
 .addSpotButton{
-  background-color: var(--mainColorGreen);
+  background-color: var(--green1);
   border-radius: var(--buttonBorderRadiusSmall);
   border: 0;
   font-size: 24px;
@@ -9,6 +9,6 @@
 }
 
 .addSpotButton:hover{
-  background-color: var(--secondaryColorGreen);
+  background-color: var(--green2);
   cursor: pointer;
 }

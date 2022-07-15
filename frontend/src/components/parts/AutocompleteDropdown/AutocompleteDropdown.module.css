@@ -1,5 +1,5 @@
 .container ul {
-  background-color: var(--mainColorDarkGrey);
+  background-color: var(--gray1);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   padding: 0;

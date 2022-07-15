@@ -1,20 +1,23 @@
 @import './../../index.css';
 
-.contentWrapper{
+.wrapper{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   top: var(--navbarHeight);
+  width: 80vw;
+  margin: var(--containerMarginTop) auto;
 }
 
 .topsection{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   margin-bottom: 1rem;
+  color: white;
 }
 
 @media (max-width: 900px){
@@ -26,7 +29,7 @@
 }
 
 .spotName{
-  font-size: var(--pageHeaderSize);
+  font-size: 60px;
   margin-top: 0px;
   max-width: 700px;
 }
@@ -55,6 +58,7 @@
 .midsection{
   display: flex;
   gap: 3rem;
+  color: white;
 }
 
 @media (max-width: 1200px) {

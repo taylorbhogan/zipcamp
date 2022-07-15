@@ -1,8 +1,8 @@
 .standardLinkButton{
-  color: var(--mainColorDarkGrey);
+  color: var(--gray1);
   border-width: var(--cardBorderWidth);
   border-style: var(--cardBorderStyle);
-  border-color: var(--mainColorLightGrey);
+  border-color: var(--gray2);
   border-radius: var(--buttonBorderRadiusSmall);
   padding: .5rem 1rem;
   text-decoration: none;
@@ -11,6 +11,6 @@
 }
 
 .standardLinkButton:hover{
-  background-color: var(--mainColorDarkGrey);
+  background-color: var(--gray1);
   color: white;
 }

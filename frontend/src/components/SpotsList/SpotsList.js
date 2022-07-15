@@ -28,20 +28,21 @@ function SpotsList() {
   }, [dispatch]);
 
   return isLoaded ? (
-    <div className={styles.contentWrapper}>
-      <div className={"contentContainer"}>
-        <Errors errors={errors} />
-        {location.pathname === "/my-spots"
-          ? user
-            ? spots
-                .filter((spot) => spot.userId === user.id)
-                .map((spot) => <SpotBox key={spot.id} spot={spot} />)
-            : <div>
-
-              <PleaseLogin />
-            </div>
-          : spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
-      </div>
+    <div className={styles.wrapper}>
+      <Errors errors={errors} />
+      {location.pathname === "/my-spots" ? (
+        user ? (
+          spots
+            .filter((spot) => spot.userId === user.id)
+            .map((spot) => <SpotBox key={spot.id} spot={spot} />)
+        ) : (
+          <div>
+            <PleaseLogin />
+          </div>
+        )
+      ) : (
+        spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)
+      )}
     </div>
   ) : (
     <LoadingContent options={{ marginTop: "15vh" }} />

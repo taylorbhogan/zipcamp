@@ -7,7 +7,7 @@ function WelcomeMessage() {
   const buttonText = "find your way";
   const buttonHref = "/areas";
   return (
-    <div className={styles.contentContainer}>
+    <div className={styles.container}>
       <div className={styles.welcomeMessage}>
         <p>the clearest way into the universe is through a forest wilderness.</p>
         <p>expore public lands and save the cool spots you discover.</p>

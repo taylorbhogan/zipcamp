@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: stretch;
   padding: 40px 40px 20px 40px;
-  background-color: var(--mainColorLightGreyOpaque);
+  background-color: var(--gray3);
   border-radius: var(--cardBorderRadius);
   width: 100%;
   max-width: 90vw;
@@ -13,7 +13,7 @@
 }
 
 .formHeader{
-  color: var(--mainColorDarkGrey);
+  color: var(--gray1);
   margin-bottom: 1rem;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .submitButton{
-  background-color: var(--mainColorGreen);
+  background-color: var(--green1);
   border: none;
   border-radius: 8px;
   padding: .75rem 0;
@@ -34,7 +34,7 @@
 }
 
 .submitButton:hover{
-  background-color: var(--secondaryColorGreen);
+  background-color: var(--green2);
 }
 
 .warningButton{
@@ -50,7 +50,7 @@
 }
 
 /* .warningButton{
-  border: 3px solid var(--mainColorWarning);
+  border: 3px solid var(--red1);
   border-radius: 7px;
   padding: 5px 10px;
   font-size: 16px;
@@ -58,6 +58,6 @@
 }
 
 .warningButton:hover{
-  background-color: var(--mainColorWarning);
+  background-color: var(--red1);
   color: white;
 } */

@@ -7,15 +7,15 @@
   justify-content: space-between;
   padding: 50px 0;
   font-size: 24px;
-  background-color: var(--mainColorDarkGrey);
+  background-color: var(--gray1);
   color: white;
   margin: auto;
 }
 
 .link{
-  color: var(--mainColorGreen);
+  color: var(--green1);
 }
 
 .link:hover{
-  color: var(--secondaryColorGreen);
+  color: var(--green2);
 }

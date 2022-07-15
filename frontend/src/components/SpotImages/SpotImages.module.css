@@ -5,7 +5,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--mainColorLightGrey);
+  /* background-color: var(--gray2); */
+  color: white;
   border-radius: var(--containerBorderRadius);
 }
 
@@ -35,7 +36,7 @@ input[type="file"]{
   border: 0;
   font-size: var(--bigButtonFontSize);
   font-weight: bold;
-  border-radius: var(--bigButtonBorderRadius);
+  border-radius: var(--buttonBorderRadiusLarge);
   padding: var(--bigButtonPadding);
   cursor: pointer;
   transition: var(bigButtonTransition);
@@ -47,13 +48,13 @@ input[type="file"]{
   width: var(--cardFinderWidth);
   cursor: pointer;
   box-sizing: border-box;
-  background-color: var(--mainColorGreen);
+  background-color: var(--green1);
   color: white;
   width: var(--cardFinderWidth);
   border: 0;
   font-size: var(--bigButtonFontSize);
   font-weight: bold;
-  border-radius: var(--bigButtonBorderRadius);
+  border-radius: var(--buttonBorderRadiusLarge);
   padding: var(--bigButtonPadding);
   cursor: pointer;
   transition: var(bigButtonTransition);

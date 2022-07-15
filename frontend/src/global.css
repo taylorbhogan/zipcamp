@@ -40,33 +40,10 @@ h2 {
   top: var(--navbarHeight);
 }
 
-
-/* @media screen and (min-width: 1500px) {
-  .contentContainer {
-    width: 70vw;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .contentContainer {
-    width: 70vw;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .contentContainer {
-  }
-} */
-
 .contentContainer {
   width: 80vw;
-  background-color: var(--mainColorLightGrey);
-  margin-top: var(--containerMarginTop);
-  margin-bottom: var(--containerMarginTop);
-  margin-right: var(--containerMarginSide);
-  margin-left: var(--containerMarginSide);
-  padding: var(--containerPaddingTop) var(--containerPaddingSide);
-  border-radius: var(--containerBorderRadius);
+  margin: var(--containerMarginTop) var(--containerMarginSide);
+  padding: 0 var(--containerPaddingSide);
   position: relative;
 }
 

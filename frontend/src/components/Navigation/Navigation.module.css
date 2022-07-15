@@ -1,4 +1,4 @@
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   #navbarLogoShort{
     display: none;
   }
@@ -7,7 +7,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   #navbarLogoLong{
     display: none;
   }

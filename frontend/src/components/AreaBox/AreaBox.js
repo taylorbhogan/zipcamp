@@ -1,29 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import parse from "html-react-parser";
 import truncate from "truncate-html";
-import SpotAddModal from "../SpotAddModal"
+import SpotAddModal from "../SpotAddModal";
 import styles from "./AreaBox.module.css";
 
 function AreaBox({ area, selectedArea }) {
   const [isOpen, setIsOpen] = useState(false);
-  const areaRef = useRef()
+  const areaRef = useRef();
 
   useEffect(() => {
-    if (selectedArea?.id === area.id){
-      areaRef.current.scrollIntoView({behavior: 'smooth'})
+    if (selectedArea?.id === area.id) {
+      areaRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  },[selectedArea, area])
+  }, [selectedArea, area]);
 
   return (
-    <div ref={areaRef} className={styles.areaBox} onMouseDown={() => setIsOpen(!isOpen)}>
+    <div
+      ref={areaRef}
+      className={styles.areaBox}
+      onMouseDown={() => setIsOpen(!isOpen)}
+    >
       <div className={styles.top}>
         <div>
           <h1 className={styles.areaName}>{area.name}</h1>
           <h2 className={styles.locationDiv}>{area.orgName}</h2>
         </div>
-        <div>
-          <SpotAddModal selectedArea={area}/>
-        </div>
+        <SpotAddModal selectedArea={area} />
       </div>
       {isOpen ? (
         <div className={styles.description}>{parse(area.description)}</div>

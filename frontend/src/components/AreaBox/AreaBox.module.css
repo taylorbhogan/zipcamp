@@ -26,7 +26,7 @@
 .top{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
 }
 
 .top h1,h2 {

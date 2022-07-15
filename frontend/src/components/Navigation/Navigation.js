@@ -75,7 +75,7 @@ function Navigation({ isLoaded }) {
                 <button onClick={logout} className={styles.button}>
                   log out
                 </button>
-                <SpotAddModal isUsingUserLocation={true} fromNav={true} />
+                <SpotAddModal isUsingUserLocation={true}/>
                 <p>Welcome back, {sessionUser.username}.</p>
               </>
             ) : (

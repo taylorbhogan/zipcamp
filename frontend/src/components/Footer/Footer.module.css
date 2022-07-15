@@ -23,7 +23,20 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 8rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+#tbh {
+  text-decoration: none;
+  color: rgb(140, 143, 148);
+  border-bottom: var(--navLinkBorderBottom);
+
+}
+
+#tbh:hover {
+  border-bottom: var(--navLinkBorderBottomHover);
+
 }
 
 .socialLogo{

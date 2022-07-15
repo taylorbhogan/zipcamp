@@ -15,6 +15,55 @@
 
 .container form {
   padding-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+input[type="file"]{
+  display: none;
+}
+
+.fileSelect{
+  width: var(--cardFinderWidth);
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: var(--bigButtonBackgroundColor);
+  width: var(--cardFinderWidth);
+  border: 0;
+  font-size: var(--bigButtonFontSize);
+  font-weight: bold;
+  border-radius: var(--bigButtonBorderRadius);
+  padding: var(--bigButtonPadding);
+  cursor: pointer;
+  transition: var(bigButtonTransition);
+  box-shadow: var(--buttonBoxShadowBlur);
+  text-align: center;
+}
+
+.fileUpload{
+  width: var(--cardFinderWidth);
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: var(--mainColorGreen);
+  color: white;
+  width: var(--cardFinderWidth);
+  border: 0;
+  font-size: var(--bigButtonFontSize);
+  font-weight: bold;
+  border-radius: var(--bigButtonBorderRadius);
+  padding: var(--bigButtonPadding);
+  cursor: pointer;
+  transition: var(bigButtonTransition);
+  box-shadow: var(--buttonBoxShadowBlur);
+  text-align: center;
+}
+
+.fileUpload:hover{
+  box-shadow: var(--buttonBoxShadowBlurHover);
+  transform: scale(1.02);
 }
 
 .imageContainer{
@@ -29,4 +78,22 @@
 .container img {
   width: 300px;
   border-radius: .25rem;
+}
+
+.showcaseWrapper{
+  height: 80vh;
+  max-height: 80vh;
+  width: auto;
+  max-width: 80vw;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.showcaseWrapper button {
+  color: white;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }

@@ -48,6 +48,12 @@
   --buttonBoxShadowBlur: 0rem 0 .1rem .1rem #DDD;
   --buttonBoxShadowBlurHover: 0rem 0 .3rem .1rem #AAA;
   --transition: all 200ms ease;
+  --bigButtonMargin: 20px 0;
+  --bigButtonBackgroundColor: d3d3d3;
+  --bigButtonFontSize: 17px;
+  --bigButtonBorderRadius: 7px;
+  --bigButtonPadding: 7px 0;
+  --bigButtonTransition: all 300ms ease;
 
   /* ---- INPUTS ---- */
   --inputLabelSize: 10px;

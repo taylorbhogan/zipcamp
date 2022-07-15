@@ -5,13 +5,13 @@ import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import WelcomeMessage from './components/WelcomeMessage';
 import SpotsList from './components/SpotsList'
 import SpotIdPage from './components/SpotIdPage'
 import AreasList from './components/AreasList';
 import UserPage from './components/UserPage';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css'
+import Splash from './components/Splash/Splash';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function App() {
           <ScrollToTop>
             <Switch>
               <Route exact path='/'>
-                <WelcomeMessage />
+                <Splash />
               </Route>
               <Route path='/signup'>
                 <SignupFormPage />

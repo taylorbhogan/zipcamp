@@ -36,27 +36,28 @@ function SpotIdPage() {
             className={"modalCard"}
             onClose={() => setShowEditModal(false)}
           >
-            <SpotAddForm spot={spot} selectedArea={spot.Area} onClose={() => setShowEditModal(false)}/>
+            <SpotAddForm
+              spot={spot}
+              selectedArea={spot.Area}
+              onClose={() => setShowEditModal(false)}
+            />
           </Modal>
         )}
-        <div className={styles.SpotDivHeader}>
-          <div className={styles.spotName}>{spot?.name}</div>
-          <div className={styles.coordinates}>
-            {spot?.lat}, {spot?.long}
+        <div className={styles.topsection}>
+          <div>
+            <div className={styles.spotName}>{spot?.name}</div>
+            <div className={styles.coordinates}>
+              {spot?.lat}, {spot?.long}
+            </div>
+            <div className={styles.areaName}>{spot?.Area?.name}</div>
           </div>
-          <div className={styles.areaName}>{spot?.Area?.name}</div>
+          <SpotFinderCard spotId={spotId} setEditModal={setEditModal} />
         </div>
         <div className={styles.midsection}>
-          <div className={styles.SpotDivInfo}>
-            <SpotFinderCard spotId={spotId} setEditModal={setEditModal} />
-            <div className={styles.SpotDivInfoRight}>
-              <div>{spot?.blurb}</div>
-              <div className={styles.directionsHeader}>Directions:</div>
-              <div className={styles.directions}>{spot?.directions}</div>
-            </div>
-          </div>
           <div className={styles.mapContainerWrapper}>
             <MapContainer
+              zoom={14}
+              singlePin={true}
               pins={{
                 pin: {
                   latitude: spot?.lat,
@@ -64,6 +65,11 @@ function SpotIdPage() {
                 },
               }}
             />
+          </div>
+          <div className={styles.spotInfo}>
+            <p>{spot?.blurb}</p>
+            <p className={styles.directions}>Directions:</p>
+            <p>{spot?.directions}</p>
           </div>
         </div>
         <TipsList spot={spot} />

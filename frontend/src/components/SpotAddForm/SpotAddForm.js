@@ -151,6 +151,7 @@ function SpotAddForm({
               setLong={setLong}
               isUsingUserLocation={isUsingUserLocation}
               singlePin={true}
+              zoom={14}
               pins={{
                 pin: {
                   latitude: lat,

@@ -11,7 +11,7 @@
   cursor: pointer;
   transition: var(bigButtonTransition);
   box-shadow: var(--buttonBoxShadowBlur);
-
+  color: white;
 }
 
 .button:hover{

@@ -11,15 +11,13 @@ function TipButton({ spot }) {
 
   return (
     <>
-      {
-        <button
-          hidden={sessionUser && sessionUser.id === spot?.userId ? false : true}
-          onClick={() => setShowTipForm(true)}
-          className={styles.button}
-        >
-          add a tip
-        </button>
-      }
+      <button
+        hidden={sessionUser ? false : true}
+        onClick={() => setShowTipForm(true)}
+        className={styles.button}
+      >
+        add a tip
+      </button>
       {showTipForm && (
         <Modal onClose={() => setShowTipForm(false)}>
           <TipForm isNew={true} setShowTipForm={setShowTipForm} />

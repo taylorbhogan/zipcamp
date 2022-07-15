@@ -1,0 +1,22 @@
+.splashSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.splashSection * {
+  max-width: 30vw;
+  text-align: center;
+}
+
+.splashSection h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.splashSection p {
+  font-size: 1.5rem;
+
+}

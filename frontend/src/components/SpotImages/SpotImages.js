@@ -79,7 +79,7 @@ const SpotImages = ({ spot }) => {
           ))
         ) : (
           <img
-            src={"/images/defaults/undraw_photos.svg"}
+            src={"/images/defaults/undraw_photo.svg"}
             alt="upload your own spot view!"
           />
         )}

@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { deleteSpot } from "../../store/spots";
 
 import styles from "./SpotFinderCard.module.css";
 
@@ -8,16 +10,21 @@ function SpotFinderCard({ setEditModal, spotId }) {
   const [showConfirmDeleteButton, setShowConfirmDeleteButton] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   const spot = useSelector((state) => state.spots.allSpots[spotId]);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const toggleMenu = () => {
-    setShowDeleteButton(!showDeleteButton)
-    if (showConfirmDeleteButton){
-      setShowConfirmDeleteButton(false)
+    setShowDeleteButton(!showDeleteButton);
+    if (showConfirmDeleteButton) {
+      setShowConfirmDeleteButton(false);
     }
-  }
+  };
 
-  const handleDelete = () => {
-    
+  const handleDelete = async () => {
+    const response = await dispatch(deleteSpot(spotId));
+    if (response) {
+      history.push("/spots");
+    }
   };
 
   return (
@@ -50,7 +57,7 @@ function SpotFinderCard({ setEditModal, spotId }) {
         </>
       ) : (
         <>
-          <div>
+          <div className={styles.left}>
             <p>Discovered by:</p>
             <p>{spot?.User?.username}</p>
           </div>

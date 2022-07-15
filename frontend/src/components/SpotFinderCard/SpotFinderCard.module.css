@@ -1,4 +1,4 @@
-.container{
+.container {
   background-color: var(--mainColorLightGrey);
   border-radius: var(--cardBorderRadius);
   box-shadow: var(--cardBoxShadow);
@@ -13,11 +13,11 @@
   box-sizing: border-box;
 }
 
-.left{
-  margin-top: .3rem;
+.left {
+  margin: .3rem .5rem;
 }
 
-.profileImage{
+.profileImage {
   height: 70px;
   width: 70px;
   border-radius: 35px;
@@ -26,7 +26,7 @@
   background-size: contain;
 }
 
-.container button{
+.container button {
   padding: 5px 10px;
   font-size: 13px;
   font-family: inherit;
@@ -39,17 +39,17 @@
   margin-top: .5rem;
 }
 
-.container button:hover{
+.container button:hover {
   box-shadow: var(--buttonBoxShadowBlurHover);
   transform: scale(1.02);
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-direction: column;
 
 }
 
-#confirmDelete{
+#confirmDelete {
   background-color: var(--mainColorWarning);
 }

@@ -28,53 +28,48 @@ function SpotIdPage() {
   };
 
   return (
-    <div className={styles.contentWrapper}>
-      <div className={"contentContainer"}>
-        <div className={styles.spotImageCarousel}></div>
-        {showEditModal && (
-          <Modal
-            className={"modalCard"}
+    <div className={styles.wrapper}>
+      <div className={styles.spotImageCarousel}></div>
+      {showEditModal && (
+        <Modal className={"modalCard"} onClose={() => setShowEditModal(false)}>
+          <SpotAddForm
+            spot={spot}
+            selectedArea={spot.Area}
             onClose={() => setShowEditModal(false)}
-          >
-            <SpotAddForm
-              spot={spot}
-              selectedArea={spot.Area}
-              onClose={() => setShowEditModal(false)}
-            />
-          </Modal>
-        )}
-        <div className={styles.topsection}>
-          <div>
-            <div className={styles.spotName}>{spot?.name}</div>
-            <div className={styles.coordinates}>
-              {spot?.lat}, {spot?.long}
-            </div>
-            <div className={styles.areaName}>{spot?.Area?.name}</div>
+          />
+        </Modal>
+      )}
+      <div className={styles.topsection}>
+        <div>
+          <div className={styles.spotName}>{spot?.name}</div>
+          <div className={styles.coordinates}>
+            {spot?.lat}, {spot?.long}
           </div>
-          <SpotFinderCard spotId={spotId} setEditModal={setEditModal} />
+          <div className={styles.areaName}>{spot?.Area?.name}</div>
         </div>
-        <div className={styles.midsection}>
-          <div className={styles.mapContainerWrapper}>
-            <MapContainer
-              zoom={14}
-              singlePin={true}
-              pins={{
-                pin: {
-                  latitude: spot?.lat,
-                  longitude: spot?.long,
-                },
-              }}
-            />
-          </div>
-          <div className={styles.spotInfo}>
-            <p>{spot?.blurb}</p>
-            <p className={styles.directions}>Directions:</p>
-            <p>{spot?.directions}</p>
-          </div>
-        </div>
-        <TipsList spot={spot} />
-        <SpotImages spot={spot} />
+        <SpotFinderCard spotId={spotId} setEditModal={setEditModal} />
       </div>
+      <div className={styles.midsection}>
+        <div className={styles.mapContainerWrapper}>
+          <MapContainer
+            zoom={14}
+            singlePin={true}
+            pins={{
+              pin: {
+                latitude: spot?.lat,
+                longitude: spot?.long,
+              },
+            }}
+          />
+        </div>
+        <div className={styles.spotInfo}>
+          <p>{spot?.blurb}</p>
+          <p className={styles.directions}>Directions:</p>
+          <p>{spot?.directions}</p>
+        </div>
+      </div>
+      <TipsList spot={spot} />
+      <SpotImages spot={spot} />
     </div>
   );
 }

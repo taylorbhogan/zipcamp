@@ -9,7 +9,6 @@ const Pagination = ({ resultsPerPage, resultPageNum, setResultPageNum, isLoaded 
   );
   const [resultPages, setResultPages] = useState([]);
 
-console.log("resultsPerPage", "resultPageNum", "setResultPageNum", "isLoaded", resultsPerPage, resultPageNum, setResultPageNum, isLoaded)
   useEffect(() => {
     const numResultsPages = Math.ceil(totalSearchResults === undefined ? 0 : totalSearchResults / resultsPerPage);
     setResultPages(Array(numResultsPages).fill(null));

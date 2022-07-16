@@ -2,17 +2,24 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  padding-top: var(--navbarHeight);
 }
 
 .pageLeft{
   width: 60vw;
   height: 100vh;
   background-color: var(--gray1);
+  padding-bottom: var(--footerHeight);
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.scroll {
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
 }
 
 .pageRight{

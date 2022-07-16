@@ -58,7 +58,7 @@ function AreasList() {
     const fetchOrganizations = async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`);
       const data = await res.json();
-      if (res.ok){
+      if (res.ok) {
         const filterOut = [
           "STATE PARKS",
           "FEDERAL",
@@ -99,7 +99,7 @@ function AreasList() {
         setOrganizations(obj);
       } else {
         try {
-          setErrors([...errors, ...data?.errors])
+          setErrors([...errors, ...data?.errors]);
         } catch (e) {
           console.log(e);
         }
@@ -125,24 +125,30 @@ function AreasList() {
           setSelectedLocation={setSelectedLocation}
           clearSelection={clearSelection}
         />
-        {errors.length > 0 && <Errors errors={errors}/> }
-        {isLoaded ? (
-          areas.length > 0 ? (
-            areas.map((area) => (
-              <AreaBox key={area.id} area={area} selectedArea={selectedArea} />
-            ))
+        {errors.length > 0 && <Errors errors={errors} />}
+        <div className={styles.scroll}>
+          {isLoaded ? (
+            areas.length > 0 ? (
+              areas.map((area) => (
+                <AreaBox
+                  key={area.id}
+                  area={area}
+                  selectedArea={selectedArea}
+                />
+              ))
+            ) : (
+              <MessageNoAreas />
+            )
           ) : (
-            <MessageNoAreas />
-          )
-        ) : (
-          <LoadingContent location={"areas"}/>
-        )}
-        <Pagination
-          isLoaded={isLoaded}
-          resultsPerPage={resultsPerPage}
-          resultPageNum={resultPageNum}
-          setResultPageNum={setResultPageNum}
-        />
+            <LoadingContent location={"areas"} />
+          )}
+          {areas.length > 0 && <Pagination
+            isLoaded={isLoaded}
+            resultsPerPage={resultsPerPage}
+            resultPageNum={resultPageNum}
+            setResultPageNum={setResultPageNum}
+          />}
+        </div>
       </div>
       <div className={styles.pageRight}>
         <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />

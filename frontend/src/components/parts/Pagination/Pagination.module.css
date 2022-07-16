@@ -2,8 +2,7 @@
   border: 1px solid var(--gray2);
   border-radius: var(--containerBorderRadius);
   padding: 2rem 3rem;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin: 3rem auto 2rem auto;
   display: flex;
   flex-direction: row;
 }

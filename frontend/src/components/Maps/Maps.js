@@ -1,6 +1,11 @@
 // the purpose of this component is to load & customize the map. first we declare customizations that are then applied by the GoogleMap component. then we use useJsApiLoader to do all the heavy lifting
-import React from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import React, { useState } from "react";
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
 import styles from "./Maps.module.css";
 
 const Maps = ({
@@ -13,7 +18,8 @@ const Maps = ({
   setFunction,
   singlePin = false,
 }) => {
-console.log("pins",pins);
+  const [id, setId] = useState(null);
+
   const containerStyle = {
     width: "100%",
     height: "100%",
@@ -30,6 +36,11 @@ console.log("pins",pins);
     const lng = e.latLng.lng();
     setLat(lat.toFixed(6));
     setLong(lng.toFixed(6));
+  };
+
+  const handleClick = (pushpin) => {
+    setId(pushpin.id);
+    setFunction(pushpin);
   };
 
   const footer = (
@@ -60,6 +71,7 @@ console.log("pins",pins);
                   }
             }
             zoom={zoom}
+            onClick={() => setId(null)}
           >
             {Object.values(pins).map((pushpin) => (
               <Marker
@@ -76,9 +88,23 @@ console.log("pins",pins);
                   color: "#ffffff",
                   fontSize: "18px",
                 }}
-                onClick={() => setFunction(pushpin)}
+                onClick={() => handleClick(pushpin)}
                 onDragEnd={(e) => onMarkerDragEnd(e)}
-              />
+              >
+                {id === pushpin.id && (
+                  <InfoWindow
+                    position={{
+                      lat: +pushpin.latitude,
+                      lng: +pushpin.longitude,
+                    }}
+                  >
+                    <div className={styles.infoWindow}>
+                      <h3>{pushpin.name}</h3>
+                      <p>{pushpin.orgName}</p>
+                    </div>
+                  </InfoWindow>
+                )}
+              </Marker>
             ))}
           </GoogleMap>
           {/* is adding at all */}

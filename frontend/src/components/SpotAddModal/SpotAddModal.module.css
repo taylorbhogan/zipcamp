@@ -11,13 +11,16 @@
   border-radius: var(--buttonBorderRadiusSmall);
   transition: all .3s;
   width: 2rem;
-  margin: 0;
+  min-width: 2rem;
+  margin: 0 0 0 7rem;
   padding: 0;
 }
 
 .addSpotButton:hover{
   background-color: var(--green2);
   width: 9rem;
+  min-width: 9rem;
+  margin: 0;
 }
 
 .addSpotButton::before{

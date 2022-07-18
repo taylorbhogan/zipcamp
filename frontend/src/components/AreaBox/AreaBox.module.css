@@ -1,8 +1,5 @@
 .areaBox {
   border-radius: var(--cardBorderRadius);
-  /* background-color: var(--gray2); */
-  /* background-color: #2b2d33; */
-  /* background-color: #111214; */
   background-color: #141a16;
   display: flex;
   flex-direction: column;
@@ -27,6 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: top;
+  gap: 1rem;
 }
 
 .top h1,h2 {

@@ -134,6 +134,7 @@ function AreasList() {
                   key={area.id}
                   area={area}
                   selectedArea={selectedArea}
+                  setSelectedArea={setSelectedArea}
                 />
               ))
             ) : (
@@ -151,7 +152,7 @@ function AreasList() {
         </div>
       </div>
       <div className={styles.pageRight}>
-        <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} />
+        <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} selectedItem={selectedArea}/>
       </div>
     </div>
   );

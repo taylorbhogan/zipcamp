@@ -4,6 +4,7 @@
   width: 100vw;
 }
 
+
 .pageLeft{
   width: 60vw;
   height: 100vh;
@@ -25,4 +26,21 @@
 .pageRight{
   width: 40vw;
   height: 100vh;
+}
+
+
+@media (max-width: 950px) {
+  .pageContainer{
+    flex-direction: column;
+  }
+  .pageRight{
+    height: 30vh;
+    width: 100vw;
+  }
+  .pageLeft{
+    width: 100vw;
+    height: 65vh;
+    padding-bottom: 1rem;
+  }
+
 }

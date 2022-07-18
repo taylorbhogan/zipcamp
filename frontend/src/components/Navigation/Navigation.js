@@ -72,10 +72,10 @@ function Navigation({ isLoaded }) {
         <div className={styles.navbar}>
           <div className={styles.navbarLeft}>
             <button
-              className={styles.menuButton}
+              className={`material-icons md-dark ${styles.menuButton}`}
               onClick={() => setShowModal((showModal) => !showModal)}
             >
-              Menu
+              menu
             </button>
             {showModal && (
               <Modal onClose={() => setShowModal(false)}>

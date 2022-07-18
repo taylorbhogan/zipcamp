@@ -23,7 +23,7 @@
 .top{
   display: flex;
   justify-content: space-between;
-  align-items: top;
+  align-items: flex-start;
   gap: 1rem;
 }
 
@@ -38,4 +38,11 @@
 
 .description a {
   text-decoration: none;
+}
+
+.addSpotButtonWrapper{
+  min-width: 9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

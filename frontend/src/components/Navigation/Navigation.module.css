@@ -1,27 +1,3 @@
-@media screen and (min-width: 900px) {
-  #navbarLogoShort{
-    display: none;
-  }
-  .navbarRight{
-    gap: 1.8rem;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  #navbarLogoLong{
-    display: none;
-  }
-  .navbarRight{
-    gap: 1rem;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .navbarRight p {
-    display: none;
-  }
-}
-
 .navbarWrapper{
   position: fixed;
   z-index: 1;
@@ -53,16 +29,17 @@
   display: flex;
   flex-direction: row;
   margin-right: var(--navSidePadding);
+  gap: 1.8rem;
 }
 
-.navbarLogo{
+.logo{
   position: relative;
   top: 12px;
   color: white;
   text-decoration: none;
 }
 
-.navbarLogo h1 {
+.logo h1 {
   font-size: 60px;
 }
 
@@ -112,4 +89,37 @@
 
 .button:hover{
   border-bottom: var(--navLinkBorderBottomHover);
+}
+
+.navLinks{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.8rem;
+
+}
+
+.smallScreenNavLinks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 900px) {
+  .menuButton{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navLinks{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .navbarRight p {
+    display: none;
+  }
 }

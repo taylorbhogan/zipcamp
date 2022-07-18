@@ -1,8 +1,5 @@
 .areaBox {
   border-radius: var(--cardBorderRadius);
-  /* background-color: var(--gray2); */
-  /* background-color: #2b2d33; */
-  /* background-color: #111214; */
   background-color: #141a16;
   display: flex;
   flex-direction: column;
@@ -26,7 +23,8 @@
 .top{
   display: flex;
   justify-content: space-between;
-  align-items: top;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .top h1,h2 {
@@ -40,4 +38,11 @@
 
 .description a {
   text-decoration: none;
+}
+
+.addSpotButtonWrapper{
+  min-width: 9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

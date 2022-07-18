@@ -4,28 +4,34 @@ import truncate from "truncate-html";
 import SpotAddModal from "../SpotAddModal";
 import styles from "./AreaBox.module.css";
 
-function AreaBox({ area, selectedArea }) {
+function AreaBox({ area, selectedArea, setSelectedArea }) {
   const [isOpen, setIsOpen] = useState(false);
   const areaRef = useRef();
 
   useEffect(() => {
     if (selectedArea?.id === area.id) {
       areaRef.current.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
     }
   }, [selectedArea, area]);
 
+  const handleClick = () => {
+    setSelectedArea(area);
+    setIsOpen((isOpen) => !isOpen);
+  };
+
   return (
-    <div
-      ref={areaRef}
-      className={styles.areaBox}
-      onMouseDown={() => setIsOpen(!isOpen)}
-    >
+    <div ref={areaRef} className={styles.areaBox} onMouseDown={handleClick}>
       <div className={styles.top}>
         <div>
           <h1 className={styles.areaName}>{area.name}</h1>
           <h2 className={styles.locationDiv}>{area.orgName}</h2>
         </div>
-        <SpotAddModal selectedArea={area} />
+        <div className={styles.addSpotButtonWrapper}>
+          <SpotAddModal selectedArea={area} />
+        </div>
       </div>
       {isOpen ? (
         <div className={styles.description}>{parse(area.description)}</div>

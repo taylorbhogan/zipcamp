@@ -17,3 +17,8 @@
   margin-top: 1rem;
   width: 100%;
 }
+
+.infoWindow{
+  width: 10vw;
+  min-width: 80px;
+}

@@ -16,6 +16,7 @@ const MapContainer = ({
   setFunction,
   singlePin,
   isUsingUserLocation,
+  selectedItem,
 }) => {
   const key = useSelector((state) => state.maps.key);
 
@@ -49,6 +50,7 @@ const MapContainer = ({
         zoom={zoom}
         setFunction={setFunction}
         singlePin={singlePin}
+        selectedItem={selectedItem}
       />
   );
 };

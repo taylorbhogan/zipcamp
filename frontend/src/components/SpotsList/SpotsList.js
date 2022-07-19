@@ -46,7 +46,16 @@ function SpotsList() {
   return isLoaded ? (
     <div className={styles.wrapper}>
       <div className={styles.searchBar}>
-        <Input type="text" value={searchTerm} onChange={handleSearch} />
+        <Input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearch}
+          placeholder={
+            location.pathname === "/my-spots"
+              ? "search spots you've added"
+              : "search community spots"
+          }
+        />
       </div>
       <Errors errors={errors} />
       {spots.length === 0 && isLoaded === true && <div>No spots found</div>}

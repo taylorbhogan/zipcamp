@@ -46,6 +46,8 @@ const Input = ({
         className={styles.input}
       ></input>
     );
+  } else {
+    return null;
   }
 };
 

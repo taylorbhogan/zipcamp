@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const SET_SPOTS = "spots/SET_SPOTS";
+const SET_FILTERED_SPOTS = "spots/SET_FILTERED_SPOTS";
 const SET_SPOT = "spots/SET_SPOT";
 const ADD_ONE = "spots/ADD_ONE";
 const EDIT_ONE = "spots/EDIT_ONE";
@@ -9,6 +10,11 @@ const DELETE_ONE = "spots/DELETE_ONE";
 const setSpots = (spots) => ({
   type: SET_SPOTS,
   spots,
+});
+
+const setFilteredSpots = (filteredSpots) => ({
+  type: SET_FILTERED_SPOTS,
+  filteredSpots,
 });
 
 export const setSpot = (spot) => ({
@@ -91,8 +97,29 @@ export const deleteSpot = (spotId) => async (dispatch) => {
   return null;
 };
 
+export const searchSpots = (searchTerm) => async (dispatch) => {
+  if (searchTerm === "") {
+    const res = await csrfFetch("/api/spots");
+    if (res.ok) {
+      const allSpots = await res.json();
+      dispatch(setFilteredSpots(allSpots));
+      return allSpots;
+    }
+  }
+  const res = await csrfFetch(`api/spots/search/${searchTerm}`);
+
+  if (res.ok) {
+    const filteredSpots = await res.json();
+    dispatch(setFilteredSpots(filteredSpots));
+    return filteredSpots.length;
+  }
+
+  return [searchTerm];
+};
+
 const initialState = {
   allSpots: {},
+  filteredSpots: [],
   currSpot: null,
 };
 
@@ -104,6 +131,16 @@ const spotsReducer = (state = initialState, action) => {
       action.spots.forEach((spot) => {
         newState.allSpots[spot.id] = spot;
       });
+      return {
+        ...state,
+        ...newState,
+      };
+    case SET_FILTERED_SPOTS:
+      newState = Object.assign({}, state);
+      newState.filteredSpots = [...action.filteredSpots];
+      // action.filteredSpots.forEach((spot) => {
+      //   newState.filteredSpots[spot.id] = spot;
+      // });
       return {
         ...state,
         ...newState,

@@ -12,42 +12,44 @@ import Input from "../parts/Input/Input";
 function SpotsList() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const spots = useSelector((state) => Object.values(state.spots.allSpots));
-  const filteredSpots = useSelector((state) => state.spots.filteredSpots);
   const [searchTerm, setSearchTerm] = useState("");
+  const [numQueryResults, setNumQueryResults] = useState(0);
+
+  const spots = useSelector((state) => state.spots);
   const user = useSelector((state) => state.session.user);
 
-  useEffect(() => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    setSearchTerm((searchTerm) => e.target.value);
     const fetchFilteredSpots = async () => {
-      const numQueryResults = await dispatch(searchSpots(searchTerm));
+      const responseQuantity = await dispatch(searchSpots(e.target.value));
+      setNumQueryResults(responseQuantity);
     };
-
     fetchFilteredSpots();
-  }, [searchTerm, dispatch]);
+  };
 
   useEffect(() => {
-    const fetchSpots = async () => {
-      const response = await dispatch(getSpots());
-      if (typeof response === "string") {
-        setErrors([response]);
-      }
-      setIsLoaded(true);
-    };
-    fetchSpots();
-  }, [dispatch]);
+    if (isLoaded === false) {
+      const fetchSpots = async () => {
+        const response = await dispatch(getSpots());
+        if (typeof response === "string") {
+          setErrors([response]);
+        }
+        setIsLoaded(true);
+      };
+      fetchSpots();
+    }
+  }, [dispatch, isLoaded]);
 
   return isLoaded ? (
     <div className={styles.wrapper}>
       <div className={styles.searchBar}>
-        <Input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <Input type="text" value={searchTerm} onChange={handleSearch} />
       </div>
       <Errors errors={errors} />
+      {spots.length === 0 && isLoaded === true && <div>No spots found</div>}
       {location.pathname === "/my-spots" ? (
         user ? (
           spots
@@ -59,8 +61,9 @@ function SpotsList() {
           </div>
         )
       ) : (
-        filteredSpots.map((spot) => <SpotBox key={spot.id} spot={spot} />)
+        spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)
       )}
+      {numQueryResults > 0 && <div>{numQueryResults}</div>}
     </div>
   ) : (
     <LoadingContent options={{ marginTop: "15vh" }} />

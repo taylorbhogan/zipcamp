@@ -41,6 +41,16 @@ export const getSpots = () => async (dispatch) => {
   return "An unexpected error occurred while fetching your spots from our servers";
 };
 
+export const getUserSpots = (userId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/spots/users/${userId}`);
+  if (res.ok) {
+    const spots = await res.json();
+    dispatch(setSpots(spots));
+    return spots;
+  }
+  return "An unexpected error occurred while fetching your spots from our servers";
+};
+
 export const getSpot = (spotId) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}`);
   if (res.ok) {
@@ -112,43 +122,19 @@ export const searchSpots = (searchTerm) => async (dispatch) => {
 };
 
 const spotsReducer = (state = [], action) => {
-  let newState;
   switch (action.type) {
     case SET_SPOTS:
       return [...action.spots];
     case SET_SPOT:
-      return [action.spot]
-      // const thisSpot = {};
-      // thisSpot[action.spot.id] = action.spot;
-      // return {
-      //   ...state,
-      //   allSpots: {
-      //     ...state.allSpots,
-      //     ...thisSpot,
-      //   },
-      // };
+      return [action.spot];
     case ADD_ONE: {
-      return {
-        ...state,
-        [action.spot.id]: action.spot,
-      };
+      return [action.spot];
     }
     case EDIT_ONE: {
-      const previousSpots = { ...state.allSpots };
-      previousSpots[action.spot.id] = action.spot;
-      return {
-        ...state,
-        allSpots: {
-          ...previousSpots,
-        },
-      };
+      return [action.spot];
     }
     case DELETE_ONE: {
-      newState = Object.assign({}, state);
-      delete newState.allSpots[action.spotId];
-      return {
-        ...newState,
-      };
+      return [];
     }
     default:
       return state;

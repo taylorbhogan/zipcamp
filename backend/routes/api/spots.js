@@ -31,6 +31,23 @@ router.get(
 );
 
 router.get(
+  "/users/:userId",
+  asyncHandler(async (req, res) => {
+    const userId = req.params.userId
+    const spots = await Spot.findAll({
+      include: [Area, State, User, SpotImage],
+      where: {
+        userId: {
+          [Op.eq]: userId
+        }
+      },
+      limit: 10,
+    });
+    res.json(spots);
+  })
+);
+
+router.get(
   "/search/:searchTerm",
   asyncHandler(async (req, res) => {
     const searchTerm = req.params.searchTerm

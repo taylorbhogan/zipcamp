@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getSpots, searchSpots } from "../../store/spots";
+import { getSpots, getUserSpots, searchSpots } from "../../store/spots";
 import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
 import Errors from "../parts/Errors";
@@ -22,7 +22,7 @@ function SpotsList() {
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {
-    setSearchTerm((searchTerm) => e.target.value);
+    setSearchTerm(e.target.value);
     const fetchFilteredSpots = async () => {
       const responseQuantity = await dispatch(searchSpots(e.target.value));
       setNumQueryResults(responseQuantity);
@@ -33,13 +33,25 @@ function SpotsList() {
   useEffect(() => {
     if (isLoaded === false) {
       const fetchSpots = async () => {
-        const response = await dispatch(getSpots());
+          const response = await dispatch(getSpots());
         if (typeof response === "string") {
           setErrors([response]);
         }
         setIsLoaded(true);
       };
-      fetchSpots();
+      const fetchUserSpots = async () => {
+          const response = await dispatch(getUserSpots(user.id));
+        if (typeof response === "string") {
+          setErrors([response]);
+        }
+        setIsLoaded(true);
+      };
+
+      if (location.pathname === "/my-spots") {
+        fetchUserSpots();
+      } else {
+        fetchSpots();
+      }
     }
   }, [dispatch, isLoaded]);
 

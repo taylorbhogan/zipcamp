@@ -15,7 +15,7 @@ function SpotIdPage() {
   const { spotId } = useParams();
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const spot = useSelector((state) => state.spots.allSpots[spotId]);
+  let [spot] = useSelector((state) => state.spots);
 
   useEffect(() => {
     if (!spot) {
@@ -47,7 +47,7 @@ function SpotIdPage() {
           </div>
           <div className={styles.areaName}>{spot?.Area?.name}</div>
         </div>
-        <SpotFinderCard spotId={spotId} setEditModal={setEditModal} />
+        <SpotFinderCard spot={spot} setEditModal={setEditModal} />
       </div>
       <div className={styles.midsection}>
         <div className={styles.mapContainerWrapper}>

@@ -5,11 +5,10 @@ import { deleteSpot } from "../../store/spots";
 
 import styles from "./SpotFinderCard.module.css";
 
-function SpotFinderCard({ setEditModal, spotId }) {
+function SpotFinderCard({ setEditModal, spot }) {
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showConfirmDeleteButton, setShowConfirmDeleteButton] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
-  const spot = useSelector((state) => state.spots.allSpots[spotId]);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,7 +20,7 @@ function SpotFinderCard({ setEditModal, spotId }) {
   };
 
   const handleDelete = async () => {
-    const response = await dispatch(deleteSpot(spotId));
+    const response = await dispatch(deleteSpot(spot.id));
     if (response) {
       history.push("/spots");
     }

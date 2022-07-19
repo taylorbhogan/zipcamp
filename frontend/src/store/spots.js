@@ -117,15 +117,16 @@ const spotsReducer = (state = [], action) => {
     case SET_SPOTS:
       return [...action.spots];
     case SET_SPOT:
-      const thisSpot = {};
-      thisSpot[action.spot.id] = action.spot;
-      return {
-        ...state,
-        allSpots: {
-          ...state.allSpots,
-          ...thisSpot,
-        },
-      };
+      return [action.spot]
+      // const thisSpot = {};
+      // thisSpot[action.spot.id] = action.spot;
+      // return {
+      //   ...state,
+      //   allSpots: {
+      //     ...state.allSpots,
+      //     ...thisSpot,
+      //   },
+      // };
     case ADD_ONE: {
       return {
         ...state,

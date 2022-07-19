@@ -67,7 +67,7 @@ const SpotImages = ({ spot }) => {
         {image !== null && <button type="submit" className={styles.fileUpload}>upload image</button>}
       </form>
       <div className={styles.imageContainer}>
-        {spot?.SpotImages.length > 0 ? (
+        {spot?.SpotImages?.length > 0 ? (
           spot?.SpotImages.map((img, idx) => (
             <img
               src={img.imgUrl}

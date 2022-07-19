@@ -22,6 +22,15 @@
   flex-direction: row;
   align-items: flex-end;
   margin-left: var(--navSidePadding);
+  gap: 1rem;
+}
+
+.menuButton{
+  min-height: 35px;
+  background-color: var(--gray2);
+  border: none;
+  border-radius: var(--buttonBorderRadiusSmall);
+  cursor: pointer;
 }
 
 .navbarRight{

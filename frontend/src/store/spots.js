@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const SET_SPOTS = "spots/SET_SPOTS";
-const SET_FILTERED_SPOTS = "spots/SET_FILTERED_SPOTS";
 const SET_SPOT = "spots/SET_SPOT";
 const ADD_ONE = "spots/ADD_ONE";
 const EDIT_ONE = "spots/EDIT_ONE";
@@ -10,11 +9,6 @@ const DELETE_ONE = "spots/DELETE_ONE";
 const setSpots = (spots) => ({
   type: SET_SPOTS,
   spots,
-});
-
-const setFilteredSpots = (filteredSpots) => ({
-  type: SET_FILTERED_SPOTS,
-  filteredSpots,
 });
 
 export const setSpot = (spot) => ({
@@ -39,6 +33,16 @@ const deleteOneSpot = (spotId) => ({
 
 export const getSpots = () => async (dispatch) => {
   const res = await csrfFetch("/api/spots");
+  if (res.ok) {
+    const spots = await res.json();
+    dispatch(setSpots(spots));
+    return spots;
+  }
+  return "An unexpected error occurred while fetching your spots from our servers";
+};
+
+export const getUserSpots = (userId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/spots/users/${userId}`);
   if (res.ok) {
     const spots = await res.json();
     dispatch(setSpots(spots));
@@ -102,7 +106,7 @@ export const searchSpots = (searchTerm) => async (dispatch) => {
     const res = await csrfFetch("/api/spots");
     if (res.ok) {
       const allSpots = await res.json();
-      dispatch(setFilteredSpots(allSpots));
+      dispatch(setSpots(allSpots));
       return allSpots;
     }
   }
@@ -110,73 +114,27 @@ export const searchSpots = (searchTerm) => async (dispatch) => {
 
   if (res.ok) {
     const filteredSpots = await res.json();
-    dispatch(setFilteredSpots(filteredSpots));
+    dispatch(setSpots(filteredSpots));
     return filteredSpots.length;
   }
 
   return [searchTerm];
 };
 
-const initialState = {
-  allSpots: {},
-  filteredSpots: [],
-  currSpot: null,
-};
-
-const spotsReducer = (state = initialState, action) => {
-  let newState;
+const spotsReducer = (state = [], action) => {
   switch (action.type) {
     case SET_SPOTS:
-      newState = Object.assign({}, state);
-      action.spots.forEach((spot) => {
-        newState.allSpots[spot.id] = spot;
-      });
-      return {
-        ...state,
-        ...newState,
-      };
-    case SET_FILTERED_SPOTS:
-      newState = Object.assign({}, state);
-      newState.filteredSpots = [...action.filteredSpots];
-      // action.filteredSpots.forEach((spot) => {
-      //   newState.filteredSpots[spot.id] = spot;
-      // });
-      return {
-        ...state,
-        ...newState,
-      };
+      return [...action.spots];
     case SET_SPOT:
-      const thisSpot = {};
-      thisSpot[action.spot.id] = action.spot;
-      return {
-        ...state,
-        allSpots: {
-          ...state.allSpots,
-          ...thisSpot,
-        },
-      };
+      return [action.spot];
     case ADD_ONE: {
-      return {
-        ...state,
-        [action.spot.id]: action.spot,
-      };
+      return [action.spot];
     }
     case EDIT_ONE: {
-      const previousSpots = { ...state.allSpots };
-      previousSpots[action.spot.id] = action.spot;
-      return {
-        ...state,
-        allSpots: {
-          ...previousSpots,
-        },
-      };
+      return [action.spot];
     }
     case DELETE_ONE: {
-      newState = Object.assign({}, state);
-      delete newState.allSpots[action.spotId];
-      return {
-        ...newState,
-      };
+      return [];
     }
     default:
       return state;

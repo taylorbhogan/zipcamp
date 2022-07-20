@@ -1,6 +1,5 @@
 // the purpose of this component is to load & customize the map. first we declare customizations that are then applied by the GoogleMap component. then we use useJsApiLoader to do all the heavy lifting
 import React from "react";
-import { useLocation } from "react-router-dom";
 import {
   GoogleMap,
   useJsApiLoader,
@@ -20,7 +19,6 @@ const Maps = ({
   singlePin = false,
   selectedItem
 }) => {
-  const location = useLocation();
 
   const containerStyle = {
     width: "100%",
@@ -92,7 +90,7 @@ const Maps = ({
                 onClick={() => handleClick(pushpin)}
                 onDragEnd={(e) => onMarkerDragEnd(e)}
               >
-                {location.pathname === "/areas" && selectedItem?.id === pushpin.id && (
+                {singlePin === false && selectedItem?.id === pushpin.id && (
                   <InfoWindow
                     position={{
                       lat: +pushpin.latitude,

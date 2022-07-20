@@ -23,7 +23,7 @@ function AreaBox({ area, selectedArea, setSelectedArea }) {
   };
 
   return (
-    <div ref={areaRef} className={styles.areaBox} onMouseDown={handleClick}>
+    <div ref={areaRef} className={styles.areaBox} onClick={handleClick}>
       <div className={styles.top}>
         <div>
           <h1 className={styles.areaName}>{area.name}</h1>

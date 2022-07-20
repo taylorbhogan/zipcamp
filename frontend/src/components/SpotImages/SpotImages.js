@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { createSpotImage } from "../../store/spots";
-import CloseModalButton from "../parts/CloseModalButton";
 import PleaseLogin from "../parts/PleaseLogin";
 import LoadingContent from "../parts/LoadingContent";
 import styles from "./SpotImages.module.css";
+import Showcase from "../parts/Showcase/Showcase";
 
 const SpotImages = ({ spot }) => {
   const [image, setImage] = useState(null);
@@ -14,6 +14,7 @@ const SpotImages = ({ spot }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -47,27 +48,11 @@ const SpotImages = ({ spot }) => {
     setShowModal(true);
   };
 
-  const rotateLeft = () => {
-    if (selectedPhoto === 0) {
-      setSelectedPhoto(spot.SpotImages.length - 1);
-    } else {
-      setSelectedPhoto(selectedPhoto - 1);
-    }
-  };
-
-  const rotateRight = () => {
-    if (selectedPhoto === spot.SpotImages.length - 1) {
-      setSelectedPhoto(0);
-    } else {
-      setSelectedPhoto(selectedPhoto + 1);
-    }
-  };
-
   const onLabelClick = (e) => {
     if (!sessionUser) {
-      e.preventDefault()
-      setShowPleaseLoginModal(true)
-    };
+      e.preventDefault();
+      setShowPleaseLoginModal(true);
+    }
   };
 
   return (
@@ -114,17 +99,12 @@ const SpotImages = ({ spot }) => {
         )}
       </div>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <CloseModalButton closeFunction={() => setShowModal(false)} />
-          <div className={styles.showcaseWrapper}>
-            <button onClick={rotateLeft}>{"<"}</button>
-            <img
-              src={spot.SpotImages[selectedPhoto]?.imgUrl}
-              alt="a user-submitted spot"
-            />
-            <button onClick={rotateRight}>{">"}</button>
-          </div>
-        </Modal>
+        <Showcase
+          setShowModal={setShowModal}
+          spot={spot}
+          selectedPhoto={selectedPhoto}
+          setSelectedPhoto={setSelectedPhoto}
+        />
       )}
     </div>
   );

@@ -5,7 +5,7 @@ import { deleteSpot } from "../../store/spots";
 
 import styles from "./SpotFinderCard.module.css";
 
-function SpotFinderCard({ setEditModal, spot }) {
+function SpotFinderCard({ openEditModal, spot }) {
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [showConfirmDeleteButton, setShowConfirmDeleteButton] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
@@ -26,6 +26,11 @@ function SpotFinderCard({ setEditModal, spot }) {
     }
   };
 
+  const handleEditClick = () => {
+    openEditModal()
+    toggleMenu()
+  }
+
   return (
     <div className={styles.container}>
       {spot?.userId === sessionUser?.id ? (
@@ -38,7 +43,7 @@ function SpotFinderCard({ setEditModal, spot }) {
               </button>
               {showDeleteButton && (
                 <>
-                  <button onClick={setEditModal}>edit spot</button>
+                  <button onClick={handleEditClick}>edit spot</button>
                   {showConfirmDeleteButton ? (
                     <button onClick={handleDelete} id={styles.confirmDelete}>
                       are you sure?

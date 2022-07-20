@@ -91,7 +91,7 @@ router.post(
     const spot = await Spot.create(formData);
 
     const spotIJustCreated = await Spot.findByPk(spot.id, {
-      include: User,
+      include: [Area, State, User, SpotImage],
     });
 
     res.json(spotIJustCreated);

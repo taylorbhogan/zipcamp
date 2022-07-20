@@ -45,7 +45,7 @@ function SpotIdPage() {
           <div className={styles.coordinates}>
             {spot?.lat}, {spot?.long}
           </div>
-          <div className={styles.areaName}>{spot?.Area?.name}</div>
+          <div className={styles.areaName}>{spot?.Area.name}</div>
         </div>
         <SpotFinderCard spot={spot} setEditModal={setEditModal} />
       </div>

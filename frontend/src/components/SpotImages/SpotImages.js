@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
-import { createSpotImage } from "../../store/spotImages";
+import { createSpotImage } from "../../store/spots";
 import CloseModalButton from "../parts/CloseModalButton";
 import styles from "./SpotImages.module.css";
 
@@ -11,6 +11,8 @@ const SpotImages = ({ spot }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const dispatch = useDispatch();
+
+  const spotImages = useSelector((state) => state.spots[0]?.SpotImages);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,11 +66,15 @@ const SpotImages = ({ spot }) => {
           <input type="file" onChange={updateFile} />
           choose file
         </label>
-        {image !== null && <button type="submit" className={styles.fileUpload}>upload image</button>}
+        {image !== null && (
+          <button type="submit" className={styles.fileUpload}>
+            upload image
+          </button>
+        )}
       </form>
       <div className={styles.imageContainer}>
-        {spot?.SpotImages?.length > 0 ? (
-          spot?.SpotImages.map((img, idx) => (
+        {spotImages?.length > 0 ? (
+          spotImages?.map((img, idx) => (
             <img
               src={img.imgUrl}
               alt={"a user-submitted spot"}

@@ -1,23 +1,32 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
-import { createSpotImage } from "../../store/spotImages";
+import { createSpotImage } from "../../store/spots";
 import CloseModalButton from "../parts/CloseModalButton";
+import PleaseLogin from "../parts/PleaseLogin";
+import LoadingContent from "../parts/LoadingContent";
 import styles from "./SpotImages.module.css";
 
 const SpotImages = ({ spot }) => {
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const dispatch = useDispatch();
 
+  const sessionUser = useSelector((state) => state.session.user);
+  const spotImages = useSelector((state) => state.spots[0]?.SpotImages);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     let newErrors = [];
     dispatch(createSpotImage({ image, spotId: spot.id }))
       .then(() => {
         setImage(null);
+        setIsLoading(false);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -54,21 +63,41 @@ const SpotImages = ({ spot }) => {
     }
   };
 
+  const onLabelClick = (e) => {
+    if (!sessionUser) {
+      e.preventDefault()
+      setShowPleaseLoginModal(true)
+    };
+  };
+
   return (
     <div className={styles.container}>
       <h2>Add your own photos of this spot!</h2>
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
-      <form onSubmit={handleSubmit}>
-        <label className={styles.fileSelect}>
-          <input type="file" onChange={updateFile} />
-          choose file
-        </label>
-        {image !== null && <button type="submit" className={styles.fileUpload}>upload image</button>}
-      </form>
+      {isLoading ? (
+        <LoadingContent />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label onClick={onLabelClick} className={styles.fileSelect}>
+            <input type="file" onChange={updateFile} />
+            choose file
+          </label>
+          {image !== null && (
+            <button type="submit" className={styles.fileUpload}>
+              upload image
+            </button>
+          )}
+        </form>
+      )}
+      {showPleaseLoginModal && (
+        <Modal onClose={() => setShowPleaseLoginModal(false)}>
+          <PleaseLogin setShowPleaseLoginModal={setShowPleaseLoginModal} />
+        </Modal>
+      )}
       <div className={styles.imageContainer}>
-        {spot?.SpotImages?.length > 0 ? (
-          spot?.SpotImages.map((img, idx) => (
+        {spotImages?.length > 0 ? (
+          spotImages?.map((img, idx) => (
             <img
               src={img.imgUrl}
               alt={"a user-submitted spot"}

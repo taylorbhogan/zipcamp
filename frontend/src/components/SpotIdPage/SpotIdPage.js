@@ -23,7 +23,7 @@ function SpotIdPage() {
     }
   }, [dispatch, spotId, spot]);
 
-  const setEditModal = () => {
+  const openEditModal = () => {
     setShowEditModal(true);
   };
 
@@ -45,9 +45,9 @@ function SpotIdPage() {
           <div className={styles.coordinates}>
             {spot?.lat}, {spot?.long}
           </div>
-          <div className={styles.areaName}>{spot?.Area?.name}</div>
+          <div className={styles.areaName}>{spot?.Area.name}</div>
         </div>
-        <SpotFinderCard spot={spot} setEditModal={setEditModal} />
+        <SpotFinderCard spot={spot} openEditModal={openEditModal} />
       </div>
       <div className={styles.midsection}>
         <div className={styles.mapContainerWrapper}>

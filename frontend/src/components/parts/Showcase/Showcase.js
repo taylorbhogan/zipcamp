@@ -1,23 +1,43 @@
 import styles from "./Showcase.module.css";
 import { Modal } from "../../../context/Modal";
 import CloseModalButton from "../CloseModalButton";
+import { useEffect } from "react";
 
 const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
-  const rotateLeft = () => {
-    if (selectedPhoto === 0) {
-      setSelectedPhoto(spot.SpotImages.length - 1);
-    } else {
-      setSelectedPhoto(selectedPhoto - 1);
-    }
-  };
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, []);
 
-  const rotateRight = () => {
-    if (selectedPhoto === spot.SpotImages.length - 1) {
-      setSelectedPhoto(0);
-    } else {
-      setSelectedPhoto(selectedPhoto + 1);
+  function handleKeydown(e) {
+    switch (e.keyCode) {
+      case 37:
+        rotateLeft();
+        break;
+      case 39:
+        rotateRight();
+        break;
+      case 27:
+        setShowModal(false);
+        break;
+      default:
+        break;
     }
-  };
+  }
+
+  function rotateLeft() {
+    setSelectedPhoto((selectedPhoto) =>
+      selectedPhoto <= 0 ? spot.SpotImages.length - 1 : selectedPhoto - 1
+    );
+  }
+
+  function rotateRight() {
+    setSelectedPhoto((selectedPhoto) =>
+      selectedPhoto >= spot.SpotImages.length - 1 ? 0 : selectedPhoto + 1
+    );
+  }
 
   return (
     <Modal onClose={() => setShowModal(false)}>

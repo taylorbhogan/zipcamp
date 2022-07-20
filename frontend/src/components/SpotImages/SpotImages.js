@@ -13,7 +13,7 @@ const SpotImages = ({ spot }) => {
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   const dispatch = useDispatch();
 

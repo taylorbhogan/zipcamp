@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { createSpotImage } from "../../store/spots";
 import CloseModalButton from "../parts/CloseModalButton";
+import LoadingContent from "../parts/LoadingContent";
 import styles from "./SpotImages.module.css";
 
 const SpotImages = ({ spot }) => {
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const dispatch = useDispatch();
 
@@ -16,10 +18,12 @@ const SpotImages = ({ spot }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     let newErrors = [];
     dispatch(createSpotImage({ image, spotId: spot.id }))
       .then(() => {
         setImage(null);
+        setIsLoading(false);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -61,17 +65,21 @@ const SpotImages = ({ spot }) => {
       <h2>Add your own photos of this spot!</h2>
       {errors.length > 0 &&
         errors.map((error) => <div key={error}>{error}</div>)}
-      <form onSubmit={handleSubmit}>
-        <label className={styles.fileSelect}>
-          <input type="file" onChange={updateFile} />
-          choose file
-        </label>
-        {image !== null && (
-          <button type="submit" className={styles.fileUpload}>
-            upload image
-          </button>
-        )}
-      </form>
+      {isLoading ? (
+        <LoadingContent />
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <label className={styles.fileSelect}>
+            <input type="file" onChange={updateFile} />
+            choose file
+          </label>
+          {image !== null && (
+            <button type="submit" className={styles.fileUpload}>
+              upload image
+            </button>
+          )}
+        </form>
+      )}
       <div className={styles.imageContainer}>
         {spotImages?.length > 0 ? (
           spotImages?.map((img, idx) => (

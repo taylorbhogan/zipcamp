@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { createSpotImage } from "../../store/spots";
 import CloseModalButton from "../parts/CloseModalButton";
+import PleaseLogin from "../parts/PleaseLogin";
 import LoadingContent from "../parts/LoadingContent";
 import styles from "./SpotImages.module.css";
 
@@ -11,9 +12,11 @@ const SpotImages = ({ spot }) => {
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPleaseLoginModal, setShowPleaseLoginModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const dispatch = useDispatch();
 
+  const sessionUser = useSelector((state) => state.session.user);
   const spotImages = useSelector((state) => state.spots[0]?.SpotImages);
 
   const handleSubmit = (e) => {
@@ -60,6 +63,13 @@ const SpotImages = ({ spot }) => {
     }
   };
 
+  const onLabelClick = (e) => {
+    if (!sessionUser) {
+      e.preventDefault()
+      setShowPleaseLoginModal(true)
+    };
+  };
+
   return (
     <div className={styles.container}>
       <h2>Add your own photos of this spot!</h2>
@@ -69,7 +79,7 @@ const SpotImages = ({ spot }) => {
         <LoadingContent />
       ) : (
         <form onSubmit={handleSubmit}>
-          <label className={styles.fileSelect}>
+          <label onClick={onLabelClick} className={styles.fileSelect}>
             <input type="file" onChange={updateFile} />
             choose file
           </label>
@@ -79,6 +89,11 @@ const SpotImages = ({ spot }) => {
             </button>
           )}
         </form>
+      )}
+      {showPleaseLoginModal && (
+        <Modal onClose={() => setShowPleaseLoginModal(false)}>
+          <PleaseLogin setShowPleaseLoginModal={setShowPleaseLoginModal} />
+        </Modal>
       )}
       <div className={styles.imageContainer}>
         {spotImages?.length > 0 ? (

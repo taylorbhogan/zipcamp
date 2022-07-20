@@ -6,7 +6,6 @@ import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
 import Errors from "../parts/Errors";
 import styles from "./SpotsList.module.css";
-import PleaseLogin from "../parts/PleaseLogin/PleaseLogin";
 import Input from "../parts/Input/Input";
 
 function SpotsList() {
@@ -33,14 +32,14 @@ function SpotsList() {
   useEffect(() => {
     if (isLoaded === false) {
       const fetchSpots = async () => {
-          const response = await dispatch(getSpots());
+        const response = await dispatch(getSpots());
         if (typeof response === "string") {
           setErrors([response]);
         }
         setIsLoaded(true);
       };
       const fetchUserSpots = async () => {
-          const response = await dispatch(getUserSpots(user.id));
+        const response = await dispatch(getUserSpots(user?.id));
         if (typeof response === "string") {
           setErrors([response]);
         }
@@ -53,7 +52,7 @@ function SpotsList() {
         fetchSpots();
       }
     }
-  }, [dispatch, isLoaded]);
+  }, [dispatch, isLoaded, location.pathname, user?.id]);
 
   return isLoaded ? (
     <div className={styles.wrapper}>
@@ -71,19 +70,11 @@ function SpotsList() {
       </div>
       <Errors errors={errors} />
       {spots.length === 0 && isLoaded === true && <div>No spots found</div>}
-      {location.pathname === "/my-spots" ? (
-        user ? (
-          spots
+      {location.pathname === "/my-spots"
+        ? spots
             .filter((spot) => spot.userId === user.id)
             .map((spot) => <SpotBox key={spot.id} spot={spot} />)
-        ) : (
-          <div>
-            <PleaseLogin />
-          </div>
-        )
-      ) : (
-        spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)
-      )}
+        : spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
       {numQueryResults > 0 && <div>{numQueryResults}</div>}
     </div>
   ) : (

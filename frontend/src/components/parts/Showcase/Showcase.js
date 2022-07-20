@@ -12,11 +12,21 @@ const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
   }, []);
 
   function handleKeydown(e) {
+    e.preventDefault()
     switch (e.keyCode) {
+      case 8:
+        rotateLeft();
+        break;
       case 37:
         rotateLeft();
         break;
       case 39:
+        rotateRight();
+        break;
+      case 32:
+        rotateRight();
+        break;
+      case 13:
         rotateRight();
         break;
       case 27:
@@ -47,6 +57,7 @@ const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
         <img
           src={spot.SpotImages[selectedPhoto]?.imgUrl}
           alt="a user-submitted spot"
+          onClick={rotateRight}
         />
         <button onClick={rotateRight}>{">"}</button>
       </div>

@@ -1,2 +1,2 @@
-export * from './Splash'
-export { default } from './Splash'
+export * from "./Splash";
+export { default } from "./Splash";

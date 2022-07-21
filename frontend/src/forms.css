@@ -1,5 +1,4 @@
-
-.form{
+.form {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -12,17 +11,16 @@
   overflow: scroll;
 }
 
-.formHeader{
+.formHeader {
   color: var(--gray1);
   margin-bottom: 1rem;
 }
 
-.formSelectInput{
-  /* height: 50px; */
+.formSelectInput {
   margin-top: 20px;
 }
 
-.submitButton{
+.submitButton {
   background-color: var(--green1);
   border: none;
   border-radius: 8px;
@@ -33,31 +31,18 @@
   font-size: 18px;
 }
 
-.submitButton:hover{
+.submitButton:hover {
   background-color: var(--green2);
 }
 
-.warningButton{
+.warningButton {
   border: 1.5px solid rgb(221, 90, 90);
   border-radius: 8px;
   padding: .75rem 0;
   margin-top: 40px;
 }
 
-.warningButton:hover{
+.warningButton:hover {
   background-color: black;
   color: white;
 }
-
-/* .warningButton{
-  border: 3px solid var(--red1);
-  border-radius: 7px;
-  padding: 5px 10px;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.warningButton:hover{
-  background-color: var(--red1);
-  color: white;
-} */

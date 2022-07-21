@@ -78,4 +78,5 @@ input[type="file"] {
 .container img {
   width: 300px;
   border-radius: .25rem;
+  cursor: pointer;
 }

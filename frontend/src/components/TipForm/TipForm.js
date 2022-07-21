@@ -66,7 +66,7 @@ function TipForm({ setShowTipForm, tipId }) {
       <CloseModalButton closeFunction={() => setShowTipForm(false)} />
       <form className="form" onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>add a tip</h1>
-        <Errors errors={errors} />
+        {errors.length > 0 && <Errors errors={errors} />}
         <Input
           type="textarea"
           value={tipText}

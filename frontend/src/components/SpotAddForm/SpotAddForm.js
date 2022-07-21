@@ -109,9 +109,14 @@ function SpotAddForm({
         <h1 className={"formHeader"}>
           add that spot so you can find your way back
         </h1>
-        <Errors errors={errors} />
+        {errors.length > 0 && <Errors errors={errors} />}
         <div className={styles.container}>
           <div className={styles.left}>
+            <AutocompleteDropdown
+              items={allAreas}
+              setItem={setArea}
+              selectedArea={selectedArea}
+            />
             <Input
               type="text"
               value={name}
@@ -137,11 +142,6 @@ function SpotAddForm({
               onChange={(e) => setDirections(e.target.value)}
               required={false}
               rows={"4"}
-            />
-            <AutocompleteDropdown
-              items={allAreas}
-              setItem={setArea}
-              selectedArea={selectedArea}
             />
           </div>
           <div className={styles.right}>

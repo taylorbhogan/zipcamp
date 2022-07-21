@@ -37,7 +37,7 @@ function SignupForm() {
     <div className={styles.pageContainer}>
       <div className={styles.signupForm}>
         <form onSubmit={handleSubmit} className={"form"}>
-          <Errors errors={errors} />
+          {errors.length > 0 && <Errors errors={errors} />}
           <Input
             type="text"
             value={email}

@@ -9,6 +9,7 @@
   box-shadow: var(--cardBoxShadow);
   line-height: 1.5;
   cursor: pointer;
+  scroll-snap-align: start;
 }
 
 .areaBox * {

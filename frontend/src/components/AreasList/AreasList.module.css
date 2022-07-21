@@ -26,6 +26,8 @@
 .pageRight{
   width: 40vw;
   height: 100vh;
+  padding-top: var(--navbarHeight);
+  padding-bottom: var(--footerHeight);
 }
 
 

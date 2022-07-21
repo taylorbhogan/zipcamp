@@ -4,10 +4,10 @@ import { useLocation } from "react-router-dom";
 import { getSpots, getUserSpots, searchSpots } from "../../store/spots";
 import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
+import NoContentFound from "../parts/NoContentFound";
 import Errors from "../parts/Errors";
 import styles from "./SpotsList.module.css";
 import Input from "../parts/Input/Input";
-import MessageNoSpots from "./MessageNoSpots";
 
 function SpotsList() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,7 +70,16 @@ function SpotsList() {
         />
       </div>
       <Errors errors={errors} />
-      {spots.length === 0 && isLoaded === true && <MessageNoSpots />}
+      {spots.length === 0 && isLoaded === true && (
+        <NoContentFound
+          line1={
+            "We couldn't find any spots in our database using that search term."
+          }
+          line2={
+            "Try changing your selection...or add that spot yourself!"
+          }
+        />
+      )}
       {location.pathname === "/my-spots"
         ? spots
             .filter((spot) => spot.userId === user.id)

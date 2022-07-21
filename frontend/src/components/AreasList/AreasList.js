@@ -7,7 +7,7 @@ import { searchAreas } from "../../store/areas";
 import AreaBox from "../AreaBox";
 import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
-import MessageNoAreas from "./MessageNoAreas";
+import NoContentFound from "../parts/NoContentFound/NoContentFound";
 import LoadingContent from "../parts/LoadingContent";
 import ControlPanel from "./ControlPanel";
 import Pagination from "../parts/Pagination/Pagination";
@@ -138,7 +138,10 @@ function AreasList() {
                 />
               ))
             ) : (
-              <MessageNoAreas />
+              <NoContentFound
+                line1={"There are no Federal public lands with that distinction in that location in the rec.gov database."}
+                line2={"Try changing your selection or click clear to view all areas."}
+              />
             )
           ) : (
             <LoadingContent location={"areas"} />

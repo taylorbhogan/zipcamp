@@ -7,6 +7,7 @@ import LoadingContent from "../parts/LoadingContent";
 import Errors from "../parts/Errors";
 import styles from "./SpotsList.module.css";
 import Input from "../parts/Input/Input";
+import MessageNoSpots from "./MessageNoSpots";
 
 function SpotsList() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -69,7 +70,7 @@ function SpotsList() {
         />
       </div>
       <Errors errors={errors} />
-      {spots.length === 0 && isLoaded === true && <div>No spots found</div>}
+      {spots.length === 0 && isLoaded === true && <MessageNoSpots />}
       {location.pathname === "/my-spots"
         ? spots
             .filter((spot) => spot.userId === user.id)

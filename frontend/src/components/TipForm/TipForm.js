@@ -15,6 +15,7 @@ function TipForm({ setShowTipForm, tipId }) {
 
   const userId = useSelector((state) => state.session.user?.id);
   const tip = useSelector((state) => state.tips.allTips[tipId]);
+  console.log(tipId);
 
   const [errors, setErrors] = useState([]);
   const [tipText, setTipText] = useState(tip ? tip.text : "");
@@ -76,7 +77,7 @@ function TipForm({ setShowTipForm, tipId }) {
           required={false}
         />
         <button type="submit" className={"submitButton"}>
-          Add your tip
+          {tipId ? "save your tip" : "add your tip"}
         </button>
       </form>
     </div>

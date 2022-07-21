@@ -71,7 +71,7 @@ function SignupForm() {
             required={false}
           />}
           <button type="submit" className={"submitButton"}>
-            Sign Up
+            sign up
           </button>
         </form>
       </div>

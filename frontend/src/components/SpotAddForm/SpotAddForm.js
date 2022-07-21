@@ -107,7 +107,7 @@ function SpotAddForm({
       <CloseModalButton closeFunction={() => onClose()} />
       <form className={"form"} onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>
-          add that spot so you can find your way back
+          save the cool spot you've discovered in this public land
         </h1>
         {errors.length > 0 && <Errors errors={errors} />}
         <div className={styles.container}>

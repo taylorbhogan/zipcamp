@@ -93,7 +93,7 @@ function Navigation({ isLoaded }) {
             {sessionUser ? (
               <>
                 <SpotAddModal isUsingUserLocation={true} />
-                <p>Welcome back, {sessionUser.username}.</p>
+                <p>welcome back, {sessionUser.username}.</p>
               </>
             ) : (
               <>

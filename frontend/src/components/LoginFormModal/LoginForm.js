@@ -26,7 +26,7 @@ function LoginForm() {
   return (
     <div className={styles.loginForm}>
       <form className={"form"} onSubmit={handleSubmit}>
-        <h1 className={"formHeader"}>Welcome back.</h1>
+        <h1 className={"formHeader"}>welcome back.</h1>
         {errors.length > 0 && <Errors errors={errors} />}
         <Input
           type="text"

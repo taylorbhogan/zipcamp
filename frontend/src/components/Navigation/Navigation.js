@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SpotAddModal from "../SpotAddModal";
@@ -11,12 +11,34 @@ import { Modal } from "../../context/Modal";
 
 function Navigation({ isLoaded }) {
   const [showModal, setShowModal] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
   const dispatch = useDispatch();
+  const location = useLocation();
   const sessionUser = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     dispatch(getAllAreas());
   }, [dispatch]);
+
+  const handleScroll = () => {
+    const hideHeight = 700;
+    const windowScrollHeight =
+      document.body.scrollTop || document.documentElement.scrollTop;
+
+    if (windowScrollHeight > hideHeight) {
+      showWelcome && setShowWelcome(false);
+    } else {
+      setShowWelcome(true);
+    }
+  };
 
   const logout = (e) => {
     e.preventDefault();
@@ -65,7 +87,6 @@ function Navigation({ isLoaded }) {
       )}
     </>
   );
-
   return (
     isLoaded && (
       <div className={styles.navbarWrapper}>
@@ -86,14 +107,14 @@ function Navigation({ isLoaded }) {
               <h1>zipcamp</h1>
             </NavLink>
           </div>
-
           <div className={styles.navbarRight}>
             <div className={styles.navLinks}>{navLinks}</div>
-
             {sessionUser ? (
               <>
                 <SpotAddModal isUsingUserLocation={true} />
-                <p>welcome back, {sessionUser.username}.</p>
+                {location.pathname === "/" && showWelcome && (
+                  <p>welcome back, {sessionUser.username}.</p>
+                )}
               </>
             ) : (
               <>

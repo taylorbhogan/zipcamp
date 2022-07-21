@@ -47,6 +47,7 @@
 
 .spotInfo{
   font-size: 25px;
+  min-width: 30vw;
 }
 
 .directions{

@@ -1,5 +1,6 @@
 import styles from "./Showcase.module.css";
 import { Modal } from "../../../context/Modal";
+import Image from "../Image";
 import CloseModalButton from "../CloseModalButton";
 import { useEffect } from "react";
 
@@ -12,7 +13,7 @@ const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
   }, []);
 
   function handleKeydown(e) {
-    e.preventDefault()
+    e.preventDefault();
     switch (e.keyCode) {
       case 8:
         rotateLeft();
@@ -54,9 +55,9 @@ const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
       <CloseModalButton closeFunction={() => setShowModal(false)} />
       <div className={styles.showcaseWrapper}>
         <button onClick={rotateLeft}>{"<"}</button>
-        <img
+        <Image
           src={spot.SpotImages[selectedPhoto]?.imgUrl}
-          alt="a user-submitted spot"
+          alt={"a user-submitted spot"}
           onClick={rotateRight}
         />
         <button onClick={rotateRight}>{">"}</button>

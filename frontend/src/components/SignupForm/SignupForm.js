@@ -7,7 +7,7 @@ import * as sessionActions from "../../store/session";
 import styles from "./SignupForm.module.css";
 import Errors from "../parts/Errors";
 
-function SignupFormPage() {
+function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -79,4 +79,4 @@ function SignupFormPage() {
   );
 }
 
-export default SignupFormPage;
+export default SignupForm;

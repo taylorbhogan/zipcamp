@@ -144,7 +144,7 @@ function SpotAddForm({
               selectedArea={selectedArea}
             />
           </div>
-          <div className={styles.wrapper}>
+          <div className={styles.right}>
             <MapContainer
               isAdding={true}
               setLat={setLat}

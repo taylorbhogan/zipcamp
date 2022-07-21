@@ -1,40 +1,48 @@
-.container{
+.container {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 3rem;
   padding-bottom: 6rem;
 }
 
-@media screen and (min-width: 1000px){
-  .container{
-    flex-direction: row;
-  }
-}
-@media screen and (max-width: 1000px){
-  .container{
-    flex-direction: column;
-  }
-}
-
-.left{
-  display: flex;
-  flex-direction: column;
-  width: 540px;
-}
-
-.coordsDiv{
+.left {
   display: flex;
   flex-direction: column;
 }
 
-.coords{
+.coordsDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.coords {
   height: 28px;
   margin-bottom: 10px;
   border: none
 }
 
-.wrapper{
-  height: 440px;
-  width: 540px;
+
+@media screen and (min-width: 1000px) {
+  .container {
+    flex-direction: row;
+    gap: 3rem;
+  }
+  .left {
+    width: 540px;
+  }
+  .right {
+    height: 440px;
+    width: 540px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .right {
+    height: 440px;
+    width: 100%;
+  }
 }

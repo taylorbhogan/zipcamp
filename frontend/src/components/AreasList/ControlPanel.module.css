@@ -16,6 +16,7 @@
   color: white;
   padding: .5rem;
   border-radius: var(--buttonBorderRadiusSmall);
+  cursor: pointer;
 }
 
 .search > button {

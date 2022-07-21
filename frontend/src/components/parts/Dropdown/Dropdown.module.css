@@ -1,12 +1,10 @@
-.header{
-  /* background-color: #888888; */
-  /* padding: .5rem 1rem; */
+.header {
   text-decoration: underline;
   font-size: 1.3rem;
   cursor: pointer;
 }
 
-.options{
+.options {
   top: 37px;
   position: absolute;
   height: 25vh;
@@ -15,7 +13,7 @@
   padding: 0;
   background-color: var(--grey4);
   border-radius: 0 .5rem .5rem .5rem;
-  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1) ;
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
 }
 
 .options li {
@@ -25,7 +23,7 @@
   border-width: 1px;
 }
 
-.options button{
+.options button {
   background: none;
   border: none;
   color: white;

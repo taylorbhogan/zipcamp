@@ -1,4 +1,4 @@
-.search{
+.search {
   margin: 7rem 0 4rem 0;
   display: flex;
   flex-direction: row;
@@ -19,8 +19,22 @@
   cursor: pointer;
 }
 
-.search > button {
+.search button:hover {
+  background-color: var(--green1);
+  transition: var(--transition);
+}
+
+.search>button {
+  padding: .3rem .5rem;
   font-size: .8rem;
+  background-color: var(--gray2);
+  color: black;
+}
+
+.search>button:hover {
+  background-color: var(--grey4);
+  transition: var(--transition);
+  color: white;
 }
 
 @media (max-width: 950px) {

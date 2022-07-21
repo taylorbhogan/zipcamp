@@ -54,11 +54,8 @@ router.get(
     console.log("searchTerm", searchTerm);
     const spots = await Spot.findAll({
       include: [
-        Area,
-        {
-          model: State,
-          as: "State",
-        },
+        { model: Area, as: "Area" },
+        { model: State, as: "State" },
         User,
         SpotImage,
       ],
@@ -81,6 +78,13 @@ router.get(
           {
             SpotState: sequelize.where(
               sequelize.fn("LOWER", sequelize.col("State.name")),
+              "LIKE",
+              "%" + searchTerm.toLowerCase() + "%"
+            ),
+          },
+          {
+            SpotArea: sequelize.where(
+              sequelize.fn("LOWER", sequelize.col("Area.name")),
               "LIKE",
               "%" + searchTerm.toLowerCase() + "%"
             ),

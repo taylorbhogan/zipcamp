@@ -20,4 +20,20 @@ router.post(
   })
 );
 
+router.delete(
+  "/spots/:id",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+
+    const { spotId } = await SpotImage.findByPk(req.params.id);
+
+    await SpotImage.destroy({ where: { id } });
+    const spot = await Spot.findByPk(spotId, {
+      include: [User, Area, State, SpotImage],
+    });
+
+    return res.json({ spot });
+  })
+);
+
 module.exports = router;

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
-import { createSpotImage, deleteSpotImage } from "../../store/spots";
+import { createSpotImage } from "../../store/spots";
 import PleaseLogin from "../parts/PleaseLogin";
 import LoadingContent from "../parts/LoadingContent";
 import styles from "./SpotImages.module.css";
 import Showcase from "../parts/Showcase/Showcase";
+import GalleryImage from "../parts/GalleryImage/GalleryImage";
 
 const SpotImages = ({ spot }) => {
   const [image, setImage] = useState(null);
@@ -55,10 +56,6 @@ const SpotImages = ({ spot }) => {
     }
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteSpotImage(id));
-  };
-
   return (
     <div className={styles.container}>
       <h2>Add your own photos of this spot!</h2>
@@ -87,16 +84,14 @@ const SpotImages = ({ spot }) => {
       <div className={styles.imageContainer}>
         {spotImages?.length > 0 ? (
           spotImages?.map((img, idx) => (
-            <>
-              <img
-                src={img.imgUrl}
-                alt={"a user-submitted spot"}
-                key={idx}
-                id={idx}
-                onClick={handleClick}
-              />
-              <button onClick={() => handleDelete(img.id)}>delete</button>
-            </>
+            <GalleryImage
+              src={img.imgUrl}
+              alt={"a user-submitted spot"}
+              key={idx}
+              id={idx}
+              onClick={handleClick}
+              img={img}
+            />
           ))
         ) : (
           <img

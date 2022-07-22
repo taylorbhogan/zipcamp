@@ -53,4 +53,5 @@
   --bigButtonFontSize: 17px;
   --bigButtonPadding: 7px 0;
   --bigButtonTransition: all 300ms ease;
+  --starScale: scale(1.2)
 }

@@ -7,6 +7,7 @@ import styles from "./TipForm.module.css";
 import Input from "../parts/Input";
 import Errors from "../parts/Errors";
 import CloseModalButton from "../parts/CloseModalButton";
+import Star from "../parts/Star";
 
 function TipForm({ setShowTipForm, tipId }) {
   const dispatch = useDispatch();
@@ -71,86 +72,41 @@ function TipForm({ setShowTipForm, tipId }) {
         <h1 className={"formHeader"}>add a tip</h1>
         {errors.length > 0 && <Errors errors={errors} />}
         <div className={styles.buttons}>
-          <button
-            style={
-              rating >= 1
-                ? { color: "var(--green1)", transform: "var(--starScale)" }
-                : hoverRating >= 1
-                ? { transform: "var(--starScale)" }
-                : null
-            }
-            type="button"
-            className="material-icons"
-            onClick={(e) => setRating(e.target.dataset.rating)}
-            onMouseEnter={(e) => setHoverRating(e.target.dataset.rating)}
-            data-rating={1}
-          >
-            grade
-          </button>
-          <button
-            style={
-              rating >= 2
-                ? { color: "var(--green1)", transform: "var(--starScale)" }
-                : hoverRating >= 2
-                ? { transform: "var(--starScale)" }
-                : null
-            }
-            type="button"
-            className="material-icons"
-            onClick={(e) => setRating(e.target.dataset.rating)}
-            onMouseEnter={(e) => setHoverRating(e.target.dataset.rating)}
-            data-rating={2}
-          >
-            grade
-          </button>
-          <button
-            style={
-              rating >= 3
-                ? { color: "var(--green1)", transform: "var(--starScale)" }
-                : hoverRating >= 3
-                ? { transform: "var(--starScale)" }
-                : null
-            }
-            type="button"
-            className="material-icons"
-            onClick={(e) => setRating(e.target.dataset.rating)}
-            onMouseEnter={(e) => setHoverRating(e.target.dataset.rating)}
-            data-rating={3}
-          >
-            grade
-          </button>
-          <button
-            style={
-              rating >= 4
-                ? { color: "var(--green1)", transform: "var(--starScale)" }
-                : hoverRating >= 4
-                ? { transform: "var(--starScale)" }
-                : null
-            }
-            type="button"
-            className="material-icons"
-            onClick={(e) => setRating(e.target.dataset.rating)}
-            onMouseEnter={(e) => setHoverRating(e.target.dataset.rating)}
-            data-rating={4}
-          >
-            grade
-          </button>
-          <button
-            style={
-              rating >= 5
-                ? { color: "var(--green1)", transform: "var(--starScale)" }
-                : hoverRating >= 5
-                ? { transform: "var(--starScale)" }
-                : null
-            }
-            type="button"
-            className="material-icons"
-            onClick={(e) => setRating(e.target.dataset.rating)}
-            onMouseEnter={(e) => setHoverRating(e.target.dataset.rating)}
-            data-rating={5}
-          >
-            grade
-          </button>
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={1}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={2}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={3}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={4}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={5}
+          />
         </div>
         <Input
           type="textarea"

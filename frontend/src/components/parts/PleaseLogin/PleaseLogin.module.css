@@ -1,21 +1,18 @@
-.container{
-  width: 30vw;
-  height: 30vh;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 50px 0;
+  gap: 1rem;
   font-size: 24px;
-  background-color: var(--gray1);
-  color: white;
-  margin: auto;
+  background-color: var(--gray3);
+  border-radius: var(--cardBorderRadius);
+  padding: 2rem 4rem 3rem 4rem;
 }
 
-.link{
+.link {
   color: var(--green1);
 }
 
-.link:hover{
+.link:hover {
   color: var(--green2);
 }

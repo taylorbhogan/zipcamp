@@ -15,7 +15,7 @@ function Splash() {
       />
       <SplashSection
         title={"x marks the spot"}
-        blurb={"make your mark while leaving no trace - save any spot you find so you can find your way back later"}
+        blurb={"make your mark while leaving no trace. save any spot you find so you or anyone in the community can find your way back later"}
         imgSrc={"/images/defaults/undraw_mark.svg"}
         flip={true}
         />

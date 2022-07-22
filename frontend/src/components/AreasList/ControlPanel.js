@@ -12,9 +12,9 @@ const ControlPanel = ({
 }) => {
   return (
     <div className={styles.search}>
-      <span>Explore</span>
+      <span>explore</span>
       <Dropdown
-        placeholder={"Public Lands"}
+        placeholder={"public lands"}
         items={organizations}
         item={organization}
         setFunction={setOrganization}
@@ -22,7 +22,7 @@ const ControlPanel = ({
       />
       <span>in</span>
       <Dropdown
-        placeholder={"The United States"}
+        placeholder={"the united states"}
         item={selectedLocation}
         items={usStates}
         setFunction={setSelectedLocation}

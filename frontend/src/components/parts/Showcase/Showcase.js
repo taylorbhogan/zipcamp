@@ -49,17 +49,18 @@ const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
       selectedPhoto >= spot.SpotImages.length - 1 ? 0 : selectedPhoto + 1
     );
   }
-
   return (
     <Modal onClose={() => setShowModal(false)}>
       <CloseModalButton closeFunction={() => setShowModal(false)} />
-      <div className={styles.showcaseWrapper}>
+      <div className={styles.showcaseContainer}>
         <button onClick={rotateLeft}>{"<"}</button>
-        <Image
-          src={spot.SpotImages[selectedPhoto]?.imgUrl}
-          alt={"a user-submitted spot"}
-          onClick={rotateRight}
-        />
+        <div className={styles.showcaseWrapper}>
+          <Image
+            src={spot.SpotImages[selectedPhoto]?.imgUrl}
+            alt={"a user-submitted spot"}
+            onClick={rotateRight}
+          />
+        </div>
         <button onClick={rotateRight}>{">"}</button>
       </div>
     </Modal>

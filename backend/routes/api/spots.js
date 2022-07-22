@@ -1,7 +1,7 @@
 const router = require("express").Router();
 // const { Op } = require("sequelize");
 const sequelize = require("sequelize");
-const Op = sequelize.Op
+const Op = sequelize.Op;
 const { requireAuth } = require("../../utils/auth.js");
 
 const {
@@ -33,13 +33,13 @@ router.get(
 router.get(
   "/users/:userId",
   asyncHandler(async (req, res) => {
-    const userId = req.params.userId
+    const userId = req.params.userId;
     const spots = await Spot.findAll({
       include: [Area, State, User, SpotImage],
       where: {
         userId: {
-          [Op.eq]: userId
-        }
+          [Op.eq]: userId,
+        },
       },
       limit: 10,
     });
@@ -50,24 +50,47 @@ router.get(
 router.get(
   "/search/:searchTerm",
   asyncHandler(async (req, res) => {
-    const searchTerm = req.params.searchTerm
-    console.log("searchTerm",searchTerm);
+    const searchTerm = req.params.searchTerm;
+    console.log("searchTerm", searchTerm);
     const spots = await Spot.findAll({
-      include: [Area, State, User, SpotImage],
+      include: [
+        { model: Area, as: "Area" },
+        { model: State, as: "State" },
+        User,
+        SpotImage,
+      ],
       where: {
-        [Op.or]: [{
-          name: sequelize.where(
-            sequelize.fn('LOWER', sequelize.col('Spot.name')),
-            'LIKE',
-            '%' + searchTerm.toLowerCase() + '%'),
-          },{
-          blurb: sequelize.where(
-            sequelize.fn('LOWER', sequelize.col('Spot.blurb')),
-            'LIKE',
-            '%' + searchTerm.toLowerCase() + '%')
-
-        }]
-    }
+        [Op.or]: [
+          {
+            name: sequelize.where(
+              sequelize.fn("LOWER", sequelize.col("Spot.name")),
+              "LIKE",
+              "%" + searchTerm.toLowerCase() + "%"
+            ),
+          },
+          {
+            blurb: sequelize.where(
+              sequelize.fn("LOWER", sequelize.col("Spot.blurb")),
+              "LIKE",
+              "%" + searchTerm.toLowerCase() + "%"
+            ),
+          },
+          {
+            SpotState: sequelize.where(
+              sequelize.fn("LOWER", sequelize.col("State.name")),
+              "LIKE",
+              "%" + searchTerm.toLowerCase() + "%"
+            ),
+          },
+          {
+            SpotArea: sequelize.where(
+              sequelize.fn("LOWER", sequelize.col("Area.name")),
+              "LIKE",
+              "%" + searchTerm.toLowerCase() + "%"
+            ),
+          },
+        ],
+      },
     });
     res.json(spots);
   })

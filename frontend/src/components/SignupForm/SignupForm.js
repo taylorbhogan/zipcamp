@@ -7,7 +7,7 @@ import * as sessionActions from "../../store/session";
 import styles from "./SignupForm.module.css";
 import Errors from "../parts/Errors";
 
-function SignupFormPage() {
+function SignupForm() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ function SignupFormPage() {
     <div className={styles.pageContainer}>
       <div className={styles.signupForm}>
         <form onSubmit={handleSubmit} className={"form"}>
-          <Errors errors={errors} />
+          {errors.length > 0 && <Errors errors={errors} />}
           <Input
             type="text"
             value={email}
@@ -71,7 +71,7 @@ function SignupFormPage() {
             required={false}
           />}
           <button type="submit" className={"submitButton"}>
-            Sign Up
+            sign up
           </button>
         </form>
       </div>
@@ -79,4 +79,4 @@ function SignupFormPage() {
   );
 }
 
-export default SignupFormPage;
+export default SignupForm;

@@ -107,11 +107,16 @@ function SpotAddForm({
       <CloseModalButton closeFunction={() => onClose()} />
       <form className={"form"} onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>
-          add that spot so you can find your way back
+          save the cool spot you've discovered in this public land
         </h1>
-        <Errors errors={errors} />
+        {errors.length > 0 && <Errors errors={errors} />}
         <div className={styles.container}>
           <div className={styles.left}>
+            <AutocompleteDropdown
+              items={allAreas}
+              setItem={setArea}
+              selectedArea={selectedArea}
+            />
             <Input
               type="text"
               value={name}
@@ -138,13 +143,8 @@ function SpotAddForm({
               required={false}
               rows={"4"}
             />
-            <AutocompleteDropdown
-              items={allAreas}
-              setItem={setArea}
-              selectedArea={selectedArea}
-            />
           </div>
-          <div className={styles.wrapper}>
+          <div className={styles.right}>
             <MapContainer
               isAdding={true}
               setLat={setLat}

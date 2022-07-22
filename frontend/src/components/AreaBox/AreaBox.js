@@ -10,7 +10,9 @@ function AreaBox({ area, selectedArea, setSelectedArea }) {
 
   useEffect(() => {
     if (selectedArea?.id === area.id) {
-      areaRef.current.scrollIntoView({ behavior: "smooth" });
+      areaRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
       setIsOpen(true);
     } else {
       setIsOpen(false);

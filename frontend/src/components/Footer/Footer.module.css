@@ -1,4 +1,4 @@
-.footer{
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -14,11 +14,11 @@
   margin-top: 10px;
 }
 
-.footerLeft{
+.footerLeft {
   padding-left: 2rem;
 }
 
-.footerRight{
+.footerRight {
   padding-right: 2rem;
   display: flex;
   flex-direction: row;
@@ -31,15 +31,20 @@
   text-decoration: none;
   color: rgb(140, 143, 148);
   border-bottom: var(--navLinkBorderBottom);
-
+  min-width: 114px;
 }
 
 #tbh:hover {
   border-bottom: var(--navLinkBorderBottomHover);
-
 }
 
-.socialLogo{
+.socialLogo {
   height: 2rem;
   width: 2rem;
+}
+
+@media (max-width: 750px) {
+  .footerLeft span{
+    display: none;
+  }
 }

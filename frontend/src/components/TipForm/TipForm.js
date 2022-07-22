@@ -7,6 +7,7 @@ import styles from "./TipForm.module.css";
 import Input from "../parts/Input";
 import Errors from "../parts/Errors";
 import CloseModalButton from "../parts/CloseModalButton";
+import Star from "../parts/Star";
 
 function TipForm({ setShowTipForm, tipId }) {
   const dispatch = useDispatch();
@@ -15,9 +16,12 @@ function TipForm({ setShowTipForm, tipId }) {
 
   const userId = useSelector((state) => state.session.user?.id);
   const tip = useSelector((state) => state.tips.allTips[tipId]);
+  console.log(tipId);
 
   const [errors, setErrors] = useState([]);
   const [tipText, setTipText] = useState(tip ? tip.text : "");
+  const [rating, setRating] = useState(tip ? tip.rating : null);
+  const [hoverRating, setHoverRating] = useState(tip ? tip.rating : null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +35,7 @@ function TipForm({ setShowTipForm, tipId }) {
           userId,
           spotId,
           text: tipText,
-          tipRating: 0,
+          rating,
         };
 
         const editedTip = await dispatch(editTip(newTip));
@@ -44,7 +48,7 @@ function TipForm({ setShowTipForm, tipId }) {
           userId,
           spotId,
           text: tipText,
-          tipRating: 0,
+          rating,
         };
 
         const createdTip = await dispatch(createTip(newTip));
@@ -66,7 +70,44 @@ function TipForm({ setShowTipForm, tipId }) {
       <CloseModalButton closeFunction={() => setShowTipForm(false)} />
       <form className="form" onSubmit={handleSubmit}>
         <h1 className={"formHeader"}>add a tip</h1>
-        <Errors errors={errors} />
+        {errors.length > 0 && <Errors errors={errors} />}
+        <div className={styles.buttons}>
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={1}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={2}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={3}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={4}
+          />
+          <Star
+            rating={rating}
+            setRating={setRating}
+            hoverRating={hoverRating}
+            setHoverRating={setHoverRating}
+            starNumber={5}
+          />
+        </div>
         <Input
           type="textarea"
           value={tipText}
@@ -76,7 +117,7 @@ function TipForm({ setShowTipForm, tipId }) {
           required={false}
         />
         <button type="submit" className={"submitButton"}>
-          Add your tip
+          {tipId ? "save your tip" : "add your tip"}
         </button>
       </form>
     </div>

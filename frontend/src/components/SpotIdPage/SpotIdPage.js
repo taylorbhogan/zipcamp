@@ -9,6 +9,7 @@ import MapContainer from "../Maps";
 import SpotFinderCard from "../SpotFinderCard";
 import styles from "./SpotIdPage.module.css";
 import SpotImages from "../SpotImages/SpotImages";
+import { getTips } from "../../store/tips";
 
 function SpotIdPage() {
   const dispatch = useDispatch();
@@ -16,6 +17,19 @@ function SpotIdPage() {
   const [showEditModal, setShowEditModal] = useState(false);
 
   let [spot] = useSelector((state) => state.spots);
+  const allTips = useSelector((state) => Object.values(state.tips.allTips));
+  const tips = allTips.filter((tip) => tip.spotId === +spotId);
+  const ratedTips = tips.filter((tip) => tip.rating !== null);
+
+  const tipsAverage = isNaN(
+    tips.reduce(function (acc, tip) {
+      return acc + tip.rating;
+    }, 0) / ratedTips.length
+  )
+    ? 0
+    : tips.reduce(function (acc, tip) {
+        return acc + tip.rating;
+      }, 0) / ratedTips.length;
 
   useEffect(() => {
     if (!spot) {
@@ -23,10 +37,13 @@ function SpotIdPage() {
     }
   }, [dispatch, spotId, spot]);
 
+  useEffect(() => {
+    dispatch(getTips());
+  }, [dispatch]);
+
   const openEditModal = () => {
     setShowEditModal(true);
   };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.spotImageCarousel}></div>
@@ -41,7 +58,18 @@ function SpotIdPage() {
       )}
       <div className={styles.topsection}>
         <div>
-          <div className={styles.spotName}>{spot?.name}</div>
+          <div className={styles.spotName}>
+            <span>{spot?.name}</span>
+            <div>
+              {Array.from(Array(Math.ceil(tipsAverage)).keys()).map(
+                (star, idx) => (
+                  <span key={idx} className="material-icons">
+                    grade
+                  </span>
+                )
+              )}
+            </div>
+          </div>
           <div className={styles.coordinates}>
             {spot?.lat}, {spot?.long}
           </div>
@@ -68,7 +96,7 @@ function SpotIdPage() {
           <p>{spot?.directions}</p>
         </div>
       </div>
-      <TipsList spot={spot} />
+      <TipsList spot={spot} tips={tips} />
       <SpotImages spot={spot} />
     </div>
   );

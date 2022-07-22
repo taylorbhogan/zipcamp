@@ -1,6 +1,6 @@
 @import './../../index.css';
 
-.wrapper{
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@
   margin: var(--containerMarginTop) auto;
 }
 
-.topsection{
+.topsection {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -20,42 +20,52 @@
   color: white;
 }
 
-@media (max-width: 900px){
-  .topsection{
+@media (max-width: 900px) {
+  .topsection {
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
   }
 }
 
-.spotName{
+.spotName>div {
+  display: inline-block;
+}
+
+.spotName span {
+  font-size: 2rem;
+}
+
+.spotName>span {
+  margin-right: 1rem;
   font-size: 60px;
   margin-top: 0px;
   max-width: 700px;
 }
 
-.coordinates{
+.coordinates {
   font-size: 25px;
   font-style: italic;
   margin-top: 5px;
 }
 
-.areaName{
+.areaName {
   margin-top: 8px;
   font-size: 20px;
 }
 
-.spotInfo{
+.spotInfo {
   font-size: 25px;
+  min-width: 30vw;
 }
 
-.directions{
+.directions {
   padding-top: 40px;
   padding-bottom: 10px;
   font-size: 20px;
 }
 
-.midsection{
+.midsection {
   display: flex;
   gap: 3rem;
   color: white;
@@ -63,12 +73,12 @@
 }
 
 @media (max-width: 1200px) {
-  .midsection{
+  .midsection {
     flex-direction: column-reverse;
   }
 }
 
-.mapContainerWrapper{
+.mapContainerWrapper {
   height: 350px;
   width: 100%;
 }

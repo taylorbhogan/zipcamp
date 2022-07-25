@@ -34,7 +34,7 @@ function LoginForm() {
           placeholder={" username"}
           ariaLabel={"username"}
           onChange={(e) => setCredential(e.target.value)}
-          required={true}
+          // required={true}
         />
         <Input
           type="password"
@@ -42,7 +42,7 @@ function LoginForm() {
           placeholder={" password"}
           ariaLabel={"password"}
           onChange={(e) => setPassword(e.target.value)}
-          required={true}
+          // required={true}
         />
         <button type="submit" className={"submitButton"}>
           Log In

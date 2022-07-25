@@ -6,6 +6,7 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import SpotsList from './components/SpotsList'
+import MySpotsList from './components/MySpotsList'
 import SpotIdPage from './components/SpotIdPage'
 import AreasList from './components/AreasList';
 import UserPage from './components/UserPage';
@@ -33,8 +34,11 @@ function App() {
               <Route path='/signup'>
                 <SignupForm />
               </Route>
-              <Route exact path={['/spots', '/my-spots']}>
+              <Route exact path={'/spots'}>
                 <SpotsList />
+              </Route>
+              <Route exact path={'/my-spots'}>
+                <MySpotsList />
               </Route>
               <Route path='/spots/:spotId'>
                 <SpotIdPage />

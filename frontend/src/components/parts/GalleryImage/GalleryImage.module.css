@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+}
+
+.deleteButton {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: var(--gray2);
+  padding: 6px;
+}
+
+.deleteButton:hover {
+  color: var(--gray3);
+}

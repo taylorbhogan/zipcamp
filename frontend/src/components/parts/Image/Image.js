@@ -7,6 +7,7 @@ const Image = ({
   fallbackSrc = "/images/defaults/undraw_404.svg",
   onClick,
   alt,
+  id,
 }) => {
   const [hasErrored, setHasErrored] = useState(false);
   const [imgSrc, setImgSrc] = useState(src);
@@ -24,11 +25,13 @@ const Image = ({
 
   return (
     <img
+      id={id ?? null}
       src={imgSrc}
       alt={alt}
       onClick={onClick}
       onError={onError}
       className={styles.img}
+      key={id}
     />
   );
 };

@@ -6,6 +6,7 @@ import PleaseLogin from "../parts/PleaseLogin";
 import LoadingContent from "../parts/LoadingContent";
 import styles from "./SpotImages.module.css";
 import Showcase from "../parts/Showcase/Showcase";
+import GalleryImage from "../parts/GalleryImage/GalleryImage";
 
 const SpotImages = ({ spot }) => {
   const [image, setImage] = useState(null);
@@ -83,12 +84,13 @@ const SpotImages = ({ spot }) => {
       <div className={styles.imageContainer}>
         {spotImages?.length > 0 ? (
           spotImages?.map((img, idx) => (
-            <img
+            <GalleryImage
               src={img.imgUrl}
               alt={"a user-submitted spot"}
               key={idx}
               id={idx}
               onClick={handleClick}
+              img={img}
             />
           ))
         ) : (

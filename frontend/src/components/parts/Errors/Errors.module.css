@@ -1,3 +1,9 @@
 .errors{
-  color: var(--red1);
+  list-style-type: none;
+  background-color: var(--red1);
+  color: white;
+  padding: .2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
 }

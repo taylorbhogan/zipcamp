@@ -21,6 +21,38 @@ const singlePublicFileUpload = async (file) => {
   return result.Location;
 };
 
+const singlePublicFileDelete = async (Key) => {
+  const params = {
+    Bucket: NAME_OF_BUCKET,
+    Key
+  }
+
+  try {
+    await s3.headObject(params).promise()
+    console.log("File Found in S3")
+
+  } catch (err) {
+    console.log("File not Found ERROR : " + err.code)
+  }
+
+  s3.deleteObject(params, function (err, data) {
+    if (err) {
+      console.log("err",err, err.stack)
+    } else {
+      console.log("data",data);
+      // s3.getObject(params, function (err, data) {
+      //   if (err) {
+      //     console.log("getObject err",err,err.stack);
+      //   } else {
+      //     console.log("getObject data", data);
+      //     return data;
+      //   }
+      // })
+    }
+  }).promise()
+
+}
+
 const multiplePublicFileUpload = async (files) => {
   return await Promise.all(
     files.map((file) => {
@@ -47,4 +79,5 @@ module.exports = {
   multiplePublicFileUpload,
   singleMulterUpload,
   multipleMulterUpload,
+  singlePublicFileDelete
 };

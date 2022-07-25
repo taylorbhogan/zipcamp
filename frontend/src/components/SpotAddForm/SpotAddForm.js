@@ -56,9 +56,9 @@ function SpotAddForm({
     e.preventDefault();
 
     const errors = [];
-    if (!name) errors.push("Please add a spot name.");
-    if (!lat) errors.push("Please add a latitude.");
-    if (!long) errors.push("Please add a longitude.");
+    if (!name) errors.push("please add a spot name.");
+    if (!lat || !long)
+      errors.push("please drag the pin to your spot's location.");
     if (!blurb)
       errors.push("you gotta give us a LITTLE something on the situation!");
     setErrors(errors);

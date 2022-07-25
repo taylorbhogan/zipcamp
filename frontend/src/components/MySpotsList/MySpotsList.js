@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
-import { getSpots, getUserSpots, searchSpots } from "../../store/spots";
+import { useHistory } from "react-router-dom";
+import { getUserSpots, searchSpots } from "../../store/spots";
 import SpotBox from "../SpotBox";
 import LoadingContent from "../parts/LoadingContent";
 import NoContentFound from "../parts/NoContentFound";
@@ -19,7 +19,6 @@ function MySpotsList() {
   const user = useSelector((state) => state.session.user);
 
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {
@@ -32,20 +31,13 @@ function MySpotsList() {
   };
 
   useEffect(() => {
-    if (location.pathname === "/my-spots" && !user) {
+    if (!user) {
       history.push("/");
     }
-  }, [history, user, location.pathname]);
+  }, [history, user]);
 
   useEffect(() => {
     if (isLoaded === false) {
-      const fetchSpots = async () => {
-        const response = await dispatch(getSpots());
-        if (typeof response === "string") {
-          setErrors([response]);
-        }
-        setIsLoaded(true);
-      };
       const fetchUserSpots = async () => {
         const response = await dispatch(getUserSpots(user?.id));
         if (typeof response === "string") {
@@ -53,14 +45,9 @@ function MySpotsList() {
         }
         setIsLoaded(true);
       };
-
-      if (location.pathname === "/my-spots") {
-        fetchUserSpots();
-      } else {
-        fetchSpots();
-      }
+      fetchUserSpots();
     }
-  }, [dispatch, isLoaded, location.pathname, user?.id]);
+  }, [dispatch, isLoaded, user?.id]);
 
   return isLoaded ? (
     <div className={styles.wrapper}>
@@ -69,27 +56,21 @@ function MySpotsList() {
           type="text"
           value={searchTerm}
           onChange={handleSearch}
-          placeholder={
-            location.pathname === "/my-spots"
-              ? "search spots you've added"
-              : "search community spots"
-          }
+          placeholder={"search spots you've added"}
         />
       </div>
       {errors.length > 0 && <Errors errors={errors} />}
       {spots.length === 0 && isLoaded === true && (
         <NoContentFound
-          line1={
-            "We couldn't find any spots in our database using that search term."
-          }
-          line2={"Try changing your selection...or add that spot yourself!"}
+          line1={"no spots yet."}
+          line2={"add your first spot to see it here!"}
         />
       )}
-      {location.pathname === "/my-spots"
-        ? spots
-            .filter((spot) => spot.userId === user?.id)
-            .map((spot) => <SpotBox key={spot.id} spot={spot} />)
-        : spots.map((spot) => <SpotBox key={spot.id} spot={spot} />)}
+      {spots
+        .filter((spot) => spot.userId === user?.id)
+        .map((spot) => (
+          <SpotBox key={spot.id} spot={spot} />
+        ))}
       {numQueryResults > 0 && <div>{numQueryResults}</div>}
     </div>
   ) : (

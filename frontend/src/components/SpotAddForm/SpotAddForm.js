@@ -25,7 +25,6 @@ function SpotAddForm({
   // if spot.area, use that.
   // if selected area, use that
   // otherwise, it doesn't matter. dummy default, dealer's choice
-  console.log("spot", spot);
   const [area, setArea] = useState(
     spot ? spot.Area.id : selectedArea ? selectedArea.id : "4"
   );
@@ -63,8 +62,6 @@ function SpotAddForm({
       errors.push("you gotta give us a LITTLE something on the situation!");
     setErrors(errors);
 
-    const land = allAreas.find((land) => land.id === +area);
-    console.log("spot", spot);
     if (spot === undefined) {
       const newSpot = {
         name,

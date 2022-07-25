@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
+const { singleMulterUpload, singlePublicFileUpload, singlePublicFileDelete } = require("../../awsS3");
 const { SpotImage, Spot, User, Area, State } = require("../../db/models");
 const router = express.Router();
 
@@ -25,10 +25,10 @@ router.delete(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
 
-    const { spotId } = await SpotImage.findByPk(req.params.id);
-
+    const spotImage = await SpotImage.findByPk(req.params.id);
+    const data = await singlePublicFileDelete(spotImage.imgUrl)
     await SpotImage.destroy({ where: { id } });
-    const spot = await Spot.findByPk(spotId, {
+    const spot = await Spot.findByPk(spotImage.spotId, {
       include: [User, Area, State, SpotImage],
     });
 

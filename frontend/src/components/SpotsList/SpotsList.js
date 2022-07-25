@@ -61,7 +61,7 @@ function SpotsList() {
       }
     }
   }, [dispatch, isLoaded, location.pathname, user?.id]);
-
+  
   return isLoaded ? (
     <div className={styles.wrapper}>
       <div className={styles.searchBar}>
@@ -76,7 +76,7 @@ function SpotsList() {
           }
         />
       </div>
-      <Errors errors={errors} />
+      {errors.length > 0 && <Errors errors={errors} />}
       {spots.length === 0 && isLoaded === true && (
         <NoContentFound
           line1={

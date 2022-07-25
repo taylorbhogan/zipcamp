@@ -39,12 +39,12 @@ const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
       <>
         {resultPages.slice(-10).map((page, idx) => (
           <PageButton
-          key={idx}
-          onClick={setResultPageNum}
-          value={resultPages.length - 9 + idx}
-          isSelected={resultPageNum === resultPages.length - 9 + idx}
+            key={idx}
+            onClick={setResultPageNum}
+            value={resultPages.length - 9 + idx}
+            isSelected={resultPageNum === resultPages.length - 9 + idx}
           />
-          ))}
+        ))}
       </>
     );
   }
@@ -57,7 +57,11 @@ const PageButtons = ({ resultPages, resultPageNum, setResultPageNum }) => {
       <PageButton onClick={setResultPageNum} value={resultPageNum - 3} />
       <PageButton onClick={setResultPageNum} value={resultPageNum - 2} />
       <PageButton onClick={setResultPageNum} value={resultPageNum - 1} />
-      <PageButton onClick={setResultPageNum} value={resultPageNum} isSelected={true}/>
+      <PageButton
+        onClick={setResultPageNum}
+        value={resultPageNum}
+        isSelected={true}
+      />
       <PageButton onClick={setResultPageNum} value={resultPageNum + 1} />
       <PageButton onClick={setResultPageNum} value={resultPageNum + 2} />
       <PageButton onClick={setResultPageNum} value={resultPageNum + 3} />

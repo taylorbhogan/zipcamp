@@ -21,6 +21,6 @@ h2 {
   color: rgba(0, 0, 0, 0.26);
 }
 
-::selection{
+::selection {
   background-color: var(--green1);
 }

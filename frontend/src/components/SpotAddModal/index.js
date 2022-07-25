@@ -1,2 +1,2 @@
-export * from './SpotAddModal'
-export { default } from './SpotAddModal'
+export * from "./SpotAddModal";
+export { default } from "./SpotAddModal";

@@ -5,7 +5,7 @@ const LOAD_ALL_AREAS = "allAreas/LOAD_ALL_AREAS";
 const loadAll = (areas, length) => ({
   type: LOAD_ALL_AREAS,
   areas,
-  length
+  length,
 });
 
 export const getAllAreas = () => async (dispatch) => {

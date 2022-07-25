@@ -44,7 +44,7 @@
 }
 
 @media (max-width: 750px) {
-  .footerLeft span{
+  .footerLeft span {
     display: none;
   }
 }

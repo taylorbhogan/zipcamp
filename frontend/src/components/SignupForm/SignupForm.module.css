@@ -1,11 +1,10 @@
-
-.pageContainer{
+.pageContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 200px;
 }
 
-.signupForm{
+.signupForm {
   width: 500px;
 }

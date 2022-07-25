@@ -1,2 +1,2 @@
-export * from './SpotIdPage'
-export { default } from './SpotIdPage'
+export * from "./SpotIdPage";
+export { default } from "./SpotIdPage";

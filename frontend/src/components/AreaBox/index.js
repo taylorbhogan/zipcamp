@@ -1,2 +1,2 @@
-export * from './AreaBox'
-export { default } from './AreaBox'
+export * from "./AreaBox";
+export { default } from "./AreaBox";

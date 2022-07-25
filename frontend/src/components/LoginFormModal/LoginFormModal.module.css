@@ -1,4 +1,4 @@
-.loginButton{
+.loginButton {
   cursor: pointer;
   border: none;
   background: none;
@@ -10,6 +10,6 @@
   border-bottom: var(--navLinkBorderBottom);
 }
 
-.loginButton:hover{
+.loginButton:hover {
   border-bottom: var(--navLinkBorderBottomHover);
 }

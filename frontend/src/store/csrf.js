@@ -8,8 +8,8 @@ export async function csrfFetch(url, options = {}) {
 
   if (options.method.toUpperCase() !== "GET") {
     // adding formData to req body will cause browser to automatically set appropriate headers & boundaries, so we must remove the Content-Type header
-    if (options.headers["Content-Type"] === "multipart/form-data"){
-      delete options.headers["Content-Type"]
+    if (options.headers["Content-Type"] === "multipart/form-data") {
+      delete options.headers["Content-Type"];
     } else {
       options.headers["Content-Type"] =
         options.headers["Content-Type"] || "application/json";

@@ -1,4 +1,4 @@
-.addSpotButton{
+.addSpotButton {
   background: none;
   border: 0;
   cursor: pointer;
@@ -16,13 +16,13 @@
   padding: 0;
 }
 
-.addSpotButton:hover{
+.addSpotButton:hover {
   background-color: var(--green2);
   width: 9rem;
   min-width: 9rem;
 }
 
-.addSpotButton::before{
+.addSpotButton::before {
   content: "+";
   line-height: 2rem;
   padding: 0 .5rem;
@@ -33,7 +33,7 @@
   transition: all .3s;
 }
 
-.addSpotButton::after{
+.addSpotButton::after {
   content: "add a spot";
   line-height: 2rem;
   padding: 0 .5rem;
@@ -44,10 +44,10 @@
   transition: all .3s
 }
 
-.addSpotButton:hover::before{
+.addSpotButton:hover::before {
   left: -9rem;
 }
 
-.addSpotButton:hover::after{
+.addSpotButton:hover::after {
   left: 0;
 }

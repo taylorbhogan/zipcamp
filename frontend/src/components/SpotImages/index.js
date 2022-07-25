@@ -1,2 +1,2 @@
-export * from './SpotImages'
-export { default } from './SpotImages'
+export * from "./SpotImages";
+export { default } from "./SpotImages";

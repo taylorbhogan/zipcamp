@@ -27,9 +27,9 @@ function SpotFinderCard({ openEditModal, spot }) {
   };
 
   const handleEditClick = () => {
-    openEditModal()
-    toggleMenu()
-  }
+    openEditModal();
+    toggleMenu();
+  };
 
   return (
     <div className={styles.container}>

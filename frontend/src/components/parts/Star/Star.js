@@ -1,4 +1,10 @@
-const Star = ({ rating, setRating, hoverRating, setHoverRating, starNumber }) => {
+const Star = ({
+  rating,
+  setRating,
+  hoverRating,
+  setHoverRating,
+  starNumber,
+}) => {
   return (
     <button
       style={

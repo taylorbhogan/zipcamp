@@ -1,2 +1,2 @@
-export * from './TipForm'
-export { default } from './TipForm'
+export * from "./TipForm";
+export { default } from "./TipForm";

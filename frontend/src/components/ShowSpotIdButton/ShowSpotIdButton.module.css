@@ -1,4 +1,4 @@
-.standardLinkButton{
+.standardLinkButton {
   color: var(--gray1);
   border-width: var(--cardBorderWidth);
   border-style: var(--cardBorderStyle);
@@ -10,7 +10,7 @@
   width: 90px;
 }
 
-.standardLinkButton:hover{
+.standardLinkButton:hover {
   background-color: var(--gray1);
   color: white;
 }

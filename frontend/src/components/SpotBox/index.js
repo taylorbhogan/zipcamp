@@ -1,2 +1,2 @@
-export * from './SpotBox'
-export { default } from './SpotBox'
+export * from "./SpotBox";
+export { default } from "./SpotBox";

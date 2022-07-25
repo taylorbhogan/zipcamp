@@ -1,2 +1,2 @@
-export * from './DemoLoginButton'
-export { default } from './DemoLoginButton'
+export * from "./DemoLoginButton";
+export { default } from "./DemoLoginButton";

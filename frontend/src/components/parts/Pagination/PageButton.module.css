@@ -9,17 +9,18 @@
   color: white;
 }
 
-.button:hover{
+.button:hover {
   text-decoration: underline;
 }
 
-.isSelected{
+.isSelected {
   font-weight: bold;
   color: black;
   cursor: text;
   text-decoration: none;
 }
+
 /* must remain below .button rules */
-.isSelected:hover{
+.isSelected:hover {
   text-decoration: none;
 }

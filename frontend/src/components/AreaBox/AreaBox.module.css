@@ -21,18 +21,19 @@
   transform: scale(1.01);
 }
 
-.top{
+.top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.top h1,h2 {
+.top h1,
+h2 {
   cursor: text;
 }
 
-.description{
+.description {
   margin-top: 20px;
   cursor: text;
 }
@@ -41,7 +42,7 @@
   text-decoration: none;
 }
 
-.addSpotButtonWrapper{
+.addSpotButtonWrapper {
   min-width: 9rem;
   display: flex;
   flex-direction: row;

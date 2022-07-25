@@ -1,2 +1,2 @@
-export * from './AutocompleteDropdown'
-export { default } from './AutocompleteDropdown'
+export * from "./AutocompleteDropdown";
+export { default } from "./AutocompleteDropdown";

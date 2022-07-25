@@ -17,9 +17,8 @@ const Maps = ({
   zoom = 3,
   setFunction,
   singlePin = false,
-  selectedItem
+  selectedItem,
 }) => {
-
   const containerStyle = {
     width: "100%",
     height: "100%",

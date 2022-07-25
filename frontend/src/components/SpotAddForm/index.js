@@ -1,2 +1,2 @@
-export * from './SpotAddForm'
-export { default } from './SpotAddForm'
+export * from "./SpotAddForm";
+export { default } from "./SpotAddForm";

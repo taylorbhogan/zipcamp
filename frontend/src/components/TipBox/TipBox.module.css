@@ -1,6 +1,6 @@
 @import './../../index.css';
 
-.container{
+.container {
   border-radius: var(--cardBorderRadius);
   position: relative;
   display: flex;
@@ -13,12 +13,12 @@
   background-color: var(--gray2);
 }
 
-.container:hover{
+.container:hover {
   box-shadow: -.4rem 0 1rem #999;
 }
 
 .editButton,
-.deleteButton{
+.deleteButton {
   cursor: pointer;
   background: none;
   border: 0;
@@ -27,30 +27,30 @@
   margin: 20px;
 }
 
-.editButton{
+.editButton {
   top: 0px;
 }
 
-.deleteButton{
+.deleteButton {
   top: 30px;
 }
 
-.username{
+.username {
   font-size: 1.25em;
 }
 
-.createdAt{
+.createdAt {
   font-size: 1em;
 }
 
-.rating{
+.rating {
   font-size: 1.25em;
   display: flex;
   flex-direction: row;
   color: var(--green1);
 }
 
-.tipText{
+.tipText {
   font-size: 1.5em;
   margin-top: 20px;
 }

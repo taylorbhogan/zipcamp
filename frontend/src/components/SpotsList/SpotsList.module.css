@@ -1,6 +1,6 @@
 @import './../../index.css';
 
-.wrapper{
+.wrapper {
   margin: var(--containerMarginTop) auto;
   display: flex;
   flex-direction: column;
@@ -9,11 +9,11 @@
   position: relative;
 }
 
-.wrapper > * {
+.wrapper>* {
   width: 80vw;
 }
 
-.searchBar{
+.searchBar {
   height: 8vh;
   width: 40vw;
   display: flex;

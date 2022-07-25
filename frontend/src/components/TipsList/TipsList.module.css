@@ -1,6 +1,6 @@
 @import './../../index.css';
 
-.container{
+.container {
   margin-top: 30px;
   margin-bottom: 20px;
   display: flex;
@@ -9,7 +9,7 @@
   border-radius: var(--containerBorderRadius);
 }
 
-.tips{
+.tips {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;

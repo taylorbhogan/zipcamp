@@ -1,2 +1,2 @@
-export * from './ActivityIcon'
-export { default } from './ActivityIcon'
+export * from "./ActivityIcon";
+export { default } from "./ActivityIcon";

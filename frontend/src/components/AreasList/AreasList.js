@@ -139,23 +139,34 @@ function AreasList() {
               ))
             ) : (
               <NoContentFound
-                line1={"There are no Federal public lands with that distinction in that location in the rec.gov database."}
-                line2={"Try changing your selection or click clear to view all areas."}
+                line1={
+                  "There are no Federal public lands with that distinction in that location in the rec.gov database."
+                }
+                line2={
+                  "Try changing your selection or click clear to view all areas."
+                }
               />
             )
           ) : (
             <LoadingContent location={"areas"} />
           )}
-          {areas.length > 0 && <Pagination
-            isLoaded={isLoaded}
-            resultsPerPage={resultsPerPage}
-            resultPageNum={resultPageNum}
-            setResultPageNum={setResultPageNum}
-          />}
+          {areas.length > 0 && (
+            <Pagination
+              isLoaded={isLoaded}
+              resultsPerPage={resultsPerPage}
+              resultPageNum={resultPageNum}
+              setResultPageNum={setResultPageNum}
+            />
+          )}
         </div>
       </div>
       <div className={styles.pageRight}>
-        <MapContainer pins={areas} zoom={3} setFunction={setSelectedArea} selectedItem={selectedArea}/>
+        <MapContainer
+          pins={areas}
+          zoom={3}
+          setFunction={setSelectedArea}
+          selectedItem={selectedArea}
+        />
       </div>
     </div>
   );

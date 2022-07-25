@@ -1,4 +1,4 @@
-.button{
+.button {
   margin: var(--bigButtonMargin);
   width: var(--cardFinderWidth);
   box-sizing: border-box;
@@ -14,7 +14,7 @@
   color: white;
 }
 
-.button:hover{
+.button:hover {
   box-shadow: var(--buttonBoxShadowBlurHover);
   transform: scale(1.02);
 }

@@ -2,7 +2,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import loadingMap from "./47956-area-map.json";
 import loadingCompass from "./80702-compass.json";
 
-const LoadingContent = ({location, options}) => {
+const LoadingContent = ({ location, options }) => {
   switch (location) {
     case "areas":
       return (

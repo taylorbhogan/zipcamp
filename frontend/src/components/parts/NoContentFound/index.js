@@ -1,2 +1,2 @@
-export * from './NoContentFound'
-export { default } from './NoContentFound'
+export * from "./NoContentFound";
+export { default } from "./NoContentFound";

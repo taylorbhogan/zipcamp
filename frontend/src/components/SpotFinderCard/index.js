@@ -1,2 +1,2 @@
-export * from './SpotFinderCard'
-export { default } from './SpotFinderCard'
+export * from "./SpotFinderCard";
+export { default } from "./SpotFinderCard";

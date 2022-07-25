@@ -1,2 +1,2 @@
-export * from './MySpotsList'
-export { default } from './MySpotsList'
+export * from "./MySpotsList";
+export { default } from "./MySpotsList";

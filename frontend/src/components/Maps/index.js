@@ -34,24 +34,24 @@ const MapContainer = ({
 
   return isUsingUserLocation ? (
     <MapsUserLocation
-    apiKey={key}
-    setLat={setLat}
-    setLong={setLong}
-    pins={pins}
-    setFunction={setFunction}
+      apiKey={key}
+      setLat={setLat}
+      setLong={setLong}
+      pins={pins}
+      setFunction={setFunction}
     />
-    ) : (
-      <Maps
-        apiKey={key}
-        isAdding={isAdding}
-        setLat={setLat}
-        setLong={setLong}
-        pins={pins}
-        zoom={zoom}
-        setFunction={setFunction}
-        singlePin={singlePin}
-        selectedItem={selectedItem}
-      />
+  ) : (
+    <Maps
+      apiKey={key}
+      isAdding={isAdding}
+      setLat={setLat}
+      setLong={setLong}
+      pins={pins}
+      zoom={zoom}
+      setFunction={setFunction}
+      singlePin={singlePin}
+      selectedItem={selectedItem}
+    />
   );
 };
 

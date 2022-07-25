@@ -6,7 +6,7 @@ const LOAD_AREAS = "areas/LOAD_AREAS";
 const load = (areas, length) => ({
   type: LOAD_AREAS,
   areas,
-  length
+  length,
 });
 
 // const loadAll = (areas, length) => ({
@@ -33,34 +33,43 @@ export const getAreas = () => async (dispatch) => {
 //   }
 // };
 
-export const searchAreas = (organization, location, resultsPerPage, offset) => async (dispatch) => {
-  try {
-    const res = await csrfFetch("/api/areas/search", {
-      method: "POST",
-      body: JSON.stringify({
-        organization,
-        location,
-        resultsPerPage,
-        offset
-      }),
-    });
+export const searchAreas =
+  (organization, location, resultsPerPage, offset) => async (dispatch) => {
+    try {
+      const res = await csrfFetch("/api/areas/search", {
+        method: "POST",
+        body: JSON.stringify({
+          organization,
+          location,
+          resultsPerPage,
+          offset,
+        }),
+      });
 
-    if (res.ok) {
-      const data = await res.json();
-      const {areaArray, totalCount} = data
-      dispatch(load(areaArray, totalCount));
+      if (res.ok) {
+        const data = await res.json();
+        const { areaArray, totalCount } = data;
+        dispatch(load(areaArray, totalCount));
+      }
+    } catch (e) {
+      return "error";
     }
-  } catch (e) {
-    return "error";
-  }
-};
+  };
 
-const initialState = {searchResults: {}, searchResultsLength: 0, allAreas: {}};
+const initialState = {
+  searchResults: {},
+  searchResultsLength: 0,
+  allAreas: {},
+};
 
 const areasReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_AREAS:
-      const newState = {searchResults: {}, searchResultsLength: 0, allAreas: {}};
+      const newState = {
+        searchResults: {},
+        searchResultsLength: 0,
+        allAreas: {},
+      };
       action.areas.forEach((area) => {
         newState.searchResults[area.id] = area;
       });
@@ -68,14 +77,14 @@ const areasReducer = (state = initialState, action) => {
       return {
         ...newState,
       };
-      // case LOAD_ALL_AREAS:
-      // const newStateAll = {searchResults: {}, searchResultsLength: 0, allAreas: {}};
-      // action.areas.forEach((area) => {
-      //   newStateAll.allAreas[area.id] = area;
-      // });
-      // return {
-      //   ...newStateAll,
-      // };
+    // case LOAD_ALL_AREAS:
+    // const newStateAll = {searchResults: {}, searchResultsLength: 0, allAreas: {}};
+    // action.areas.forEach((area) => {
+    //   newStateAll.allAreas[area.id] = area;
+    // });
+    // return {
+    //   ...newStateAll,
+    // };
 
     default:
       return state;

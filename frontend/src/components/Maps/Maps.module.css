@@ -1,4 +1,4 @@
-.submitButton{
+.submitButton {
   background-color: var(--green1);
   border-radius: 8px;
   padding: .75rem 0;
@@ -9,16 +9,16 @@
   font-weight: bold;
 }
 
-.submitButton:hover{
+.submitButton:hover {
   background-color: var(--green2);
 }
 
-.footer{
+.footer {
   margin-top: 1rem;
   width: 100%;
 }
 
-.infoWindow{
+.infoWindow {
   width: 10vw;
   min-width: 80px;
 }

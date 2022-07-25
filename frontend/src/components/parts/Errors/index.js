@@ -1,2 +1,2 @@
-export * from './Errors'
-export { default } from './Errors'
+export * from "./Errors";
+export { default } from "./Errors";

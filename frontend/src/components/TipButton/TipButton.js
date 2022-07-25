@@ -21,10 +21,7 @@ function TipButton({ spot }) {
 
   return (
     <>
-      <button
-        onClick={handleClick}
-        className={styles.button}
-      >
+      <button onClick={handleClick} className={styles.button}>
         add a tip
       </button>
       {showTipForm && (

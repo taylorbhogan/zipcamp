@@ -1,2 +1,2 @@
-export * from './AreasList'
-export { default } from './AreasList'
+export * from "./AreasList";
+export { default } from "./AreasList";

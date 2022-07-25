@@ -62,14 +62,16 @@ function SignupForm() {
             onChange={(e) => setPassword(e.target.value)}
             required={false}
           />
-          {password.length > 0 && <Input
-            type="password"
-            value={confirmPassword}
-            placeholder={" confirm password"}
-            ariaLabel={"confirm password"}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required={false}
-          />}
+          {password.length > 0 && (
+            <Input
+              type="password"
+              value={confirmPassword}
+              placeholder={" confirm password"}
+              ariaLabel={"confirm password"}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required={false}
+            />
+          )}
           <button type="submit" className={"submitButton"}>
             sign up
           </button>

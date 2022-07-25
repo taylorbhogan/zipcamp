@@ -1,2 +1,2 @@
-export * from './LoginFormModal'
-export { default } from './LoginFormModal'
+export * from "./LoginFormModal";
+export { default } from "./LoginFormModal";

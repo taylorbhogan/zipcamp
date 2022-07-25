@@ -9,7 +9,9 @@ function WelcomeMessage() {
   return (
     <div className={styles.container}>
       <div className={styles.welcomeMessage}>
-        <p>the clearest way into the universe is through a forest wilderness.</p>
+        <p>
+          the clearest way into the universe is through a forest wilderness.
+        </p>
         <p>expore public lands and save the cool spots you discover.</p>
         <div className={styles.buttonWrapper}>
           <StandardLinkButton buttonText={buttonText} href={buttonHref} />

@@ -5,11 +5,10 @@ import Image from "../parts/Image";
 function SpotBox({ spot }) {
   return (
     <a href={`/spots/${spot.id}`} className={styles.container}>
-      {/* spotImage div is temporary until I get Image styled properly */}
       <div className={styles.spotImage}>
         <Image
           alt={"a glimpse of this spot"}
-          src={spot.SpotImages ? spot.SpotImages[0]?.imgUrl : null}
+          src={spot.SpotImages[0]?.imgUrl}
         />
       </div>
       <div className={styles.containerRight}>

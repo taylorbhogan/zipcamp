@@ -26,7 +26,7 @@ const Image = ({
   return (
     <img
       id={id ?? null}
-      src={imgSrc}
+      src={imgSrc ?? "/images/defaults/undraw_404.svg"}
       alt={alt}
       onClick={onClick}
       onError={onError}

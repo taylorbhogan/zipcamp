@@ -22,6 +22,7 @@
 
 .spotImage {
   width: 300px;
+  min-width: 300px;
   border-radius: var(--cardBorderRadius);
   height: auto;
   object-fit: cover;

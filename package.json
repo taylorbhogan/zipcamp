@@ -2,7 +2,6 @@
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
-    "build": "cd frontend && npm install && react-scripts build",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "sequelize": "npm run --prefix backend sequelize",

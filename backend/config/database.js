@@ -29,7 +29,3 @@ module.exports = {
     },
   },
 };
-
-const dbConfig = require('./database.js');
-const sequelize = new Sequelize(dbConfig);
-sequelize.authenticate()

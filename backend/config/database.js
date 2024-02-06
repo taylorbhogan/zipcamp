@@ -8,14 +8,6 @@ const host = db.host;
 const DATABASE_URL = db.DATABASE_URL
 
 module.exports = {
-  development: {
-    username,
-    password,
-    database,
-    host,
-    dialect: 'postgres',
-    seederStorage: 'sequelize',
-  },
   production: {
     // use_env_variable: 'DATABASE_URL',
     url: DATABASE_URL,

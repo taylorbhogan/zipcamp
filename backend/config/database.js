@@ -5,6 +5,7 @@ const username = db.username;
 const password = db.password;
 const database = db.database;
 const host = db.host;
+const DATABASE_URL = db.DATABASE_URL
 
 module.exports = {
   development: {
@@ -16,7 +17,8 @@ module.exports = {
     seederStorage: 'sequelize',
   },
   production: {
-    use_env_variable: 'DATABASE_URL',
+    // use_env_variable: 'DATABASE_URL',
+    url: DATABASE_URL,
     dialect: 'postgres',
     seederStorage: 'sequelize',
     dialectOptions: {

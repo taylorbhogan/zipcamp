@@ -51,48 +51,15 @@ function AreasList() {
       }
     };
     fetchAreas();
-  }, [dispatch, organization, selectedLocation, resultPageNum]);
+  }, [dispatch, organization, selectedLocation, resultPageNum, resultsPerPage]);
 
   useEffect(() => {
     const fetchOrganizations = async () => {
       const res = await fetch(`/api/areas/from-rec-gov/organizations`);
       const data = await res.json();
       if (res.ok) {
-        const filterOut = [
-          "STATE PARKS",
-          "FEDERAL",
-          "Smithsonian Institution",
-          "Utah",
-          "Maryland",
-          "Texas",
-          "Virginia",
-          "New Mexico",
-          "US Air Force",
-          "Smithsonian Institution Affiliations Program",
-          "",
-          "Tennessee Valley Authority",
-          "Department of the Interior",
-          "National Register of Historic Places",
-          "Department of Commerce",
-          "Department of Defense",
-          "Department of Agriculture",
-          "National Archives and Records Administration",
-          "American Battle Monuments Commission",
-          "Department of the Treasury",
-          "Bureau of Engraving and Printing",
-          "Historic Hotels of America",
-          "National Historic Landmark",
-          "United States Geological Survey",
-          "Bureau of Reclamation",
-          "Commander, Navy Installation Command (CNIC)",
-          "Booz Allen Hamilton",
-          "Department of Transportation",
-        ];
-        const filteredData = data.filter((datum) => {
-          return !filterOut.includes(datum.name);
-        });
         const obj = {};
-        filteredData.forEach((datum) => {
+        data.forEach((datum) => {
           obj[datum.id] = datum;
         });
         setOrganizations(obj);
@@ -106,6 +73,7 @@ function AreasList() {
     };
     fetchOrganizations();
   }, []);
+  
 
   const clearSelection = () => {
     setSelectedLocation("");

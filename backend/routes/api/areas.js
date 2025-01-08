@@ -15,6 +15,37 @@ router.get(
   })
 );
 
+const filterOut = [
+  "STATE PARKS",
+  "FEDERAL",
+  "Smithsonian Institution",
+  "Utah",
+  "Maryland",
+  "Texas",
+  "Virginia",
+  "New Mexico",
+  "US Air Force",
+  "Smithsonian Institution Affiliations Program",
+  "",
+  "Tennessee Valley Authority",
+  "Department of the Interior",
+  "National Register of Historic Places",
+  "Department of Commerce",
+  "Department of Defense",
+  "Department of Agriculture",
+  "National Archives and Records Administration",
+  "American Battle Monuments Commission",
+  "Department of the Treasury",
+  "Bureau of Engraving and Printing",
+  "Historic Hotels of America",
+  "National Historic Landmark",
+  "United States Geological Survey",
+  "Bureau of Reclamation",
+  "Commander, Navy Installation Command (CNIC)",
+  "Booz Allen Hamilton",
+  "Department of Transportation",
+];
+
 router.get(
   "/from-rec-gov/organizations",
   asyncHandler(async (req, res) => {
@@ -29,12 +60,15 @@ router.get(
     );
     const recGovJson = await recGovRes.json();
     const recData = recGovJson["RECDATA"];
-    const orgArray = recData.map((org) => ({
-      name: org["OrgName"],
-      id: org["OrgID"],
-    }));
 
-    res.json(orgArray);
+    const filteredOrganizations = recData
+      .filter((org) => !filterOut.includes(org["OrgName"]))
+      .map((org) => ({
+        name: org["OrgName"],
+        id: org["OrgID"],
+      }));
+
+    res.json(filteredOrganizations);
   })
 );
 

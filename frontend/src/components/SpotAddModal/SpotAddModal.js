@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
 // import { getAllAreas } from "../../store/allAreas";
 import SpotAddForm from "../SpotAddForm";

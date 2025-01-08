@@ -5,7 +5,6 @@ import { getUsStates } from "../../store/usStates";
 import MapContainer from "../Maps";
 import { searchAreas } from "../../store/areas";
 import AreaBox from "../AreaBox";
-import Dropdown from "../parts/Dropdown";
 import styles from "./AreasList.module.css";
 import NoContentFound from "../parts/NoContentFound/NoContentFound";
 import LoadingContent from "../parts/LoadingContent";

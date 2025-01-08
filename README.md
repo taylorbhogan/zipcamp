@@ -26,7 +26,9 @@ Explore our public lands using your own search criteria and the familiar Google 
 
 ### Deployment
 
-This app was deployed to Heroku using the Heroku CLI. Data persists by way of a Postgres database.
+This app was deployed to Render using a Postgres database.
+
+To run locally, npm install and npm run start in both frontend/ and backend/.
 
 ## Features
 

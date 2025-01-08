@@ -72,7 +72,7 @@ function AreasList() {
       }
     };
     fetchOrganizations();
-  }, []);
+  }, [errors]);
   
 
   const clearSelection = () => {

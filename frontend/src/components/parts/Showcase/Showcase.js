@@ -45,7 +45,7 @@ const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
     return () => {
       window.removeEventListener("keydown", handleKeydown);
     };
-  }, []);
+  }, [handleKeydown]);
 
   return (
     <Modal onClose={() => setShowModal(false)}>

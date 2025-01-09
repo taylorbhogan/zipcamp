@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getKey } from "../../store/maps";
 import Maps from "./Maps";
 import MapsUserLocation from "./MapsUserLocation";
+import {APIProvider} from '@vis.gl/react-google-maps';
 
 const MapContainer = ({
   isAdding,
@@ -32,27 +33,34 @@ const MapContainer = ({
     return null;
   }
 
-  return isUsingUserLocation ? (
-    <MapsUserLocation
+  return (
+    <APIProvider
       apiKey={key}
-      setLat={setLat}
-      setLong={setLong}
-      pins={pins}
-      setFunction={setFunction}
-    />
-  ) : (
-    <Maps
-      apiKey={key}
-      isAdding={isAdding}
-      setLat={setLat}
-      setLong={setLong}
-      pins={pins}
-      zoom={zoom}
-      setFunction={setFunction}
-      singlePin={singlePin}
-      selectedItem={selectedItem}
-    />
-  );
+      // onLoad={() => console.log('Maps API has loaded.')}
+    >
+      {isUsingUserLocation ? (
+        <MapsUserLocation
+          apiKey={key}
+          setLat={setLat}
+          setLong={setLong}
+          pins={pins}
+          setFunction={setFunction}
+        />
+      ) : (
+        <Maps
+          apiKey={key}
+          isAdding={isAdding}
+          setLat={setLat}
+          setLong={setLong}
+          pins={pins}
+          zoom={zoom}
+          setFunction={setFunction}
+          singlePin={singlePin}
+          selectedItem={selectedItem}
+        />
+      )};
+    </APIProvider>
+  )
 };
 
 export default MapContainer;

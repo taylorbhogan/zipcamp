@@ -1,12 +1,7 @@
-// the purpose of this component is to load & customize the map. first we declare customizations that are then applied by the GoogleMap component. then we use useJsApiLoader to do all the heavy lifting
 import React from "react";
-import {
-  GoogleMap,
-  useJsApiLoader,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+import { Map, AdvancedMarker, Pin, InfoWindow } from "@vis.gl/react-google-maps";
 import styles from "./Maps.module.css";
+import PinIcon from "./PinIcon";
 
 const Maps = ({
   apiKey,
@@ -24,21 +19,18 @@ const Maps = ({
     height: "100%",
     borderRadius: "5px",
   };
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: apiKey,
-  });
-
-  const onMarkerDragEnd = (e) => {
+  const onMarkerDragEnd = (e, pinID) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
     setLat(lat.toFixed(6));
     setLong(lng.toFixed(6));
-  };
 
-  const handleClick = (pushpin) => {
-    setFunction(pushpin);
+    // Optionally, update pin's position in state if needed
+    setFunction((prevPins) =>
+      prevPins.map((pin) =>
+        pin.id === pinID ? { ...pin, latitude: lat, longitude: lng } : pin
+      )
+    );
   };
 
   const footer = (
@@ -50,66 +42,63 @@ const Maps = ({
     </div>
   );
 
+  const defaultCenter = singlePin
+    ? {
+        lat: +Object.values(pins)[0]?.latitude || 0,
+        lng: +Object.values(pins)[0]?.longitude || 0,
+      }
+    : {
+        lat: 38.118235, // Approx. middle of continental US
+        lng: -95.194464,
+      };
+
   return (
-    <>
-      {isLoaded ? (
-        <>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={
-              singlePin
-                ? {
-                    lat: +Object.values(pins)[0].latitude,
-                    lng: +Object.values(pins)[0].longitude,
-                  }
-                : {
-                    // approx. middle of continental US
-                    lat: 38.118235,
-                    lng: -95.194464,
-                  }
-            }
-            zoom={zoom}
-            onClick={() => setFunction(null)}
+    <div style={containerStyle}>
+      <Map
+        defaultCenter={defaultCenter}
+        defaultZoom={zoom}
+        mapId="custom-map"
+        apiKey={apiKey}
+        reuseMaps={true}
+        options={{
+          gestureHandling: "greedy",
+        }}
+      >
+        {Object.values(pins).map((pushpin) => (
+          <AdvancedMarker
+            key={pushpin.id ?? "pin"}
+            position={{
+              lat: +pushpin.latitude,
+              lng: +pushpin.longitude,
+            }}
+            draggable={true}
+            onDragEnd={(e) => onMarkerDragEnd(e, pushpin.id)}
+            onClick={() => setFunction(pushpin)}
           >
-            {Object.values(pins).map((pushpin) => (
-              <Marker
-                key={pushpin.id ?? "pin"}
-                title={pushpin.name ?? "pin"}
+            <Pin
+              background={"#2BA84A"}
+              borderColor={"#248232"}
+            >
+              <PinIcon icon={"park"}/>
+            </Pin>
+            {singlePin === false && selectedItem?.id === pushpin.id && (
+              <InfoWindow
                 position={{
                   lat: +pushpin.latitude,
                   lng: +pushpin.longitude,
                 }}
-                draggable={true}
-                label={{
-                  text: "\uea99",
-                  fontFamily: "Material Icons",
-                  color: "#ffffff",
-                  fontSize: "18px",
-                }}
-                onClick={() => handleClick(pushpin)}
-                onDragEnd={(e) => onMarkerDragEnd(e)}
               >
-                {singlePin === false && selectedItem?.id === pushpin.id && (
-                  <InfoWindow
-                    position={{
-                      lat: +pushpin.latitude,
-                      lng: +pushpin.longitude,
-                    }}
-                  >
-                    <div className={styles.infoWindow}>
-                      <h3>{pushpin.name}</h3>
-                      <p>{pushpin.orgName}</p>
-                    </div>
-                  </InfoWindow>
-                )}
-              </Marker>
-            ))}
-          </GoogleMap>
-          {/* is adding at all */}
-          {isAdding ? footer : null}
-        </>
-      ) : null}
-    </>
+                <div className={styles.infoWindow}>
+                  <h3>{pushpin.name}</h3>
+                  <p>{pushpin.orgName}</p>
+                </div>
+              </InfoWindow>
+            )}
+          </AdvancedMarker>
+        ))}
+      </Map>
+      {isAdding && footer}
+    </div>
   );
 };
 

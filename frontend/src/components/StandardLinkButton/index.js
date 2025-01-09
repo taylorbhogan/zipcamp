@@ -2,18 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./StandardLinkButton.module.css";
 
-function StandardLinkButton({ buttonText, lightBackground, href }) {
-  let buttonStyle;
-
-  if (lightBackground) {
-    buttonStyle = {
-      color: "black",
-      borderColor: "black",
-    };
-  }
-
+function StandardLinkButton({ buttonText, href }) {
   return (
-    <Link className={styles.standardLinkButton} to={href} style={buttonStyle}>
+    <Link className={styles.standardLinkButton} to={href}>
       {buttonText}
     </Link>
   );

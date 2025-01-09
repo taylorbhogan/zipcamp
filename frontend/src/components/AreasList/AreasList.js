@@ -20,7 +20,7 @@ function AreasList() {
   const [organizations, setOrganizations] = useState([]);
   const [selectedArea, setSelectedArea] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [resultsPerPage, setResultsPerPage] = useState(25);
+  const [resultsPerPage] = useState(25);
   const [resultPageNum, setResultPageNum] = useState(1);
   const [errors, setErrors] = useState([]);
 

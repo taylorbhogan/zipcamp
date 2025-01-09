@@ -79,7 +79,7 @@ const Maps = ({
               background={"#2BA84A"}
               borderColor={"#248232"}
             >
-              <PinIcon icon={"park"}/>
+              <PinIcon icon={"forest"}/>
             </Pin>
             {singlePin === false && selectedItem?.id === pushpin.id && (
               <InfoWindow

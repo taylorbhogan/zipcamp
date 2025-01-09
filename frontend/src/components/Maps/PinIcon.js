@@ -1,6 +1,6 @@
 const PinIcon = ({
   color = "green",
-  fontSize = "24px",
+  fontSize = "18px",
   icon }) => {
   return (
     <div

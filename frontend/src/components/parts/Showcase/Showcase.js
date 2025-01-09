@@ -1,54 +1,52 @@
+import { useEffect, useCallback } from "react";
 import styles from "./Showcase.module.css";
 import { Modal } from "../../../context/Modal";
 import Image from "../Image";
 import CloseModalButton from "../CloseModalButton";
-import { useEffect } from "react";
 
 const Showcase = ({ spot, setShowModal, selectedPhoto, setSelectedPhoto }) => {
+  const rotateLeft = useCallback(() => {
+    setSelectedPhoto((selectedPhoto) =>
+      selectedPhoto <= 0 ? spot.SpotImages.length - 1 : selectedPhoto - 1
+    );
+  }, [setSelectedPhoto, spot.SpotImages.length]);
+
+  const rotateRight = useCallback(() => {
+    setSelectedPhoto((selectedPhoto) =>
+      selectedPhoto >= spot.SpotImages.length - 1 ? 0 : selectedPhoto + 1
+    );
+  }, [setSelectedPhoto, spot.SpotImages.length]);
+
+  const handleKeydown = useCallback(
+    (e) => {
+      e.preventDefault();
+      switch (e.keyCode) {
+        case 8:
+        case 37:
+          rotateLeft();
+          break;
+        case 39:
+        case 32:
+        case 13:
+          rotateRight();
+          break;
+        case 27:
+          setShowModal(false);
+          break;
+        default:
+          break;
+      }
+    },
+    [rotateLeft, rotateRight, setShowModal]
+  );
+
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
     return () => {
       window.removeEventListener("keydown", handleKeydown);
     };
-  }, []);
+  }, [handleKeydown]);
 
-  function handleKeydown(e) {
-    e.preventDefault();
-    switch (e.keyCode) {
-      case 8:
-        rotateLeft();
-        break;
-      case 37:
-        rotateLeft();
-        break;
-      case 39:
-        rotateRight();
-        break;
-      case 32:
-        rotateRight();
-        break;
-      case 13:
-        rotateRight();
-        break;
-      case 27:
-        setShowModal(false);
-        break;
-      default:
-        break;
-    }
-  }
-
-  function rotateLeft() {
-    setSelectedPhoto((selectedPhoto) =>
-      selectedPhoto <= 0 ? spot.SpotImages.length - 1 : selectedPhoto - 1
-    );
-  }
-
-  function rotateRight() {
-    setSelectedPhoto((selectedPhoto) =>
-      selectedPhoto >= spot.SpotImages.length - 1 ? 0 : selectedPhoto + 1
-    );
-  }
   return (
     <Modal onClose={() => setShowModal(false)}>
       <CloseModalButton closeFunction={() => setShowModal(false)} />

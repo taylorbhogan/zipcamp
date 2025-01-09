@@ -1,6 +1,7 @@
 import React from "react";
 import { Map, AdvancedMarker, Pin, InfoWindow } from "@vis.gl/react-google-maps";
 import styles from "./Maps.module.css";
+import PinIcon from "./PinIcon";
 
 const Maps = ({
   apiKey,
@@ -74,7 +75,12 @@ const Maps = ({
             onDragEnd={(e) => onMarkerDragEnd(e, pushpin.id)}
             onClick={() => setFunction(pushpin)}
           >
-            <Pin />
+            <Pin
+              background={"#2BA84A"}
+              borderColor={"#248232"}
+            >
+              <PinIcon icon={"park"}/>
+            </Pin>
             {singlePin === false && selectedItem?.id === pushpin.id && (
               <InfoWindow
                 position={{

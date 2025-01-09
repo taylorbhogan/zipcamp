@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
@@ -16,29 +16,29 @@ function Navigation({ isLoaded }) {
   const location = useLocation();
   const sessionUser = useSelector((state) => state.session.user);
 
+  const handleScroll = useCallback(() => {
+    const hideHeight = 700;
+    const windowScrollHeight =
+      document.body.scrollTop || document.documentElement.scrollTop;
+
+    if (windowScrollHeight > hideHeight) {
+      setShowWelcome(false);
+    } else {
+      setShowWelcome(true);
+    }
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   useEffect(() => {
     dispatch(getAllAreas());
   }, [dispatch]);
-
-  const handleScroll = () => {
-    const hideHeight = 700;
-    const windowScrollHeight =
-      document.body.scrollTop || document.documentElement.scrollTop;
-
-    if (windowScrollHeight > hideHeight) {
-      showWelcome && setShowWelcome(false);
-    } else {
-      setShowWelcome(true);
-    }
-  };
 
   const logout = (e) => {
     e.preventDefault();
@@ -87,6 +87,7 @@ function Navigation({ isLoaded }) {
       )}
     </>
   );
+
   return (
     isLoaded && (
       <div className={styles.navbarWrapper}>

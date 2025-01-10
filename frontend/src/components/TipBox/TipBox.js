@@ -10,8 +10,6 @@ function TipBox({ tip }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [showModal, setShowModal] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
-  const [editButtonHover, setEditButtonHover] = useState(false);
-  const [deleteButtonHover, setDeleteButtonHover] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -36,22 +34,14 @@ function TipBox({ tip }) {
       {showButtons && sessionUser && sessionUser.id === tip?.userId && (
         <>
           <button
-            className={`material-icons md-dark ${
-              !editButtonHover && "md-inactive"
-            } ${styles.editButton}`}
+            className={`material-icons ${styles.editButton}`}
             onClick={() => setShowModal(true)}
-            onMouseEnter={() => setEditButtonHover(true)}
-            onMouseLeave={() => setEditButtonHover(false)}
           >
             edit
           </button>
           <button
-            className={`material-icons md-dark ${
-              !deleteButtonHover && "md-inactive"
-            } ${styles.deleteButton}`}
+            className={`material-icons ${styles.deleteButton}`}
             onClick={() => handleDelete(tip.id)}
-            onMouseEnter={() => setDeleteButtonHover(true)}
-            onMouseLeave={() => setDeleteButtonHover(false)}
           >
             delete
           </button>

@@ -25,6 +25,13 @@
   position: absolute;
   right: 0px;
   margin: 20px;
+  color: #00000042;
+  transition: color var(--transition);
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  color: #0000008a;
 }
 
 .editButton {

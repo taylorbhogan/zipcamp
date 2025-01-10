@@ -45,33 +45,4 @@ router.post(
   })
 );
 
-// Test 1, 2, 3 - signup, existing email should fail, existing un should fail
-// reminder: need to pass in the value of the XSRF-TOKEN cookie as a header in the fetch request because the login route has a POST HTTP verb.
-// fetch('/api/users', {
-//   method: 'POST',
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": `4EU5reXc-lNLwn3x9qpz2Ep09TnZfoke4dYI`
-//   },
-//   body: JSON.stringify({
-//     email: 'spidey@spider.man',
-//     username: 'Spidey',
-//     password: 'password'
-//   })
-// }).then(res => res.json()).then(data => console.log(data));
-
-// Test 4 - signup validation
-// fetch('/api/users', {
-//   method: 'POST',
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": `XIIIsUWZ-ThDHimNYWbYAzE1tdF_hcW5P9Fg`
-//   },
-//   body: JSON.stringify({
-//     email: 'spidey@spider.man',
-//     username: 'Spidey',
-//     password: ''
-//   })
-// }).then(res => res.json()).then(data => console.log(data));
-
 module.exports = router;

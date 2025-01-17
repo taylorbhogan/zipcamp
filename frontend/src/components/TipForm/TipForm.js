@@ -72,41 +72,16 @@ function TipForm({ setShowTipForm, tipId }) {
         <h1 className={"formHeader"}>add a tip</h1>
         {errors.length > 0 && <Errors errors={errors} />}
         <div className={styles.buttons}>
-          <Star
-            rating={rating}
-            setRating={setRating}
-            hoverRating={hoverRating}
-            setHoverRating={setHoverRating}
-            starNumber={1}
-          />
-          <Star
-            rating={rating}
-            setRating={setRating}
-            hoverRating={hoverRating}
-            setHoverRating={setHoverRating}
-            starNumber={2}
-          />
-          <Star
-            rating={rating}
-            setRating={setRating}
-            hoverRating={hoverRating}
-            setHoverRating={setHoverRating}
-            starNumber={3}
-          />
-          <Star
-            rating={rating}
-            setRating={setRating}
-            hoverRating={hoverRating}
-            setHoverRating={setHoverRating}
-            starNumber={4}
-          />
-          <Star
-            rating={rating}
-            setRating={setRating}
-            hoverRating={hoverRating}
-            setHoverRating={setHoverRating}
-            starNumber={5}
-          />
+          {Array.from({ length: 5 }, (_, index) => (
+            <Star
+              key={index}
+              rating={rating}
+              setRating={setRating}
+              hoverRating={hoverRating}
+              setHoverRating={setHoverRating}
+              starNumber={index + 1}
+            />
+          ))}
         </div>
         <Input
           type="textarea"

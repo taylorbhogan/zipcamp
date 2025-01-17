@@ -16,7 +16,6 @@ function TipForm({ setShowTipForm, tipId }) {
 
   const userId = useSelector((state) => state.session.user?.id);
   const tip = useSelector((state) => state.tips.allTips[tipId]);
-  console.log(tipId);
 
   const [errors, setErrors] = useState([]);
   const [tipText, setTipText] = useState(tip ? tip.text : "");

@@ -70,3 +70,27 @@ While viewing a spot, a user can add a quick tip  to remind themselves for their
 ### Editing Spots and Tips
 
 A user can easily edit or delete their spots or tips. 
+
+## Cloning and Running Locally
+
+You'll need Postgres. If you don't already have it, I suggest using homebrew:
+- `brew install postgresql`
+- `brew services start postgresql`
+
+
+Set up your user with either:
+- `CREATE ROLE <<your_username>> WITH LOGIN PASSWORD '<<your_password>>' SUPERUSER;` in the PostgreSQL prompt (which you can access with `psql postgres`)
+- `createuser auth_app --superuser --login --pwprompt` using the postgres cli in your shell
+
+In backend/
+- `npm install`
+- `npm run db:create`
+- `npm run db:migrate`
+- `npm run db:seed:all`
+- `npm run start`
+
+In frontend/
+- `npm install`
+- `npm run start`
+
+Then you're ready to go! Happy exploring!
